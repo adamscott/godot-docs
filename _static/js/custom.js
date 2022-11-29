@@ -250,6 +250,19 @@ $(document).ready(() => {
     registerOnScrollEvent(mediaQuery);
   });
 
+  // Add line-break suggestions to code links
+  const wyMenuVertical = document.body.querySelector('.wy-menu-vertical');
+  if (wyMenuVertical != null) {
+    const referenceInternalList = wyMenuVertical.querySelectorAll('.reference.internal');
+    for (const el of referenceInternalList) {
+      if (el.innerText.includes(" ") || el.innerText.length < 10) {
+        continue;
+      }
+
+      el.innerHTML = el.innerText.replace(/((?:(?<=[a-z])[A-Z0-9](?!$))|(?<!^)[A-Z](?=[a-z]))/gm, '<wbr>$1');
+    }
+  }
+
   if (inDev) {
     // Add a compatibility notice using JavaScript so it doesn't end up in the
     // automatically generated `meta description` tag.
