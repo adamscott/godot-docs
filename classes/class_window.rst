@@ -2021,7 +2021,9 @@ Popups the **Window** centered inside its parent **Window**. ``fallback_ratio`` 
 
 void **popup_centered_ratio** **(** :ref:`float<class_float>` ratio=0.8 **)**
 
-Popups the **Window** centered inside its parent **Window** and sets its size as a ``ratio`` of parent's size.
+If **Window** is embedded, popups the **Window** centered inside its embedder and sets its size as a ``ratio`` of embedder's size.
+
+If **Window** is a native window, popups the **Window** centered inside the screen of its parent **Window** and sets its size as a ``ratio`` of the screen size.
 
 .. rst-class:: classref-item-separator
 
@@ -2444,3 +2446,4 @@ The background style used when the **Window** is embedded. Note that this is dra
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
