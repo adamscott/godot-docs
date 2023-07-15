@@ -192,6 +192,14 @@ An optional ``type_hint`` can be used to further specify the :ref:`Resource<clas
 
 Returns the dependencies for the resource at the given ``path``.
 
+\ **Note:** The dependencies are returned with slices separated by ``::``. You can use :ref:`String.get_slice<class_String_method_get_slice>` to get their components.
+
+::
+
+    for dep in ResourceLoader.get_dependencies(path):
+        print(dep.get_slice("::", 0)) # Prints UID.
+        print(dep.get_slice("::", 2)) # Prints path.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -326,3 +334,4 @@ Changes the behavior on missing sub-resources. The default behavior is to abort 
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

@@ -1318,7 +1318,7 @@ Minimum equivalent of :ref:`initial_velocity_max<class_ParticleProcessMaterial_p
 - void **set_lifetime_randomness** **(** :ref:`float<class_float>` value **)**
 - :ref:`float<class_float>` **get_lifetime_randomness** **(** **)**
 
-Particle lifetime randomness ratio. The lifetime will be multiplied by a value interpolated between ``1.0`` and a random number less than one. For example a random ratio of ``0.4`` would scale the original lifetime between ``0.4-1.0`` of its original value.
+Particle lifetime randomness ratio. The equation for the lifetime of a particle is ``lifetime * (1.0 - randf() * lifetime_randomness)``. For example, a :ref:`lifetime_randomness<class_ParticleProcessMaterial_property_lifetime_randomness>` of ``0.4`` scales the lifetime between ``0.6`` to ``1.0`` of its original value.
 
 .. rst-class:: classref-item-separator
 
@@ -2033,3 +2033,4 @@ If ``true``, enables the specified particle flag. See :ref:`ParticleFlags<enum_P
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
