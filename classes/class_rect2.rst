@@ -25,6 +25,10 @@ The 3D counterpart to **Rect2** is :ref:`AABB<class_AABB>`.
 
 Negative values for :ref:`size<class_Rect2_property_size>` are not supported and will not work for most methods. Use :ref:`abs<class_Rect2_method_abs>` to get a Rect2 with a positive size.
 
+.. note::
+
+	There are notable differences when using this API with C#. See :ref:`doc_c_sharp_differences` for more information.
+
 .. rst-class:: classref-introduction-group
 
 Tutorials
@@ -491,3 +495,4 @@ Returns ``true`` if the rectangles are exactly equal.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

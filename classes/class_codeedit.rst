@@ -1581,7 +1581,7 @@ Unindents selected lines, or in the case of no selection the caret line by one. 
 
 void **update_code_completion_options** **(** :ref:`bool<class_bool>` force **)**
 
-Submits all completion options added with :ref:`add_code_completion_option<class_CodeEdit_method_add_code_completion_option>`. Will try to force the autoccomplete menu to popup, if ``force`` is ``true``.
+Submits all completion options added with :ref:`add_code_completion_option<class_CodeEdit_method_add_code_completion_option>`. Will try to force the autocomplete menu to popup, if ``force`` is ``true``.
 
 \ **Note:** This will replace all current candidates.
 
@@ -2138,3 +2138,4 @@ Sets the :ref:`StyleBox<class_StyleBox>` when :ref:`TextEdit.editable<class_Text
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

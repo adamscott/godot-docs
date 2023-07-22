@@ -87,7 +87,7 @@ Locks this **Mutex**, blocks until it is unlocked by the current owner.
 
 Tries locking this **Mutex**, but does not block. Returns ``true`` on success, ``false`` otherwise.
 
-\ **Note:** This function returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the thread already has ownership of the mutex.
+\ **Note:** This function returns ``true`` if the thread already has ownership of the mutex.
 
 .. rst-class:: classref-item-separator
 
@@ -111,3 +111,4 @@ Unlocks this **Mutex**, leaving it to other threads.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
