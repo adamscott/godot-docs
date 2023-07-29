@@ -2020,9 +2020,9 @@ Calling this method will propagate calls to child nodes for following methods in
 
 - :ref:`Node._shortcut_input<class_Node_method__shortcut_input>`\ 
 
-- :ref:`Node._unhandled_input<class_Node_method__unhandled_input>`\ 
-
 - :ref:`Node._unhandled_key_input<class_Node_method__unhandled_key_input>`\ 
+
+- :ref:`Node._unhandled_input<class_Node_method__unhandled_input>`\ 
 
 If an earlier method marks the input as handled via :ref:`set_input_as_handled<class_Viewport_method_set_input_as_handled>`, any later method in this list will not be called.
 
@@ -2060,9 +2060,9 @@ Calling this method will propagate calls to child nodes for following methods in
 
 - :ref:`Node._shortcut_input<class_Node_method__shortcut_input>`\ 
 
-- :ref:`Node._unhandled_input<class_Node_method__unhandled_input>`\ 
-
 - :ref:`Node._unhandled_key_input<class_Node_method__unhandled_key_input>`\ 
+
+- :ref:`Node._unhandled_input<class_Node_method__unhandled_input>`\ 
 
 If an earlier method marks the input as handled via :ref:`set_input_as_handled<class_Viewport_method_set_input_as_handled>`, any later method in this list will not be called.
 
@@ -2142,3 +2142,4 @@ Moves the mouse pointer to the specified position in this **Viewport** using the
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

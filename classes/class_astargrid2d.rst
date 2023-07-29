@@ -38,7 +38,7 @@ To use **AStarGrid2D**, you only need to set the :ref:`region<class_AStarGrid2D_
  .. code-tab:: csharp
 
     AStarGrid2D astarGrid = new AStarGrid2D();
-    astarGrid.Size = new Vector2I(32, 32);
+    astarGrid.Region = new Rect2I(0, 0, 32, 32);
     astarGrid.CellSize = new Vector2I(16, 16);
     astarGrid.Update();
     GD.Print(astarGrid.GetIdPath(Vector2I.Zero, new Vector2I(3, 4))); // prints (0, 0), (1, 1), (2, 2), (3, 3), (3, 4)
@@ -582,3 +582,4 @@ Updates the internal state of the grid according to the parameters to prepare it
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

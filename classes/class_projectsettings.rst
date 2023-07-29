@@ -401,6 +401,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`dotnet/project/assembly_name<class_ProjectSettings_property_dotnet/project/assembly_name>`                                                                                                           | ``""``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`dotnet/project/assembly_reload_attempts<class_ProjectSettings_property_dotnet/project/assembly_reload_attempts>`                                                                                     | ``3``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`dotnet/project/solution_directory<class_ProjectSettings_property_dotnet/project/solution_directory>`                                                                                                 | ``""``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`editor/export/convert_text_resources_to_binary<class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>`                                                                       | ``true``                                                                                         |
@@ -642,6 +644,8 @@ Properties
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_up<class_ProjectSettings_property_input/ui_up>`                                                                                                                                             |                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`input_devices/buffering/agile_event_flushing<class_ProjectSettings_property_input_devices/buffering/agile_event_flushing>`                                                                           | ``false``                                                                                        |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`input_devices/compatibility/legacy_just_pressed_behavior<class_ProjectSettings_property_input_devices/compatibility/legacy_just_pressed_behavior>`                                                   | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`input_devices/pen_tablet/driver<class_ProjectSettings_property_input_devices/pen_tablet/driver>`                                                                                                     |                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -1085,19 +1089,23 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`memory/limits/multithreaded_server/rid_pool_prealloc<class_ProjectSettings_property_memory/limits/multithreaded_server/rid_pool_prealloc>`                                                           | ``60``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`navigation/2d/default_cell_size<class_ProjectSettings_property_navigation/2d/default_cell_size>`                                                                                                     | ``1``                                                                                            |
+   | :ref:`float<class_float>`                         | :ref:`navigation/2d/default_cell_size<class_ProjectSettings_property_navigation/2d/default_cell_size>`                                                                                                     | ``1.0``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`navigation/2d/default_edge_connection_margin<class_ProjectSettings_property_navigation/2d/default_edge_connection_margin>`                                                                           | ``1``                                                                                            |
+   | :ref:`float<class_float>`                         | :ref:`navigation/2d/default_edge_connection_margin<class_ProjectSettings_property_navigation/2d/default_edge_connection_margin>`                                                                           | ``1.0``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`navigation/2d/default_link_connection_radius<class_ProjectSettings_property_navigation/2d/default_link_connection_radius>`                                                                           | ``4``                                                                                            |
+   | :ref:`float<class_float>`                         | :ref:`navigation/2d/default_link_connection_radius<class_ProjectSettings_property_navigation/2d/default_link_connection_radius>`                                                                           | ``4.0``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`navigation/2d/use_edge_connections<class_ProjectSettings_property_navigation/2d/use_edge_connections>`                                                                                               | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                         | :ref:`navigation/3d/default_cell_height<class_ProjectSettings_property_navigation/3d/default_cell_height>`                                                                                                 | ``0.25``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`navigation/3d/default_cell_size<class_ProjectSettings_property_navigation/3d/default_cell_size>`                                                                                                     | ``0.25``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`navigation/3d/default_edge_connection_margin<class_ProjectSettings_property_navigation/3d/default_edge_connection_margin>`                                                                           | ``0.25``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`navigation/3d/default_link_connection_radius<class_ProjectSettings_property_navigation/3d/default_link_connection_radius>`                                                                           | ``1.0``                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                     | :ref:`navigation/3d/default_up<class_ProjectSettings_property_navigation/3d/default_up>`                                                                                                                   | ``Vector3(0, 1, 0)``                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`navigation/3d/use_edge_connections<class_ProjectSettings_property_navigation/3d/use_edge_connections>`                                                                                               | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -1287,6 +1295,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/gl_compatibility/item_buffer_size<class_ProjectSettings_property_rendering/gl_compatibility/item_buffer_size>`                                                                             | ``16384``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/gl_compatibility/nvidia_disable_threaded_optimization<class_ProjectSettings_property_rendering/gl_compatibility/nvidia_disable_threaded_optimization>`                                     | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/global_illumination/gi/use_half_resolution<class_ProjectSettings_property_rendering/global_illumination/gi/use_half_resolution>`                                                           | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/global_illumination/sdfgi/frames_to_converge<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_converge>`                                                       | ``5``                                                                                            |
@@ -1467,7 +1477,7 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/textures/vram_compression/import_etc2_astc<class_ProjectSettings_property_rendering/textures/vram_compression/import_etc2_astc>`                                                           | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`rendering/textures/vram_compression/import_s3tc_bptc<class_ProjectSettings_property_rendering/textures/vram_compression/import_s3tc_bptc>`                                                           | ``true``                                                                                         |
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/textures/vram_compression/import_s3tc_bptc<class_ProjectSettings_property_rendering/textures/vram_compression/import_s3tc_bptc>`                                                           | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/textures/webp_compression/compression_method<class_ProjectSettings_property_rendering/textures/webp_compression/compression_method>`                                                       | ``2``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -3787,6 +3797,18 @@ Name of the .NET assembly. This name is used as the name of the ``.csproj`` and 
 
 ----
 
+.. _class_ProjectSettings_property_dotnet/project/assembly_reload_attempts:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **dotnet/project/assembly_reload_attempts** = ``3``
+
+Number of times to attempt assembly reloading after rebuilding .NET assemblies. Effectively also the timeout in seconds to wait for unloading of script assemblies to finish.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_dotnet/project/solution_directory:
 
 .. rst-class:: classref-property
@@ -4231,7 +4253,9 @@ Path to a custom :ref:`Font<class_Font>` resource to use as default for all GUI 
 
 :ref:`int<class_int>` **gui/theme/default_font_antialiasing** = ``1``
 
-Font anti-aliasing mode. See :ref:`FontFile.antialiasing<class_FontFile_property_antialiasing>`.
+Font anti-aliasing mode for the default project font. See :ref:`FontFile.antialiasing<class_FontFile_property_antialiasing>`.
+
+\ **Note:** This setting does not affect custom :ref:`Font<class_Font>`\ s used within the project. Use the **Import** dock for that instead (see :ref:`ResourceImporterDynamicFont.antialiasing<class_ResourceImporterDynamicFont_property_antialiasing>`).
 
 .. rst-class:: classref-item-separator
 
@@ -4247,7 +4271,7 @@ If set to ``true``, the default font will have mipmaps generated. This prevents 
 
 Enabling :ref:`gui/theme/default_font_generate_mipmaps<class_ProjectSettings_property_gui/theme/default_font_generate_mipmaps>` increases font generation time and memory usage. Only enable this setting if you actually need it.
 
-\ **Note:** This setting does not affect custom :ref:`Font<class_Font>`\ s used within the project.
+\ **Note:** This setting does not affect custom :ref:`Font<class_Font>`\ s used within the project. Use the **Import** dock for that instead (see :ref:`ResourceImporterDynamicFont.generate_mipmaps<class_ResourceImporterDynamicFont_property_generate_mipmaps>`).
 
 .. rst-class:: classref-item-separator
 
@@ -4259,7 +4283,9 @@ Enabling :ref:`gui/theme/default_font_generate_mipmaps<class_ProjectSettings_pro
 
 :ref:`int<class_int>` **gui/theme/default_font_hinting** = ``1``
 
-Default font hinting mode. See :ref:`FontFile.hinting<class_FontFile_property_hinting>`.
+Font hinting mode for the default project font. See :ref:`FontFile.hinting<class_FontFile_property_hinting>`.
+
+\ **Note:** This setting does not affect custom :ref:`Font<class_Font>`\ s used within the project. Use the **Import** dock for that instead (see :ref:`ResourceImporterDynamicFont.hinting<class_ResourceImporterDynamicFont_property_hinting>`).
 
 .. rst-class:: classref-item-separator
 
@@ -4275,7 +4301,7 @@ If set to ``true``, the default font will use multichannel signed distance field
 
 MSDF font rendering can be combined with :ref:`gui/theme/default_font_generate_mipmaps<class_ProjectSettings_property_gui/theme/default_font_generate_mipmaps>` to further improve font rendering quality when scaled down.
 
-\ **Note:** This setting does not affect custom :ref:`Font<class_Font>`\ s used within the project.
+\ **Note:** This setting does not affect custom :ref:`Font<class_Font>`\ s used within the project. Use the **Import** dock for that instead (see :ref:`ResourceImporterDynamicFont.multichannel_signed_distance_field<class_ResourceImporterDynamicFont_property_multichannel_signed_distance_field>`).
 
 .. rst-class:: classref-item-separator
 
@@ -4287,7 +4313,9 @@ MSDF font rendering can be combined with :ref:`gui/theme/default_font_generate_m
 
 :ref:`int<class_int>` **gui/theme/default_font_subpixel_positioning** = ``1``
 
-Default font glyph subpixel positioning mode. See :ref:`FontFile.subpixel_positioning<class_FontFile_property_subpixel_positioning>`.
+Font glyph subpixel positioning mode for the default project font. See :ref:`FontFile.subpixel_positioning<class_FontFile_property_subpixel_positioning>`.
+
+\ **Note:** This setting does not affect custom :ref:`Font<class_Font>`\ s used within the project. Use the **Import** dock for that instead (see :ref:`ResourceImporterDynamicFont.subpixel_positioning<class_ResourceImporterDynamicFont_property_subpixel_positioning>`).
 
 .. rst-class:: classref-item-separator
 
@@ -5416,6 +5444,22 @@ If ``false``, such events will be flushed only once per process frame, between i
 Enabling this can greatly improve the responsiveness to input, specially in devices that need to run multiple physics frames per visible (process) frame, because they can't run at the target frame rate.
 
 \ **Note:** Currently implemented only on Android.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input_devices/compatibility/legacy_just_pressed_behavior:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **input_devices/compatibility/legacy_just_pressed_behavior** = ``false``
+
+If ``true``, :ref:`Input.is_action_just_pressed<class_Input_method_is_action_just_pressed>` and :ref:`Input.is_action_just_released<class_Input_method_is_action_just_released>` will only return ``true`` if the action is still in the respective state, i.e. an action that is pressed *and* released on the same frame will be missed.
+
+If ``false``, no input will be lost.
+
+\ **Note:** You should in nearly all cases prefer the ``false`` setting. The legacy behavior is to enable supporting old projects that rely on the old logic, without changes to script.
 
 .. rst-class:: classref-item-separator
 
@@ -8091,7 +8135,7 @@ This is used by servers when used in multi-threading mode (servers and visual). 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **navigation/2d/default_cell_size** = ``1``
+:ref:`float<class_float>` **navigation/2d/default_cell_size** = ``1.0``
 
 Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_cell_size<class_NavigationServer2D_method_map_set_cell_size>`.
 
@@ -8103,7 +8147,7 @@ Default cell size for 2D navigation maps. See :ref:`NavigationServer2D.map_set_c
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **navigation/2d/default_edge_connection_margin** = ``1``
+:ref:`float<class_float>` **navigation/2d/default_edge_connection_margin** = ``1.0``
 
 Default edge connection margin for 2D navigation maps. See :ref:`NavigationServer2D.map_set_edge_connection_margin<class_NavigationServer2D_method_map_set_edge_connection_margin>`.
 
@@ -8115,7 +8159,7 @@ Default edge connection margin for 2D navigation maps. See :ref:`NavigationServe
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **navigation/2d/default_link_connection_radius** = ``4``
+:ref:`float<class_float>` **navigation/2d/default_link_connection_radius** = ``4.0``
 
 Default link connection radius for 2D navigation maps. See :ref:`NavigationServer2D.map_set_link_connection_radius<class_NavigationServer2D_method_map_set_link_connection_radius>`.
 
@@ -8130,6 +8174,18 @@ Default link connection radius for 2D navigation maps. See :ref:`NavigationServe
 :ref:`bool<class_bool>` **navigation/2d/use_edge_connections** = ``true``
 
 If enabled 2D navigation regions will use edge connections to connect with other navigation regions within proximity of the navigation map edge connection margin. This setting only affects World2D default navigation maps.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_navigation/3d/default_cell_height:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **navigation/3d/default_cell_height** = ``0.25``
+
+Default cell height for 3D navigation maps. See :ref:`NavigationServer3D.map_set_cell_height<class_NavigationServer3D_method_map_set_cell_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -8166,6 +8222,18 @@ Default edge connection margin for 3D navigation maps. See :ref:`NavigationServe
 :ref:`float<class_float>` **navigation/3d/default_link_connection_radius** = ``1.0``
 
 Default link connection radius for 3D navigation maps. See :ref:`NavigationServer3D.map_set_link_connection_radius<class_NavigationServer3D_method_map_set_link_connection_radius>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_navigation/3d/default_up:
+
+.. rst-class:: classref-property
+
+:ref:`Vector3<class_Vector3>` **navigation/3d/default_up** = ``Vector3(0, 1, 0)``
+
+Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_set_up<class_NavigationServer3D_method_map_set_up>`.
 
 .. rst-class:: classref-item-separator
 
@@ -9057,7 +9125,9 @@ If ``true``, performs a previous depth pass before rendering 3D materials. This 
 
 :ref:`int<class_int>` **rendering/driver/threads/thread_model** = ``1``
 
-Thread model for rendering. Rendering on a thread can vastly improve performance, but synchronizing to the main thread can cause a bit more jitter.
+The thread model to use for rendering. Rendering on a thread may improve performance, but synchronizing to the main thread can cause a bit more jitter.
+
+\ **Note:** The **Multi-Threaded** option is experimental, and has several known bugs which can lead to crashing, especially when using particles or resizing the window. Not recommended for use in production at this stage.
 
 .. rst-class:: classref-item-separator
 
@@ -9436,6 +9506,20 @@ Windows override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettin
 :ref:`int<class_int>` **rendering/gl_compatibility/item_buffer_size** = ``16384``
 
 Maximum number of canvas items commands that can be drawn in a single viewport update. If more render commands are issued they will be ignored. Decreasing this limit may improve performance on bandwidth limited devices. Increase this limit if you find that not all objects are being drawn in a frame.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/gl_compatibility/nvidia_disable_threaded_optimization:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/gl_compatibility/nvidia_disable_threaded_optimization** = ``true``
+
+If ``true``, disables the threaded optimization feature from the NVIDIA drivers, which are known to cause stuttering in most OpenGL applications.
+
+\ **Note:** This setting only works on Windows, as threaded optimization is disabled by default on other platforms.
 
 .. rst-class:: classref-item-separator
 
@@ -10609,6 +10693,8 @@ If ``true``, the texture importer will import lossless textures using the PNG fo
 
 If ``true``, the texture importer will import VRAM-compressed textures using the Ericsson Texture Compression 2 algorithm for lower quality textures and normal maps and Adaptable Scalable Texture Compression algorithm for high quality textures (in 4x4 block size).
 
+\ **Note:** This setting is an override. The texture importer will always import the format the host platform needs, even if this is set to ``false``.
+
 \ **Note:** Changing this setting does *not* impact textures that were already imported before. To make this setting apply to textures that were already imported, exit the editor, remove the ``.godot/imported/`` folder located inside the project folder then restart the editor (see :ref:`application/config/use_hidden_project_data_directory<class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
 
 .. rst-class:: classref-item-separator
@@ -10619,9 +10705,11 @@ If ``true``, the texture importer will import VRAM-compressed textures using the
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **rendering/textures/vram_compression/import_s3tc_bptc** = ``true``
+:ref:`bool<class_bool>` **rendering/textures/vram_compression/import_s3tc_bptc** = ``false``
 
 If ``true``, the texture importer will import VRAM-compressed textures using the S3 Texture Compression algorithm (DXT1-5) for lower quality textures and the BPTC algorithm (BC6H and BC7) for high quality textures. This algorithm is only supported on PC desktop platforms and consoles.
+
+\ **Note:** This setting is an override. The texture importer will always import the format the host platform needs, even if this is set to ``false``.
 
 \ **Note:** Changing this setting does *not* impact textures that were already imported before. To make this setting apply to textures that were already imported, exit the editor, remove the ``.godot/imported/`` folder located inside the project folder then restart the editor (see :ref:`application/config/use_hidden_project_data_directory<class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
 
@@ -11194,3 +11282,4 @@ This can also be used to erase custom project settings. To do this change the se
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
