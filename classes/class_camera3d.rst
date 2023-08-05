@@ -79,6 +79,8 @@ Methods
    +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                  | :ref:`clear_current<class_Camera3D_method_clear_current>` **(** :ref:`bool<class_bool>` enable_next=true **)**                                                                                            |
    +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Projection<class_Projection>`   | :ref:`get_camera_projection<class_Camera3D_method_get_camera_projection>` **(** **)** |const|                                                                                                             |
+   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                 | :ref:`get_camera_rid<class_Camera3D_method_get_camera_rid>` **(** **)** |const|                                                                                                                           |
    +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Transform3D<class_Transform3D>` | :ref:`get_camera_transform<class_Camera3D_method_get_camera_transform>` **(** **)** |const|                                                                                                               |
@@ -497,6 +499,18 @@ If this is the current camera, remove it from being current. If ``enable_next`` 
 
 ----
 
+.. _class_Camera3D_method_get_camera_projection:
+
+.. rst-class:: classref-method
+
+:ref:`Projection<class_Projection>` **get_camera_projection** **(** **)** |const|
+
+Returns the projection matrix that this camera uses to render to its associated viewport. The camera must be part of the scene tree to function.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Camera3D_method_get_camera_rid:
 
 .. rst-class:: classref-method
@@ -714,3 +728,4 @@ Returns the 2D coordinate in the :ref:`Viewport<class_Viewport>` rectangle that 
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

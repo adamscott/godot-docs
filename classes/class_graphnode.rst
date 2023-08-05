@@ -36,8 +36,6 @@ Properties
    :widths: auto
 
    +--------------------------------------------------+------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                          | :ref:`comment<class_GraphNode_property_comment>`                 | ``false``                                                             |
-   +--------------------------------------------------+------------------------------------------------------------------+-----------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                          | :ref:`draggable<class_GraphNode_property_draggable>`             | ``true``                                                              |
    +--------------------------------------------------+------------------------------------------------------------------+-----------------------------------------------------------------------+
    | :ref:`String<class_String>`                      | :ref:`language<class_GraphNode_property_language>`               | ``""``                                                                |
@@ -165,10 +163,6 @@ Theme Properties
    | :ref:`Texture2D<class_Texture2D>` | :ref:`resizer<class_GraphNode_theme_icon_resizer>`                   |                                   |
    +-----------------------------------+----------------------------------------------------------------------+-----------------------------------+
    | :ref:`StyleBox<class_StyleBox>`   | :ref:`breakpoint<class_GraphNode_theme_style_breakpoint>`            |                                   |
-   +-----------------------------------+----------------------------------------------------------------------+-----------------------------------+
-   | :ref:`StyleBox<class_StyleBox>`   | :ref:`comment<class_GraphNode_theme_style_comment>`                  |                                   |
-   +-----------------------------------+----------------------------------------------------------------------+-----------------------------------+
-   | :ref:`StyleBox<class_StyleBox>`   | :ref:`comment_focus<class_GraphNode_theme_style_comment_focus>`      |                                   |
    +-----------------------------------+----------------------------------------------------------------------+-----------------------------------+
    | :ref:`StyleBox<class_StyleBox>`   | :ref:`frame<class_GraphNode_theme_style_frame>`                      |                                   |
    +-----------------------------------+----------------------------------------------------------------------+-----------------------------------+
@@ -327,23 +321,6 @@ Show overlay set in the :ref:`position<class_GraphNode_theme_style_position>` th
 
 Property Descriptions
 ---------------------
-
-.. _class_GraphNode_property_comment:
-
-.. rst-class:: classref-property
-
-:ref:`bool<class_bool>` **comment** = ``false``
-
-.. rst-class:: classref-property-setget
-
-- void **set_comment** **(** :ref:`bool<class_bool>` value **)**
-- :ref:`bool<class_bool>` **is_comment** **(** **)**
-
-If ``true``, the GraphNode is a comment node.
-
-.. rst-class:: classref-item-separator
-
-----
 
 .. _class_GraphNode_property_draggable:
 
@@ -1061,30 +1038,6 @@ The background used when :ref:`overlay<class_GraphNode_property_overlay>` is set
 
 ----
 
-.. _class_GraphNode_theme_style_comment:
-
-.. rst-class:: classref-themeproperty
-
-:ref:`StyleBox<class_StyleBox>` **comment**
-
-The :ref:`StyleBox<class_StyleBox>` used when :ref:`comment<class_GraphNode_property_comment>` is enabled.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_GraphNode_theme_style_comment_focus:
-
-.. rst-class:: classref-themeproperty
-
-:ref:`StyleBox<class_StyleBox>` **comment_focus**
-
-The :ref:`StyleBox<class_StyleBox>` used when :ref:`comment<class_GraphNode_property_comment>` is enabled and the **GraphNode** is focused.
-
-.. rst-class:: classref-item-separator
-
-----
-
 .. _class_GraphNode_theme_style_frame:
 
 .. rst-class:: classref-themeproperty
@@ -1135,3 +1088,4 @@ The :ref:`StyleBox<class_StyleBox>` used for each slot of the **GraphNode**.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

@@ -59,6 +59,8 @@ Properties
    +-------------------------------+------------------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`       | :ref:`exclude_parent<class_RayCast3D_property_exclude_parent>`                     | ``true``              |
    +-------------------------------+------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`       | :ref:`hit_back_faces<class_RayCast3D_property_hit_back_faces>`                     | ``true``              |
+   +-------------------------------+------------------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`       | :ref:`hit_from_inside<class_RayCast3D_property_hit_from_inside>`                   | ``false``             |
    +-------------------------------+------------------------------------------------------------------------------------+-----------------------+
    | :ref:`Vector3<class_Vector3>` | :ref:`target_position<class_RayCast3D_property_target_position>`                   | ``Vector3(0, -1, 0)`` |
@@ -86,6 +88,8 @@ Methods
    | :ref:`RID<class_RID>`         | :ref:`get_collider_rid<class_RayCast3D_method_get_collider_rid>` **(** **)** |const|                                                                           |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`get_collider_shape<class_RayCast3D_method_get_collider_shape>` **(** **)** |const|                                                                       |
+   +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`         | :ref:`get_collision_face_index<class_RayCast3D_method_get_collision_face_index>` **(** **)** |const|                                                           |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`       | :ref:`get_collision_mask_value<class_RayCast3D_method_get_collision_mask_value>` **(** :ref:`int<class_int>` layer_number **)** |const|                        |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -232,6 +236,23 @@ If ``true``, collisions will be ignored for this RayCast3D's immediate parent.
 
 ----
 
+.. _class_RayCast3D_property_hit_back_faces:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **hit_back_faces** = ``true``
+
+.. rst-class:: classref-property-setget
+
+- void **set_hit_back_faces** **(** :ref:`bool<class_bool>` value **)**
+- :ref:`bool<class_bool>` **is_hit_back_faces_enabled** **(** **)**
+
+If ``true``, the ray will hit back faces with concave polygon shapes with back face enabled or heightmap shapes.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RayCast3D_property_hit_from_inside:
 
 .. rst-class:: classref-property
@@ -357,6 +378,18 @@ Returns the shape ID of the first object that the ray intersects, or ``0`` if no
 
 ----
 
+.. _class_RayCast3D_method_get_collision_face_index:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_collision_face_index** **(** **)** |const|
+
+Returns the collision object's face index at the collision point, or ``-1`` if the shape intersecting the ray is not a :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RayCast3D_method_get_collision_mask_value:
 
 .. rst-class:: classref-method
@@ -445,3 +478,4 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

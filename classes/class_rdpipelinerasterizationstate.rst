@@ -219,7 +219,7 @@ The winding order to use to determine which face of a triangle is considered its
 - void **set_line_width** **(** :ref:`float<class_float>` value **)**
 - :ref:`float<class_float>` **get_line_width** **(** **)**
 
-THe line width to use when drawing lines (in pixels). Thick lines may not be supported on all hardware.
+The line width to use when drawing lines (in pixels). Thick lines may not be supported on all hardware.
 
 .. rst-class:: classref-item-separator
 
@@ -261,3 +261,4 @@ If ``true``, performs wireframe rendering for triangles instead of flat or textu
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

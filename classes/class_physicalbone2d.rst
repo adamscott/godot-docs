@@ -113,7 +113,7 @@ The index of the :ref:`Bone2D<class_Bone2D>` that this **PhysicalBone2D** should
 - void **set_bone2d_nodepath** **(** :ref:`NodePath<class_NodePath>` value **)**
 - :ref:`NodePath<class_NodePath>` **get_bone2d_nodepath** **(** **)**
 
-The :ref:`NodePath<class_NodePath>` to the :ref:`Bone2D<class_Bone2D>` that this **PhysicalBone2D** isshould simulate.
+The :ref:`NodePath<class_NodePath>` to the :ref:`Bone2D<class_Bone2D>` that this **PhysicalBone2D** should simulate.
 
 .. rst-class:: classref-item-separator
 
@@ -186,3 +186,4 @@ Returns a boolean that indicates whether the **PhysicalBone2D** is running and s
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

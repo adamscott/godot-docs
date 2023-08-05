@@ -100,6 +100,8 @@ Methods
    :widths: auto
 
    +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                       | :ref:`_get_contents_minimum_size<class_Window_method__get_contents_minimum_size>` **(** **)** |virtual| |const|                                                                                                                                    |
+   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                | :ref:`add_theme_color_override<class_Window_method_add_theme_color_override>` **(** :ref:`StringName<class_StringName>` name, :ref:`Color<class_Color>` color **)**                                                                                |
    +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                | :ref:`add_theme_constant_override<class_Window_method_add_theme_constant_override>` **(** :ref:`StringName<class_StringName>` name, :ref:`int<class_int>` constant **)**                                                                           |
@@ -249,31 +251,33 @@ Theme Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`Color<class_Color>`         | :ref:`title_color<class_Window_theme_color_title_color>`                       | ``Color(0.875, 0.875, 0.875, 1)`` |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`Color<class_Color>`         | :ref:`title_outline_modulate<class_Window_theme_color_title_outline_modulate>` | ``Color(1, 1, 1, 1)``             |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`int<class_int>`             | :ref:`close_h_offset<class_Window_theme_constant_close_h_offset>`              | ``18``                            |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`int<class_int>`             | :ref:`close_v_offset<class_Window_theme_constant_close_v_offset>`              | ``24``                            |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`int<class_int>`             | :ref:`resize_margin<class_Window_theme_constant_resize_margin>`                | ``4``                             |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`int<class_int>`             | :ref:`title_height<class_Window_theme_constant_title_height>`                  | ``36``                            |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`int<class_int>`             | :ref:`title_outline_size<class_Window_theme_constant_title_outline_size>`      | ``0``                             |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`Font<class_Font>`           | :ref:`title_font<class_Window_theme_font_title_font>`                          |                                   |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`int<class_int>`             | :ref:`title_font_size<class_Window_theme_font_size_title_font_size>`           |                                   |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`close<class_Window_theme_icon_close>`                                    |                                   |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`close_pressed<class_Window_theme_icon_close_pressed>`                    |                                   |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`StyleBox<class_StyleBox>`   | :ref:`embedded_border<class_Window_theme_style_embedded_border>`               |                                   |
-   +-----------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`title_color<class_Window_theme_color_title_color>`                             | ``Color(0.875, 0.875, 0.875, 1)`` |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`title_outline_modulate<class_Window_theme_color_title_outline_modulate>`       | ``Color(1, 1, 1, 1)``             |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`int<class_int>`             | :ref:`close_h_offset<class_Window_theme_constant_close_h_offset>`                    | ``18``                            |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`int<class_int>`             | :ref:`close_v_offset<class_Window_theme_constant_close_v_offset>`                    | ``24``                            |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`int<class_int>`             | :ref:`resize_margin<class_Window_theme_constant_resize_margin>`                      | ``4``                             |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`int<class_int>`             | :ref:`title_height<class_Window_theme_constant_title_height>`                        | ``36``                            |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`int<class_int>`             | :ref:`title_outline_size<class_Window_theme_constant_title_outline_size>`            | ``0``                             |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`Font<class_Font>`           | :ref:`title_font<class_Window_theme_font_title_font>`                                |                                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`int<class_int>`             | :ref:`title_font_size<class_Window_theme_font_size_title_font_size>`                 |                                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`close<class_Window_theme_icon_close>`                                          |                                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`close_pressed<class_Window_theme_icon_close_pressed>`                          |                                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`embedded_border<class_Window_theme_style_embedded_border>`                     |                                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`embedded_unfocused_border<class_Window_theme_style_embedded_unfocused_border>` |                                   |
+   +-----------------------------------+--------------------------------------------------------------------------------------+-----------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -390,7 +394,7 @@ Emitted when a go back request is sent (e.g. pressing the "Back" button on Andro
 
 **mouse_entered** **(** **)**
 
-Emitted when the mouse cursor enters the **Window**'s area, regardless if it's currently focused or not.
+Emitted when the mouse cursor enters the **Window**'s visible area, that is not occluded behind other :ref:`Control<class_Control>`\ s or windows, provided its :ref:`Viewport.gui_disable_input<class_Viewport_property_gui_disable_input>` is ``false`` and regardless if it's currently focused or not.
 
 .. rst-class:: classref-item-separator
 
@@ -402,7 +406,7 @@ Emitted when the mouse cursor enters the **Window**'s area, regardless if it's c
 
 **mouse_exited** **(** **)**
 
-Emitted when the mouse cursor exits the **Window**'s area (including when it's hovered over another window on top of this one).
+Emitted when the mouse cursor leaves the **Window**'s visible area, that is not occluded behind other :ref:`Control<class_Control>`\ s or windows, provided its :ref:`Viewport.gui_disable_input<class_Viewport_property_gui_disable_input>` is ``false`` and regardless if it's currently focused or not.
 
 .. rst-class:: classref-item-separator
 
@@ -1169,8 +1173,6 @@ Passing an empty array will disable passthrough support (all mouse events will b
 
 If ``true``, the **Window** will be considered a popup. Popups are sub-windows that don't show as separate windows in system's window manager's window list and will send close request when anything is clicked outside of them (unless :ref:`exclusive<class_Window_property_exclusive>` is enabled).
 
-\ **Note:** This property only works with native windows.
-
 .. rst-class:: classref-item-separator
 
 ----
@@ -1381,6 +1383,18 @@ If ``false``, you need to call :ref:`child_controls_changed<class_Window_method_
 Method Descriptions
 -------------------
 
+.. _class_Window_method__get_contents_minimum_size:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **_get_contents_minimum_size** **(** **)** |virtual| |const|
+
+Virtual method to be implemented by the user. Overrides the value returned by :ref:`get_contents_minimum_size<class_Window_method_get_contents_minimum_size>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Window_method_add_theme_color_override:
 
 .. rst-class:: classref-method
@@ -1520,6 +1534,8 @@ Ends a bulk theme override update. See :ref:`begin_bulk_theme_override<class_Win
 :ref:`Vector2<class_Vector2>` **get_contents_minimum_size** **(** **)** |const|
 
 Returns the combined minimum size from the child :ref:`Control<class_Control>` nodes of the window. Use :ref:`child_controls_changed<class_Window_method_child_controls_changed>` to update it when children nodes have changed.
+
+The value returned by this method can be overridden with :ref:`_get_contents_minimum_size<class_Window_method__get_contents_minimum_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2021,7 +2037,9 @@ Popups the **Window** centered inside its parent **Window**. ``fallback_ratio`` 
 
 void **popup_centered_ratio** **(** :ref:`float<class_float>` ratio=0.8 **)**
 
-Popups the **Window** centered inside its parent **Window** and sets its size as a ``ratio`` of parent's size.
+If **Window** is embedded, popups the **Window** centered inside its embedder and sets its size as a ``ratio`` of embedder's size.
+
+If **Window** is a native window, popups the **Window** centered inside the screen of its parent **Window** and sets its size as a ``ratio`` of the screen size.
 
 .. rst-class:: classref-item-separator
 
@@ -2438,9 +2456,22 @@ The background style used when the **Window** is embedded. Note that this is dra
 
 \ **Note:** The content background will not be visible unless :ref:`transparent<class_Window_property_transparent>` is enabled.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Window_theme_style_embedded_unfocused_border:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`StyleBox<class_StyleBox>` **embedded_unfocused_border**
+
+The background style used when the **Window** is embedded and unfocused.
+
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
 .. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
