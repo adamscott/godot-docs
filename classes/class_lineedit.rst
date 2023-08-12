@@ -90,6 +90,8 @@ Properties
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`deselect_on_focus_loss_enabled<class_LineEdit_property_deselect_on_focus_loss_enabled>`               | ``true``                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`drag_and_drop_selection_enabled<class_LineEdit_property_drag_and_drop_selection_enabled>`             | ``true``                                                                            |
+   +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`draw_control_chars<class_LineEdit_property_draw_control_chars>`                                       | ``false``                                                                           |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`editable<class_LineEdit_property_editable>`                                                           | ``true``                                                                            |
@@ -762,6 +764,23 @@ If ``true``, the context menu will appear when right-clicked.
 - :ref:`bool<class_bool>` **is_deselect_on_focus_loss_enabled** **(** **)**
 
 If ``true``, the selected text will be deselected when focus is lost.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_LineEdit_property_drag_and_drop_selection_enabled:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **drag_and_drop_selection_enabled** = ``true``
+
+.. rst-class:: classref-property-setget
+
+- void **set_drag_and_drop_selection_enabled** **(** :ref:`bool<class_bool>` value **)**
+- :ref:`bool<class_bool>` **is_drag_and_drop_selection_enabled** **(** **)**
+
+If ``true``, allow drag and drop of selected text.
 
 .. rst-class:: classref-item-separator
 
@@ -1616,3 +1635,4 @@ Background used when **LineEdit** is in read-only mode (:ref:`editable<class_Lin
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
