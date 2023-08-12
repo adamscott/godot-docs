@@ -142,7 +142,7 @@ Theme Properties
    +-----------------------------------+------------------------------------------------------------------------------------------+-------------------------------------+
    | :ref:`int<class_int>`             | :ref:`arrow_margin<class_OptionButton_theme_constant_arrow_margin>`                      | ``4``                               |
    +-----------------------------------+------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`int<class_int>`             | :ref:`h_separation<class_OptionButton_theme_constant_h_separation>`                      | ``2``                               |
+   | :ref:`int<class_int>`             | :ref:`h_separation<class_OptionButton_theme_constant_h_separation>`                      | ``4``                               |
    +-----------------------------------+------------------------------------------------------------------------------------------+-------------------------------------+
    | :ref:`int<class_int>`             | :ref:`modulate_arrow<class_OptionButton_theme_constant_modulate_arrow>`                  | ``0``                               |
    +-----------------------------------+------------------------------------------------------------------------------------------+-------------------------------------+
@@ -712,7 +712,7 @@ The horizontal space between the arrow icon and the right edge of the button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **h_separation** = ``2``
+:ref:`int<class_int>` **h_separation** = ``4``
 
 The horizontal space between **OptionButton**'s icon and text. Negative values will be treated as ``0`` when used.
 
@@ -892,3 +892,4 @@ Default :ref:`StyleBox<class_StyleBox>` for the **OptionButton** (for right-to-l
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

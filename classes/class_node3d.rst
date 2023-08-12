@@ -291,7 +291,7 @@ Property Descriptions
 - void **set_basis** **(** :ref:`Basis<class_Basis>` value **)**
 - :ref:`Basis<class_Basis>` **get_basis** **(** **)**
 
-Direct access to the 3x3 basis of the :ref:`Transform3D<class_Transform3D>` property.
+Direct access to the 3x3 basis of the :ref:`transform<class_Node3D_property_transform>` property.
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ Access to the node rotation as a :ref:`Quaternion<class_Quaternion>`. This prope
 - void **set_rotation** **(** :ref:`Vector3<class_Vector3>` value **)**
 - :ref:`Vector3<class_Vector3>` **get_rotation** **(** **)**
 
-Rotation part of the local transformation in radians, specified in terms of Euler angles. The angles construct a rotaton in the order specified by the :ref:`rotation_order<class_Node3D_property_rotation_order>` property.
+Rotation part of the local transformation in radians, specified in terms of Euler angles. The angles construct a rotation in the order specified by the :ref:`rotation_order<class_Node3D_property_rotation_order>` property.
 
 \ **Note:** In the mathematical sense, rotation is a matrix and not a vector. The three Euler angles, which are the three independent parameters of the Euler-angle parametrization of the rotation matrix, are stored in a :ref:`Vector3<class_Vector3>` data structure not because the rotation is a vector, but only because :ref:`Vector3<class_Vector3>` exists as a convenient data-structure to store 3 floating-point numbers. Therefore, applying affine operations on the rotation "vector" is not meaningful.
 
@@ -1011,3 +1011,4 @@ Updates all the :ref:`Node3DGizmo<class_Node3DGizmo>`\ s attached to this node.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

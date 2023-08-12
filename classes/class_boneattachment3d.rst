@@ -176,7 +176,7 @@ Sets the :ref:`NodePath<class_NodePath>` to the external skeleton that the BoneA
 
 void **set_use_external_skeleton** **(** :ref:`bool<class_bool>` use_external_skeleton **)**
 
-Sets whether the BoneAttachment3D node will use an extenral :ref:`Skeleton3D<class_Skeleton3D>` node rather than attenpting to use its parent node as the :ref:`Skeleton3D<class_Skeleton3D>`. When set to ``true``, the BoneAttachment3D node will use the external :ref:`Skeleton3D<class_Skeleton3D>` node set in :ref:`set_external_skeleton<class_BoneAttachment3D_method_set_external_skeleton>`.
+Sets whether the BoneAttachment3D node will use an external :ref:`Skeleton3D<class_Skeleton3D>` node rather than attempting to use its parent node as the :ref:`Skeleton3D<class_Skeleton3D>`. When set to ``true``, the BoneAttachment3D node will use the external :ref:`Skeleton3D<class_Skeleton3D>` node set in :ref:`set_external_skeleton<class_BoneAttachment3D_method_set_external_skeleton>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
@@ -184,3 +184,4 @@ Sets whether the BoneAttachment3D node will use an extenral :ref:`Skeleton3D<cla
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
