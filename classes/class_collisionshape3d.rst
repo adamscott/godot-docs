@@ -130,7 +130,7 @@ Sets the collision shape's shape to the addition of all its convexed :ref:`MeshI
 
 void **resource_changed** **(** :ref:`Resource<class_Resource>` resource **)**
 
-If this method exists within a script it will be called whenever the shape resource has been modified.
+*Obsoleted.* Use :ref:`Resource.changed<class_Resource_signal_changed>` instead.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
@@ -138,3 +138,4 @@ If this method exists within a script it will be called whenever the shape resou
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

@@ -33,11 +33,13 @@ Properties
 .. table::
    :widths: auto
 
-   +-------------------------+---------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>` | :ref:`stretch<class_SubViewportContainer_property_stretch>`               | ``false`` |
-   +-------------------------+---------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`   | :ref:`stretch_shrink<class_SubViewportContainer_property_stretch_shrink>` | ``1``     |
-   +-------------------------+---------------------------------------------------------------------------+-----------+
+   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`FocusMode<enum_Control_FocusMode>` | focus_mode                                                                | ``1`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
+   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                  | :ref:`stretch<class_SubViewportContainer_property_stretch>`               | ``false``                                                           |
+   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`int<class_int>`                    | :ref:`stretch_shrink<class_SubViewportContainer_property_stretch_shrink>` | ``1``                                                               |
+   +------------------------------------------+---------------------------------------------------------------------------+---------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -90,3 +92,4 @@ For example, a 1280×720 sub-viewport with :ref:`stretch_shrink<class_SubViewpor
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

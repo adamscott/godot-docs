@@ -64,8 +64,6 @@ Properties
    +---------------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
    | :ref:`Font<class_Font>`               | :ref:`base_font<class_FontVariation_property_base_font>`                       |                                   |
    +---------------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`Font[]<class_Font>`             | :ref:`fallbacks<class_FontVariation_property_fallbacks>`                       | ``[]``                            |
-   +---------------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
    | :ref:`Dictionary<class_Dictionary>`   | :ref:`opentype_features<class_FontVariation_property_opentype_features>`       | ``{}``                            |
    +---------------------------------------+--------------------------------------------------------------------------------+-----------------------------------+
    | :ref:`int<class_int>`                 | :ref:`spacing_bottom<class_FontVariation_property_spacing_bottom>`             | ``0``                             |
@@ -118,23 +116,6 @@ Property Descriptions
 - :ref:`Font<class_Font>` **get_base_font** **(** **)**
 
 Base font used to create a variation. If not set, default :ref:`Theme<class_Theme>` font is used.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_FontVariation_property_fallbacks:
-
-.. rst-class:: classref-property
-
-:ref:`Font[]<class_Font>` **fallbacks** = ``[]``
-
-.. rst-class:: classref-property-setget
-
-- void **set_fallbacks** **(** :ref:`Font[]<class_Font>` value **)**
-- :ref:`Font[]<class_Font>` **get_fallbacks** **(** **)**
-
-Array of fallback :ref:`Font<class_Font>`\ s to use as a substitute if a glyph is not found in this **FontVariation**. If not set, :ref:`base_font<class_FontVariation_property_base_font>`'s fallbacks are used instead.
 
 .. rst-class:: classref-item-separator
 
@@ -320,3 +301,4 @@ Sets the spacing for ``type`` (see :ref:`SpacingType<enum_TextServer_SpacingType
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
