@@ -68,6 +68,23 @@ In GDScript, it's possible to create lambda functions within a method. Lambda fu
         # Prints "Attack!", when the button_pressed signal is emitted.
         button_pressed.connect(func(): print("Attack!"))
 
+\ **Note:** Methods of native types such as :ref:`Signal<class_Signal>`, :ref:`Array<class_Array>`, or :ref:`Dictionary<class_Dictionary>` are not of type **Callable** in order to avoid unnecessary overhead. If you need to pass those methods as **Callable**, use a lambda function as a wrapper.
+
+::
+
+    func _init():
+        var my_dictionary = { "hello": "world" }
+    
+        # This will not work, `clear` is not a callable.
+        create_tween().tween_callback(my_dictionary.clear)
+    
+        # This will work, as lambdas are custom callables.
+        create_tween().tween_callback(func(): my_dictionary.clear())
+
+.. note::
+
+	There are notable differences when using this API with C#. See :ref:`doc_c_sharp_differences` for more information.
+
 .. rst-class:: classref-reftable-group
 
 Constructors
@@ -236,12 +253,14 @@ Calls the method represented by this **Callable**. Arguments can be passed and s
 
 void **call_deferred** **(** ... **)** |vararg| |const|
 
-Calls the method represented by this **Callable** in deferred mode, i.e. during the idle frame. Arguments can be passed and should match the method's signature.
+Calls the method represented by this **Callable** in deferred mode, i.e. at the end of the current frame. Arguments can be passed and should match the method's signature.
 
 ::
 
     func _ready():
         grab_focus.call_deferred()
+
+See also :ref:`Object.call_deferred<class_Object_method_call_deferred>`.
 
 .. rst-class:: classref-item-separator
 
@@ -289,7 +308,7 @@ Returns the total amount of arguments bound (or unbound) via successive :ref:`bi
 
 :ref:`StringName<class_StringName>` **get_method** **(** **)** |const|
 
-Returns the name of the method represented by this **Callable**. If the callable is a lambda function, returns the function's name.
+Returns the name of the method represented by this **Callable**. If the callable is a GDScript lambda function, returns the function's name or ``"<anonymous lambda>"``.
 
 .. rst-class:: classref-item-separator
 
@@ -387,7 +406,7 @@ Returns ``true`` if the callable's object exists and has a valid method name ass
 
 void **rpc** **(** ... **)** |vararg| |const|
 
-Perform an RPC (Remote Procedure Call). This is used for multiplayer and is normally not available, unless the function being called has been marked as *RPC*. Calling this method on unsupported functions will result in an error. See :ref:`Node.rpc<class_Node_method_rpc>`.
+Perform an RPC (Remote Procedure Call) on all connected peers. This is used for multiplayer and is normally not available, unless the function being called has been marked as *RPC* (using :ref:`@GDScript.@rpc<class_@GDScript_annotation_@rpc>` or :ref:`Node.rpc_config<class_Node_method_rpc_config>`). Calling this method on unsupported functions will result in an error. See :ref:`Node.rpc<class_Node_method_rpc>`.
 
 .. rst-class:: classref-item-separator
 
@@ -399,7 +418,7 @@ Perform an RPC (Remote Procedure Call). This is used for multiplayer and is norm
 
 void **rpc_id** **(** :ref:`int<class_int>` peer_id, ... **)** |vararg| |const|
 
-Perform an RPC (Remote Procedure Call) on a specific peer ID (see multiplayer documentation for reference). This is used for multiplayer and is normally not available unless the function being called has been marked as *RPC*. Calling this method on unsupported functions will result in an error. See :ref:`Node.rpc_id<class_Node_method_rpc_id>`.
+Perform an RPC (Remote Procedure Call) on a specific peer ID (see multiplayer documentation for reference). This is used for multiplayer and is normally not available unless the function being called has been marked as *RPC* (using :ref:`@GDScript.@rpc<class_@GDScript_annotation_@rpc>` or :ref:`Node.rpc_config<class_Node_method_rpc_config>`). Calling this method on unsupported functions will result in an error. See :ref:`Node.rpc_id<class_Node_method_rpc_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -456,3 +475,4 @@ Returns ``true`` if both **Callable**\ s invoke the same custom target.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

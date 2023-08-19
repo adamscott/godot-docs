@@ -122,7 +122,7 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`font_get_stretch<class_TextServer_method_font_get_stretch>` **(** :ref:`RID<class_RID>` font_rid **)** |const|                                                                                                                                                                                                                                                   |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`FontStyle<enum_TextServer_FontStyle>`                     | :ref:`font_get_style<class_TextServer_method_font_get_style>` **(** :ref:`RID<class_RID>` font_rid **)** |const|                                                                                                                                                                                                                                                       |
+   | |bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\>       | :ref:`font_get_style<class_TextServer_method_font_get_style>` **(** :ref:`RID<class_RID>` font_rid **)** |const|                                                                                                                                                                                                                                                       |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                     | :ref:`font_get_style_name<class_TextServer_method_font_get_style_name>` **(** :ref:`RID<class_RID>` font_rid **)** |const|                                                                                                                                                                                                                                             |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -230,7 +230,7 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`font_set_stretch<class_TextServer_method_font_set_stretch>` **(** :ref:`RID<class_RID>` font_rid, :ref:`int<class_int>` weight **)**                                                                                                                                                                                                                             |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                            | :ref:`font_set_style<class_TextServer_method_font_set_style>` **(** :ref:`RID<class_RID>` font_rid, :ref:`FontStyle<enum_TextServer_FontStyle>` style **)**                                                                                                                                                                                                            |
+   | void                                                            | :ref:`font_set_style<class_TextServer_method_font_set_style>` **(** :ref:`RID<class_RID>` font_rid, |bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\> style **)**                                                                                                                                                                                              |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`font_set_style_name<class_TextServer_method_font_set_style_name>` **(** :ref:`RID<class_RID>` font_rid, :ref:`String<class_String>` name **)**                                                                                                                                                                                                                   |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -302,15 +302,19 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`shaped_text_clear<class_TextServer_method_shaped_text_clear>` **(** :ref:`RID<class_RID>` rid **)**                                                                                                                                                                                                                                                              |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                           | :ref:`shaped_text_closest_character_pos<class_TextServer_method_shaped_text_closest_character_pos>` **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|                                                                                                                                                                                        |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`shaped_text_draw<class_TextServer_method_shaped_text_draw>` **(** :ref:`RID<class_RID>` shaped, :ref:`RID<class_RID>` canvas, :ref:`Vector2<class_Vector2>` pos, :ref:`float<class_float>` clip_l=-1, :ref:`float<class_float>` clip_r=-1, :ref:`Color<class_Color>` color=Color(1, 1, 1, 1) **)** |const|                                                       |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`shaped_text_draw_outline<class_TextServer_method_shaped_text_draw_outline>` **(** :ref:`RID<class_RID>` shaped, :ref:`RID<class_RID>` canvas, :ref:`Vector2<class_Vector2>` pos, :ref:`float<class_float>` clip_l=-1, :ref:`float<class_float>` clip_r=-1, :ref:`int<class_int>` outline_size=1, :ref:`Color<class_Color>` color=Color(1, 1, 1, 1) **)** |const| |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                       | :ref:`shaped_text_fit_to_width<class_TextServer_method_shaped_text_fit_to_width>` **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, :ref:`JustificationFlag<enum_TextServer_JustificationFlag>` justification_flags=3 **)**                                                                                                                         |
+   | :ref:`float<class_float>`                                       | :ref:`shaped_text_fit_to_width<class_TextServer_method_shaped_text_fit_to_width>` **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, |bitfield|\<:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\> justification_flags=3 **)**                                                                                                           |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`shaped_text_get_ascent<class_TextServer_method_shaped_text_get_ascent>` **(** :ref:`RID<class_RID>` shaped **)** |const|                                                                                                                                                                                                                                         |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`                             | :ref:`shaped_text_get_carets<class_TextServer_method_shaped_text_get_carets>` **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` position **)** |const|                                                                                                                                                                                                         |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`shaped_text_get_character_breaks<class_TextServer_method_shaped_text_get_character_breaks>` **(** :ref:`RID<class_RID>` shaped **)** |const|                                                                                                                                                                                                                     |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                     | :ref:`shaped_text_get_custom_punctuation<class_TextServer_method_shaped_text_get_custom_punctuation>` **(** :ref:`RID<class_RID>` shaped **)** |const|                                                                                                                                                                                                                 |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -334,9 +338,9 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Direction<enum_TextServer_Direction>`                     | :ref:`shaped_text_get_inferred_direction<class_TextServer_method_shaped_text_get_inferred_direction>` **(** :ref:`RID<class_RID>` shaped **)** |const|                                                                                                                                                                                                                 |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`shaped_text_get_line_breaks<class_TextServer_method_shaped_text_get_line_breaks>` **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, :ref:`int<class_int>` start=0, :ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>` break_flags=3 **)** |const|                                                                                            |
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`shaped_text_get_line_breaks<class_TextServer_method_shaped_text_get_line_breaks>` **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, :ref:`int<class_int>` start=0, |bitfield|\<:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\> break_flags=3 **)** |const|                                                                              |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`shaped_text_get_line_breaks_adv<class_TextServer_method_shaped_text_get_line_breaks_adv>` **(** :ref:`RID<class_RID>` shaped, :ref:`PackedFloat32Array<class_PackedFloat32Array>` width, :ref:`int<class_int>` start=0, :ref:`bool<class_bool>` once=true, :ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>` break_flags=3 **)** |const|                       |
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`shaped_text_get_line_breaks_adv<class_TextServer_method_shaped_text_get_line_breaks_adv>` **(** :ref:`RID<class_RID>` shaped, :ref:`PackedFloat32Array<class_PackedFloat32Array>` width, :ref:`int<class_int>` start=0, :ref:`bool<class_bool>` once=true, |bitfield|\<:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\> break_flags=3 **)** |const|         |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Rect2<class_Rect2>`                                       | :ref:`shaped_text_get_object_rect<class_TextServer_method_shaped_text_get_object_rect>` **(** :ref:`RID<class_RID>` shaped, :ref:`Variant<class_Variant>` key **)** |const|                                                                                                                                                                                            |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -366,7 +370,7 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`shaped_text_get_width<class_TextServer_method_shaped_text_get_width>` **(** :ref:`RID<class_RID>` shaped **)** |const|                                                                                                                                                                                                                                           |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`shaped_text_get_word_breaks<class_TextServer_method_shaped_text_get_word_breaks>` **(** :ref:`RID<class_RID>` shaped, :ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>` grapheme_flags=264 **)** |const|                                                                                                                                                         |
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`shaped_text_get_word_breaks<class_TextServer_method_shaped_text_get_word_breaks>` **(** :ref:`RID<class_RID>` shaped, |bitfield|\<:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\> grapheme_flags=264 **)** |const|                                                                                                                                           |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`shaped_text_has_visible_chars<class_TextServer_method_shaped_text_has_visible_chars>` **(** :ref:`RID<class_RID>` shaped **)** |const|                                                                                                                                                                                                                           |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -376,9 +380,13 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`shaped_text_is_ready<class_TextServer_method_shaped_text_is_ready>` **(** :ref:`RID<class_RID>` shaped **)** |const|                                                                                                                                                                                                                                             |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                           | :ref:`shaped_text_next_character_pos<class_TextServer_method_shaped_text_next_character_pos>` **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|                                                                                                                                                                                              |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`shaped_text_next_grapheme_pos<class_TextServer_method_shaped_text_next_grapheme_pos>` **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|                                                                                                                                                                                                |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                            | :ref:`shaped_text_overrun_trim_to_width<class_TextServer_method_shaped_text_overrun_trim_to_width>` **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width=0, :ref:`TextOverrunFlag<enum_TextServer_TextOverrunFlag>` overrun_trim_flags=0 **)**                                                                                                          |
+   | void                                                            | :ref:`shaped_text_overrun_trim_to_width<class_TextServer_method_shaped_text_overrun_trim_to_width>` **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width=0, |bitfield|\<:ref:`TextOverrunFlag<enum_TextServer_TextOverrunFlag>`\> overrun_trim_flags=0 **)**                                                                                            |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                           | :ref:`shaped_text_prev_character_pos<class_TextServer_method_shaped_text_prev_character_pos>` **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|                                                                                                                                                                                              |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`shaped_text_prev_grapheme_pos<class_TextServer_method_shaped_text_prev_grapheme_pos>` **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|                                                                                                                                                                                                |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -407,6 +415,8 @@ Methods
    | :ref:`float<class_float>`                                       | :ref:`shaped_text_tab_align<class_TextServer_method_shaped_text_tab_align>` **(** :ref:`RID<class_RID>` shaped, :ref:`PackedFloat32Array<class_PackedFloat32Array>` tab_stops **)**                                                                                                                                                                                    |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`spoof_check<class_TextServer_method_spoof_check>` **(** :ref:`String<class_String>` string **)** |const|                                                                                                                                                                                                                                                         |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`string_get_character_breaks<class_TextServer_method_string_get_character_breaks>` **(** :ref:`String<class_String>` string, :ref:`String<class_String>` language="" **)** |const|                                                                                                                                                                                |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`string_get_word_breaks<class_TextServer_method_string_get_word_breaks>` **(** :ref:`String<class_String>` string, :ref:`String<class_String>` language="", :ref:`int<class_int>` chars_per_line=0 **)** |const|                                                                                                                                                  |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -2041,7 +2051,7 @@ Returns font stretch amount, compared to a normal width. A percentage value betw
 
 .. rst-class:: classref-method
 
-:ref:`FontStyle<enum_TextServer_FontStyle>` **font_get_style** **(** :ref:`RID<class_RID>` font_rid **)** |const|
+|bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\> **font_get_style** **(** :ref:`RID<class_RID>` font_rid **)** |const|
 
 Returns font style flags, see :ref:`FontStyle<enum_TextServer_FontStyle>`.
 
@@ -2701,7 +2711,7 @@ Sets font stretch amount, compared to a normal width. A percentage value between
 
 .. rst-class:: classref-method
 
-void **font_set_style** **(** :ref:`RID<class_RID>` font_rid, :ref:`FontStyle<enum_TextServer_FontStyle>` style **)**
+void **font_set_style** **(** :ref:`RID<class_RID>` font_rid, |bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\> style **)**
 
 Sets the font style flags, see :ref:`FontStyle<enum_TextServer_FontStyle>`.
 
@@ -3161,6 +3171,18 @@ Clears text buffer (removes text and inline objects).
 
 ----
 
+.. _class_TextServer_method_shaped_text_closest_character_pos:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **shaped_text_closest_character_pos** **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|
+
+Returns composite character position closest to the ``pos``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_TextServer_method_shaped_text_draw:
 
 .. rst-class:: classref-method
@@ -3189,7 +3211,7 @@ Draw the outline of the shaped text into a canvas item at a given position, with
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **shaped_text_fit_to_width** **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, :ref:`JustificationFlag<enum_TextServer_JustificationFlag>` justification_flags=3 **)**
+:ref:`float<class_float>` **shaped_text_fit_to_width** **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, |bitfield|\<:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\> justification_flags=3 **)**
 
 Adjusts text width to fit to specified width, returns new text width.
 
@@ -3218,6 +3240,18 @@ Returns the text ascent (number of pixels above the baseline for horizontal layo
 :ref:`Dictionary<class_Dictionary>` **shaped_text_get_carets** **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` position **)** |const|
 
 Returns shapes of the carets corresponding to the character offset ``position`` in the text. Returned caret shape is 1 pixel wide rectangle.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServer_method_shaped_text_get_character_breaks:
+
+.. rst-class:: classref-method
+
+:ref:`PackedInt32Array<class_PackedInt32Array>` **shaped_text_get_character_breaks** **(** :ref:`RID<class_RID>` shaped **)** |const|
+
+Returns array of the composite character boundaries.
 
 .. rst-class:: classref-item-separator
 
@@ -3361,7 +3395,7 @@ Returns direction of the text, inferred by the BiDi algorithm.
 
 .. rst-class:: classref-method
 
-:ref:`PackedInt32Array<class_PackedInt32Array>` **shaped_text_get_line_breaks** **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, :ref:`int<class_int>` start=0, :ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>` break_flags=3 **)** |const|
+:ref:`PackedInt32Array<class_PackedInt32Array>` **shaped_text_get_line_breaks** **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width, :ref:`int<class_int>` start=0, |bitfield|\<:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\> break_flags=3 **)** |const|
 
 Breaks text to the lines and returns character ranges for each line.
 
@@ -3373,7 +3407,7 @@ Breaks text to the lines and returns character ranges for each line.
 
 .. rst-class:: classref-method
 
-:ref:`PackedInt32Array<class_PackedInt32Array>` **shaped_text_get_line_breaks_adv** **(** :ref:`RID<class_RID>` shaped, :ref:`PackedFloat32Array<class_PackedFloat32Array>` width, :ref:`int<class_int>` start=0, :ref:`bool<class_bool>` once=true, :ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>` break_flags=3 **)** |const|
+:ref:`PackedInt32Array<class_PackedInt32Array>` **shaped_text_get_line_breaks_adv** **(** :ref:`RID<class_RID>` shaped, :ref:`PackedFloat32Array<class_PackedFloat32Array>` width, :ref:`int<class_int>` start=0, :ref:`bool<class_bool>` once=true, |bitfield|\<:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\> break_flags=3 **)** |const|
 
 Breaks text to the lines and columns. Returns character ranges for each segment.
 
@@ -3555,7 +3589,7 @@ Returns width (for horizontal layout) or height (for vertical) of the text.
 
 .. rst-class:: classref-method
 
-:ref:`PackedInt32Array<class_PackedInt32Array>` **shaped_text_get_word_breaks** **(** :ref:`RID<class_RID>` shaped, :ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>` grapheme_flags=264 **)** |const|
+:ref:`PackedInt32Array<class_PackedInt32Array>` **shaped_text_get_word_breaks** **(** :ref:`RID<class_RID>` shaped, |bitfield|\<:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\> grapheme_flags=264 **)** |const|
 
 Breaks text into words and returns array of character ranges. Use ``grapheme_flags`` to set what characters are used for breaking (see :ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`).
 
@@ -3611,13 +3645,25 @@ Returns ``true`` if buffer is successfully shaped.
 
 ----
 
+.. _class_TextServer_method_shaped_text_next_character_pos:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **shaped_text_next_character_pos** **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|
+
+Returns composite character end position closest to the ``pos``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_TextServer_method_shaped_text_next_grapheme_pos:
 
 .. rst-class:: classref-method
 
 :ref:`int<class_int>` **shaped_text_next_grapheme_pos** **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|
 
-Returns composite character end position closest to the ``pos``.
+Returns grapheme end position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -3627,9 +3673,21 @@ Returns composite character end position closest to the ``pos``.
 
 .. rst-class:: classref-method
 
-void **shaped_text_overrun_trim_to_width** **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width=0, :ref:`TextOverrunFlag<enum_TextServer_TextOverrunFlag>` overrun_trim_flags=0 **)**
+void **shaped_text_overrun_trim_to_width** **(** :ref:`RID<class_RID>` shaped, :ref:`float<class_float>` width=0, |bitfield|\<:ref:`TextOverrunFlag<enum_TextServer_TextOverrunFlag>`\> overrun_trim_flags=0 **)**
 
 Trims text if it exceeds the given width.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServer_method_shaped_text_prev_character_pos:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **shaped_text_prev_character_pos** **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|
+
+Returns composite character start position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -3641,7 +3699,7 @@ Trims text if it exceeds the given width.
 
 :ref:`int<class_int>` **shaped_text_prev_grapheme_pos** **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` pos **)** |const|
 
-Returns composite character start position closest to the ``pos``.
+Returns grapheme start position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -3813,6 +3871,23 @@ Returns ``true`` if ``string`` is likely to be an attempt at confusing the reade
 
 ----
 
+.. _class_TextServer_method_string_get_character_breaks:
+
+.. rst-class:: classref-method
+
+:ref:`PackedInt32Array<class_PackedInt32Array>` **string_get_character_breaks** **(** :ref:`String<class_String>` string, :ref:`String<class_String>` language="" **)** |const|
+
+Returns array of the composite character boundaries.
+
+::
+
+    var ts = TextServerManager.get_primary_interface()
+    print(ts.string_get_word_breaks("Test ❤️‍🔥 Test")) # Prints [1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14]
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_TextServer_method_string_get_word_breaks:
 
 .. rst-class:: classref-method
@@ -3893,3 +3968,4 @@ Converts OpenType tag to readable feature, variation, script or language name.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

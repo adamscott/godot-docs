@@ -714,6 +714,8 @@ Adds a :ref:`TileSetSource<class_TileSetSource>` to the TileSet. If ``atlas_sour
 
 The function returns the added source ID or -1 if the source could not be added.
 
+\ **Warning:** A source cannot belong to two TileSets at the same time. If the added source was attached to another **TileSet**, it will be removed from that one.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -1162,7 +1164,7 @@ Returns if there is a source-level proxy for the given source ID.
 
 :ref:`Array<class_Array>` **map_tile_proxy** **(** :ref:`int<class_int>` source_from, :ref:`Vector2i<class_Vector2i>` coords_from, :ref:`int<class_int>` alternative_from **)** |const|
 
-According to the configured proxies, maps the provided indentifiers to a new set of identifiers. The source ID, atlas coordinates ID and alternative tile ID are returned as a 3 elements Array.
+According to the configured proxies, maps the provided identifiers to a new set of identifiers. The source ID, atlas coordinates ID and alternative tile ID are returned as a 3 elements Array.
 
 This function first look for matching alternative-level proxies, then coordinates-level proxies, then source-level proxies.
 
@@ -1582,3 +1584,4 @@ Sets a terrain mode. Each mode determines which bits of a tile shape is used to 
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

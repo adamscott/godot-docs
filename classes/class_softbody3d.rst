@@ -240,9 +240,7 @@ Defines the behavior in physics when :ref:`Node.process_mode<class_Node_property
 - void **set_linear_stiffness** **(** :ref:`float<class_float>` value **)**
 - :ref:`float<class_float>` **get_linear_stiffness** **(** **)**
 
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Higher values will result in a stiffer body, while lower values will increase the body's ability to bend. The value can be between ``0.0`` and ``1.0`` (inclusive).
 
 .. rst-class:: classref-item-separator
 
@@ -476,3 +474,4 @@ Sets the pinned state of a surface vertex. When set to ``true``, the optional ``
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

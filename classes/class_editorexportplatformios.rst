@@ -42,6 +42,8 @@ Properties
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`               | :ref:`application/export_method_release<class_EditorExportPlatformIOS_property_application/export_method_release>`                               |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`application/export_project_only<class_EditorExportPlatformIOS_property_application/export_project_only>`                                   |
+   +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`               | :ref:`application/icon_interpolation<class_EditorExportPlatformIOS_property_application/icon_interpolation>`                                     |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`               | :ref:`application/launch_screens_interpolation<class_EditorExportPlatformIOS_property_application/launch_screens_interpolation>`                 |
@@ -224,6 +226,18 @@ Application distribution target (release export).
 
 ----
 
+.. _class_EditorExportPlatformIOS_property_application/export_project_only:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **application/export_project_only**
+
+If ``true``, exports iOS project files without building an XCArchive or ``.ipa`` file. If ``false``, exports iOS project files and builds an XCArchive and ``.ipa`` file at the same time. When combining Godot with Fastlane or other build pipelines, you may want to set this to ``true``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_EditorExportPlatformIOS_property_application/icon_interpolation:
 
 .. rst-class:: classref-property
@@ -282,7 +296,7 @@ Can be overridden with the environment variable ``GODOT_IOS_PROVISIONING_PROFILE
 
 :ref:`String<class_String>` **application/short_version**
 
-Application version visible to the user, can only contain numeric characters (``0-9``) and periods (``.``).
+Application version visible to the user, can only contain numeric characters (``0-9``) and periods (``.``). Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty.
 
 .. rst-class:: classref-item-separator
 
@@ -318,7 +332,7 @@ Supported device family.
 
 :ref:`String<class_String>` **application/version**
 
-Machine-readable application version, in the ``major.minor.patch`` format, can only contain numeric characters (``0-9``) and periods (``.``).
+Machine-readable application version, in the ``major.minor.patch`` format, can only contain numeric characters (``0-9``) and periods (``.``). This must be incremented on every new release pushed to the App Store.
 
 .. rst-class:: classref-item-separator
 
@@ -830,3 +844,4 @@ If ``true``, the app "Documents" folder can be accessed via iTunes file sharing.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

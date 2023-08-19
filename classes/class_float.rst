@@ -228,7 +228,7 @@ Multiplies each component of the :ref:`Color<class_Color>`, including the alpha,
 
 ::
 
-    print(1.5 * Color(0.5, 0.5, 0.5)) # Color(0.75, 0.75, 0.75)
+    print(1.5 * Color(0.5, 0.5, 0.5)) # Prints "(0.75, 0.75, 0.75, 1.5)"
 
 .. rst-class:: classref-item-separator
 
@@ -620,3 +620,4 @@ Returns the negative value of the **float**. If positive, turns the number negat
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

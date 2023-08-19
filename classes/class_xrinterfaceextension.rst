@@ -286,7 +286,7 @@ Returns a :ref:`PackedStringArray<class_PackedStringArray>` with tracker names c
 
 :ref:`Dictionary<class_Dictionary>` **_get_system_info** **(** **)** |virtual| |const|
 
-Returns a :ref:`Dictionary<class_Dictionary>` with system informationr elated to this interface.
+Returns a :ref:`Dictionary<class_Dictionary>` with system information related to this interface.
 
 .. rst-class:: classref-item-separator
 
@@ -554,3 +554,4 @@ Returns a valid :ref:`RID<class_RID>` for a texture to which we should render th
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
