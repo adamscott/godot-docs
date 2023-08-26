@@ -82,7 +82,7 @@ Theme Properties
    +---------------------------------+------------------------------------------------------------------------------+-----------------------------------+
    | :ref:`Color<class_Color>`       | :ref:`font_pressed_color<class_MenuButton_theme_color_font_pressed_color>`   | ``Color(1, 1, 1, 1)``             |
    +---------------------------------+------------------------------------------------------------------------------+-----------------------------------+
-   | :ref:`int<class_int>`           | :ref:`h_separation<class_MenuButton_theme_constant_h_separation>`            | ``3``                             |
+   | :ref:`int<class_int>`           | :ref:`h_separation<class_MenuButton_theme_constant_h_separation>`            | ``4``                             |
    +---------------------------------+------------------------------------------------------------------------------+-----------------------------------+
    | :ref:`int<class_int>`           | :ref:`outline_size<class_MenuButton_theme_constant_outline_size>`            | ``0``                             |
    +---------------------------------+------------------------------------------------------------------------------+-----------------------------------+
@@ -285,7 +285,7 @@ Text :ref:`Color<class_Color>` used when the **MenuButton** is being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **h_separation** = ``3``
+:ref:`int<class_int>` **h_separation** = ``4``
 
 The horizontal space between **MenuButton**'s icon and text. Negative values will be treated as ``0`` when used.
 
@@ -393,3 +393,4 @@ Default :ref:`StyleBox<class_StyleBox>` for the **MenuButton**.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

@@ -148,7 +148,7 @@ The number of MSAA samples (or SSAA samples if :ref:`enable_sample_shading<class
 - void **set_sample_masks** **(** :ref:`int[]<class_int>` value **)**
 - :ref:`int[]<class_int>` **get_sample_masks** **(** **)**
 
-The sampleSee the `sample mask Vulkan documentation <https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fragops-samplemask>`__ for more details.
+The sample mask array. See the `sample mask Vulkan documentation <https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fragops-samplemask>`__ for more details.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
@@ -156,3 +156,4 @@ The sampleSee the `sample mask Vulkan documentation <https://registry.khronos.or
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

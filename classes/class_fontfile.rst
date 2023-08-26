@@ -71,15 +71,13 @@ Properties
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`PackedByteArray<class_PackedByteArray>`                   | :ref:`data<class_FontFile_property_data>`                                                             | ``PackedByteArray()`` |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Font[]<class_Font>`                                       | :ref:`fallbacks<class_FontFile_property_fallbacks>`                                                   | ``[]``                |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`int<class_int>`                                           | :ref:`fixed_size<class_FontFile_property_fixed_size>`                                                 | ``0``                 |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`String<class_String>`                                     | :ref:`font_name<class_FontFile_property_font_name>`                                                   | ``""``                |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`int<class_int>`                                           | :ref:`font_stretch<class_FontFile_property_font_stretch>`                                             | ``100``               |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`FontStyle<enum_TextServer_FontStyle>`                     | :ref:`font_style<class_FontFile_property_font_style>`                                                 | ``0``                 |
+   | |bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\>       | :ref:`font_style<class_FontFile_property_font_style>`                                                 | ``0``                 |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
    | :ref:`int<class_int>`                                           | :ref:`font_weight<class_FontFile_property_font_weight>`                                               | ``400``               |
    +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
@@ -300,23 +298,6 @@ Contents of the dynamic font source file.
 
 ----
 
-.. _class_FontFile_property_fallbacks:
-
-.. rst-class:: classref-property
-
-:ref:`Font[]<class_Font>` **fallbacks** = ``[]``
-
-.. rst-class:: classref-property-setget
-
-- void **set_fallbacks** **(** :ref:`Font[]<class_Font>` value **)**
-- :ref:`Font[]<class_Font>` **get_fallbacks** **(** **)**
-
-Array of fallback :ref:`Font<class_Font>`\ s.
-
-.. rst-class:: classref-item-separator
-
-----
-
 .. _class_FontFile_property_fixed_size:
 
 .. rst-class:: classref-property
@@ -372,12 +353,12 @@ Font stretch amount, compared to a normal width. A percentage value between ``50
 
 .. rst-class:: classref-property
 
-:ref:`FontStyle<enum_TextServer_FontStyle>` **font_style** = ``0``
+|bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\> **font_style** = ``0``
 
 .. rst-class:: classref-property-setget
 
-- void **set_font_style** **(** :ref:`FontStyle<enum_TextServer_FontStyle>` value **)**
-- :ref:`FontStyle<enum_TextServer_FontStyle>` **get_font_style** **(** **)**
+- void **set_font_style** **(** |bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\> value **)**
+- |bitfield|\<:ref:`FontStyle<enum_TextServer_FontStyle>`\> **get_font_style** **(** **)**
 
 Font style flags, see :ref:`FontStyle<enum_TextServer_FontStyle>`.
 
@@ -747,7 +728,7 @@ Returns embolden strength, if is not equal to zero, emboldens the font outlines.
 
 :ref:`int<class_int>` **get_face_index** **(** :ref:`int<class_int>` cache_index **)** |const|
 
-Recturns an active face index in the TrueType / OpenType collection.
+Returns an active face index in the TrueType / OpenType collection.
 
 .. rst-class:: classref-item-separator
 
@@ -1355,3 +1336,4 @@ Sets variation coordinates for the specified font cache entry. See :ref:`Font.ge
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

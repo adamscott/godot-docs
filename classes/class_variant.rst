@@ -121,6 +121,10 @@ A Variant:
 
 Modifications to a container will modify all references to it. A :ref:`Mutex<class_Mutex>` should be created to lock it if multi-threaded access is desired.
 
+.. note::
+
+	There are notable differences when using this API with C#. See :ref:`doc_c_sharp_differences` for more information.
+
 .. rst-class:: classref-introduction-group
 
 Tutorials
@@ -134,3 +138,4 @@ Tutorials
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
