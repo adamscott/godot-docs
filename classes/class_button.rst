@@ -136,7 +136,7 @@ Theme Properties
    +---------------------------------+------------------------------------------------------------------------------------+-------------------------------------+
    | :ref:`Color<class_Color>`       | :ref:`icon_pressed_color<class_Button_theme_color_icon_pressed_color>`             | ``Color(1, 1, 1, 1)``               |
    +---------------------------------+------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`int<class_int>`           | :ref:`h_separation<class_Button_theme_constant_h_separation>`                      | ``2``                               |
+   | :ref:`int<class_int>`           | :ref:`h_separation<class_Button_theme_constant_h_separation>`                      | ``4``                               |
    +---------------------------------+------------------------------------------------------------------------------------+-------------------------------------+
    | :ref:`int<class_int>`           | :ref:`icon_max_width<class_Button_theme_constant_icon_max_width>`                  | ``0``                               |
    +---------------------------------+------------------------------------------------------------------------------------+-------------------------------------+
@@ -520,7 +520,7 @@ Icon modulate :ref:`Color<class_Color>` used when the **Button** is being presse
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **h_separation** = ``2``
+:ref:`int<class_int>` **h_separation** = ``4``
 
 The horizontal space between **Button**'s icon and text. Negative values will be treated as ``0`` when used.
 
@@ -640,3 +640,4 @@ Default :ref:`StyleBox<class_StyleBox>` for the **Button**.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

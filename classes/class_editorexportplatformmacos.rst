@@ -86,6 +86,8 @@ Properties
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_pictures<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_pictures>`             |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_user_selected<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_user_selected>`   |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`                         | :ref:`codesign/entitlements/app_sandbox/helper_executables<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/helper_executables>`     |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/network_client<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_client>`             |
@@ -120,7 +122,7 @@ Properties
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`custom_template/release<class_EditorExportPlatformMacOS_property_custom_template/release>`                                                               |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`debug/export_console_script<class_EditorExportPlatformMacOS_property_debug/export_console_script>`                                                       |
+   | :ref:`int<class_int>`                             | :ref:`debug/export_console_wrapper<class_EditorExportPlatformMacOS_property_debug/export_console_wrapper>`                                                     |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`display/high_res<class_EditorExportPlatformMacOS_property_display/high_res>`                                                                             |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -272,7 +274,7 @@ Copyright notice for the bundle visible to the user (localized).
 
 :ref:`String<class_String>` **application/icon**
 
-Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.application/config/macos_native_icon<class_ProjectSettings_property_application/config/macos_native_icon>`, and  then to :ref:`ProjectSettings.application/config/icon<class_ProjectSettings_property_application/config/icon>`.
+Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.application/config/macos_native_icon<class_ProjectSettings_property_application/config/macos_native_icon>`, and then to :ref:`ProjectSettings.application/config/icon<class_ProjectSettings_property_application/config/icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -308,7 +310,7 @@ Minimum version of macOS required for this application to run in the ``major.min
 
 :ref:`String<class_String>` **application/short_version**
 
-Application version visible to the user, can only contain numeric characters (``0-9``) and periods (``.``).
+Application version visible to the user, can only contain numeric characters (``0-9``) and periods (``.``). Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty.
 
 .. rst-class:: classref-item-separator
 
@@ -332,7 +334,7 @@ A four-character creator code that is specific to the bundle. Optional.
 
 :ref:`String<class_String>` **application/version**
 
-Machine-readable application version, in the ``major.minor.patch`` format, can only contain numeric characters (``0-9``) and periods (``.``).
+Machine-readable application version, in the ``major.minor.patch`` format, can only contain numeric characters (``0-9``) and periods (``.``). This must be incremented on every new release pushed to the App Store.
 
 .. rst-class:: classref-item-separator
 
@@ -424,7 +426,7 @@ Array of the additional command line arguments passed to the code signing tool.
 
 :ref:`bool<class_bool>` **codesign/entitlements/address_book**
 
-Enable to allow access to contacts in the user's address book, if it's enabled you should also provide usage message in the ``privacy/address_book_usage_description`` option.	See `com.apple.security.personal-information.addressbook <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_addressbook>`__.
+Enable to allow access to contacts in the user's address book, if it's enabled you should also provide usage message in the ``privacy/address_book_usage_description`` option. See `com.apple.security.personal-information.addressbook <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_addressbook>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -547,6 +549,18 @@ Allows read or write access to the user's "Music" folder. See `com.apple.securit
 :ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_pictures**
 
 Allows read or write access to the user's "Pictures" folder. See `com.apple.security.files.pictures.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_assets_pictures_read-write>`__.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_user_selected:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_user_selected**
+
+Allows read or write access to the locations the user has selected using a native file dialog. See `com.apple.security.files.user-selected.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_files_user-selected_read-write>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -758,13 +772,13 @@ Path to the custom export template. If left empty, default template is used.
 
 ----
 
-.. _class_EditorExportPlatformMacOS_property_debug/export_console_script:
+.. _class_EditorExportPlatformMacOS_property_debug/export_console_wrapper:
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **debug/export_console_script**
+:ref:`int<class_int>` **debug/export_console_wrapper**
 
-If enabled, a script file that can be used to run the application with console output is created alongside the exported application.
+If enabled, a wrapper that can be used to run the application with console output is created alongside the exported application.
 
 .. rst-class:: classref-item-separator
 
@@ -776,7 +790,7 @@ If enabled, a script file that can be used to run the application with console o
 
 :ref:`bool<class_bool>` **display/high_res**
 
-If ``true``, the application is rendered at native display resolution, otherwise it is always rendered at loHPI resolution and upscaled by OS when required.
+If ``true``, the application is rendered at native display resolution, otherwise it is always rendered at loDPI resolution and upscaled by OS when required.
 
 .. rst-class:: classref-item-separator
 
@@ -1318,3 +1332,4 @@ Xcode version used to build application executable.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

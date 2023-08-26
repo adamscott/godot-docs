@@ -285,7 +285,7 @@ Check whether the current element has a certain attribute.
 
 :ref:`bool<class_bool>` **is_empty** **(** **)** |const|
 
-Check whether the current element is empty (this only works for completely empty tags, e.g. ``<element \>``).
+Check whether the current element is empty (this only works for completely empty tags, e.g. ``<element />``).
 
 .. rst-class:: classref-item-separator
 
@@ -353,3 +353,4 @@ Skips the current section. If the node contains other elements, they will be ign
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

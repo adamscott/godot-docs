@@ -25,6 +25,10 @@ Colors can be created in various ways: By the various **Color** constructors, by
 
 \ `Color constants cheatsheet <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/color_constants.png>`__
 
+.. note::
+
+	There are notable differences when using this API with C#. See :ref:`doc_c_sharp_differences` for more information.
+
 .. rst-class:: classref-introduction-group
 
 Tutorials
@@ -1879,7 +1883,7 @@ Returns ``true`` if ``color`` is a valid HTML hexadecimal color string. The stri
     Color.html_is_valid("55AAFF")    # Returns true
     Color.html_is_valid("#F2C")      # Returns true
     
-    Color.html_is_valid("#AABBC)     # Returns false
+    Color.html_is_valid("#AABBC")    # Returns false
     Color.html_is_valid("#55aaFF5")  # Returns false
 
  .. code-tab:: csharp
@@ -2385,3 +2389,4 @@ Inverts the given color. This is equivalent to ``Color.WHITE - c`` or ``Color(1 
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

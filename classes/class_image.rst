@@ -133,11 +133,19 @@ Methods
    +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_bmp_from_buffer<class_Image_method_load_bmp_from_buffer>` **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**                                                                                                                                         |
    +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_dds_from_buffer<class_Image_method_load_dds_from_buffer>` **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**                                                                                                                                         |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Image<class_Image>`                     | :ref:`load_from_file<class_Image_method_load_from_file>` **(** :ref:`String<class_String>` path **)** |static|                                                                                                                                                                |
    +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_jpg_from_buffer<class_Image_method_load_jpg_from_buffer>` **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**                                                                                                                                         |
    +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_ktx_from_buffer<class_Image_method_load_ktx_from_buffer>` **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**                                                                                                                                         |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_png_from_buffer<class_Image_method_load_png_from_buffer>` **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**                                                                                                                                         |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_svg_from_buffer<class_Image_method_load_svg_from_buffer>` **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer, :ref:`float<class_float>` scale=1.0 **)**                                                                                                    |
+   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_svg_from_string<class_Image_method_load_svg_from_string>` **(** :ref:`String<class_String>` svg_str, :ref:`float<class_float>` scale=1.0 **)**                                                                                                                     |
    +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`load_tga_from_buffer<class_Image_method_load_tga_from_buffer>` **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**                                                                                                                                         |
    +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -503,7 +511,7 @@ Texture format that uses `BPTC <https://www.khronos.org/opengl/wiki/BPTC_Texture
 
 :ref:`Format<enum_Image_Format>` **FORMAT_ASTC_4x4** = ``35``
 
-`Adaptive Scalable Texutre Compression <https://en.wikipedia.org/wiki/Adaptive_scalable_texture_compression>`__. This implements the 4x4 (high quality) mode.
+`Adaptive Scalable Texture Compression <https://en.wikipedia.org/wiki/Adaptive_scalable_texture_compression>`__. This implements the 4x4 (high quality) mode.
 
 .. _class_Image_constant_FORMAT_ASTC_4x4_HDR:
 
@@ -519,7 +527,7 @@ Same format as :ref:`FORMAT_ASTC_4x4<class_Image_constant_FORMAT_ASTC_4x4>`, but
 
 :ref:`Format<enum_Image_Format>` **FORMAT_ASTC_8x8** = ``37``
 
-`Adaptive Scalable Texutre Compression <https://en.wikipedia.org/wiki/Adaptive_scalable_texture_compression>`__. This implements the 8x8 (low quality) mode.
+`Adaptive Scalable Texture Compression <https://en.wikipedia.org/wiki/Adaptive_scalable_texture_compression>`__. This implements the 8x8 (low quality) mode.
 
 .. _class_Image_constant_FORMAT_ASTC_8x8_HDR:
 
@@ -1362,6 +1370,18 @@ Loads an image from the binary contents of a BMP file.
 
 ----
 
+.. _class_Image_method_load_dds_from_buffer:
+
+.. rst-class:: classref-method
+
+:ref:`Error<enum_@GlobalScope_Error>` **load_dds_from_buffer** **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**
+
+Loads an image from the binary contents of a DDS file.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Image_method_load_from_file:
 
 .. rst-class:: classref-method
@@ -1386,6 +1406,18 @@ Loads an image from the binary contents of a JPEG file.
 
 ----
 
+.. _class_Image_method_load_ktx_from_buffer:
+
+.. rst-class:: classref-method
+
+:ref:`Error<enum_@GlobalScope_Error>` **load_ktx_from_buffer** **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**
+
+Loads an image from the binary contents of a KTX file.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Image_method_load_png_from_buffer:
 
 .. rst-class:: classref-method
@@ -1393,6 +1425,36 @@ Loads an image from the binary contents of a JPEG file.
 :ref:`Error<enum_@GlobalScope_Error>` **load_png_from_buffer** **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer **)**
 
 Loads an image from the binary contents of a PNG file.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Image_method_load_svg_from_buffer:
+
+.. rst-class:: classref-method
+
+:ref:`Error<enum_@GlobalScope_Error>` **load_svg_from_buffer** **(** :ref:`PackedByteArray<class_PackedByteArray>` buffer, :ref:`float<class_float>` scale=1.0 **)**
+
+Loads an image from the UTF-8 binary contents of an **uncompressed** SVG file (**.svg**).
+
+\ **Note:** Beware when using compressed SVG files (like **.svgz**), they need to be ``decompressed`` before loading.
+
+\ **Note:** This method is only available in engine builds with the SVG module enabled. By default, the SVG module is enabled, but it can be disabled at build-time using the ``module_svg_enabled=no`` SCons option.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Image_method_load_svg_from_string:
+
+.. rst-class:: classref-method
+
+:ref:`Error<enum_@GlobalScope_Error>` **load_svg_from_string** **(** :ref:`String<class_String>` svg_str, :ref:`float<class_float>` scale=1.0 **)**
+
+Loads an image from the string contents of a SVG file (**.svg**).
+
+\ **Note:** This method is only available in engine builds with the SVG module enabled. By default, the SVG module is enabled, but it can be disabled at build-time using the ``module_svg_enabled=no`` SCons option.
 
 .. rst-class:: classref-item-separator
 
@@ -1722,3 +1784,4 @@ Converts the raw data from the sRGB colorspace to a linear scale.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
