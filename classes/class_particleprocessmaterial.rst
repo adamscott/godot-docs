@@ -12,18 +12,14 @@ ParticleProcessMaterial
 
 **Inherits:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Particle properties for :ref:`GPUParticles3D<class_GPUParticles3D>` and :ref:`GPUParticles2D<class_GPUParticles2D>` nodes.
+Holds a particle configuration for :ref:`GPUParticles2D<class_GPUParticles2D>` or :ref:`GPUParticles3D<class_GPUParticles3D>` nodes.
 
 .. rst-class:: classref-introduction-group
 
 Description
 -----------
 
-ParticleProcessMaterial defines particle properties and behavior. It is used in the ``process_material`` of :ref:`GPUParticles3D<class_GPUParticles3D>` and :ref:`GPUParticles2D<class_GPUParticles2D>` emitter nodes.
-
-Some of this material's properties are applied to each particle when emitted, while others can have a :ref:`CurveTexture<class_CurveTexture>` applied to vary values over the lifetime of the particle.
-
-Particle animation is available only in :ref:`GPUParticles2D<class_GPUParticles2D>`. To use it, attach a :ref:`CanvasItemMaterial<class_CanvasItemMaterial>`, with :ref:`CanvasItemMaterial.particles_animation<class_CanvasItemMaterial_property_particles_animation>` enabled, to the particles node.
+**ParticleProcessMaterial** defines particle properties and behavior. It is used in the ``process_material`` of the :ref:`GPUParticles2D<class_GPUParticles2D>` and :ref:`GPUParticles3D<class_GPUParticles3D>` nodes. Some of this material's properties are applied to each particle when emitted, while others can have a :ref:`CurveTexture<class_CurveTexture>` or a :ref:`GradientTexture1D<class_GradientTexture1D>` applied to vary numerical or color values over the lifetime of the particle.
 
 .. rst-class:: classref-reftable-group
 
@@ -1318,7 +1314,7 @@ Minimum equivalent of :ref:`initial_velocity_max<class_ParticleProcessMaterial_p
 - void **set_lifetime_randomness** **(** :ref:`float<class_float>` value **)**
 - :ref:`float<class_float>` **get_lifetime_randomness** **(** **)**
 
-Particle lifetime randomness ratio. The lifetime will be multiplied by a value interpolated between ``1.0`` and a random number less than one. For example a random ratio of ``0.4`` would scale the original lifetime between ``0.4-1.0`` of its original value.
+Particle lifetime randomness ratio. The equation for the lifetime of a particle is ``lifetime * (1.0 - randf() * lifetime_randomness)``. For example, a :ref:`lifetime_randomness<class_ParticleProcessMaterial_property_lifetime_randomness>` of ``0.4`` scales the lifetime between ``0.6`` to ``1.0`` of its original value.
 
 .. rst-class:: classref-item-separator
 
@@ -2033,3 +2029,4 @@ If ``true``, enables the specified particle flag. See :ref:`ParticleFlags<enum_P
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

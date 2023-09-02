@@ -503,7 +503,7 @@ Removes a collision exception so the shape does report collisions with the speci
 
 void **resource_changed** **(** :ref:`Resource<class_Resource>` resource **)**
 
-This method is used internally to update the debug gizmo in the editor. Any code placed in this function will be called whenever the :ref:`shape<class_ShapeCast3D_property_shape>` resource is modified.
+*Obsoleted.* Use :ref:`Resource.changed<class_Resource_signal_changed>` instead.
 
 .. rst-class:: classref-item-separator
 
@@ -523,3 +523,4 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

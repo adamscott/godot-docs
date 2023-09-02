@@ -134,7 +134,7 @@ A factor applied to the movement across the slider axis once the limits get surp
 
 :ref:`Param<enum_SliderJoint3D_Param>` **PARAM_LINEAR_LIMIT_RESTITUTION** = ``3``
 
-The amount of restitution once the limits are surpassed. The lower, the more velocityenergy gets lost.
+The amount of restitution once the limits are surpassed. The lower, the more velocity-energy gets lost.
 
 .. _class_SliderJoint3D_constant_PARAM_LINEAR_LIMIT_DAMPING:
 
@@ -712,3 +712,4 @@ void **set_param** **(** :ref:`Param<enum_SliderJoint3D_Param>` param, :ref:`flo
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

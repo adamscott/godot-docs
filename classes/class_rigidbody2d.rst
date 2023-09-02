@@ -500,7 +500,7 @@ See :ref:`add_constant_torque<class_RigidBody2D_method_add_constant_torque>`.
 - void **set_contact_monitor** **(** :ref:`bool<class_bool>` value **)**
 - :ref:`bool<class_bool>` **is_contact_monitor_enabled** **(** **)**
 
-If ``true``, the RigidBody2D will emit signals when it collides with another RigidBody2D.
+If ``true``, the RigidBody2D will emit signals when it collides with another body.
 
 \ **Note:** By default the maximum contacts reported is set to 0, meaning nothing will be recorded, see :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>`.
 
@@ -979,3 +979,4 @@ Sets the body's velocity on the given axis. The velocity in the given vector axi
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

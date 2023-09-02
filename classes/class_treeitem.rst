@@ -144,6 +144,8 @@ Methods
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`TextDirection<enum_Control_TextDirection>`                  | :ref:`get_text_direction<class_TreeItem_method_get_text_direction>` **(** :ref:`int<class_int>` column **)** |const|                                                                                                                                     |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`           | :ref:`get_text_overrun_behavior<class_TreeItem_method_get_text_overrun_behavior>` **(** :ref:`int<class_int>` column **)** |const|                                                                                                                       |
+   +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                       | :ref:`get_tooltip_text<class_TreeItem_method_get_tooltip_text>` **(** :ref:`int<class_int>` column **)** |const|                                                                                                                                         |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Tree<class_Tree>`                                           | :ref:`get_tree<class_TreeItem_method_get_tree>` **(** **)** |const|                                                                                                                                                                                      |
@@ -183,6 +185,8 @@ Methods
    | void                                                              | :ref:`set_button_color<class_TreeItem_method_set_button_color>` **(** :ref:`int<class_int>` column, :ref:`int<class_int>` button_index, :ref:`Color<class_Color>` color **)**                                                                            |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                              | :ref:`set_button_disabled<class_TreeItem_method_set_button_disabled>` **(** :ref:`int<class_int>` column, :ref:`int<class_int>` button_index, :ref:`bool<class_bool>` disabled **)**                                                                     |
+   +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | void                                                              | :ref:`set_button_tooltip_text<class_TreeItem_method_set_button_tooltip_text>` **(** :ref:`int<class_int>` column, :ref:`int<class_int>` button_index, :ref:`String<class_String>` tooltip **)**                                                          |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                              | :ref:`set_cell_mode<class_TreeItem_method_set_cell_mode>` **(** :ref:`int<class_int>` column, :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` mode **)**                                                                                                 |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -239,6 +243,8 @@ Methods
    | void                                                              | :ref:`set_text_alignment<class_TreeItem_method_set_text_alignment>` **(** :ref:`int<class_int>` column, :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` text_alignment **)**                                                           |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                              | :ref:`set_text_direction<class_TreeItem_method_set_text_direction>` **(** :ref:`int<class_int>` column, :ref:`TextDirection<enum_Control_TextDirection>` direction **)**                                                                                 |
+   +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | void                                                              | :ref:`set_text_overrun_behavior<class_TreeItem_method_set_text_overrun_behavior>` **(** :ref:`int<class_int>` column, :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` overrun_behavior **)**                                                     |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                              | :ref:`set_tooltip_text<class_TreeItem_method_set_tooltip_text>` **(** :ref:`int<class_int>` column, :ref:`String<class_String>` tooltip **)**                                                                                                            |
    +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -952,6 +958,18 @@ Returns item's text base writing direction.
 
 ----
 
+.. _class_TreeItem_method_get_text_overrun_behavior:
+
+.. rst-class:: classref-method
+
+:ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior** **(** :ref:`int<class_int>` column **)** |const|
+
+Returns the clipping behavior when the text exceeds the item's bounding rectangle in the given ``column``. By default it is :ref:`TextServer.OVERRUN_TRIM_ELLIPSIS<class_TextServer_constant_OVERRUN_TRIM_ELLIPSIS>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_TreeItem_method_get_tooltip_text:
 
 .. rst-class:: classref-method
@@ -1197,6 +1215,18 @@ Sets the given column's button color at index ``button_index`` to ``color``.
 void **set_button_disabled** **(** :ref:`int<class_int>` column, :ref:`int<class_int>` button_index, :ref:`bool<class_bool>` disabled **)**
 
 If ``true``, disables the button at index ``button_index`` in the given ``column``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TreeItem_method_set_button_tooltip_text:
+
+.. rst-class:: classref-method
+
+void **set_button_tooltip_text** **(** :ref:`int<class_int>` column, :ref:`int<class_int>` button_index, :ref:`String<class_String>` tooltip **)**
+
+Sets the tooltip text for the button at index ``button_index`` in the given ``column``.
 
 .. rst-class:: classref-item-separator
 
@@ -1552,6 +1582,18 @@ Sets item's text base writing direction.
 
 ----
 
+.. _class_TreeItem_method_set_text_overrun_behavior:
+
+.. rst-class:: classref-method
+
+void **set_text_overrun_behavior** **(** :ref:`int<class_int>` column, :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` overrun_behavior **)**
+
+Sets the clipping behavior when the text exceeds the item's bounding rectangle in the given ``column``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_TreeItem_method_set_tooltip_text:
 
 .. rst-class:: classref-method
@@ -1580,3 +1622,4 @@ void **uncollapse_tree** **(** **)**
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
