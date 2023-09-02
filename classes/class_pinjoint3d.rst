@@ -19,7 +19,7 @@ A physics joint that attaches two 3D physics bodies at a single point, allowing 
 Description
 -----------
 
-A physics joint that attaches two 2D physics bodies at a single point, allowing them to freely rotate. For example, a :ref:`RigidBody3D<class_RigidBody3D>` can be attached to a :ref:`StaticBody3D<class_StaticBody3D>` to create a pendulum or a seesaw.
+A physics joint that attaches two 3D physics bodies at a single point, allowing them to freely rotate. For example, a :ref:`RigidBody3D<class_RigidBody3D>` can be attached to a :ref:`StaticBody3D<class_StaticBody3D>` to create a pendulum or a seesaw.
 
 .. rst-class:: classref-reftable-group
 
@@ -181,3 +181,4 @@ Sets the value of the specified parameter.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
