@@ -76,7 +76,7 @@ Returning an empty texture is an OK way to fail and let another generator take c
 
 Care must be taken because this function is always called from a thread (not the main thread).
 
-\ ``metadata`` dictionary can modified to store file-specific metadata that can be used in :ref:`EditorResourceTooltipPlugin._make_tooltip_for_path<class_EditorResourceTooltipPlugin_method__make_tooltip_for_path>` (like image size, sample length etc.).
+\ ``metadata`` dictionary can be modified to store file-specific metadata that can be used in :ref:`EditorResourceTooltipPlugin._make_tooltip_for_path<class_EditorResourceTooltipPlugin_method__make_tooltip_for_path>` (like image size, sample length etc.).
 
 .. rst-class:: classref-item-separator
 
@@ -94,7 +94,7 @@ Returning an empty texture is an OK way to fail and let another generator take c
 
 Care must be taken because this function is always called from a thread (not the main thread).
 
-\ ``metadata`` dictionary can modified to store file-specific metadata that can be used in :ref:`EditorResourceTooltipPlugin._make_tooltip_for_path<class_EditorResourceTooltipPlugin_method__make_tooltip_for_path>` (like image size, sample length etc.).
+\ ``metadata`` dictionary can be modified to store file-specific metadata that can be used in :ref:`EditorResourceTooltipPlugin._make_tooltip_for_path<class_EditorResourceTooltipPlugin_method__make_tooltip_for_path>` (like image size, sample length etc.).
 
 .. rst-class:: classref-item-separator
 
@@ -128,3 +128,4 @@ Returns ``true`` if your generator supports the resource of type ``type``.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

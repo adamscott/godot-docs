@@ -23,7 +23,7 @@ Description
 
 A WebRTC connection between the local computer and a remote peer. Provides an interface to connect, maintain and monitor the connection.
 
-Setting up a WebRTC connection between two peers from now on) may not seem a trivial task, but it can be broken down into 3 main steps:
+Setting up a WebRTC connection between two peers may not seem a trivial task, but it can be broken down into 3 main steps:
 
 - The peer that wants to initiate the connection (``A`` from now on) creates an offer and send it to the other peer (``B`` from now on).
 
@@ -467,3 +467,4 @@ If ``type`` is ``"answer"`` the peer will start emitting :ref:`ice_candidate_cre
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

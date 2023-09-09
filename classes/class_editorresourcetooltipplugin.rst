@@ -68,7 +68,7 @@ Return ``true`` if the plugin is going to handle the given :ref:`Resource<class_
 
 Create and return a tooltip that will be displayed when the user hovers a resource under the given ``path`` in filesystem dock.
 
-The ``metadata`` dictionary is provided by preview generator (see method EditorResourcePreviewGenerator._generate]).
+The ``metadata`` dictionary is provided by preview generator (see :ref:`EditorResourcePreviewGenerator._generate<class_EditorResourcePreviewGenerator_method__generate>`).
 
 \ ``base`` is the base default tooltip, which is a :ref:`VBoxContainer<class_VBoxContainer>` with a file name, type and size labels. If another plugin handled the same file type, ``base`` will be output from the previous plugin. For best result, make sure the base tooltip is part of the returned :ref:`Control<class_Control>`.
 
@@ -102,3 +102,4 @@ Requests a thumbnail for the given :ref:`TextureRect<class_TextureRect>`. The th
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

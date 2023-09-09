@@ -890,6 +890,8 @@ Returns the response's body length.
 
 \ **Note:** Some Web servers may not send a body length. In this case, the value returned will be ``-1``. If using chunked transfer encoding, the body length will also be ``-1``.
 
+\ **Note:** This function always returns ``-1`` on the Web platform due to browsers limitations.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -1139,3 +1141,4 @@ The proxy server is unset if ``host`` is empty or ``port`` is -1.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
