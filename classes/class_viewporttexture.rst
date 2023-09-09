@@ -23,7 +23,7 @@ Provides the content of a :ref:`Viewport<class_Viewport>` as a dynamic :ref:`Tex
 
 To create a **ViewportTexture** in code, use the :ref:`Viewport.get_texture<class_Viewport_method_get_texture>` method on the target viewport.
 
-\ **Note:** When local to scene, this texture uses :ref:`Resource.setup_local_to_scene<class_Resource_method_setup_local_to_scene>` to set the proxy texture and flags in the local viewport. Local to scene **ViewportTexture**\ s will return incorrect data until the scene root is ready (see :ref:`Node.ready<class_Node_signal_ready>`).
+\ **Note:** A **ViewportTexture** is always local to its scene (see :ref:`Resource.resource_local_to_scene<class_Resource_property_resource_local_to_scene>`). If the scene root is not ready, it may return incorrect data (see :ref:`Node.ready<class_Node_signal_ready>`).
 
 .. rst-class:: classref-introduction-group
 
@@ -80,3 +80,4 @@ The path to the :ref:`Viewport<class_Viewport>` node to display. This is relativ
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

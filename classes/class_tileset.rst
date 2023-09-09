@@ -21,13 +21,13 @@ Description
 
 A TileSet is a library of tiles for a :ref:`TileMap<class_TileMap>`. A TileSet handles a list of :ref:`TileSetSource<class_TileSetSource>`, each of them storing a set of tiles.
 
-Tiles can either be from a :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`, that render tiles out of a texture with support for physics, navigation, etc... or from a :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>` which exposes scene-based tiles.
+Tiles can either be from a :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`, which renders tiles out of a texture with support for physics, navigation, etc., or from a :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>`, which exposes scene-based tiles.
 
-Tiles are referenced by using three IDs: their source ID, their atlas coordinates ID and their alternative tile ID.
+Tiles are referenced by using three IDs: their source ID, their atlas coordinates ID, and their alternative tile ID.
 
-A TileSet can be configured so that its tiles expose more or less properties. To do so, the TileSet resources uses property layers, that you can add or remove depending on your needs.
+A TileSet can be configured so that its tiles expose more or fewer properties. To do so, the TileSet resources use property layers, which you can add or remove depending on your needs.
 
-For example, adding a physics layer allows giving collision shapes to your tiles. Each layer having dedicated properties (physics layer and mask), you may add several TileSet physics layers for each type of collision you need.
+For example, adding a physics layer allows giving collision shapes to your tiles. Each layer has dedicated properties (physics layer and mask), so you may add several TileSet physics layers for each type of collision you need.
 
 See the functions to add new layers for more information.
 
@@ -714,6 +714,8 @@ Adds a :ref:`TileSetSource<class_TileSetSource>` to the TileSet. If ``atlas_sour
 
 The function returns the added source ID or -1 if the source could not be added.
 
+\ **Warning:** A source cannot belong to two TileSets at the same time. If the added source was attached to another **TileSet**, it will be removed from that one.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -1162,7 +1164,7 @@ Returns if there is a source-level proxy for the given source ID.
 
 :ref:`Array<class_Array>` **map_tile_proxy** **(** :ref:`int<class_int>` source_from, :ref:`Vector2i<class_Vector2i>` coords_from, :ref:`int<class_int>` alternative_from **)** |const|
 
-According to the configured proxies, maps the provided indentifiers to a new set of identifiers. The source ID, atlas coordinates ID and alternative tile ID are returned as a 3 elements Array.
+According to the configured proxies, maps the provided identifiers to a new set of identifiers. The source ID, atlas coordinates ID and alternative tile ID are returned as a 3 elements Array.
 
 This function first look for matching alternative-level proxies, then coordinates-level proxies, then source-level proxies.
 
@@ -1582,3 +1584,4 @@ Sets a terrain mode. Each mode determines which bits of a tile shape is used to 
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
