@@ -12,7 +12,7 @@ CompressedCubemapArray
 
 **Inherits:** :ref:`CompressedTextureLayered<class_CompressedTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Array of 6-sided textures typically used in 3D rendering, optionally compressed.
+An optionally compressed :ref:`CubemapArray<class_CubemapArray>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -43,3 +43,4 @@ See :ref:`CubemapArray<class_CubemapArray>` for a general description of cubemap
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
