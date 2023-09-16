@@ -149,6 +149,8 @@ Methods
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`is_restart_on_exit_set<class_OS_method_is_restart_on_exit_set>` **(** **)** |const|                                                                                                                                                                                                                                                                                |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`is_sandboxed<class_OS_method_is_sandboxed>` **(** **)** |const|                                                                                                                                                                                                                                                                                                    |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`is_stdout_verbose<class_OS_method_is_stdout_verbose>` **(** **)** |const|                                                                                                                                                                                                                                                                                          |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`is_userfs_persistent<class_OS_method_is_userfs_persistent>` **(** **)** |const|                                                                                                                                                                                                                                                                                    |
@@ -164,6 +166,8 @@ Methods
    | :ref:`bool<class_bool>`                           | :ref:`request_permission<class_OS_method_request_permission>` **(** :ref:`String<class_String>` name **)**                                                                                                                                                                                                                                                               |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`request_permissions<class_OS_method_request_permissions>` **(** **)**                                                                                                                                                                                                                                                                                              |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | void                                              | :ref:`revoke_granted_permissions<class_OS_method_revoke_granted_permissions>` **(** **)**                                                                                                                                                                                                                                                                                |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                              | :ref:`set_environment<class_OS_method_set_environment>` **(** :ref:`String<class_String>` variable, :ref:`String<class_String>` value **)** |const|                                                                                                                                                                                                                      |
    +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -734,9 +738,9 @@ Returns the path to the current engine executable.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_granted_permissions** **(** **)** |const|
 
-With this function, you can get the list of dangerous permissions that have been granted to the Android application.
+On Android devices: With this function, you can get the list of dangerous permissions that have been granted.
 
-\ **Note:** This method is implemented only on Android.
+On macOS (sandboxed applications only): This function returns the list of user selected folders accessible to the application. Use native file dialog to request folder access permission.
 
 .. rst-class:: classref-item-separator
 
@@ -848,7 +852,7 @@ Returns the model name of the current device.
 
 Returns the name of the host OS.
 
-On Windows, this is ``"Windows"`` or ``"UWP"`` if exported on Universal Windows Platform.
+On Windows, this is ``"Windows"``.
 
 On macOS, this is ``"macOS"``.
 
@@ -870,7 +874,7 @@ On the web, this is ``"Web"``.
  .. code-tab:: gdscript
 
     match OS.get_name():
-        "Windows", "UWP":
+        "Windows":
             print("Windows")
         "macOS":
             print("macOS")
@@ -888,7 +892,6 @@ On the web, this is ``"Web"``.
     switch (OS.GetName())
     {
         case "Windows":
-        case "UWP":
             GD.Print("Windows");
             break;
         case "macOS":
@@ -952,7 +955,7 @@ Returns the number of *logical* CPU cores available on the host machine. On CPUs
 
 Returns the name of the CPU model on the host machine (e.g. "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz").
 
-\ **Note:** This method is only implemented on Windows, macOS, Linux and iOS. On Android, Web and UWP, :ref:`get_processor_name<class_OS_method_get_processor_name>` returns an empty string.
+\ **Note:** This method is only implemented on Windows, macOS, Linux and iOS. On Android and Web, :ref:`get_processor_name<class_OS_method_get_processor_name>` returns an empty string.
 
 .. rst-class:: classref-item-separator
 
@@ -1086,7 +1089,7 @@ Returns a string that is unique to the device.
 
 \ **Note:** This string may change without notice if the user reinstalls/upgrades their operating system or changes their hardware. This means it should generally not be used to encrypt persistent data as the data saved before an unexpected ID change would become inaccessible. The returned string may also be falsified using external programs, so do not rely on the string returned by :ref:`get_unique_id<class_OS_method_get_unique_id>` for security purposes.
 
-\ **Note:** Returns an empty string on Web and UWP, as this method isn't implemented on those platforms yet.
+\ **Note:** Returns an empty string on Web, as this method isn't implemented on this platform yet.
 
 .. rst-class:: classref-item-separator
 
@@ -1131,8 +1134,6 @@ For Windows, the major and minor version are returned, as well as the build numb
 For rolling distributions, such as Arch Linux, an empty string is returned.
 
 For macOS and iOS, the major and minor version are returned, as well as the patch number.
-
-For UWP, the device family version is returned.
 
 For Android, the SDK version and the incremental build number are returned. If it's a custom ROM, it attempts to return its version instead.
 
@@ -1241,6 +1242,20 @@ Must be a valid ID generated from :ref:`create_process<class_OS_method_create_pr
 :ref:`bool<class_bool>` **is_restart_on_exit_set** **(** **)** |const|
 
 Returns ``true`` if the project will automatically restart when it exits for any reason, ``false`` otherwise. See also :ref:`set_restart_on_exit<class_OS_method_set_restart_on_exit>` and :ref:`get_restart_on_exit_arguments<class_OS_method_get_restart_on_exit_arguments>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_OS_method_is_sandboxed:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_sandboxed** **(** **)** |const|
+
+Returns ``true`` if application is running in the sandbox.
+
+\ **Note:** This method is implemented on macOS and Linux.
 
 .. rst-class:: classref-item-separator
 
@@ -1371,6 +1386,18 @@ With this function, you can request dangerous permissions since normal permissio
 
 ----
 
+.. _class_OS_method_revoke_granted_permissions:
+
+.. rst-class:: classref-method
+
+void **revoke_granted_permissions** **(** **)**
+
+On macOS (sandboxed applications only), this function clears list of user selected folders accessible to the application.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_OS_method_set_environment:
 
 .. rst-class:: classref-method
@@ -1463,7 +1490,7 @@ If ``file_or_dir_path`` is a valid directory path, and ``open_folder`` is ``true
 
 Use :ref:`ProjectSettings.globalize_path<class_ProjectSettings_method_globalize_path>` to convert a ``res://`` or ``user://`` path into a system path for use with this method.
 
-\ **Note:** Currently this method is only implemented on Windows. On other platforms, it will fallback to :ref:`shell_open<class_OS_method_shell_open>` with a directory path for ``file_or_dir_path``.
+\ **Note:** Currently this method is only implemented on Windows and macOS. On other platforms, it will fallback to :ref:`shell_open<class_OS_method_shell_open>` with a directory path of ``file_or_dir_path`` with prefix ``file://``.
 
 .. rst-class:: classref-item-separator
 
@@ -1485,3 +1512,4 @@ Removes the environment ``variable`` from the current environment, if it exists.
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

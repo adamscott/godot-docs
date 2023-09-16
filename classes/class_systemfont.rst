@@ -42,8 +42,6 @@ Properties
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
    | :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>`       | :ref:`antialiasing<class_SystemFont_property_antialiasing>`                                             | ``1``                   |
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`Font[]<class_Font>`                                       | :ref:`fallbacks<class_SystemFont_property_fallbacks>`                                                   | ``[]``                  |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`font_italic<class_SystemFont_property_font_italic>`                                               | ``false``               |
    +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>`               | :ref:`font_names<class_SystemFont_property_font_names>`                                                 | ``PackedStringArray()`` |
@@ -107,23 +105,6 @@ If set to ``true``, system fonts can be automatically used as fallbacks.
 - :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>` **get_antialiasing** **(** **)**
 
 Font anti-aliasing mode.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_SystemFont_property_fallbacks:
-
-.. rst-class:: classref-property
-
-:ref:`Font[]<class_Font>` **fallbacks** = ``[]``
-
-.. rst-class:: classref-property-setget
-
-- void **set_fallbacks** **(** :ref:`Font[]<class_Font>` value **)**
-- :ref:`Font[]<class_Font>` **get_fallbacks** **(** **)**
-
-Array of fallback :ref:`Font<class_Font>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -335,3 +316,4 @@ Font glyph subpixel positioning mode. Subpixel positioning provides shaper text 
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`

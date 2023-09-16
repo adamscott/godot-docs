@@ -19,7 +19,7 @@ A 3D physics body that can't be moved by external forces. When moved manually, i
 Description
 -----------
 
-An animatable 3D physics body. It can't be moved by external forces or contacts, but can be moved manually by other means such as code, :ref:`AnimationPlayer<class_AnimationPlayer>`\ s (with :ref:`AnimationPlayer.playback_process_mode<class_AnimationPlayer_property_playback_process_mode>` set to ``ANIMATION_PROCESS_PHYSICS``), and :ref:`RemoteTransform3D<class_RemoteTransform3D>`.
+An animatable 3D physics body. It can't be moved by external forces or contacts, but can be moved manually by other means such as code, :ref:`AnimationPlayer<class_AnimationPlayer>`\ s (with :ref:`AnimationPlayer.playback_process_mode<class_AnimationPlayer_property_playback_process_mode>` set to :ref:`AnimationPlayer.ANIMATION_PROCESS_PHYSICS<class_AnimationPlayer_constant_ANIMATION_PROCESS_PHYSICS>`), and :ref:`RemoteTransform3D<class_RemoteTransform3D>`.
 
 When **AnimatableBody3D** is moved, its linear and angular velocity are estimated and used to affect other physics bodies in its path. This makes it useful for moving platforms, doors, and other moving objects.
 
@@ -74,3 +74,4 @@ If ``true``, the body's movement will be synchronized to the physics frame. This
 .. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
+.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
