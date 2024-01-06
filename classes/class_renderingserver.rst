@@ -267,6 +267,8 @@ Methods
    +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RenderingDevice<class_RenderingDevice>`                                    | :ref:`create_local_rendering_device<class_RenderingServer_method_create_local_rendering_device>` **(** **)** |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                                        | :ref:`debug_canvas_item_get_rect<class_RenderingServer_method_debug_canvas_item_get_rect>` **(** :ref:`RID<class_RID>` item **)**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+   +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                                            | :ref:`decal_create<class_RenderingServer_method_decal_create>` **(** **)**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
    +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                                             | :ref:`decal_set_albedo_mix<class_RenderingServer_method_decal_set_albedo_mix>` **(** :ref:`RID<class_RID>` decal, :ref:`float<class_float>` albedo_mix **)**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -3186,11 +3188,19 @@ Visible render pass (excluding shadows).
 
 Shadow render pass. Objects will be rendered several times depending on the number of amounts of lights with shadows and the number of directional shadow splits.
 
+.. _class_RenderingServer_constant_VIEWPORT_RENDER_INFO_TYPE_CANVAS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` **VIEWPORT_RENDER_INFO_TYPE_CANVAS** = ``2``
+
+Canvas item rendering. This includes all 2D rendering.
+
 .. _class_RenderingServer_constant_VIEWPORT_RENDER_INFO_TYPE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` **VIEWPORT_RENDER_INFO_TYPE_MAX** = ``2``
+:ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` **VIEWPORT_RENDER_INFO_TYPE_MAX** = ``3``
 
 Represents the size of the :ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` enum.
 
@@ -4630,7 +4640,7 @@ Uses the default filter mode for this :ref:`Viewport<class_Viewport>`.
 
 :ref:`CanvasItemTextureFilter<enum_RenderingServer_CanvasItemTextureFilter>` **CANVAS_ITEM_TEXTURE_FILTER_NEAREST** = ``1``
 
-The texture filter reads from the nearest pixel only. The simplest and fastest method of filtering, but the texture will look pixelized.
+The texture filter reads from the nearest pixel only. This makes the texture look pixelated from up close, and grainy from a distance (due to mipmaps not being sampled).
 
 .. _class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_LINEAR:
 
@@ -4638,7 +4648,7 @@ The texture filter reads from the nearest pixel only. The simplest and fastest m
 
 :ref:`CanvasItemTextureFilter<enum_RenderingServer_CanvasItemTextureFilter>` **CANVAS_ITEM_TEXTURE_FILTER_LINEAR** = ``2``
 
-The texture filter blends between the nearest 4 pixels. Use this when you want to avoid a pixelated style, but do not want mipmaps.
+The texture filter blends between the nearest 4 pixels. This makes the texture look smooth from up close, and grainy from a distance (due to mipmaps not being sampled).
 
 .. _class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS:
 
@@ -4646,7 +4656,9 @@ The texture filter blends between the nearest 4 pixels. Use this when you want t
 
 :ref:`CanvasItemTextureFilter<enum_RenderingServer_CanvasItemTextureFilter>` **CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS** = ``3``
 
-The texture filter reads from the nearest pixel in the nearest mipmap. The fastest way to read from textures with mipmaps.
+The texture filter reads from the nearest pixel and blends between the nearest 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``). This makes the texture look pixelated from up close, and smooth from a distance.
+
+Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to :ref:`Camera2D<class_Camera2D>` zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.
 
 .. _class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS:
 
@@ -4654,7 +4666,9 @@ The texture filter reads from the nearest pixel in the nearest mipmap. The faste
 
 :ref:`CanvasItemTextureFilter<enum_RenderingServer_CanvasItemTextureFilter>` **CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS** = ``4``
 
-The texture filter blends between the nearest 4 pixels and between the nearest 2 mipmaps.
+The texture filter blends between the nearest 4 pixels and between the nearest 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``). This makes the texture look smooth from up close, and smooth from a distance.
+
+Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to :ref:`Camera2D<class_Camera2D>` zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.
 
 .. _class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC:
 
@@ -4662,7 +4676,9 @@ The texture filter blends between the nearest 4 pixels and between the nearest 2
 
 :ref:`CanvasItemTextureFilter<enum_RenderingServer_CanvasItemTextureFilter>` **CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS_ANISOTROPIC** = ``5``
 
-The texture filter reads from the nearest pixel, but selects a mipmap based on the angle between the surface and the camera view. This reduces artifacts on surfaces that are almost in line with the camera.
+The texture filter reads from the nearest pixel and blends between 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``) based on the angle between the surface and the camera view. This makes the texture look pixelated from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting :ref:`ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level<class_ProjectSettings_property_rendering/textures/default_filters/anisotropic_filtering_level>`.
+
+\ **Note:** This texture filter is rarely useful in 2D projects. :ref:`CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS<class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS>` is usually more appropriate in this case.
 
 .. _class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC:
 
@@ -4670,7 +4686,9 @@ The texture filter reads from the nearest pixel, but selects a mipmap based on t
 
 :ref:`CanvasItemTextureFilter<enum_RenderingServer_CanvasItemTextureFilter>` **CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC** = ``6``
 
-The texture filter blends between the nearest 4 pixels and selects a mipmap based on the angle between the surface and the camera view. This reduces artifacts on surfaces that are almost in line with the camera. This is the slowest of the filtering options, but results in the highest quality texturing.
+The texture filter blends between the nearest 4 pixels and blends between 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``) based on the angle between the surface and the camera view. This makes the texture look smooth from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting :ref:`ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level<class_ProjectSettings_property_rendering/textures/default_filters/anisotropic_filtering_level>`.
+
+\ **Note:** This texture filter is rarely useful in 2D projects. :ref:`CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS<class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS>` is usually more appropriate in this case.
 
 .. _class_RenderingServer_constant_CANVAS_ITEM_TEXTURE_FILTER_MAX:
 
@@ -6666,6 +6684,20 @@ Creates a RenderingDevice that can be used to do draw and compute operations on 
 
 ----
 
+.. _class_RenderingServer_method_debug_canvas_item_get_rect:
+
+.. rst-class:: classref-method
+
+:ref:`Rect2<class_Rect2>` **debug_canvas_item_get_rect** **(** :ref:`RID<class_RID>` item **)**
+
+Returns the bounding rectangle for a canvas item in local space, as calculated by the renderer. This bound is used internally for culling.
+
+\ **Warning:** This function is intended for debugging in the editor, and will pass through and return a zero :ref:`Rect2<class_Rect2>` in exported projects.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RenderingServer_method_decal_create:
 
 .. rst-class:: classref-method
@@ -7238,7 +7270,7 @@ Sets the size of the fog volume when shape is :ref:`FOG_VOLUME_SHAPE_ELLIPSOID<c
 
 void **force_draw** **(** :ref:`bool<class_bool>` swap_buffers=true, :ref:`float<class_float>` frame_step=0.0 **)**
 
-Forces redrawing of all viewports at once.
+Forces redrawing of all viewports at once. Must be called from the main thread.
 
 .. rst-class:: classref-item-separator
 
@@ -10357,7 +10389,7 @@ Updates the texture specified by the ``texture`` :ref:`RID<class_RID>`'s data wi
 
 :ref:`Format<enum_Image_Format>` **texture_get_format** **(** :ref:`RID<class_RID>` texture **)** |const|
 
-Returns the :ref:`Format<enum_Image_Format>` for the texture.
+Returns the format for the texture.
 
 .. rst-class:: classref-item-separator
 
