@@ -191,6 +191,8 @@ Methods
    +-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Control<class_Control>`                                                                 | :ref:`gui_get_focus_owner<class_Viewport_method_gui_get_focus_owner>` **(** **)** |const|                                                                                                                                                                              |
    +-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Control<class_Control>`                                                                 | :ref:`gui_get_hovered_control<class_Viewport_method_gui_get_hovered_control>` **(** **)** |const|                                                                                                                                                                      |
+   +-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                                       | :ref:`gui_is_drag_successful<class_Viewport_method_gui_is_drag_successful>` **(** **)** |const|                                                                                                                                                                        |
    +-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                                       | :ref:`gui_is_dragging<class_Viewport_method_gui_is_dragging>` **(** **)** |const|                                                                                                                                                                                      |
@@ -768,7 +770,7 @@ enum **DefaultCanvasItemTextureFilter**:
 
 :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` **DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST** = ``0``
 
-The texture filter reads from the nearest pixel only. The simplest and fastest method of filtering, but the texture will look pixelized.
+The texture filter reads from the nearest pixel only. This makes the texture look pixelated from up close, and grainy from a distance (due to mipmaps not being sampled).
 
 .. _class_Viewport_constant_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR:
 
@@ -776,7 +778,7 @@ The texture filter reads from the nearest pixel only. The simplest and fastest m
 
 :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` **DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR** = ``1``
 
-The texture filter blends between the nearest 4 pixels. Use this when you want to avoid a pixelated style, but do not want mipmaps.
+The texture filter blends between the nearest 4 pixels. This makes the texture look smooth from up close, and grainy from a distance (due to mipmaps not being sampled).
 
 .. _class_Viewport_constant_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS:
 
@@ -784,7 +786,9 @@ The texture filter blends between the nearest 4 pixels. Use this when you want t
 
 :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` **DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_LINEAR_WITH_MIPMAPS** = ``2``
 
-The texture filter reads from the nearest pixel in the nearest mipmap. The fastest way to read from textures with mipmaps.
+The texture filter blends between the nearest 4 pixels and between the nearest 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``). This makes the texture look smooth from up close, and smooth from a distance.
+
+Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to :ref:`Camera2D<class_Camera2D>` zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.
 
 .. _class_Viewport_constant_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS:
 
@@ -792,7 +796,9 @@ The texture filter reads from the nearest pixel in the nearest mipmap. The faste
 
 :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` **DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST_WITH_MIPMAPS** = ``3``
 
-The texture filter blends between the nearest 4 pixels and between the nearest 2 mipmaps.
+The texture filter reads from the nearest pixel and blends between the nearest 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``). This makes the texture look pixelated from up close, and smooth from a distance.
+
+Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to :ref:`Camera2D<class_Camera2D>` zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.
 
 .. _class_Viewport_constant_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_MAX:
 
@@ -1907,7 +1913,7 @@ Returns the mouse's position in this **Viewport** using the coordinate system of
 
 :ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **get_positional_shadow_atlas_quadrant_subdiv** **(** :ref:`int<class_int>` quadrant **)** |const|
 
-Returns the :ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` of the specified quadrant.
+Returns the positional shadow atlas quadrant subdivision of the specified quadrant.
 
 .. rst-class:: classref-item-separator
 
@@ -2000,6 +2006,20 @@ Returns the drag data from the GUI, that was previously returned by :ref:`Contro
 :ref:`Control<class_Control>` **gui_get_focus_owner** **(** **)** |const|
 
 Returns the :ref:`Control<class_Control>` having the focus within this viewport. If no :ref:`Control<class_Control>` has the focus, returns null.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Viewport_method_gui_get_hovered_control:
+
+.. rst-class:: classref-method
+
+:ref:`Control<class_Control>` **gui_get_hovered_control** **(** **)** |const|
+
+Returns the :ref:`Control<class_Control>` that the mouse is currently hovering over in this viewport. If no :ref:`Control<class_Control>` has the cursor, returns null.
+
+Typically the leaf :ref:`Control<class_Control>` node or deepest level of the subtree which claims hover. This is very useful when used together with :ref:`Node.is_ancestor_of<class_Node_method_is_ancestor_of>` to find if the mouse is within a control tree.
 
 .. rst-class:: classref-item-separator
 
