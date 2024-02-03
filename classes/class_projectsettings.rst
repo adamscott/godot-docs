@@ -357,6 +357,18 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`debug/shapes/paths/geometry_width<class_ProjectSettings_property_debug/shapes/paths/geometry_width>`                                                                                                 | ``2.0``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`                                                                                                         |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.android<class_ProjectSettings_property_display/display_server/driver.android>`                                                                                         |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.ios<class_ProjectSettings_property_display/display_server/driver.ios>`                                                                                                 |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.linuxbsd<class_ProjectSettings_property_display/display_server/driver.linuxbsd>`                                                                                       |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.macos<class_ProjectSettings_property_display/display_server/driver.macos>`                                                                                             |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.windows<class_ProjectSettings_property_display/display_server/driver.windows>`                                                                                         |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`display/mouse_cursor/custom_image<class_ProjectSettings_property_display/mouse_cursor/custom_image>`                                                                                                 | ``""``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                     | :ref:`display/mouse_cursor/custom_image_hotspot<class_ProjectSettings_property_display/mouse_cursor/custom_image_hotspot>`                                                                                 | ``Vector2(0, 0)``                                                                                |
@@ -1399,6 +1411,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile>`   | ``0``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/lights_and_shadows/tighter_shadow_caster_culling<class_ProjectSettings_property_rendering/lights_and_shadows/tighter_shadow_caster_culling>`                                               | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/lights_and_shadows/use_physical_light_units<class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>`                                                         | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`rendering/limits/cluster_builder/max_clustered_elements<class_ProjectSettings_property_rendering/limits/cluster_builder/max_clustered_elements>`                                                     | ``512``                                                                                          |
@@ -2350,7 +2364,7 @@ If canvas item redraw debugging is active, this will be the time the flash will 
 
 :ref:`bool<class_bool>` **debug/file_logging/enable_file_logging** = ``false``
 
-If ``true``, logs all output to files.
+If ``true``, logs all output and error messages to files. See also :ref:`debug/file_logging/log_path<class_ProjectSettings_property_debug/file_logging/log_path>`, :ref:`debug/file_logging/max_log_files<class_ProjectSettings_property_debug/file_logging/max_log_files>`, and :ref:`application/run/flush_stdout_on_print<class_ProjectSettings_property_application/run/flush_stdout_on_print>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2376,6 +2390,8 @@ Desktop override for :ref:`debug/file_logging/enable_file_logging<class_ProjectS
 
 Path at which to store log files for the project. Using a path under ``user://`` is recommended.
 
+This can be specified manually on the command line using the ``--log-file <file>`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`. If this command line argument is specified, log rotation is automatically disabled (see :ref:`debug/file_logging/max_log_files<class_ProjectSettings_property_debug/file_logging/max_log_files>`).
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -2386,7 +2402,9 @@ Path at which to store log files for the project. Using a path under ``user://``
 
 :ref:`int<class_int>` **debug/file_logging/max_log_files** = ``5``
 
-Specifies the maximum number of log files allowed (used for rotation).
+Specifies the maximum number of log files allowed (used for rotation). Set to ``1`` to disable log file rotation.
+
+If the ``--log-file <file>`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>` is used, log rotation is always disabled.
 
 .. rst-class:: classref-item-separator
 
@@ -3572,6 +3590,78 @@ Line width of the curve path geometry, visible when "Visible Paths" is enabled i
 
 ----
 
+.. _class_ProjectSettings_property_display/display_server/driver:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver**
+
+Sets the driver to be used by the display server. This property can not be edited directly, instead, set the driver using the platform-specific overrides.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.android:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.android**
+
+Android override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.ios:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.ios**
+
+iOS override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.linuxbsd:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.linuxbsd**
+
+LinuxBSD override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.macos:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.macos**
+
+MacOS override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.windows:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.windows**
+
+Windows override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_display/mouse_cursor/custom_image:
 
 .. rst-class:: classref-property
@@ -4316,7 +4406,7 @@ Search path for project-specific script templates. Godot will search for script 
 
 If ``true``, Blender 3D scene files with the ``.blend`` extension will be imported by converting them to glTF 2.0.
 
-This requires configuring a path to a Blender executable in the editor settings at ``filesystem/import/blender/blender3_path``. Blender 3.0 or later is required.
+This requires configuring a path to a Blender executable in the editor settings at ``filesystem/import/blender/blender_path``. Blender 3.0 or later is required.
 
 .. rst-class:: classref-item-separator
 
@@ -10267,6 +10357,20 @@ Quality setting for shadows cast by :ref:`OmniLight3D<class_OmniLight3D>`\ s and
 :ref:`int<class_int>` **rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile** = ``0``
 
 Lower-end override for :ref:`rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality>` on mobile devices, due to performance concerns or driver support.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/lights_and_shadows/tighter_shadow_caster_culling:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/lights_and_shadows/tighter_shadow_caster_culling** = ``true``
+
+If ``true``, items that cannot cast shadows into the view frustum will not be rendered into shadow maps.
+
+This can increase performance.
 
 .. rst-class:: classref-item-separator
 
