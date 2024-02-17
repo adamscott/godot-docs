@@ -47,6 +47,10 @@ Properties
    :widths: auto
 
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`animation/warnings/check_angle_interpolation_type_conflicting<class_ProjectSettings_property_animation/warnings/check_angle_interpolation_type_conflicting>`                                         | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`animation/warnings/check_invalid_track_paths<class_ProjectSettings_property_animation/warnings/check_invalid_track_paths>`                                                                           | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Color<class_Color>`                         | :ref:`application/boot_splash/bg_color<class_ProjectSettings_property_application/boot_splash/bg_color>`                                                                                                   | ``Color(0.14, 0.14, 0.14, 1)``                                                                   |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`application/boot_splash/fullsize<class_ProjectSettings_property_application/boot_splash/fullsize>`                                                                                                   | ``true``                                                                                         |
@@ -106,6 +110,8 @@ Properties
    | :ref:`String<class_String>`                       | :ref:`application/run/main_scene<class_ProjectSettings_property_application/run/main_scene>`                                                                                                               | ``""``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`application/run/max_fps<class_ProjectSettings_property_application/run/max_fps>`                                                                                                                     | ``0``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`application/run/print_header<class_ProjectSettings_property_application/run/print_header>`                                                                                                           | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`audio/buses/channel_disable_threshold_db<class_ProjectSettings_property_audio/buses/channel_disable_threshold_db>`                                                                                   | ``-60.0``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -357,6 +363,18 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`debug/shapes/paths/geometry_width<class_ProjectSettings_property_debug/shapes/paths/geometry_width>`                                                                                                 | ``2.0``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`                                                                                                         |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.android<class_ProjectSettings_property_display/display_server/driver.android>`                                                                                         |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.ios<class_ProjectSettings_property_display/display_server/driver.ios>`                                                                                                 |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.linuxbsd<class_ProjectSettings_property_display/display_server/driver.linuxbsd>`                                                                                       |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.macos<class_ProjectSettings_property_display/display_server/driver.macos>`                                                                                             |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`display/display_server/driver.windows<class_ProjectSettings_property_display/display_server/driver.windows>`                                                                                         |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`display/mouse_cursor/custom_image<class_ProjectSettings_property_display/mouse_cursor/custom_image>`                                                                                                 | ``""``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                     | :ref:`display/mouse_cursor/custom_image_hotspot<class_ProjectSettings_property_display/mouse_cursor/custom_image_hotspot>`                                                                                 | ``Vector2(0, 0)``                                                                                |
@@ -428,6 +446,8 @@ Properties
    | :ref:`String<class_String>`                       | :ref:`dotnet/project/solution_directory<class_ProjectSettings_property_dotnet/project/solution_directory>`                                                                                                 | ``""``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`editor/export/convert_text_resources_to_binary<class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>`                                                                       | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`editor/import/atlas_max_width<class_ProjectSettings_property_editor/import/atlas_max_width>`                                                                                                         | ``2048``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`editor/import/reimport_missing_imported_files<class_ProjectSettings_property_editor/import/reimport_missing_imported_files>`                                                                         | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -676,6 +696,8 @@ Properties
    | :ref:`bool<class_bool>`                           | :ref:`input_devices/pointing/android/enable_long_press_as_right_click<class_ProjectSettings_property_input_devices/pointing/android/enable_long_press_as_right_click>`                                     | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`input_devices/pointing/android/enable_pan_and_scale_gestures<class_ProjectSettings_property_input_devices/pointing/android/enable_pan_and_scale_gestures>`                                           | ``false``                                                                                        |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`input_devices/pointing/android/rotary_input_scroll_axis<class_ProjectSettings_property_input_devices/pointing/android/rotary_input_scroll_axis>`                                                     | ``1``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`input_devices/pointing/emulate_mouse_from_touch<class_ProjectSettings_property_input_devices/pointing/emulate_mouse_from_touch>`                                                                     | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -1131,6 +1153,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>`                     | :ref:`navigation/3d/default_up<class_ProjectSettings_property_navigation/3d/default_up>`                                                                                                                   | ``Vector3(0, 1, 0)``                                                                             |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                         | :ref:`navigation/3d/merge_rasterizer_cell_scale<class_ProjectSettings_property_navigation/3d/merge_rasterizer_cell_scale>`                                                                                 | ``1.0``                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`navigation/3d/use_edge_connections<class_ProjectSettings_property_navigation/3d/use_edge_connections>`                                                                                               | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`navigation/avoidance/thread_model/avoidance_use_high_priority_threads<class_ProjectSettings_property_navigation/avoidance/thread_model/avoidance_use_high_priority_threads>`                         | ``true``                                                                                         |
@@ -1399,6 +1423,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile<class_ProjectSettings_property_rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile>`   | ``0``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/lights_and_shadows/tighter_shadow_caster_culling<class_ProjectSettings_property_rendering/lights_and_shadows/tighter_shadow_caster_culling>`                                               | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/lights_and_shadows/use_physical_light_units<class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>`                                                         | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`rendering/limits/cluster_builder/max_clustered_elements<class_ProjectSettings_property_rendering/limits/cluster_builder/max_clustered_elements>`                                                     | ``512``                                                                                          |
@@ -1476,6 +1502,10 @@ Properties
    | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/staging_buffer/max_size_mb<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/max_size_mb>`                                                         | ``128``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/staging_buffer/texture_upload_region_size_px<class_ProjectSettings_property_rendering/rendering_device/staging_buffer/texture_upload_region_size_px>`                     | ``64``                                                                                           |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/vsync/frame_queue_size<class_ProjectSettings_property_rendering/rendering_device/vsync/frame_queue_size>`                                                                 | ``2``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/vsync/swapchain_image_count<class_ProjectSettings_property_rendering/rendering_device/vsync/swapchain_image_count>`                                                       | ``3``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/vulkan/max_descriptors_per_pool<class_ProjectSettings_property_rendering/rendering_device/vulkan/max_descriptors_per_pool>`                                               | ``64``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -1637,6 +1667,30 @@ Emitted when any setting is changed, up to once per process frame.
 
 Property Descriptions
 ---------------------
+
+.. _class_ProjectSettings_property_animation/warnings/check_angle_interpolation_type_conflicting:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **animation/warnings/check_angle_interpolation_type_conflicting** = ``true``
+
+If ``true``, :ref:`AnimationMixer<class_AnimationMixer>` prints the warning of interpolation being forced to choose the shortest rotation path due to multiple angle interpolation types being mixed in the :ref:`AnimationMixer<class_AnimationMixer>` cache.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_animation/warnings/check_invalid_track_paths:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **animation/warnings/check_invalid_track_paths** = ``true``
+
+If ``true``, :ref:`AnimationMixer<class_AnimationMixer>` prints the warning of no matching object of the track path in the scene.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_ProjectSettings_property_application/boot_splash/bg_color:
 
@@ -2048,6 +2102,18 @@ This setting can be overridden using the ``--max-fps <fps>`` command line argume
 
 ----
 
+.. _class_ProjectSettings_property_application/run/print_header:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **application/run/print_header** = ``true``
+
+If ``true``, the engine header is printed in the console on startup. This header describes the current version of the engine, as well as the renderer being used. This behavior can also be disabled on the command line with the ``--no-header`` option.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_audio/buses/channel_disable_threshold_db:
 
 .. rst-class:: classref-property
@@ -2350,7 +2416,7 @@ If canvas item redraw debugging is active, this will be the time the flash will 
 
 :ref:`bool<class_bool>` **debug/file_logging/enable_file_logging** = ``false``
 
-If ``true``, logs all output to files.
+If ``true``, logs all output and error messages to files. See also :ref:`debug/file_logging/log_path<class_ProjectSettings_property_debug/file_logging/log_path>`, :ref:`debug/file_logging/max_log_files<class_ProjectSettings_property_debug/file_logging/max_log_files>`, and :ref:`application/run/flush_stdout_on_print<class_ProjectSettings_property_application/run/flush_stdout_on_print>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2376,6 +2442,8 @@ Desktop override for :ref:`debug/file_logging/enable_file_logging<class_ProjectS
 
 Path at which to store log files for the project. Using a path under ``user://`` is recommended.
 
+This can be specified manually on the command line using the ``--log-file <file>`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`. If this command line argument is specified, log rotation is automatically disabled (see :ref:`debug/file_logging/max_log_files<class_ProjectSettings_property_debug/file_logging/max_log_files>`).
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -2386,7 +2454,9 @@ Path at which to store log files for the project. Using a path under ``user://``
 
 :ref:`int<class_int>` **debug/file_logging/max_log_files** = ``5``
 
-Specifies the maximum number of log files allowed (used for rotation).
+Specifies the maximum number of log files allowed (used for rotation). Set to ``1`` to disable log file rotation.
+
+If the ``--log-file <file>`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>` is used, log rotation is always disabled.
 
 .. rst-class:: classref-item-separator
 
@@ -3572,6 +3642,78 @@ Line width of the curve path geometry, visible when "Visible Paths" is enabled i
 
 ----
 
+.. _class_ProjectSettings_property_display/display_server/driver:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver**
+
+Sets the driver to be used by the display server. This property can not be edited directly, instead, set the driver using the platform-specific overrides.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.android:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.android**
+
+Android override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.ios:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.ios**
+
+iOS override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.linuxbsd:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.linuxbsd**
+
+LinuxBSD override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.macos:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.macos**
+
+MacOS override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_display/display_server/driver.windows:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **display/display_server/driver.windows**
+
+Windows override for :ref:`display/display_server/driver<class_ProjectSettings_property_display/display_server/driver>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_display/mouse_cursor/custom_image:
 
 .. rst-class:: classref-property
@@ -3772,6 +3914,8 @@ Main window content is expanded to the full size of the window. Unlike a borderl
 
 Main window initial position (in virtual desktop coordinates), this setting is used only if :ref:`display/window/size/initial_position_type<class_ProjectSettings_property_display/window/size/initial_position_type>` is set to "Absolute" (``0``).
 
+\ **Note:** This setting only affects the exported project, or when the project is run from the command line. In the editor, the value of :ref:`EditorSettings.run/window_placement/rect_custom_position<class_EditorSettings_property_run/window_placement/rect_custom_position>` is used instead.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -3790,6 +3934,8 @@ Main window initial position.
 
 \ ``2`` - "Other Screen Center", :ref:`display/window/size/initial_screen<class_ProjectSettings_property_display/window/size/initial_screen>` is used to set the screen.
 
+\ **Note:** This setting only affects the exported project, or when the project is run from the command line. In the editor, the value of :ref:`EditorSettings.run/window_placement/rect<class_EditorSettings_property_run/window_placement/rect>` is used instead.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -3801,6 +3947,8 @@ Main window initial position.
 :ref:`int<class_int>` **display/window/size/initial_screen** = ``0``
 
 Main window initial screen, this setting is used only if :ref:`display/window/size/initial_position_type<class_ProjectSettings_property_display/window/size/initial_position_type>` is set to "Other Screen Center" (``2``).
+
+\ **Note:** This setting only affects the exported project, or when the project is run from the command line. In the editor, the value of :ref:`EditorSettings.run/window_placement/screen<class_EditorSettings_property_run/window_placement/screen>` is used instead.
 
 .. rst-class:: classref-item-separator
 
@@ -3996,7 +4144,7 @@ If ``true`` subwindows are embedded in the main window.
 
 :ref:`int<class_int>` **display/window/vsync/vsync_mode** = ``1``
 
-Sets the V-Sync mode for the main game window.
+Sets the V-Sync mode for the main game window. The editor's own V-Sync mode can be set using :ref:`EditorSettings.interface/editor/vsync_mode<class_EditorSettings_property_interface/editor/vsync_mode>`.
 
 See :ref:`VSyncMode<enum_DisplayServer_VSyncMode>` for possible values and how they affect the behavior of your application.
 
@@ -4057,6 +4205,18 @@ Changing this value allows setting up a multi-project scenario where there are m
 If ``true``, text resources are converted to a binary format on export. This decreases file sizes and speeds up loading slightly.
 
 \ **Note:** If :ref:`editor/export/convert_text_resources_to_binary<class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>` is ``true``, :ref:`@GDScript.load<class_@GDScript_method_load>` will not be able to return the converted files in an exported project. Some file paths within the exported PCK will also change, such as ``project.godot`` becoming ``project.binary``. If you rely on run-time loading of files present within the PCK, set :ref:`editor/export/convert_text_resources_to_binary<class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>` to ``false``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_editor/import/atlas_max_width:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **editor/import/atlas_max_width** = ``2048``
+
+The maximum width to use when importing textures as an atlas. The value will be rounded to the nearest power of two when used. Use this to prevent imported textures from growing too large in the other direction.
 
 .. rst-class:: classref-item-separator
 
@@ -4316,7 +4476,7 @@ Search path for project-specific script templates. Godot will search for script 
 
 If ``true``, Blender 3D scene files with the ``.blend`` extension will be imported by converting them to glTF 2.0.
 
-This requires configuring a path to a Blender executable in the editor settings at ``filesystem/import/blender/blender3_path``. Blender 3.0 or later is required.
+This requires configuring a path to a Blender executable in the editor settings at ``filesystem/import/blender/blender_path``. Blender 3.0 or later is required.
 
 .. rst-class:: classref-item-separator
 
@@ -5735,6 +5895,18 @@ If ``true``, long press events on an Android touchscreen are transformed into ri
 :ref:`bool<class_bool>` **input_devices/pointing/android/enable_pan_and_scale_gestures** = ``false``
 
 If ``true``, multi-touch pan and scale gestures are enabled on Android devices.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input_devices/pointing/android/rotary_input_scroll_axis:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **input_devices/pointing/android/rotary_input_scroll_axis** = ``1``
+
+On Wear OS devices, defines which axis of the mouse wheel rotary input is mapped to. This rotary input is usually performed by rotating the physical or virtual (touch-based) bezel on a smartwatch.
 
 .. rst-class:: classref-item-separator
 
@@ -8476,6 +8648,18 @@ Default up orientation for 3D navigation maps. See :ref:`NavigationServer3D.map_
 
 ----
 
+.. _class_ProjectSettings_property_navigation/3d/merge_rasterizer_cell_scale:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **navigation/3d/merge_rasterizer_cell_scale** = ``1.0``
+
+Default merge rasterizer cell scale for 3D navigation maps. See :ref:`NavigationServer3D.map_set_merge_rasterizer_cell_scale<class_NavigationServer3D_method_map_set_merge_rasterizer_cell_scale>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_navigation/3d/use_edge_connections:
 
 .. rst-class:: classref-property
@@ -8640,9 +8824,15 @@ If in doubt, leave this setting empty.
 
 :ref:`float<class_float>` **physics/2d/default_angular_damp** = ``1.0``
 
-The default angular damp in 2D.
+The default rotational motion damping in 2D. Damping is used to gradually slow down physical objects over time. RigidBodies will fall back to this value when combining their own damping values and no area damping value is present.
 
-\ **Note:** Good values are in the range ``0`` to ``1``. At value ``0`` objects will keep moving with the same velocity. Values greater than ``1`` will aim to reduce the velocity to ``0`` in less than a second e.g. a value of ``2`` will aim to reduce the velocity to ``0`` in half a second. A value equal to or greater than the physics frame rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`, ``60`` by default) will bring the object to a stop in one iteration.
+Suggested values are in the range ``0`` to ``30``. At value ``0`` objects will keep moving with the same velocity. Greater values will stop the object faster. A value equal to or greater than the physics tick rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`) will bring the object to a stop in one iteration.
+
+\ **Note:** Godot damping calculations are velocity-dependent, meaning bodies moving faster will take a longer time to come to rest. They do not simulate inertia, friction, or air resistance. Therefore heavier or larger bodies will lose speed at the same proportional rate as lighter or smaller bodies.
+
+During each physics tick, Godot will multiply the linear velocity of RigidBodies by ``1.0 - combined_damp / physics_ticks_per_second``. By default, bodies combine damp factors: ``combined_damp`` is the sum of the damp value of the body and this value or the area's value the body is in. See :ref:`DampMode<enum_RigidBody2D_DampMode>`.
+
+\ **Warning:** Godot's damping calculations are simulation tick rate dependent. Changing :ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>` may significantly change the outcomes and feel of your simulation. This is true for the entire range of damping values greater than 0. To get back to a similar feel, you also need to change your damp values. This needed change is not proportional and differs from case to case.
 
 .. rst-class:: classref-item-separator
 
@@ -8712,9 +8902,15 @@ The default gravity direction in 2D.
 
 :ref:`float<class_float>` **physics/2d/default_linear_damp** = ``0.1``
 
-The default linear damp in 2D.
+The default linear motion damping in 2D. Damping is used to gradually slow down physical objects over time. RigidBodies will fall back to this value when combining their own damping values and no area damping value is present.
 
-\ **Note:** Good values are in the range ``0`` to ``1``. At value ``0`` objects will keep moving with the same velocity. Values greater than ``1`` will aim to reduce the velocity to ``0`` in less than a second e.g. a value of ``2`` will aim to reduce the velocity to ``0`` in half a second. A value equal to or greater than the physics frame rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`, ``60`` by default) will bring the object to a stop in one iteration.
+Suggested values are in the range ``0`` to ``30``. At value ``0`` objects will keep moving with the same velocity. Greater values will stop the object faster. A value equal to or greater than the physics tick rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`) will bring the object to a stop in one iteration.
+
+\ **Note:** Godot damping calculations are velocity-dependent, meaning bodies moving faster will take a longer time to come to rest. They do not simulate inertia, friction, or air resistance. Therefore heavier or larger bodies will lose speed at the same proportional rate as lighter or smaller bodies.
+
+During each physics tick, Godot will multiply the linear velocity of RigidBodies by ``1.0 - combined_damp / physics_ticks_per_second``, where ``combined_damp`` is the sum of the linear damp of the body and this value, or the area's value the body is in, assuming the body defaults to combine damp values. See :ref:`DampMode<enum_RigidBody2D_DampMode>`.
+
+\ **Warning:** Godot's damping calculations are simulation tick rate dependent. Changing :ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>` may significantly change the outcomes and feel of your simulation. This is true for the entire range of damping values greater than 0. To get back to a similar feel, you also need to change your damp values. This needed change is not proportional and differs from case to case.
 
 .. rst-class:: classref-item-separator
 
@@ -8864,9 +9060,15 @@ Time (in seconds) of inactivity before which a 2D physics body will put to sleep
 
 :ref:`float<class_float>` **physics/3d/default_angular_damp** = ``0.1``
 
-The default angular damp in 3D.
+The default rotational motion damping in 3D. Damping is used to gradually slow down physical objects over time. RigidBodies will fall back to this value when combining their own damping values and no area damping value is present.
 
-\ **Note:** Good values are in the range ``0`` to ``1``. At value ``0`` objects will keep moving with the same velocity. Values greater than ``1`` will aim to reduce the velocity to ``0`` in less than a second e.g. a value of ``2`` will aim to reduce the velocity to ``0`` in half a second. A value equal to or greater than the physics frame rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`, ``60`` by default) will bring the object to a stop in one iteration.
+Suggested values are in the range ``0`` to ``30``. At value ``0`` objects will keep moving with the same velocity. Greater values will stop the object faster. A value equal to or greater than the physics tick rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`) will bring the object to a stop in one iteration.
+
+\ **Note:** Godot damping calculations are velocity-dependent, meaning bodies moving faster will take a longer time to come to rest. They do not simulate inertia, friction, or air resistance. Therefore heavier or larger bodies will lose speed at the same proportional rate as lighter or smaller bodies.
+
+During each physics tick, Godot will multiply the angular velocity of RigidBodies by ``1.0 - combined_damp / physics_ticks_per_second``. By default, bodies combine damp factors: ``combined_damp`` is the sum of the damp value of the body and this value or the area's value the body is in. See :ref:`DampMode<enum_RigidBody3D_DampMode>`.
+
+\ **Warning:** Godot's damping calculations are simulation tick rate dependent. Changing :ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>` may significantly change the outcomes and feel of your simulation. This is true for the entire range of damping values greater than 0. To get back to a similar feel, you also need to change your damp values. This needed change is not proportional and differs from case to case.
 
 .. rst-class:: classref-item-separator
 
@@ -8936,9 +9138,15 @@ The default gravity direction in 3D.
 
 :ref:`float<class_float>` **physics/3d/default_linear_damp** = ``0.1``
 
-The default linear damp in 3D.
+The default linear motion damping in 3D. Damping is used to gradually slow down physical objects over time. RigidBodies will fall back to this value when combining their own damping values and no area damping value is present.
 
-\ **Note:** Good values are in the range ``0`` to ``1``. At value ``0`` objects will keep moving with the same velocity. Values greater than ``1`` will aim to reduce the velocity to ``0`` in less than a second e.g. a value of ``2`` will aim to reduce the velocity to ``0`` in half a second. A value equal to or greater than the physics frame rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`, ``60`` by default) will bring the object to a stop in one iteration.
+Suggested values are in the range ``0`` to ``30``. At value ``0`` objects will keep moving with the same velocity. Greater values will stop the object faster. A value equal to or greater than the physics tick rate (:ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`) will bring the object to a stop in one iteration.
+
+\ **Note:** Godot damping calculations are velocity-dependent, meaning bodies moving faster will take a longer time to come to rest. They do not simulate inertia, friction, or air resistance. Therefore heavier or larger bodies will lose speed at the same proportional rate as lighter or smaller bodies.
+
+During each physics tick, Godot will multiply the linear velocity of RigidBodies by ``1.0 - combined_damp / physics_ticks_per_second``. By default, bodies combine damp factors: ``combined_damp`` is the sum of the damp value of the body and this value or the area's value the body is in. See :ref:`DampMode<enum_RigidBody3D_DampMode>`.
+
+\ **Warning:** Godot's damping calculations are simulation tick rate dependent. Changing :ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>` may significantly change the outcomes and feel of your simulation. This is true for the entire range of damping values greater than 0. To get back to a similar feel, you also need to change your damp values. This needed change is not proportional and differs from case to case.
 
 .. rst-class:: classref-item-separator
 
@@ -10272,6 +10480,20 @@ Lower-end override for :ref:`rendering/lights_and_shadows/positional_shadow/soft
 
 ----
 
+.. _class_ProjectSettings_property_rendering/lights_and_shadows/tighter_shadow_caster_culling:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/lights_and_shadows/tighter_shadow_caster_culling** = ``true``
+
+If ``true``, items that cannot cast shadows into the view frustum will not be rendered into shadow maps.
+
+This can increase performance.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units:
 
 .. rst-class:: classref-property
@@ -10786,6 +11008,46 @@ Determines at which interval pipeline cache is saved to disk. The lower the valu
 
 ----
 
+.. _class_ProjectSettings_property_rendering/rendering_device/vsync/frame_queue_size:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/rendering_device/vsync/frame_queue_size** = ``2``
+
+The number of frames to track on the CPU side before stalling to wait for the GPU.
+
+Try the `V-Sync Simulator <https://darksylinc.github.io/vsync_simulator/>`__, an interactive interface that simulates presentation to better understand how it is affected by different variables under various conditions.
+
+\ **Note:** This property is only read when the project starts. There is currently no way to change this value at run-time.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/rendering_device/vsync/swapchain_image_count:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/rendering_device/vsync/swapchain_image_count** = ``3``
+
+The number of images the swapchain will consist of (back buffers + front buffer).
+
+\ ``2`` corresponds to double-buffering and ``3`` to triple-buffering.
+
+Double-buffering may give you the lowest lag/latency but if V-Sync is on and the system can't render at 60 fps, the framerate will go down in multiples of it (e.g. 30 fps, 15, 7.5, etc.). Triple buffering gives you higher framerate (specially if the system can't reach a constant 60 fps) at the cost of up to 1 frame of latency, with :ref:`DisplayServer.VSYNC_ENABLED<class_DisplayServer_constant_VSYNC_ENABLED>` (FIFO).
+
+Use double-buffering with :ref:`DisplayServer.VSYNC_ENABLED<class_DisplayServer_constant_VSYNC_ENABLED>`. Triple-buffering is a must if you plan on using :ref:`DisplayServer.VSYNC_MAILBOX<class_DisplayServer_constant_VSYNC_MAILBOX>` mode.
+
+Try the `V-Sync Simulator <https://darksylinc.github.io/vsync_simulator/>`__, an interactive interface that simulates presentation to better understand how it is affected by different variables under various conditions.
+
+\ **Note:** This property is only read when the project starts. There is currently no way to change this value at run-time.
+
+\ **Note:** Some platforms may restrict the actual value.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_rendering/rendering_device/vulkan/max_descriptors_per_pool:
 
 .. rst-class:: classref-property
@@ -11191,9 +11453,7 @@ The texture *must* use a lossless compression format so that colors can be match
 
 :ref:`float<class_float>` **threading/worker_pool/low_priority_thread_ratio** = ``0.3``
 
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+The ratio of :ref:`WorkerThreadPool<class_WorkerThreadPool>`'s threads that will be reserved for low-priority tasks. For example, if 10 threads are available and this value is set to ``0.3``, 3 of the worker threads will be reserved for low-priority tasks. The actual value won't exceed the number of CPU cores minus one, and if possible, at least one worker thread will be dedicated to low-priority tasks.
 
 .. rst-class:: classref-item-separator
 
@@ -11229,7 +11489,7 @@ Action map configuration to load by default.
 
 :ref:`bool<class_bool>` **xr/openxr/enabled** = ``false``
 
-If ``true`` Godot will setup and initialize OpenXR on startup.
+If ``true``, Godot will setup and initialize OpenXR on startup.
 
 .. rst-class:: classref-item-separator
 

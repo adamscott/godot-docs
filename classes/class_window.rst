@@ -1399,7 +1399,7 @@ If ``true``, the **Window**'s background can be transparent. This is best used w
 
 \ **Note:** Transparency support is implemented on Linux, macOS and Windows, but availability might vary depending on GPU driver, display manager, and compositor capabilities.
 
-\ **Note:** This property has no effect if either :ref:`ProjectSettings.display/window/per_pixel_transparency/allowed<class_ProjectSettings_property_display/window/per_pixel_transparency/allowed>`, or the window's :ref:`Viewport.transparent_bg<class_Viewport_property_transparent_bg>` is set to ``false``.
+\ **Note:** This property has no effect if :ref:`ProjectSettings.display/window/per_pixel_transparency/allowed<class_ProjectSettings_property_display/window/per_pixel_transparency/allowed>` is set to ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -2094,9 +2094,9 @@ Centers a native window on the current screen and an embedded window on its embe
 
 void **move_to_foreground** **(** **)**
 
-Moves the **Window** on top of other windows and focuses it.
+**Deprecated:** Use :ref:`grab_focus<class_Window_method_grab_focus>` instead.
 
-\ *Deprecated.* Use :ref:`grab_focus<class_Window_method_grab_focus>` instead.
+Moves the **Window** on top of other windows and focuses it.
 
 .. rst-class:: classref-item-separator
 
