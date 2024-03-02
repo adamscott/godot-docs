@@ -61,6 +61,8 @@ Methods
    :widths: auto
 
    +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`rand_weighted<class_RandomNumberGenerator_method_rand_weighted>`\ (\ weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )         |
+   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>` | :ref:`randf<class_RandomNumberGenerator_method_randf>`\ (\ )                                                                                        |
    +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>` | :ref:`randf_range<class_RandomNumberGenerator_method_randf_range>`\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`\ )          |
@@ -147,6 +149,34 @@ The current state of the random number generator. Save and restore this property
 Method Descriptions
 -------------------
 
+.. _class_RandomNumberGenerator_method_rand_weighted:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **rand_weighted**\ (\ weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )
+
+Returns a random index with non-uniform weights. Prints an error and returns ``-1`` if the array is empty.
+
+
+.. tabs::
+
+ .. code-tab:: gdscript
+
+    var rnd = RandomNumberGenerator.new()
+    
+    var my_array = ["one", "two", "three, "four"]
+    var weights = PackedFloat32Array([0.5, 1, 1, 2])
+    
+    # Prints one of the four elements in `my_array`.
+    # It is more likely to print "four", and less likely to print "two".
+    print(my_array[rng.rand_weighted(weights)])
+
+
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RandomNumberGenerator_method_randf:
 
 .. rst-class:: classref-method
@@ -177,7 +207,9 @@ Returns a pseudo-random float between ``from`` and ``to`` (inclusive).
 
 :ref:`float<class_float>` **randfn**\ (\ mean\: :ref:`float<class_float>` = 0.0, deviation\: :ref:`float<class_float>` = 1.0\ )
 
-Returns a `normally-distributed <https://en.wikipedia.org/wiki/Normal_distribution>`__ pseudo-random number, using Box-Muller transform with the specified ``mean`` and a standard ``deviation``. This is also called Gaussian distribution.
+Returns a `normally-distributed <https://en.wikipedia.org/wiki/Normal_distribution>`__, pseudo-random floating-point number from the specified ``mean`` and a standard ``deviation``. This is also known as a Gaussian distribution.
+
+\ **Note:** This method uses the `Box-Muller transform <https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform>`__ algorithm.
 
 .. rst-class:: classref-item-separator
 

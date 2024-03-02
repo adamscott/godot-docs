@@ -59,7 +59,7 @@ Methods
    :widths: auto
 
    +-------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`add_bone<class_Skeleton3D_method_add_bone>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                                                                         |
+   | :ref:`int<class_int>`                           | :ref:`add_bone<class_Skeleton3D_method_add_bone>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                                                                         |
    +-------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                          | :ref:`clear_bones<class_Skeleton3D_method_clear_bones>`\ (\ )                                                                                                                                                                                                       |
    +-------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -167,7 +167,7 @@ Emitted when the bone at ``bone_idx`` is toggled with :ref:`set_bone_enabled<cla
 
 **bone_pose_changed**\ (\ bone_idx\: :ref:`int<class_int>`\ )
 
-This signal is emitted when one of the bones in the Skeleton3D node have changed their pose. This is used to inform nodes that rely on bone positions that one of the bones in the Skeleton3D have changed their transform/pose.
+Emitted when the bone at ``bone_idx`` changes its transform/pose. This can be used to update other nodes that rely on bone positions.
 
 .. rst-class:: classref-item-separator
 
@@ -285,9 +285,11 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-|void| **add_bone**\ (\ name\: :ref:`String<class_String>`\ )
+:ref:`int<class_int>` **add_bone**\ (\ name\: :ref:`String<class_String>`\ )
 
-Adds a bone, with name ``name``. :ref:`get_bone_count<class_Skeleton3D_method_get_bone_count>` will become the bone index.
+Adds a new bone with the given name. Returns the new bone's index, or ``-1`` if this method fails.
+
+\ **Note:** Bone names should be unique, non empty, and cannot include the ``:`` and ``/`` characters.
 
 .. rst-class:: classref-item-separator
 
@@ -375,7 +377,7 @@ Force updates the bone transform for the bone at ``bone_idx`` and all of its chi
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_bone_children**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const|
 
-Returns an array containing the bone indexes of all the children node of the passed in bone, ``bone_idx``.
+Returns an array containing the bone indexes of all the child node of the passed in bone, ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
