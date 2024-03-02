@@ -276,7 +276,7 @@ Cross cursor. Typically appears over regions in which a drawing operation can be
 
 :ref:`CursorShape<enum_Input_CursorShape>` **CURSOR_WAIT** = ``4``
 
-Wait cursor. Indicates that the application is busy performing an operation. This cursor shape denotes that the application isn't usable during the operation (e.g. something is blocking its main thread).
+Wait cursor. Indicates that the application is busy performing an operation, and that it cannot be used during the operation (e.g. something is blocking its main thread).
 
 .. _class_Input_constant_CURSOR_BUSY:
 
@@ -284,7 +284,7 @@ Wait cursor. Indicates that the application is busy performing an operation. Thi
 
 :ref:`CursorShape<enum_Input_CursorShape>` **CURSOR_BUSY** = ``5``
 
-Busy cursor. Indicates that the application is busy performing an operation. This cursor shape denotes that the application is still usable during the operation.
+Busy cursor. Indicates that the application is busy performing an operation, and that it is still usable during the operation.
 
 .. _class_Input_constant_CURSOR_DRAG:
 
@@ -955,6 +955,8 @@ Feeds an :ref:`InputEvent<class_InputEvent>` to the game. Can be used to artific
 
 
 
+\ **Note:** Calling this function has no influence on the operating system. So for example sending an :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` will not move the OS mouse cursor to the specified position (use :ref:`warp_mouse<class_Input_method_warp_mouse>` instead) and sending :kbd:`Alt/Cmd + Tab` as :ref:`InputEventKey<class_InputEventKey>` won't toggle between active windows.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -993,7 +995,7 @@ Sets the acceleration value of the accelerometer sensor. Can be used for debuggi
 
 Sets a custom mouse cursor image, which is only visible inside the game window. The hotspot can also be specified. Passing ``null`` to the image parameter resets to the system cursor. See :ref:`CursorShape<enum_Input_CursorShape>` for the list of shapes.
 
-\ ``image``'s size must be lower than or equal to 256×256. To avoid rendering issues, sizes lower than or equal to 128×128 are recommended.
+\ ``image`` can be either :ref:`Texture2D<class_Texture2D>` or :ref:`Image<class_Image>` and its size must be lower than or equal to 256×256. To avoid rendering issues, sizes lower than or equal to 128×128 are recommended.
 
 \ ``hotspot`` must be within ``image``'s size.
 

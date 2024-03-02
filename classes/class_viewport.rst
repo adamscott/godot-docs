@@ -21,7 +21,7 @@ Abstract base class for viewports. Encapsulates drawing and interaction with a g
 Description
 -----------
 
-A Viewport creates a different view into the screen, or a sub-view inside another viewport. Children 2D Nodes will display on it, and children Camera3D 3D nodes will render on it too.
+A **Viewport** creates a different view into the screen, or a sub-view inside another viewport. Child 2D nodes will display on it, and child Camera3D 3D nodes will render on it too.
 
 Optionally, a viewport can have its own 2D or 3D world, so it doesn't share what it draws with other viewports.
 
@@ -236,6 +236,8 @@ Signals
 **gui_focus_changed**\ (\ node\: :ref:`Control<class_Control>`\ )
 
 Emitted when a Control node grabs keyboard focus.
+
+\ **Note:** A Control node losing focus doesn't cause this signal to be emitted.
 
 .. rst-class:: classref-item-separator
 
@@ -1878,16 +1880,16 @@ The texture *must* use a lossless compression format so that colors can be match
 
 ::
 
-    - 1x1 = rgb(0, 0, 0)     - #000000
-    - 1x2 = rgb(0, 85, 0)    - #005500
-    - 2x1 = rgb(85, 0, 0)    - #550000
-    - 2x2 = rgb(85, 85, 0)   - #555500
-    - 2x4 = rgb(85, 170, 0)  - #55aa00
-    - 4x2 = rgb(170, 85, 0)  - #aa5500
-    - 4x4 = rgb(170, 170, 0) - #aaaa00
-    - 4x8 = rgb(170, 255, 0) - #aaff00 - Not supported on most hardware
-    - 8x4 = rgb(255, 170, 0) - #ffaa00 - Not supported on most hardware
-    - 8x8 = rgb(255, 255, 0) - #ffff00 - Not supported on most hardware
+    - 1×1 = rgb(0, 0, 0)     - #000000
+    - 1×2 = rgb(0, 85, 0)    - #005500
+    - 2×1 = rgb(85, 0, 0)    - #550000
+    - 2×2 = rgb(85, 85, 0)   - #555500
+    - 2×4 = rgb(85, 170, 0)  - #55aa00
+    - 4×2 = rgb(170, 85, 0)  - #aa5500
+    - 4×4 = rgb(170, 170, 0) - #aaaa00
+    - 4×8 = rgb(170, 255, 0) - #aaff00 - Not supported on most hardware
+    - 8×4 = rgb(255, 170, 0) - #ffaa00 - Not supported on most hardware
+    - 8×8 = rgb(255, 255, 0) - #ffff00 - Not supported on most hardware
 
 .. rst-class:: classref-item-separator
 
