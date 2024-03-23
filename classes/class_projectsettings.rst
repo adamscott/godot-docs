@@ -475,6 +475,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`editor/naming/scene_name_casing<class_ProjectSettings_property_editor/naming/scene_name_casing>`                                                                                                     | ``2``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`editor/naming/script_name_casing<class_ProjectSettings_property_editor/naming/script_name_casing>`                                                                                                   | ``0``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`editor/run/main_run_args<class_ProjectSettings_property_editor/run/main_run_args>`                                                                                                                   | ``""``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`editor/script/search_in_file_extensions<class_ProjectSettings_property_editor/script/search_in_file_extensions>`                                                                                     | ``PackedStringArray("gd", "gdshader")``                                                          |
@@ -2088,7 +2090,7 @@ Limiting the FPS can be useful to reduce system power consumption, which reduces
 
 If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is set to ``Enabled`` or ``Adaptive``, it takes precedence and the forced FPS number cannot exceed the monitor's refresh rate.
 
-If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is ``Enabled``, on monitors with variable refresh rate enabled (G-Sync/FreeSync), using a FPS limit a few frames lower than the monitor's refresh rate will `reduce input lag while avoiding tearing <https://blurbusters.com/howto-low-lag-vsync-on/>`__.
+If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is ``Enabled``, on monitors with variable refresh rate enabled (G-Sync/FreeSync), using an FPS limit a few frames lower than the monitor's refresh rate will `reduce input lag while avoiding tearing <https://blurbusters.com/howto-low-lag-vsync-on/>`__.
 
 If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is ``Disabled``, limiting the FPS to a high value that can be consistently reached on the system can reduce input lag compared to an uncapped framerate. Since this works by ensuring the GPU load is lower than 100%, this latency reduction is only effective in GPU-bottlenecked scenarios, not CPU-bottlenecked scenarios.
 
@@ -2528,6 +2530,8 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 :ref:`int<class_int>` **debug/gdscript/warnings/constant_used_as_function** = ``1``
 
+**Deprecated:** This warning is never produced. Instead, an error is generated if the expression type is known at compile time.
+
 When set to ``warn`` or ``error``, produces a warning or an error respectively when a constant is used as a function.
 
 .. rst-class:: classref-item-separator
@@ -2541,6 +2545,8 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 :ref:`int<class_int>` **debug/gdscript/warnings/deprecated_keyword** = ``1``
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when deprecated keywords are used.
+
+\ **Note:** There are currently no deprecated keywords, so this warning is never produced.
 
 .. rst-class:: classref-item-separator
 
@@ -2587,6 +2593,8 @@ If ``true``, scripts in the ``res://addons`` folder will not generate warnings.
 .. rst-class:: classref-property
 
 :ref:`int<class_int>` **debug/gdscript/warnings/function_used_as_property** = ``1``
+
+**Deprecated:** This warning is never produced. When a function is used as a property, a :ref:`Callable<class_Callable>` is returned.
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when using a function as if it is a property.
 
@@ -2721,6 +2729,8 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 .. rst-class:: classref-property
 
 :ref:`int<class_int>` **debug/gdscript/warnings/property_used_as_function** = ``1``
+
+**Deprecated:** This warning is never produced. Instead, an error is generated if the expression type is known at compile time.
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when using a property as if it is a function.
 
@@ -3012,7 +3022,7 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 :ref:`int<class_int>` **debug/gdscript/warnings/unused_signal** = ``1``
 
-When set to ``warn`` or ``error``, produces a warning or an error respectively when a signal is declared but never emitted.
+When set to ``warn`` or ``error``, produces a warning or an error respectively when a signal is declared but never explicitly used in the class.
 
 .. rst-class:: classref-item-separator
 
@@ -4366,7 +4376,7 @@ The format of the default signal callback name when a signal connects to the sam
 
 :ref:`int<class_int>` **editor/naming/node_name_casing** = ``0``
 
-When creating node names automatically, set the type of casing in this project. This is mostly an editor setting.
+When creating node names automatically, set the type of casing to use in this project. This is mostly an editor setting.
 
 .. rst-class:: classref-item-separator
 
@@ -4390,7 +4400,19 @@ What to use to separate node name from number. This is mostly an editor setting.
 
 :ref:`int<class_int>` **editor/naming/scene_name_casing** = ``2``
 
-When generating file names from scene root node, set the type of casing in this project. This is mostly an editor setting.
+When generating scene file names from scene root node, set the type of casing to use in this project. This is mostly an editor setting.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_editor/naming/script_name_casing:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **editor/naming/script_name_casing** = ``0``
+
+When generating script file names from the selected node, set the type of casing to use in this project. This is mostly an editor setting.
 
 .. rst-class:: classref-item-separator
 
@@ -4406,7 +4428,7 @@ The command-line arguments to append to Godot's own command line when running th
 
 It is possible to make another executable run Godot by using the ``%command%`` placeholder. The placeholder will be replaced with Godot's own command line. Program-specific arguments should be placed *before* the placeholder, whereas Godot-specific arguments should be placed *after* the placeholder.
 
-For example, this can be used to force the project to run on the dedicated GPU in a NVIDIA Optimus system on Linux:
+For example, this can be used to force the project to run on the dedicated GPU in an NVIDIA Optimus system on Linux:
 
 ::
 
@@ -4514,7 +4536,7 @@ Override for :ref:`filesystem/import/blender/enabled<class_ProjectSettings_prope
 
 If ``true``, Autodesk FBX 3D scene files with the ``.fbx`` extension will be imported by converting them to glTF 2.0.
 
-This requires configuring a path to a FBX2glTF executable in the editor settings at :ref:`EditorSettings.filesystem/import/fbx2gltf/fbx2gltf_path<class_EditorSettings_property_filesystem/import/fbx2gltf/fbx2gltf_path>`.
+This requires configuring a path to an FBX2glTF executable in the editor settings at :ref:`EditorSettings.filesystem/import/fbx2gltf/fbx2gltf_path<class_EditorSettings_property_filesystem/import/fbx2gltf/fbx2gltf_path>`.
 
 .. rst-class:: classref-item-separator
 
