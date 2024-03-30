@@ -75,6 +75,8 @@ Properties
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`highlight_current_line<class_TextEdit_property_highlight_current_line>`                               | ``false``                                                                           |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`indent_wrapped_lines<class_TextEdit_property_indent_wrapped_lines>`                                   | ``false``                                                                           |
+   +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                       | :ref:`language<class_TextEdit_property_language>`                                                           | ``""``                                                                              |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`middle_mouse_paste_enabled<class_TextEdit_property_middle_mouse_paste_enabled>`                       | ``true``                                                                            |
@@ -400,6 +402,8 @@ Methods
    | |void|                                            | :ref:`set_tab_size<class_TextEdit_method_set_tab_size>`\ (\ size\: :ref:`int<class_int>`\ )                                                                                                                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`set_tooltip_request_func<class_TextEdit_method_set_tooltip_request_func>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`skip_selection_for_next_occurrence<class_TextEdit_method_skip_selection_for_next_occurrence>`\ (\ )                                                                                                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`start_action<class_TextEdit_method_start_action>`\ (\ action\: :ref:`EditAction<enum_TextEdit_EditAction>`\ )                                                                                                                                                                |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1329,6 +1333,23 @@ If ``true``, all occurrences of the selected text will be highlighted.
 - :ref:`bool<class_bool>` **is_highlight_current_line_enabled**\ (\ )
 
 If ``true``, the line containing the cursor is highlighted.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextEdit_property_indent_wrapped_lines:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **indent_wrapped_lines** = ``false``
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_indent_wrapped_lines**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_indent_wrapped_lines**\ (\ )
+
+If ``true``, all wrapped lines are indented to the same amount as the unwrapped line.
 
 .. rst-class:: classref-item-separator
 
@@ -3422,6 +3443,18 @@ Sets the tab size for the **TextEdit** to use.
 |void| **set_tooltip_request_func**\ (\ callback\: :ref:`Callable<class_Callable>`\ )
 
 Provide custom tooltip text. The callback method must take the following args: ``hovered_word: String``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextEdit_method_skip_selection_for_next_occurrence:
+
+.. rst-class:: classref-method
+
+|void| **skip_selection_for_next_occurrence**\ (\ )
+
+Moves a selection and a caret for the next occurrence of the current selection. If there is no active selection, moves to the next occurrence of the word under caret.
 
 .. rst-class:: classref-item-separator
 

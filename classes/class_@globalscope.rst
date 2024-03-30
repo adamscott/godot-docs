@@ -77,6 +77,8 @@ Properties
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`Marshalls<class_Marshalls>`                             | :ref:`Marshalls<class_@GlobalScope_property_Marshalls>`                             |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`NativeMenu<class_NativeMenu>`                           | :ref:`NativeMenu<class_@GlobalScope_property_NativeMenu>`                           |
+   +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`NavigationMeshGenerator<class_NavigationMeshGenerator>` | :ref:`NavigationMeshGenerator<class_@GlobalScope_property_NavigationMeshGenerator>` |
    +---------------------------------------------------------------+-------------------------------------------------------------------------------------+
    | :ref:`NavigationServer2D<class_NavigationServer2D>`           | :ref:`NavigationServer2D<class_@GlobalScope_property_NavigationServer2D>`           |
@@ -4957,6 +4959,20 @@ The :ref:`Marshalls<class_Marshalls>` singleton.
 
 ----
 
+.. _class_@GlobalScope_property_NativeMenu:
+
+.. rst-class:: classref-property
+
+:ref:`NativeMenu<class_NativeMenu>` **NativeMenu**
+
+The :ref:`NativeMenu<class_NativeMenu>` singleton.
+
+\ **Note:** Only implemented on macOS.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_@GlobalScope_property_NavigationMeshGenerator:
 
 .. rst-class:: classref-property
@@ -6833,7 +6849,7 @@ For complex use cases where multiple ranges are needed, consider using :ref:`Cur
 
 :ref:`int<class_int>` **rid_allocate_id**\ (\ )
 
-Allocates a unique ID which can be used by the implementation to construct a RID. This is used mainly from native extensions to implement servers.
+Allocates a unique ID which can be used by the implementation to construct an RID. This is used mainly from native extensions to implement servers.
 
 .. rst-class:: classref-item-separator
 
@@ -6845,7 +6861,7 @@ Allocates a unique ID which can be used by the implementation to construct a RID
 
 :ref:`RID<class_RID>` **rid_from_int64**\ (\ base\: :ref:`int<class_int>`\ )
 
-Creates a RID from a ``base``. This is used mainly from native extensions to build servers.
+Creates an RID from a ``base``. This is used mainly from native extensions to build servers.
 
 .. rst-class:: classref-item-separator
 
