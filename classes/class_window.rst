@@ -56,6 +56,8 @@ Properties
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`extend_to_title<class_Window_property_extend_to_title>`                     | ``false``                |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                                         | :ref:`force_native<class_Window_property_force_native>`                           | ``false``                |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`WindowInitialPosition<enum_Window_WindowInitialPosition>` | :ref:`initial_position<class_Window_property_initial_position>`                   | ``0``                    |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------+--------------------------+
    | :ref:`bool<class_bool>`                                         | :ref:`keep_title_visible<class_Window_property_keep_title_visible>`               | ``false``                |
@@ -1076,6 +1078,23 @@ If ``true``, the **Window** contents is expanded to the full size of the window,
 
 ----
 
+.. _class_Window_property_force_native:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **force_native** = ``false``
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_force_native**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **get_force_native**\ (\ )
+
+If ``true``, native window will be used regardless of parent viewport and project settings.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Window_property_initial_position:
 
 .. rst-class:: classref-property
@@ -1237,6 +1256,8 @@ Passing an empty array will disable passthrough support (all mouse events will b
 \ **Note:** On Windows, the portion of a window that lies outside the region is not drawn, while on Linux (X11) and macOS it is.
 
 \ **Note:** This property is implemented on Linux (X11), macOS and Windows.
+
+**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
 
 .. rst-class:: classref-item-separator
 
