@@ -23,7 +23,7 @@ Provides a low-level interface for creating parsers for `XML <https://en.wikiped
 
 To parse XML, you must open a file with the :ref:`open<class_XMLParser_method_open>` method or a buffer with the :ref:`open_buffer<class_XMLParser_method_open_buffer>` method. Then, the :ref:`read<class_XMLParser_method_read>` method must be called to parse the next nodes. Most of the methods take into consideration the currently parsed node.
 
-Here is an example of using **XMLParser** to parse a SVG file (which is based on XML), printing each element and its attributes as a dictionary:
+Here is an example of using **XMLParser** to parse an SVG file (which is based on XML), printing each element and its attributes as a dictionary:
 
 
 .. tabs::
@@ -276,7 +276,9 @@ Returns the contents of a text node. This method will raise an error if the curr
 
 :ref:`String<class_String>` **get_node_name**\ (\ ) |const|
 
-Returns the name of an element node. This method will raise an error if the currently parsed node is not of :ref:`NODE_ELEMENT<class_XMLParser_constant_NODE_ELEMENT>` or :ref:`NODE_ELEMENT_END<class_XMLParser_constant_NODE_ELEMENT_END>` type.
+Returns the name of a node. This method will raise an error if the currently parsed node is a text node.
+
+\ **Note:** The content of a :ref:`NODE_CDATA<class_XMLParser_constant_NODE_CDATA>` node and the comment string of a :ref:`NODE_COMMENT<class_XMLParser_constant_NODE_COMMENT>` node are also considered names.
 
 .. rst-class:: classref-item-separator
 
