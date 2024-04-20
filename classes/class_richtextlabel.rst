@@ -36,9 +36,9 @@ Tutorials
 
 - :doc:`BBCode in RichTextLabel <../tutorials/ui/bbcode_in_richtextlabel>`
 
-- `GUI Rich Text/BBcode Demo <https://godotengine.org/asset-library/asset/132>`__
+- `Rich Text Label with BBCode Demo <https://godotengine.org/asset-library/asset/2774>`__
 
-- `OS Test Demo <https://godotengine.org/asset-library/asset/677>`__
+- `Operating System Testing Demo <https://godotengine.org/asset-library/asset/2789>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -610,6 +610,8 @@ If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_co
 
 If ``true``, the label uses BBCode formatting.
 
+\ **Note:** This only affects the contents of :ref:`text<class_RichTextLabel_property_text>`, not the tag stack.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -1057,9 +1059,9 @@ Parses ``bbcode`` and adds tags to the tag stack as needed.
 
 |void| **clear**\ (\ )
 
-Clears the tag stack.
+Clears the tag stack, causing the label to display nothing.
 
-\ **Note:** This method will not modify :ref:`text<class_RichTextLabel_property_text>`, but setting :ref:`text<class_RichTextLabel_property_text>` to an empty string also clears the stack.
+\ **Note:** This method does not affect :ref:`text<class_RichTextLabel_property_text>`, and its contents will show again if the label is redrawn. However, setting :ref:`text<class_RichTextLabel_property_text>` to an empty :ref:`String<class_String>` also clears the stack.
 
 .. rst-class:: classref-item-separator
 

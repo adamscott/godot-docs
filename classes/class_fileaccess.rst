@@ -71,7 +71,7 @@ Tutorials
 
 - :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/676>`__
+- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -234,6 +234,8 @@ Opens the file for read operations. The cursor is positioned at the beginning of
 
 Opens the file for write operations. The file is created if it does not exist, and truncated if it does.
 
+\ **Note:** When creating a file it must be in an already existing directory. To recursively create directories for a file path, see :ref:`DirAccess.make_dir_recursive<class_DirAccess_method_make_dir_recursive>`).
+
 .. _class_FileAccess_constant_READ_WRITE:
 
 .. rst-class:: classref-enumeration-constant
@@ -249,6 +251,8 @@ Opens the file for read and write operations. Does not truncate the file. The cu
 :ref:`ModeFlags<enum_FileAccess_ModeFlags>` **WRITE_READ** = ``7``
 
 Opens the file for read and write operations. The file is created if it does not exist, and truncated if it does. The cursor is positioned at the beginning of the file.
+
+\ **Note:** When creating a file it must be in an already existing directory. To recursively create directories for a file path, see :ref:`DirAccess.make_dir_recursive<class_DirAccess_method_make_dir_recursive>`).
 
 .. rst-class:: classref-item-separator
 
@@ -602,7 +606,7 @@ Text is interpreted as being UTF-8 encoded. Text values must be enclosed in doub
 
 For example, the following CSV lines are valid and will be properly parsed as two strings each:
 
-::
+.. code:: text
 
     Alice,"Hello, Bob!"
     Bob,Alice! What a surprise!
@@ -710,7 +714,7 @@ Returns the size of the file in bytes.
 
 :ref:`String<class_String>` **get_line**\ (\ ) |const|
 
-Returns the next line of the file as a :ref:`String<class_String>`.
+Returns the next line of the file as a :ref:`String<class_String>`. The returned string doesn't include newline (``\n``) or carriage return (``\r``) characters, but does include any other leading or trailing whitespace.
 
 Text is interpreted as being UTF-8 encoded.
 
@@ -836,7 +840,7 @@ Returns the next bits from the file as a floating-point number.
 
 :ref:`String<class_String>` **get_sha256**\ (\ path\: :ref:`String<class_String>`\ ) |static|
 
-Returns a SHA-256 :ref:`String<class_String>` representing the file at the given path or an empty :ref:`String<class_String>` on failure.
+Returns an SHA-256 :ref:`String<class_String>` representing the file at the given path or an empty :ref:`String<class_String>` on failure.
 
 .. rst-class:: classref-item-separator
 
