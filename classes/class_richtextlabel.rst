@@ -36,9 +36,9 @@ Tutorials
 
 - :doc:`BBCode in RichTextLabel <../tutorials/ui/bbcode_in_richtextlabel>`
 
-- `GUI Rich Text/BBcode Demo <https://godotengine.org/asset-library/asset/132>`__
+- `Rich Text Label with BBCode Demo <https://godotengine.org/asset-library/asset/2774>`__
 
-- `OS Test Demo <https://godotengine.org/asset-library/asset/677>`__
+- `Operating System Testing Demo <https://godotengine.org/asset-library/asset/2789>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -155,6 +155,8 @@ Methods
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`install_effect<class_RichTextLabel_method_install_effect>`\ (\ effect\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`invalidate_paragraph<class_RichTextLabel_method_invalidate_paragraph>`\ (\ paragraph\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`             | :ref:`is_menu_visible<class_RichTextLabel_method_is_menu_visible>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`             | :ref:`is_ready<class_RichTextLabel_method_is_ready>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -223,7 +225,7 @@ Methods
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`push_underline<class_RichTextLabel_method_push_underline>`\ (\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`remove_paragraph<class_RichTextLabel_method_remove_paragraph>`\ (\ paragraph\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+   | :ref:`bool<class_bool>`             | :ref:`remove_paragraph<class_RichTextLabel_method_remove_paragraph>`\ (\ paragraph\: :ref:`int<class_int>`, no_invalidate\: :ref:`bool<class_bool>` = false\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`scroll_to_line<class_RichTextLabel_method_scroll_to_line>`\ (\ line\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
    +-------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -609,6 +611,8 @@ If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_co
 - :ref:`bool<class_bool>` **is_using_bbcode**\ (\ )
 
 If ``true``, the label uses BBCode formatting.
+
+\ **Note:** This only affects the contents of :ref:`text<class_RichTextLabel_property_text>`, not the tag stack.
 
 .. rst-class:: classref-item-separator
 
@@ -1057,9 +1061,9 @@ Parses ``bbcode`` and adds tags to the tag stack as needed.
 
 |void| **clear**\ (\ )
 
-Clears the tag stack.
+Clears the tag stack, causing the label to display nothing.
 
-\ **Note:** This method will not modify :ref:`text<class_RichTextLabel_property_text>`, but setting :ref:`text<class_RichTextLabel_property_text>` to an empty string also clears the stack.
+\ **Note:** This method does not affect :ref:`text<class_RichTextLabel_property_text>`, and its contents will show again if the label is redrawn. However, setting :ref:`text<class_RichTextLabel_property_text>` to an empty :ref:`String<class_String>` also clears the stack.
 
 .. rst-class:: classref-item-separator
 
@@ -1380,6 +1384,18 @@ Registering the above effect in RichTextLabel from script:
     
         # Alternatively, if not using `class_name` in the script that extends RichTextEffect:
         install_effect(preload("res://effect.gd").new())
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_RichTextLabel_method_invalidate_paragraph:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **invalidate_paragraph**\ (\ paragraph\: :ref:`int<class_int>`\ )
+
+Invalidates ``paragraph`` and all subsequent paragraphs cache.
 
 .. rst-class:: classref-item-separator
 
@@ -1803,11 +1819,13 @@ Adds a ``[u]`` tag to the tag stack.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **remove_paragraph**\ (\ paragraph\: :ref:`int<class_int>`\ )
+:ref:`bool<class_bool>` **remove_paragraph**\ (\ paragraph\: :ref:`int<class_int>`, no_invalidate\: :ref:`bool<class_bool>` = false\ )
 
 Removes a paragraph of content from the label. Returns ``true`` if the paragraph exists.
 
 The ``paragraph`` argument is the index of the paragraph to remove, it can take values in the interval ``[0, get_paragraph_count() - 1]``.
+
+If ``no_invalidate`` is set to ``true``, cache for the subsequent paragraphs is not invalidated. Use it for faster updates if deleted paragraph is fully self-contained (have no unclosed tags), or this call is part of the complex edit operation and :ref:`invalidate_paragraph<class_RichTextLabel_method_invalidate_paragraph>` will be called at the end of operation.
 
 .. rst-class:: classref-item-separator
 

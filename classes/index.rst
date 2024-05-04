@@ -119,6 +119,7 @@ Nodes
     class_gpuparticlescollisionsphere3d
     class_graphedit
     class_graphelement
+    class_graphframe
     class_graphnode
     class_gridcontainer
     class_gridmap
@@ -171,10 +172,15 @@ Nodes
     class_node3d
     class_occluderinstance3d
     class_omnilight3d
+    class_openxrcompositionlayer
+    class_openxrcompositionlayercylinder
+    class_openxrcompositionlayerequirect
+    class_openxrcompositionlayerquad
     class_openxrhand
     class_optionbutton
     class_panel
     class_panelcontainer
+    class_parallax2d
     class_parallaxbackground
     class_parallaxlayer
     class_path2d
@@ -183,6 +189,7 @@ Nodes
     class_pathfollow3d
     class_physicalbone2d
     class_physicalbone3d
+    class_physicalbonesimulator3d
     class_physicsbody2d
     class_physicsbody3d
     class_pinjoint2d
@@ -217,6 +224,7 @@ Nodes
     class_skeleton2d
     class_skeleton3d
     class_skeletonik3d
+    class_skeletonmodifier3d
     class_slider
     class_sliderjoint3d
     class_softbody3d
@@ -239,7 +247,7 @@ Nodes
     class_textureprogressbar
     class_texturerect
     class_tilemap
-    class_tilemaplayergroup
+    class_tilemaplayer
     class_timer
     class_touchscreenbutton
     class_tree
@@ -319,6 +327,7 @@ Resources
     class_audioeffecteq21
     class_audioeffecteq6
     class_audioeffectfilter
+    class_audioeffecthardlimiter
     class_audioeffecthighpassfilter
     class_audioeffecthighshelffilter
     class_audioeffectlimiter
@@ -334,11 +343,14 @@ Resources
     class_audioeffectstereoenhance
     class_audiostream
     class_audiostreamgenerator
+    class_audiostreaminteractive
     class_audiostreammicrophone
     class_audiostreammp3
     class_audiostreamoggvorbis
+    class_audiostreamplaylist
     class_audiostreampolyphonic
     class_audiostreamrandomizer
+    class_audiostreamsynchronized
     class_audiostreamwav
     class_basematerial3d
     class_bitmap
@@ -584,6 +596,7 @@ Resources
     class_visualshadernodefloatfunc
     class_visualshadernodefloatop
     class_visualshadernodefloatparameter
+    class_visualshadernodeframe
     class_visualshadernodefresnel
     class_visualshadernodeglobalexpression
     class_visualshadernodegroupbase
@@ -690,9 +703,12 @@ Other objects
     class_audioserver
     class_audiostreamgeneratorplayback
     class_audiostreamplayback
+    class_audiostreamplaybackinteractive
     class_audiostreamplaybackoggvorbis
+    class_audiostreamplaybackplaylist
     class_audiostreamplaybackpolyphonic
     class_audiostreamplaybackresampled
+    class_audiostreamplaybacksynchronized
     class_callbacktweener
     class_camerafeed
     class_cameraserver
@@ -782,6 +798,7 @@ Other objects
     class_multiplayerpeer
     class_multiplayerpeerextension
     class_mutex
+    class_nativemenu
     class_navigationmeshgenerator
     class_navigationpathqueryparameters2d
     class_navigationpathqueryparameters3d
@@ -936,6 +953,7 @@ Other objects
     class_workerthreadpool
     class_xmlparser
     class_xrbodytracker
+    class_xrcontrollertracker
     class_xrfacetracker
     class_xrhandtracker
     class_xrinterface
@@ -943,6 +961,7 @@ Other objects
     class_xrpose
     class_xrpositionaltracker
     class_xrserver
+    class_xrtracker
     class_zippacker
     class_zipreader
 
@@ -1033,6 +1052,7 @@ Variant types
     class_packedstringarray
     class_packedvector2array
     class_packedvector3array
+    class_packedvector4array
     class_plane
     class_projection
     class_quaternion
