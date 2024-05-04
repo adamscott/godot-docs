@@ -46,7 +46,7 @@ Methods
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                  | :ref:`clipboard_set_primary<class_DisplayServer_method_clipboard_set_primary>`\ (\ clipboard_primary\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                                   | :ref:`create_status_indicator<class_DisplayServer_method_create_status_indicator>`\ (\ icon\: :ref:`Image<class_Image>`, tooltip\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                                                                                                                                                                                                                       |
+   | :ref:`int<class_int>`                                                   | :ref:`create_status_indicator<class_DisplayServer_method_create_status_indicator>`\ (\ icon\: :ref:`Texture2D<class_Texture2D>`, tooltip\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                                                                                                                                                                                                               |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`CursorShape<enum_DisplayServer_CursorShape>`                      | :ref:`cursor_get_shape<class_DisplayServer_method_cursor_get_shape>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -260,9 +260,13 @@ Methods
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                  | :ref:`set_system_theme_change_callback<class_DisplayServer_method_set_system_theme_change_callback>`\ (\ callable\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                                                                                                                                                                                                                                                                              |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                               | :ref:`status_indicator_get_rect<class_DisplayServer_method_status_indicator_get_rect>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                  | :ref:`status_indicator_set_callback<class_DisplayServer_method_status_indicator_set_callback>`\ (\ id\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                                                                                                                                                                                                                                                        |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                  | :ref:`status_indicator_set_icon<class_DisplayServer_method_status_indicator_set_icon>`\ (\ id\: :ref:`int<class_int>`, icon\: :ref:`Image<class_Image>`\ )                                                                                                                                                                                                                                                                                                                                                                                                          |
+   | |void|                                                                  | :ref:`status_indicator_set_icon<class_DisplayServer_method_status_indicator_set_icon>`\ (\ id\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ )                                                                                                                                                                                                                                                                                                                                                                                                  |
+   +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`status_indicator_set_menu<class_DisplayServer_method_status_indicator_set_menu>`\ (\ id\: :ref:`int<class_int>`, menu_rid\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                          |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                  | :ref:`status_indicator_set_tooltip<class_DisplayServer_method_status_indicator_set_tooltip>`\ (\ id\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                                                                                                                                                                               |
    +-------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -410,6 +414,8 @@ enum **Feature**:
 
 :ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_GLOBAL_MENU** = ``0``
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Display server supports global menu. This allows the application to display its menu items in the operating system's top bar. **macOS**
 
 .. _class_DisplayServer_constant_FEATURE_SUBWINDOWS:
@@ -482,7 +488,7 @@ Display server supports setting the mouse cursor shape to a custom image. **Wind
 
 :ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_NATIVE_DIALOG** = ``9``
 
-Display server supports spawning dialogs using the operating system's native look-and-feel. **Windows, macOS, Linux (X11/Wayland)**
+Display server supports spawning text dialogs using the operating system's native look-and-feel. See :ref:`dialog_show<class_DisplayServer_method_dialog_show>`. **Windows, macOS**
 
 .. _class_DisplayServer_constant_FEATURE_IME:
 
@@ -587,6 +593,22 @@ Display server supports application status indicators.
 :ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_NATIVE_HELP** = ``23``
 
 Display server supports native help system search callbacks. See :ref:`help_set_search_callbacks<class_DisplayServer_method_help_set_search_callbacks>`.
+
+.. _class_DisplayServer_constant_FEATURE_NATIVE_DIALOG_INPUT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_NATIVE_DIALOG_INPUT** = ``24``
+
+Display server supports spawning text input dialogs using the operating system's native look-and-feel. See :ref:`dialog_input_text<class_DisplayServer_method_dialog_input_text>`. **Windows, macOS**
+
+.. _class_DisplayServer_constant_FEATURE_NATIVE_DIALOG_FILE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_DisplayServer_Feature>` **FEATURE_NATIVE_DIALOG_FILE** = ``25``
+
+Display server supports spawning dialogs for selecting files or directories using the operating system's native look-and-feel. See :ref:`file_dialog_show<class_DisplayServer_method_file_dialog_show>` and :ref:`file_dialog_with_options_show<class_DisplayServer_method_file_dialog_with_options_show>`. **Windows, macOS, Linux (X11/Wayland)**
 
 .. rst-class:: classref-item-separator
 
@@ -1556,7 +1578,7 @@ Sets the user's `primary <https://unix.stackexchange.com/questions/139191/whats-
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **create_status_indicator**\ (\ icon\: :ref:`Image<class_Image>`, tooltip\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ )
+:ref:`int<class_int>` **create_status_indicator**\ (\ icon\: :ref:`Texture2D<class_Texture2D>`, tooltip\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ )
 
 Creates a new application status indicator with the specified icon, tooltip, and activation callback.
 
@@ -1620,9 +1642,9 @@ Removes the application status indicator.
 
 :ref:`Error<enum_@GlobalScope_Error>` **dialog_input_text**\ (\ title\: :ref:`String<class_String>`, description\: :ref:`String<class_String>`, existing_text\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ )
 
-Shows a text input dialog which uses the operating system's native look-and-feel. ``callback`` will be called with a :ref:`String<class_String>` argument equal to the text field's contents when the dialog is closed for any reason.
+Shows a text input dialog which uses the operating system's native look-and-feel. ``callback`` should accept a single :ref:`String<class_String>` parameter which contains the text field's contents.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG_INPUT<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG_INPUT>` feature. Supported platforms include macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1634,9 +1656,9 @@ Shows a text input dialog which uses the operating system's native look-and-feel
 
 :ref:`Error<enum_@GlobalScope_Error>` **dialog_show**\ (\ title\: :ref:`String<class_String>`, description\: :ref:`String<class_String>`, buttons\: :ref:`PackedStringArray<class_PackedStringArray>`, callback\: :ref:`Callable<class_Callable>`\ )
 
-Shows a text dialog which uses the operating system's native look-and-feel. ``callback`` will be called when the dialog is closed for any reason.
+Shows a text dialog which uses the operating system's native look-and-feel. ``callback`` should accept a single :ref:`int<class_int>` parameter which corresponds to the index of the pressed button.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG>` feature. Supported platforms include macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1664,9 +1686,11 @@ Allows the ``process_id`` PID to steal focus from this window. In other words, t
 
 Displays OS native dialog for selecting files or directories in the file system.
 
+Each filter string in the ``filters`` array should be formatted like this: ``*.txt,*.doc;Text Files``. The description text of the filter is optional and can be omitted. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
+
 Callbacks have the following arguments: ``status: bool, selected_paths: PackedStringArray, selected_filter_index: int``.
 
-\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG>` feature. Supported platforms include Linux (X11/Wayland), Windows, and macOS.
+\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG_FILE<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG_FILE>` feature. Supported platforms include Linux (X11/Wayland), Windows, and macOS.
 
 \ **Note:** ``current_directory`` might be ignored.
 
@@ -1688,6 +1712,8 @@ Callbacks have the following arguments: ``status: bool, selected_paths: PackedSt
 
 Displays OS native dialog for selecting files or directories in the file system with additional user selectable options.
 
+Each filter string in the ``filters`` array should be formatted like this: ``*.txt,*.doc;Text Files``. The description text of the filter is optional and can be omitted. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
+
 \ ``options`` is array of :ref:`Dictionary<class_Dictionary>`\ s with the following keys:
 
 - ``"name"`` - option's name :ref:`String<class_String>`.
@@ -1698,7 +1724,7 @@ Displays OS native dialog for selecting files or directories in the file system 
 
 Callbacks have the following arguments: ``status: bool, selected_paths: PackedStringArray, selected_filter_index: int, selected_option: Dictionary``.
 
-\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG>` feature. Supported platforms include Linux (X11/Wayland), Windows, and macOS.
+\ **Note:** This method is implemented if the display server has the :ref:`FEATURE_NATIVE_DIALOG_FILE<class_DisplayServer_constant_FEATURE_NATIVE_DIALOG_FILE>` feature. Supported platforms include Linux (X11/Wayland), Windows, and macOS.
 
 \ **Note:** ``current_directory`` might be ignored.
 
@@ -1864,7 +1890,7 @@ Returns ``true`` if positions of **OK** and **Cancel** buttons are swapped in di
 
 Returns the ID of the window at the specified screen ``position`` (in pixels). On multi-monitor setups, the screen position is relative to the virtual desktop area. On multi-monitor setups with different screen resolutions or orientations, the origin may be located outside any display like this:
 
-::
+.. code:: text
 
     * (0, 0)        +-------+
                     |       |
@@ -1897,6 +1923,8 @@ Returns the list of Godot window IDs belonging to this process.
 
 :ref:`int<class_int>` **global_menu_add_check_item**\ (\ menu_root\: :ref:`String<class_String>`, label\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>` = Callable(), key_callback\: :ref:`Callable<class_Callable>` = Callable(), tag\: :ref:`Variant<class_Variant>` = null, accelerator\: :ref:`Key<enum_@GlobalScope_Key>` = 0, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a new checkable item with text ``label`` to the global menu with ID ``menu_root``.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -1909,7 +1937,7 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -1927,6 +1955,8 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 :ref:`int<class_int>` **global_menu_add_icon_check_item**\ (\ menu_root\: :ref:`String<class_String>`, icon\: :ref:`Texture2D<class_Texture2D>`, label\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>` = Callable(), key_callback\: :ref:`Callable<class_Callable>` = Callable(), tag\: :ref:`Variant<class_Variant>` = null, accelerator\: :ref:`Key<enum_@GlobalScope_Key>` = 0, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a new checkable item with text ``label`` and icon ``icon`` to the global menu with ID ``menu_root``.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -1939,7 +1969,7 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -1957,6 +1987,8 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 :ref:`int<class_int>` **global_menu_add_icon_item**\ (\ menu_root\: :ref:`String<class_String>`, icon\: :ref:`Texture2D<class_Texture2D>`, label\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>` = Callable(), key_callback\: :ref:`Callable<class_Callable>` = Callable(), tag\: :ref:`Variant<class_Variant>` = null, accelerator\: :ref:`Key<enum_@GlobalScope_Key>` = 0, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a new item with text ``label`` and icon ``icon`` to the global menu with ID ``menu_root``.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -1969,7 +2001,7 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -1987,6 +2019,8 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 :ref:`int<class_int>` **global_menu_add_icon_radio_check_item**\ (\ menu_root\: :ref:`String<class_String>`, icon\: :ref:`Texture2D<class_Texture2D>`, label\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>` = Callable(), key_callback\: :ref:`Callable<class_Callable>` = Callable(), tag\: :ref:`Variant<class_Variant>` = null, accelerator\: :ref:`Key<enum_@GlobalScope_Key>` = 0, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a new radio-checkable item with text ``label`` and icon ``icon`` to the global menu with ID ``menu_root``.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -2001,7 +2035,7 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -2019,6 +2053,8 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 :ref:`int<class_int>` **global_menu_add_item**\ (\ menu_root\: :ref:`String<class_String>`, label\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>` = Callable(), key_callback\: :ref:`Callable<class_Callable>` = Callable(), tag\: :ref:`Variant<class_Variant>` = null, accelerator\: :ref:`Key<enum_@GlobalScope_Key>` = 0, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a new item with text ``label`` to the global menu with ID ``menu_root``.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -2031,7 +2067,7 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -2049,6 +2085,8 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 :ref:`int<class_int>` **global_menu_add_multistate_item**\ (\ menu_root\: :ref:`String<class_String>`, label\: :ref:`String<class_String>`, max_states\: :ref:`int<class_int>`, default_state\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>` = Callable(), key_callback\: :ref:`Callable<class_Callable>` = Callable(), tag\: :ref:`Variant<class_Variant>` = null, accelerator\: :ref:`Key<enum_@GlobalScope_Key>` = 0, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a new item with text ``label`` to the global menu with ID ``menu_root``.
 
 Contrarily to normal binary items, multistate items can have more than two states, as defined by ``max_states``. Each press or activate of the item will increase the state by one. The default value is defined by ``default_state``.
@@ -2065,7 +2103,7 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -2083,6 +2121,8 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 :ref:`int<class_int>` **global_menu_add_radio_check_item**\ (\ menu_root\: :ref:`String<class_String>`, label\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>` = Callable(), key_callback\: :ref:`Callable<class_Callable>` = Callable(), tag\: :ref:`Variant<class_Variant>` = null, accelerator\: :ref:`Key<enum_@GlobalScope_Key>` = 0, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a new radio-checkable item with text ``label`` to the global menu with ID ``menu_root``.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -2097,7 +2137,7 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -2115,6 +2155,8 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 :ref:`int<class_int>` **global_menu_add_separator**\ (\ menu_root\: :ref:`String<class_String>`, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds a separator between items to the global menu with ID ``menu_root``. Separators also occupy an index.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -2123,7 +2165,7 @@ Returns index of the inserted item, it's not guaranteed to be the same as ``inde
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -2141,6 +2183,8 @@ Returns index of the inserted item, it's not guaranteed to be the same as ``inde
 
 :ref:`int<class_int>` **global_menu_add_submenu_item**\ (\ menu_root\: :ref:`String<class_String>`, label\: :ref:`String<class_String>`, submenu\: :ref:`String<class_String>`, index\: :ref:`int<class_int>` = -1\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Adds an item that will act as a submenu of the global menu ``menu_root``. The ``submenu`` argument is the ID of the global menu root that will be shown when the item is clicked.
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
@@ -2149,7 +2193,7 @@ Returns index of the inserted item, it's not guaranteed to be the same as ``inde
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -2167,13 +2211,15 @@ Returns index of the inserted item, it's not guaranteed to be the same as ``inde
 
 |void| **global_menu_clear**\ (\ menu_root\: :ref:`String<class_String>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Removes all items from the global menu with ID ``menu_root``.
 
 \ **Note:** This method is implemented only on macOS.
 
 \ **Supported system menu IDs:**\ 
 
-::
+.. code:: text
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
@@ -2191,6 +2237,8 @@ Removes all items from the global menu with ID ``menu_root``.
 
 :ref:`Key<enum_@GlobalScope_Key>` **global_menu_get_item_accelerator**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns the accelerator of the item at index ``idx``. Accelerators are special combinations of keys that activate the item, no matter which control is focused.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2204,6 +2252,8 @@ Returns the accelerator of the item at index ``idx``. Accelerators are special c
 .. rst-class:: classref-method
 
 :ref:`Callable<class_Callable>` **global_menu_get_item_callback**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns the callback of the item at index ``idx``.
 
@@ -2219,6 +2269,8 @@ Returns the callback of the item at index ``idx``.
 
 :ref:`int<class_int>` **global_menu_get_item_count**\ (\ menu_root\: :ref:`String<class_String>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns number of items in the global menu with ID ``menu_root``.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2232,6 +2284,8 @@ Returns number of items in the global menu with ID ``menu_root``.
 .. rst-class:: classref-method
 
 :ref:`Texture2D<class_Texture2D>` **global_menu_get_item_icon**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns the icon of the item at index ``idx``.
 
@@ -2247,6 +2301,8 @@ Returns the icon of the item at index ``idx``.
 
 :ref:`int<class_int>` **global_menu_get_item_indentation_level**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns the horizontal offset of the item at the given ``idx``.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2261,7 +2317,9 @@ Returns the horizontal offset of the item at the given ``idx``.
 
 :ref:`int<class_int>` **global_menu_get_item_index_from_tag**\ (\ menu_root\: :ref:`String<class_String>`, tag\: :ref:`Variant<class_Variant>`\ ) |const|
 
-Returns the index of the item with the specified ``tag``. Index is automatically assigned to each item by the engine. Index can not be set manually.
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
+Returns the index of the item with the specified ``tag``. Indices are automatically assigned to each item by the engine, and cannot be set manually.
 
 \ **Note:** This method is implemented only on macOS.
 
@@ -2275,7 +2333,9 @@ Returns the index of the item with the specified ``tag``. Index is automatically
 
 :ref:`int<class_int>` **global_menu_get_item_index_from_text**\ (\ menu_root\: :ref:`String<class_String>`, text\: :ref:`String<class_String>`\ ) |const|
 
-Returns the index of the item with the specified ``text``. Index is automatically assigned to each item by the engine. Index can not be set manually.
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
+Returns the index of the item with the specified ``text``. Indices are automatically assigned to each item by the engine, and cannot be set manually.
 
 \ **Note:** This method is implemented only on macOS.
 
@@ -2288,6 +2348,8 @@ Returns the index of the item with the specified ``text``. Index is automaticall
 .. rst-class:: classref-method
 
 :ref:`Callable<class_Callable>` **global_menu_get_item_key_callback**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns the callback of the item accelerator at index ``idx``.
 
@@ -2303,6 +2365,8 @@ Returns the callback of the item accelerator at index ``idx``.
 
 :ref:`int<class_int>` **global_menu_get_item_max_states**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns number of states of a multistate item. See :ref:`global_menu_add_multistate_item<class_DisplayServer_method_global_menu_add_multistate_item>` for details.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2316,6 +2380,8 @@ Returns number of states of a multistate item. See :ref:`global_menu_add_multist
 .. rst-class:: classref-method
 
 :ref:`int<class_int>` **global_menu_get_item_state**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns the state of a multistate item. See :ref:`global_menu_add_multistate_item<class_DisplayServer_method_global_menu_add_multistate_item>` for details.
 
@@ -2331,6 +2397,8 @@ Returns the state of a multistate item. See :ref:`global_menu_add_multistate_ite
 
 :ref:`String<class_String>` **global_menu_get_item_submenu**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns the submenu ID of the item at index ``idx``. See :ref:`global_menu_add_submenu_item<class_DisplayServer_method_global_menu_add_submenu_item>` for more info on how to add a submenu.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2344,6 +2412,8 @@ Returns the submenu ID of the item at index ``idx``. See :ref:`global_menu_add_s
 .. rst-class:: classref-method
 
 :ref:`Variant<class_Variant>` **global_menu_get_item_tag**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns the metadata of the specified item, which might be of any type. You can set it with :ref:`global_menu_set_item_tag<class_DisplayServer_method_global_menu_set_item_tag>`, which provides a simple way of assigning context data to items.
 
@@ -2359,6 +2429,8 @@ Returns the metadata of the specified item, which might be of any type. You can 
 
 :ref:`String<class_String>` **global_menu_get_item_text**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns the text of the item at index ``idx``.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2372,6 +2444,8 @@ Returns the text of the item at index ``idx``.
 .. rst-class:: classref-method
 
 :ref:`String<class_String>` **global_menu_get_item_tooltip**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns the tooltip associated with the specified index ``idx``.
 
@@ -2387,6 +2461,8 @@ Returns the tooltip associated with the specified index ``idx``.
 
 :ref:`Dictionary<class_Dictionary>` **global_menu_get_system_menu_roots**\ (\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns Dictionary of supported system menu IDs and names.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2400,6 +2476,8 @@ Returns Dictionary of supported system menu IDs and names.
 .. rst-class:: classref-method
 
 :ref:`bool<class_bool>` **global_menu_is_item_checkable**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns ``true`` if the item at index ``idx`` is checkable in some way, i.e. if it has a checkbox or radio button.
 
@@ -2415,6 +2493,8 @@ Returns ``true`` if the item at index ``idx`` is checkable in some way, i.e. if 
 
 :ref:`bool<class_bool>` **global_menu_is_item_checked**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns ``true`` if the item at index ``idx`` is checked.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2428,6 +2508,8 @@ Returns ``true`` if the item at index ``idx`` is checked.
 .. rst-class:: classref-method
 
 :ref:`bool<class_bool>` **global_menu_is_item_disabled**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns ``true`` if the item at index ``idx`` is disabled. When it is disabled it can't be selected, or its action invoked.
 
@@ -2445,6 +2527,8 @@ See :ref:`global_menu_set_item_disabled<class_DisplayServer_method_global_menu_s
 
 :ref:`bool<class_bool>` **global_menu_is_item_hidden**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Returns ``true`` if the item at index ``idx`` is hidden.
 
 See :ref:`global_menu_set_item_hidden<class_DisplayServer_method_global_menu_set_item_hidden>` for more info on how to hide an item.
@@ -2460,6 +2544,8 @@ See :ref:`global_menu_set_item_hidden<class_DisplayServer_method_global_menu_set
 .. rst-class:: classref-method
 
 :ref:`bool<class_bool>` **global_menu_is_item_radio_checkable**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ ) |const|
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Returns ``true`` if the item at index ``idx`` has radio button-style checkability.
 
@@ -2477,6 +2563,8 @@ Returns ``true`` if the item at index ``idx`` has radio button-style checkabilit
 
 |void| **global_menu_remove_item**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Removes the item at index ``idx`` from the global menu ``menu_root``.
 
 \ **Note:** The indices of items after the removed item will be shifted by one.
@@ -2493,6 +2581,8 @@ Removes the item at index ``idx`` from the global menu ``menu_root``.
 
 |void| **global_menu_set_item_accelerator**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, keycode\: :ref:`Key<enum_@GlobalScope_Key>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Sets the accelerator of the item at index ``idx``. ``keycode`` can be a single :ref:`Key<enum_@GlobalScope_Key>`, or a combination of :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>`\ s and :ref:`Key<enum_@GlobalScope_Key>`\ s using bitwise OR such as ``KEY_MASK_CTRL | KEY_A`` (:kbd:`Ctrl + A`).
 
 \ **Note:** This method is implemented only on macOS.
@@ -2506,6 +2596,8 @@ Sets the accelerator of the item at index ``idx``. ``keycode`` can be a single :
 .. rst-class:: classref-method
 
 |void| **global_menu_set_item_callback**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Sets the callback of the item at index ``idx``. Callback is emitted when an item is pressed.
 
@@ -2523,6 +2615,8 @@ Sets the callback of the item at index ``idx``. Callback is emitted when an item
 
 |void| **global_menu_set_item_checkable**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, checkable\: :ref:`bool<class_bool>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Sets whether the item at index ``idx`` has a checkbox. If ``false``, sets the type of the item to plain text.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2536,6 +2630,8 @@ Sets whether the item at index ``idx`` has a checkbox. If ``false``, sets the ty
 .. rst-class:: classref-method
 
 |void| **global_menu_set_item_checked**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, checked\: :ref:`bool<class_bool>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Sets the checkstate status of the item at index ``idx``.
 
@@ -2551,6 +2647,8 @@ Sets the checkstate status of the item at index ``idx``.
 
 |void| **global_menu_set_item_disabled**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Enables/disables the item at index ``idx``. When it is disabled, it can't be selected and its action can't be invoked.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2565,6 +2663,8 @@ Enables/disables the item at index ``idx``. When it is disabled, it can't be sel
 
 |void| **global_menu_set_item_hidden**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, hidden\: :ref:`bool<class_bool>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Hides/shows the item at index ``idx``. When it is hidden, an item does not appear in a menu and its action cannot be invoked.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2578,6 +2678,8 @@ Hides/shows the item at index ``idx``. When it is hidden, an item does not appea
 .. rst-class:: classref-method
 
 |void| **global_menu_set_item_hover_callbacks**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Sets the callback of the item at index ``idx``. The callback is emitted when an item is hovered.
 
@@ -2595,6 +2697,8 @@ Sets the callback of the item at index ``idx``. The callback is emitted when an 
 
 |void| **global_menu_set_item_icon**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Replaces the :ref:`Texture2D<class_Texture2D>` icon of the specified ``idx``.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2611,6 +2715,8 @@ Replaces the :ref:`Texture2D<class_Texture2D>` icon of the specified ``idx``.
 
 |void| **global_menu_set_item_indentation_level**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, level\: :ref:`int<class_int>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Sets the horizontal offset of the item at the given ``idx``.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2624,6 +2730,8 @@ Sets the horizontal offset of the item at the given ``idx``.
 .. rst-class:: classref-method
 
 |void| **global_menu_set_item_key_callback**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, key_callback\: :ref:`Callable<class_Callable>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Sets the callback of the item at index ``idx``. Callback is emitted when its accelerator is activated.
 
@@ -2641,6 +2749,8 @@ Sets the callback of the item at index ``idx``. Callback is emitted when its acc
 
 |void| **global_menu_set_item_max_states**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, max_states\: :ref:`int<class_int>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Sets number of state of a multistate item. See :ref:`global_menu_add_multistate_item<class_DisplayServer_method_global_menu_add_multistate_item>` for details.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2654,6 +2764,8 @@ Sets number of state of a multistate item. See :ref:`global_menu_add_multistate_
 .. rst-class:: classref-method
 
 |void| **global_menu_set_item_radio_checkable**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, checkable\: :ref:`bool<class_bool>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Sets the type of the item at the specified index ``idx`` to radio button. If ``false``, sets the type of the item to plain text.
 
@@ -2671,6 +2783,8 @@ Sets the type of the item at the specified index ``idx`` to radio button. If ``f
 
 |void| **global_menu_set_item_state**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, state\: :ref:`int<class_int>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Sets the state of a multistate item. See :ref:`global_menu_add_multistate_item<class_DisplayServer_method_global_menu_add_multistate_item>` for details.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2684,6 +2798,8 @@ Sets the state of a multistate item. See :ref:`global_menu_add_multistate_item<c
 .. rst-class:: classref-method
 
 |void| **global_menu_set_item_submenu**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, submenu\: :ref:`String<class_String>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Sets the submenu of the item at index ``idx``. The submenu is the ID of a global menu root that would be shown when the item is clicked.
 
@@ -2699,6 +2815,8 @@ Sets the submenu of the item at index ``idx``. The submenu is the ID of a global
 
 |void| **global_menu_set_item_tag**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, tag\: :ref:`Variant<class_Variant>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Sets the metadata of an item, which may be of any type. You can later get it with :ref:`global_menu_get_item_tag<class_DisplayServer_method_global_menu_get_item_tag>`, which provides a simple way of assigning context data to items.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2712,6 +2830,8 @@ Sets the metadata of an item, which may be of any type. You can later get it wit
 .. rst-class:: classref-method
 
 |void| **global_menu_set_item_text**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Sets the text of the item at index ``idx``.
 
@@ -2727,6 +2847,8 @@ Sets the text of the item at index ``idx``.
 
 |void| **global_menu_set_item_tooltip**\ (\ menu_root\: :ref:`String<class_String>`, idx\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ )
 
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
+
 Sets the :ref:`String<class_String>` tooltip of the item at the specified index ``idx``.
 
 \ **Note:** This method is implemented only on macOS.
@@ -2740,6 +2862,8 @@ Sets the :ref:`String<class_String>` tooltip of the item at the specified index 
 .. rst-class:: classref-method
 
 |void| **global_menu_set_popup_callbacks**\ (\ menu_root\: :ref:`String<class_String>`, open_callback\: :ref:`Callable<class_Callable>`, close_callback\: :ref:`Callable<class_Callable>`\ )
+
+**Deprecated:** Use :ref:`NativeMenu<class_NativeMenu>` or :ref:`PopupMenu<class_PopupMenu>` instead.
 
 Registers callables to emit when the menu is respectively about to show or closed.
 
@@ -3015,7 +3139,7 @@ Returns the dots per inch density of the specified screen. If ``screen`` is :ref
 
 \ **Note:** On Android devices, the actual screen densities are grouped into six generalized densities:
 
-::
+.. code:: text
 
        ldpi - 120 dpi
        mdpi - 160 dpi
@@ -3100,7 +3224,7 @@ Returns color of the display pixel at the ``position``.
 
 Returns the screen's top-left corner position in pixels. On multi-monitor setups, the screen position is relative to the virtual desktop area. On multi-monitor setups with different screen resolutions or orientations, the origin may be located outside any display like this:
 
-::
+.. code:: text
 
     * (0, 0)        +-------+
                     |       |
@@ -3225,6 +3349,8 @@ Sets the ``screen``'s ``orientation``. See also :ref:`screen_get_orientation<cla
 
 Sets the window icon (usually displayed in the top-left corner) with an :ref:`Image<class_Image>`. To use icons in the operating system's native format, use :ref:`set_native_icon<class_DisplayServer_method_set_native_icon>` instead.
 
+\ **Note:** Requires support for :ref:`FEATURE_ICON<class_DisplayServer_constant_FEATURE_ICON>`.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -3236,6 +3362,8 @@ Sets the window icon (usually displayed in the top-left corner) with an :ref:`Im
 |void| **set_native_icon**\ (\ filename\: :ref:`String<class_String>`\ )
 
 Sets the window icon (usually displayed in the top-left corner) in the operating system's *native* format. The file at ``filename`` must be in ``.ico`` format on Windows or ``.icns`` on macOS. By using specially crafted ``.ico`` or ``.icns`` icons, :ref:`set_native_icon<class_DisplayServer_method_set_native_icon>` allows specifying different icons depending on the size the icon is displayed at. This size is determined by the operating system and user preferences (including the display scale factor). To use icons in other formats, use :ref:`set_icon<class_DisplayServer_method_set_icon>` instead.
+
+\ **Note:** Requires support for :ref:`FEATURE_NATIVE_ICON<class_DisplayServer_constant_FEATURE_NATIVE_ICON>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3255,6 +3383,20 @@ Sets the ``callable`` that should be called when system theme settings are chang
 
 ----
 
+.. _class_DisplayServer_method_status_indicator_get_rect:
+
+.. rst-class:: classref-method
+
+:ref:`Rect2<class_Rect2>` **status_indicator_get_rect**\ (\ id\: :ref:`int<class_int>`\ ) |const|
+
+Returns the rectangle for the given status indicator ``id`` in screen coordinates. If the status indicator is not visible, returns an empty :ref:`Rect2<class_Rect2>`.
+
+\ **Note:** This method is implemented on macOS and Windows.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_DisplayServer_method_status_indicator_set_callback:
 
 .. rst-class:: classref-method
@@ -3262,6 +3404,8 @@ Sets the ``callable`` that should be called when system theme settings are chang
 |void| **status_indicator_set_callback**\ (\ id\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ )
 
 Sets the application status indicator activation callback.
+
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -3271,9 +3415,29 @@ Sets the application status indicator activation callback.
 
 .. rst-class:: classref-method
 
-|void| **status_indicator_set_icon**\ (\ id\: :ref:`int<class_int>`, icon\: :ref:`Image<class_Image>`\ )
+|void| **status_indicator_set_icon**\ (\ id\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ )
 
 Sets the application status indicator icon.
+
+\ **Note:** This method is implemented on macOS and Windows.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_DisplayServer_method_status_indicator_set_menu:
+
+.. rst-class:: classref-method
+
+|void| **status_indicator_set_menu**\ (\ id\: :ref:`int<class_int>`, menu_rid\: :ref:`RID<class_RID>`\ )
+
+Sets the application status indicator native popup menu.
+
+\ **Note:** On macOS, the menu is activated by any mouse button. Its activation callback is *not* triggered.
+
+\ **Note:** On Windows, the menu is activated by the right mouse button, selecting the status icon and pressing :kbd:`Shift + F10`, or the applications key. The menu's activation callback for the other mouse buttons is still triggered.
+
+\ **Note:** Native popup is only supported if :ref:`NativeMenu<class_NativeMenu>` supports the :ref:`NativeMenu.FEATURE_POPUP_MENU<class_NativeMenu_constant_FEATURE_POPUP_MENU>` feature.
 
 .. rst-class:: classref-item-separator
 
@@ -3286,6 +3450,8 @@ Sets the application status indicator icon.
 |void| **status_indicator_set_tooltip**\ (\ id\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ )
 
 Sets the application status indicator tooltip.
+
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -3991,7 +4157,7 @@ Sets the ``callback`` that should be called when text is entered using the virtu
 
 |void| **window_set_max_size**\ (\ max_size\: :ref:`Vector2i<class_Vector2i>`, window_id\: :ref:`int<class_int>` = 0\ )
 
-Sets the maximum size of the window specified by ``window_id`` in pixels. Normally, the user will not be able to drag the window to make it smaller than the specified size. See also :ref:`window_get_max_size<class_DisplayServer_method_window_get_max_size>`.
+Sets the maximum size of the window specified by ``window_id`` in pixels. Normally, the user will not be able to drag the window to make it larger than the specified size. See also :ref:`window_get_max_size<class_DisplayServer_method_window_get_max_size>`.
 
 \ **Note:** It's recommended to change this value using :ref:`Window.max_size<class_Window_property_max_size>` instead.
 
@@ -4007,7 +4173,7 @@ Sets the maximum size of the window specified by ``window_id`` in pixels. Normal
 
 |void| **window_set_min_size**\ (\ min_size\: :ref:`Vector2i<class_Vector2i>`, window_id\: :ref:`int<class_int>` = 0\ )
 
-Sets the minimum size for the given window to ``min_size`` (in pixels). Normally, the user will not be able to drag the window to make it larger than the specified size. See also :ref:`window_get_min_size<class_DisplayServer_method_window_get_min_size>`.
+Sets the minimum size for the given window to ``min_size`` in pixels. Normally, the user will not be able to drag the window to make it smaller than the specified size. See also :ref:`window_get_min_size<class_DisplayServer_method_window_get_min_size>`.
 
 \ **Note:** It's recommended to change this value using :ref:`Window.min_size<class_Window_property_min_size>` instead.
 
@@ -4098,7 +4264,7 @@ Sets the bounding box of control, or menu item that was used to open the popup w
 
 Sets the position of the given window to ``position``. On multi-monitor setups, the screen position is relative to the virtual desktop area. On multi-monitor setups with different screen resolutions or orientations, the origin may be located outside any display like this:
 
-::
+.. code:: text
 
     * (0, 0)        +-------+
                     |       |
