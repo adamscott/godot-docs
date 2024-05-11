@@ -10,7 +10,7 @@
 Object
 ======
 
-**Inherited By:** :ref:`AudioServer<class_AudioServer>`, :ref:`CameraServer<class_CameraServer>`, :ref:`ClassDB<class_ClassDB>`, :ref:`DisplayServer<class_DisplayServer>`, :ref:`EditorFileSystemDirectory<class_EditorFileSystemDirectory>`, :ref:`EditorInterface<class_EditorInterface>`, :ref:`EditorPaths<class_EditorPaths>`, :ref:`EditorSelection<class_EditorSelection>`, :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>`, :ref:`EditorVCSInterface<class_EditorVCSInterface>`, :ref:`Engine<class_Engine>`, :ref:`EngineDebugger<class_EngineDebugger>`, :ref:`FramebufferCacheRD<class_FramebufferCacheRD>`, :ref:`GDExtensionManager<class_GDExtensionManager>`, :ref:`Geometry2D<class_Geometry2D>`, :ref:`Geometry3D<class_Geometry3D>`, :ref:`GodotSharp<class_GodotSharp>`, :ref:`Input<class_Input>`, :ref:`InputMap<class_InputMap>`, :ref:`IP<class_IP>`, :ref:`JavaClassWrapper<class_JavaClassWrapper>`, :ref:`JavaScriptBridge<class_JavaScriptBridge>`, :ref:`JNISingleton<class_JNISingleton>`, :ref:`JSONRPC<class_JSONRPC>`, :ref:`MainLoop<class_MainLoop>`, :ref:`Marshalls<class_Marshalls>`, :ref:`MovieWriter<class_MovieWriter>`, :ref:`NavigationMeshGenerator<class_NavigationMeshGenerator>`, :ref:`NavigationServer2D<class_NavigationServer2D>`, :ref:`NavigationServer3D<class_NavigationServer3D>`, :ref:`Node<class_Node>`, :ref:`OpenXRExtensionWrapperExtension<class_OpenXRExtensionWrapperExtension>`, :ref:`OpenXRInteractionProfileMetadata<class_OpenXRInteractionProfileMetadata>`, :ref:`OS<class_OS>`, :ref:`Performance<class_Performance>`, :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>`, :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>`, :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`, :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>`, :ref:`PhysicsServer2D<class_PhysicsServer2D>`, :ref:`PhysicsServer2DManager<class_PhysicsServer2DManager>`, :ref:`PhysicsServer3D<class_PhysicsServer3D>`, :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>`, :ref:`PhysicsServer3DRenderingServerHandler<class_PhysicsServer3DRenderingServerHandler>`, :ref:`ProjectSettings<class_ProjectSettings>`, :ref:`RefCounted<class_RefCounted>`, :ref:`RenderData<class_RenderData>`, :ref:`RenderingDevice<class_RenderingDevice>`, :ref:`RenderingServer<class_RenderingServer>`, :ref:`RenderSceneData<class_RenderSceneData>`, :ref:`ResourceLoader<class_ResourceLoader>`, :ref:`ResourceSaver<class_ResourceSaver>`, :ref:`ResourceUID<class_ResourceUID>`, :ref:`ScriptLanguage<class_ScriptLanguage>`, :ref:`TextServerManager<class_TextServerManager>`, :ref:`ThemeDB<class_ThemeDB>`, :ref:`TileData<class_TileData>`, :ref:`Time<class_Time>`, :ref:`TranslationServer<class_TranslationServer>`, :ref:`TreeItem<class_TreeItem>`, :ref:`UndoRedo<class_UndoRedo>`, :ref:`UniformSetCacheRD<class_UniformSetCacheRD>`, :ref:`WorkerThreadPool<class_WorkerThreadPool>`, :ref:`XRServer<class_XRServer>`
+**Inherited By:** :ref:`AudioServer<class_AudioServer>`, :ref:`CameraServer<class_CameraServer>`, :ref:`ClassDB<class_ClassDB>`, :ref:`DisplayServer<class_DisplayServer>`, :ref:`EditorFileSystemDirectory<class_EditorFileSystemDirectory>`, :ref:`EditorInterface<class_EditorInterface>`, :ref:`EditorPaths<class_EditorPaths>`, :ref:`EditorSelection<class_EditorSelection>`, :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>`, :ref:`EditorVCSInterface<class_EditorVCSInterface>`, :ref:`Engine<class_Engine>`, :ref:`EngineDebugger<class_EngineDebugger>`, :ref:`FramebufferCacheRD<class_FramebufferCacheRD>`, :ref:`GDExtensionManager<class_GDExtensionManager>`, :ref:`Geometry2D<class_Geometry2D>`, :ref:`Geometry3D<class_Geometry3D>`, :ref:`GodotSharp<class_GodotSharp>`, :ref:`Input<class_Input>`, :ref:`InputMap<class_InputMap>`, :ref:`IP<class_IP>`, :ref:`JavaClassWrapper<class_JavaClassWrapper>`, :ref:`JavaScriptBridge<class_JavaScriptBridge>`, :ref:`JNISingleton<class_JNISingleton>`, :ref:`JSONRPC<class_JSONRPC>`, :ref:`MainLoop<class_MainLoop>`, :ref:`Marshalls<class_Marshalls>`, :ref:`MovieWriter<class_MovieWriter>`, :ref:`NativeMenu<class_NativeMenu>`, :ref:`NavigationMeshGenerator<class_NavigationMeshGenerator>`, :ref:`NavigationServer2D<class_NavigationServer2D>`, :ref:`NavigationServer3D<class_NavigationServer3D>`, :ref:`Node<class_Node>`, :ref:`OpenXRExtensionWrapperExtension<class_OpenXRExtensionWrapperExtension>`, :ref:`OpenXRInteractionProfileMetadata<class_OpenXRInteractionProfileMetadata>`, :ref:`OS<class_OS>`, :ref:`Performance<class_Performance>`, :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>`, :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>`, :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`, :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>`, :ref:`PhysicsServer2D<class_PhysicsServer2D>`, :ref:`PhysicsServer2DManager<class_PhysicsServer2DManager>`, :ref:`PhysicsServer3D<class_PhysicsServer3D>`, :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>`, :ref:`PhysicsServer3DRenderingServerHandler<class_PhysicsServer3DRenderingServerHandler>`, :ref:`ProjectSettings<class_ProjectSettings>`, :ref:`RefCounted<class_RefCounted>`, :ref:`RenderData<class_RenderData>`, :ref:`RenderingDevice<class_RenderingDevice>`, :ref:`RenderingServer<class_RenderingServer>`, :ref:`RenderSceneData<class_RenderSceneData>`, :ref:`ResourceLoader<class_ResourceLoader>`, :ref:`ResourceSaver<class_ResourceSaver>`, :ref:`ResourceUID<class_ResourceUID>`, :ref:`ScriptLanguage<class_ScriptLanguage>`, :ref:`TextServerManager<class_TextServerManager>`, :ref:`ThemeDB<class_ThemeDB>`, :ref:`TileData<class_TileData>`, :ref:`Time<class_Time>`, :ref:`TranslationServer<class_TranslationServer>`, :ref:`TreeItem<class_TreeItem>`, :ref:`UndoRedo<class_UndoRedo>`, :ref:`UniformSetCacheRD<class_UniformSetCacheRD>`, :ref:`WorkerThreadPool<class_WorkerThreadPool>`, :ref:`XRServer<class_XRServer>`, :ref:`XRVRS<class_XRVRS>`
 
 Base class for all other classes in the engine.
 
@@ -121,6 +121,8 @@ Methods
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] | :ref:`get_meta_list<class_Object_method_get_meta_list>`\ (\ ) |const|                                                                                                                                                                    |
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`get_method_argument_count<class_Object_method_get_method_argument_count>`\ (\ method\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                              |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_method_list<class_Object_method_get_method_list>`\ (\ ) |const|                                                                                                                                                                |
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_property_list<class_Object_method_get_property_list>`\ (\ ) |const|                                                                                                                                                            |
@@ -156,6 +158,8 @@ Methods
    | :ref:`Variant<class_Variant>`                                    | :ref:`property_get_revert<class_Object_method_property_get_revert>`\ (\ property\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                        |
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`remove_meta<class_Object_method_remove_meta>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                                    |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`remove_user_signal<class_Object_method_remove_user_signal>`\ (\ signal\: :ref:`StringName<class_StringName>`\ )                                                                                                                    |
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`set<class_Object_method_set>`\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                         |
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -711,7 +715,7 @@ Override this method to customize existing properties. Every property info goes 
 
 |void| **add_user_signal**\ (\ signal\: :ref:`String<class_String>`, arguments\: :ref:`Array<class_Array>` = []\ )
 
-Adds a user-defined ``signal``. Optional arguments for the signal can be added as an :ref:`Array<class_Array>` of dictionaries, each defining a ``name`` :ref:`String<class_String>` and a ``type`` :ref:`int<class_int>` (see :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`). See also :ref:`has_user_signal<class_Object_method_has_user_signal>`.
+Adds a user-defined ``signal``. Optional arguments for the signal can be added as an :ref:`Array<class_Array>` of dictionaries, each defining a ``name`` :ref:`String<class_String>` and a ``type`` :ref:`int<class_int>` (see :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`). See also :ref:`has_user_signal<class_Object_method_has_user_signal>` and :ref:`remove_user_signal<class_Object_method_remove_user_signal>`.
 
 
 .. tabs::
@@ -987,7 +991,7 @@ While all options have the same outcome (``button``'s :ref:`BaseButton.button_do
 
 The syntax to bind parameters is through :ref:`Callable.bind<class_Callable_method_bind>`, which returns a copy of the :ref:`Callable<class_Callable>` with its parameters bound.
 
-When calling :ref:`emit_signal<class_Object_method_emit_signal>`, the signal parameters can be also passed. The examples below show the relationship between these signal parameters and bound parameters.
+When calling :ref:`emit_signal<class_Object_method_emit_signal>` or :ref:`Signal.emit<class_Signal_method_emit>`, the signal parameters can be also passed. The examples below show the relationship between these signal parameters and bound parameters.
 
 
 .. tabs::
@@ -1001,7 +1005,7 @@ When calling :ref:`emit_signal<class_Object_method_emit_signal>`, the signal par
         player.hit.connect(_on_player_hit.bind("sword", 100))
     
         # Parameters added when emitting the signal are passed first.
-        player.emit_signal("hit", "Dark lord", 5)
+        player.hit.emit("Dark lord", 5)
     
     # We pass two arguments when emitting (`hit_by`, `level`),
     # and bind two more arguments when connecting (`weapon_type`, `damage`).
@@ -1111,7 +1115,7 @@ Returns the :ref:`Variant<class_Variant>` value of the given ``property``. If th
 
     var node = new Node2D();
     node.Rotation = 1.5f;
-    var a = node.Get("rotation"); // a is 1.5
+    var a = node.Get(Node2D.PropertyName.Rotation); // a is 1.5
 
 
 
@@ -1225,6 +1229,20 @@ Returns the object's metadata value for the given entry ``name``. If the entry d
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_meta_list**\ (\ ) |const|
 
 Returns the object's metadata entry names as a :ref:`PackedStringArray<class_PackedStringArray>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Object_method_get_method_argument_count:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_method_argument_count**\ (\ method\: :ref:`StringName<class_StringName>`\ ) |const|
+
+Returns the number of arguments of the given ``method`` by name.
+
+\ **Note:** In C#, ``method`` must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the ``MethodName`` class to avoid allocating a new :ref:`StringName<class_StringName>` on each call.
 
 .. rst-class:: classref-item-separator
 
@@ -1376,7 +1394,7 @@ Returns ``true`` if the given ``signal`` name exists in the object.
 
 :ref:`bool<class_bool>` **has_user_signal**\ (\ signal\: :ref:`StringName<class_StringName>`\ ) |const|
 
-Returns ``true`` if the given user-defined ``signal`` name exists. Only signals added with :ref:`add_user_signal<class_Object_method_add_user_signal>` are included.
+Returns ``true`` if the given user-defined ``signal`` name exists. Only signals added with :ref:`add_user_signal<class_Object_method_add_user_signal>` are included. See also :ref:`remove_user_signal<class_Object_method_remove_user_signal>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1550,6 +1568,18 @@ Removes the given entry ``name`` from the object's metadata. See also :ref:`has_
 
 ----
 
+.. _class_Object_method_remove_user_signal:
+
+.. rst-class:: classref-method
+
+|void| **remove_user_signal**\ (\ signal\: :ref:`StringName<class_StringName>`\ )
+
+Removes the given user signal ``signal`` from the object. See also :ref:`add_user_signal<class_Object_method_add_user_signal>` and :ref:`has_user_signal<class_Object_method_has_user_signal>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Object_method_set:
 
 .. rst-class:: classref-method
@@ -1570,7 +1600,7 @@ Assigns ``value`` to the given ``property``. If the property does not exist or t
  .. code-tab:: csharp
 
     var node = new Node2D();
-    node.Set("global_scale", new Vector2(8, 2.5));
+    node.Set(Node2D.PropertyName.GlobalScale, new Vector2(8, 2.5));
     GD.Print(node.GlobalScale); // Prints Vector2(8, 2.5)
 
 
@@ -1609,22 +1639,22 @@ Assigns ``value`` to the given ``property``, at the end of the current frame. Th
     var node = Node2D.new()
     add_child(node)
     
-    node.rotation = 45.0
-    node.set_deferred("rotation", 90.0)
-    print(node.rotation) # Prints 45.0
+    node.rotation = 1.5
+    node.set_deferred("rotation", 3.0)
+    print(node.rotation) # Prints 1.5
     
     await get_tree().process_frame
-    print(node.rotation) # Prints 90.0
+    print(node.rotation) # Prints 3.0
 
  .. code-tab:: csharp
 
     var node = new Node2D();
-    node.Rotation = 45f;
-    node.SetDeferred("rotation", 90f);
-    GD.Print(node.Rotation); // Prints 45.0
+    node.Rotation = 1.5f;
+    node.SetDeferred(Node2D.PropertyName.Rotation, 3f);
+    GD.Print(node.Rotation); // Prints 1.5
     
     await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-    GD.Print(node.Rotation); // Prints 90.0
+    GD.Print(node.Rotation); // Prints 3.0
 
 
 
@@ -1729,11 +1759,13 @@ Returns a :ref:`String<class_String>` representing the object. Defaults to ``"<C
 
 :ref:`String<class_String>` **tr**\ (\ message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const|
 
-Translates a ``message``, using the translation catalogs configured in the Project Settings. Further ``context`` can be specified to help with the translation.
+Translates a ``message``, using the translation catalogs configured in the Project Settings. Further ``context`` can be specified to help with the translation. Note that most :ref:`Control<class_Control>` nodes automatically translate their strings, so this method is mostly useful for formatted strings or custom drawn text.
 
 If :ref:`can_translate_messages<class_Object_method_can_translate_messages>` is ``false``, or no translation is available, this method returns the ``message`` without changes. See :ref:`set_message_translation<class_Object_method_set_message_translation>`.
 
 For detailed examples, see :doc:`Internationalizing games <../tutorials/i18n/internationalizing_games>`.
+
+\ **Note:** This method can't be used without an **Object** instance, as it requires the :ref:`can_translate_messages<class_Object_method_can_translate_messages>` method. To translate strings in a static context, use :ref:`TranslationServer.translate<class_TranslationServer_method_translate>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1754,6 +1786,8 @@ The ``n`` is the number, or amount, of the message's subject. It is used by the 
 For detailed examples, see :doc:`Localization using gettext <../tutorials/i18n/localization_using_gettext>`.
 
 \ **Note:** Negative and :ref:`float<class_float>` numbers may not properly apply to some countable subjects. It's recommended to handle these cases with :ref:`tr<class_Object_method_tr>`.
+
+\ **Note:** This method can't be used without an **Object** instance, as it requires the :ref:`can_translate_messages<class_Object_method_can_translate_messages>` method. To translate strings in a static context, use :ref:`TranslationServer.translate_plural<class_TranslationServer_method_translate_plural>`.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
