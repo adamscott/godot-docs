@@ -79,6 +79,8 @@ Methods
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`contains<class_String_method_contains>`\ (\ what\: :ref:`String<class_String>`\ ) |const|                                                                                           |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`containsn<class_String_method_containsn>`\ (\ what\: :ref:`String<class_String>`\ ) |const|                                                                                         |
+   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`count<class_String_method_count>`\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0, to\: :ref:`int<class_int>` = 0\ ) |const|                               |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`countn<class_String_method_countn>`\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0, to\: :ref:`int<class_int>` = 0\ ) |const|                             |
@@ -88,6 +90,10 @@ Methods
    | :ref:`bool<class_bool>`                             | :ref:`ends_with<class_String_method_ends_with>`\ (\ text\: :ref:`String<class_String>`\ ) |const|                                                                                         |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                         | :ref:`erase<class_String_method_erase>`\ (\ position\: :ref:`int<class_int>`, chars\: :ref:`int<class_int>` = 1\ ) |const|                                                                |
+   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                               | :ref:`filecasecmp_to<class_String_method_filecasecmp_to>`\ (\ to\: :ref:`String<class_String>`\ ) |const|                                                                                 |
+   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                               | :ref:`filenocasecmp_to<class_String_method_filenocasecmp_to>`\ (\ to\: :ref:`String<class_String>`\ ) |const|                                                                             |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`find<class_String_method_find>`\ (\ what\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0\ ) |const|                                                                 |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -482,7 +488,7 @@ Performs a case-sensitive comparison to another string. Returns ``-1`` if less t
 
 With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`nocasecmp_to<class_String_method_nocasecmp_to>`, :ref:`naturalcasecmp_to<class_String_method_naturalcasecmp_to>`, and :ref:`naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>`.
+To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`nocasecmp_to<class_String_method_nocasecmp_to>`, :ref:`filecasecmp_to<class_String_method_filecasecmp_to>`, and :ref:`naturalcasecmp_to<class_String_method_naturalcasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -529,7 +535,21 @@ Returns ``true`` if the string contains ``what``. In GDScript, this corresponds 
 
 
 
-If you need to know where ``what`` is within the string, use :ref:`find<class_String_method_find>`.
+If you need to know where ``what`` is within the string, use :ref:`find<class_String_method_find>`. See also :ref:`containsn<class_String_method_containsn>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_String_method_containsn:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **containsn**\ (\ what\: :ref:`String<class_String>`\ ) |const|
+
+Returns ``true`` if the string contains ``what``, **ignoring case**.
+
+If you need to know where ``what`` is within the string, use :ref:`findn<class_String_method_findn>`. See also :ref:`contains<class_String_method_contains>`.
 
 .. rst-class:: classref-item-separator
 
@@ -590,6 +610,34 @@ Returns ``true`` if the string ends with the given ``text``. See also :ref:`begi
 :ref:`String<class_String>` **erase**\ (\ position\: :ref:`int<class_int>`, chars\: :ref:`int<class_int>` = 1\ ) |const|
 
 Returns a string with ``chars`` characters erased starting from ``position``. If ``chars`` goes beyond the string's length given the specified ``position``, fewer characters will be erased from the returned string. Returns an empty string if either ``position`` or ``chars`` is negative. Returns the original string unmodified if ``chars`` is ``0``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_String_method_filecasecmp_to:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **filecasecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const|
+
+Like :ref:`naturalcasecmp_to<class_String_method_naturalcasecmp_to>` but prioritizes strings that begin with periods (``.``) and underscores (``_``) before any other character. Useful when sorting folders or file names.
+
+To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`filenocasecmp_to<class_String_method_filenocasecmp_to>`, :ref:`naturalcasecmp_to<class_String_method_naturalcasecmp_to>`, and :ref:`casecmp_to<class_String_method_casecmp_to>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_String_method_filenocasecmp_to:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **filenocasecmp_to**\ (\ to\: :ref:`String<class_String>`\ ) |const|
+
+Like :ref:`naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>` but prioritizes strings that begin with periods (``.``) and underscores (``_``) before any other character. Useful when sorting folders or file names.
+
+To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`filecasecmp_to<class_String_method_filecasecmp_to>`, :ref:`naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>`, and :ref:`nocasecmp_to<class_String_method_nocasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -670,6 +718,15 @@ Some additional handling is performed when ``values`` is an :ref:`Array<class_Ar
     print("User {id} is {name}.".format([["id", 42], ["name", "Godot"]]))
 
 See also the :doc:`GDScript format string <../tutorials/scripting/gdscript/gdscript_format_string>` tutorial.
+
+\ **Note:** The replacement of placeholders is not done all at once, instead each placeholder is replaced in the order they are passed, this means that if one of the replacement strings contains a key it will also be replaced. This can be very powerful, but can also cause unexpected results if you are not careful. If you do not need to perform replacement in the replacement strings, make sure your replacements do not contain placeholders to ensure reliable results.
+
+::
+
+    print("{0} {1}".format(["{1}", "x"]))                       # Prints "x x".
+    print("{0} {1}".format(["x", "{0}"]))                       # Prints "x {0}".
+    print("{foo} {bar}".format({"foo": "{bar}", "bar": "baz"})) # Prints "baz baz".
+    print("{foo} {bar}".format({"bar": "baz", "foo": "{bar}"})) # Prints "{bar} baz".
 
 \ **Note:** In C#, it's recommended to `interpolate strings with "$" <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated>`__, instead.
 
@@ -1253,7 +1310,7 @@ When used for sorting, natural order comparison orders sequences of numbers by t
 
 With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>`, :ref:`nocasecmp_to<class_String_method_nocasecmp_to>`, and :ref:`casecmp_to<class_String_method_casecmp_to>`.
+To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>`, :ref:`filecasecmp_to<class_String_method_filecasecmp_to>`, and :ref:`nocasecmp_to<class_String_method_nocasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1271,7 +1328,7 @@ When used for sorting, natural order comparison orders sequences of numbers by t
 
 With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`naturalcasecmp_to<class_String_method_naturalcasecmp_to>`, :ref:`nocasecmp_to<class_String_method_nocasecmp_to>`, and :ref:`casecmp_to<class_String_method_casecmp_to>`.
+To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`naturalcasecmp_to<class_String_method_naturalcasecmp_to>`, :ref:`filenocasecmp_to<class_String_method_filenocasecmp_to>`, and :ref:`casecmp_to<class_String_method_casecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1287,7 +1344,7 @@ Performs a **case-insensitive** comparison to another string. Returns ``-1`` if 
 
 With different string lengths, returns ``1`` if this string is longer than the ``to`` string, or ``-1`` if shorter. Note that the length of empty strings is *always* ``0``.
 
-To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`casecmp_to<class_String_method_casecmp_to>`, :ref:`naturalcasecmp_to<class_String_method_naturalcasecmp_to>`, and :ref:`naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>`.
+To get a :ref:`bool<class_bool>` result from a string comparison, use the ``==`` operator instead. See also :ref:`casecmp_to<class_String_method_casecmp_to>`, :ref:`filenocasecmp_to<class_String_method_filenocasecmp_to>`, and :ref:`naturalnocasecmp_to<class_String_method_naturalnocasecmp_to>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1470,7 +1527,7 @@ Replaces all **case-insensitive** occurrences of ``what`` inside the string with
 
 :ref:`String<class_String>` **reverse**\ (\ ) |const|
 
-Returns the copy of this string in reverse order.
+Returns the copy of this string in reverse order. This operation works on unicode codepoints, rather than sequences of codepoints, and may break things like compound letters or emojis.
 
 .. rst-class:: classref-item-separator
 
