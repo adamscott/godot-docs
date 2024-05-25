@@ -399,7 +399,7 @@ Emitted when a cell with the :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_cons
 
 .. rst-class:: classref-signal
 
-**empty_clicked**\ (\ position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ )
+**empty_clicked**\ (\ click_position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ )
 
 Emitted when a mouse button is clicked in the empty space of the tree.
 
@@ -459,7 +459,7 @@ Emitted when an item's icon is double-clicked. For a signal that emits when any 
 
 .. rst-class:: classref-signal
 
-**item_mouse_selected**\ (\ position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ )
+**item_mouse_selected**\ (\ mouse_position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ )
 
 Emitted when an item is selected with a mouse button.
 
@@ -1514,7 +1514,7 @@ The maximum allowed width of the icon in item's cells. This limit is applied on 
 
 :ref:`int<class_int>` **inner_item_margin_bottom** = ``0``
 
-The inner bottom margin of an item.
+The inner bottom margin of a cell.
 
 .. rst-class:: classref-item-separator
 
@@ -1526,7 +1526,7 @@ The inner bottom margin of an item.
 
 :ref:`int<class_int>` **inner_item_margin_left** = ``0``
 
-The inner left margin of an item.
+The inner left margin of a cell.
 
 .. rst-class:: classref-item-separator
 
@@ -1538,7 +1538,7 @@ The inner left margin of an item.
 
 :ref:`int<class_int>` **inner_item_margin_right** = ``0``
 
-The inner right margin of an item.
+The inner right margin of a cell.
 
 .. rst-class:: classref-item-separator
 
@@ -1550,7 +1550,7 @@ The inner right margin of an item.
 
 :ref:`int<class_int>` **inner_item_margin_top** = ``0``
 
-The inner top margin of an item.
+The inner top margin of a cell.
 
 .. rst-class:: classref-item-separator
 
@@ -1948,7 +1948,7 @@ The updown arrow icon to display for the :ref:`TreeItem.CELL_MODE_RANGE<class_Tr
 
 :ref:`StyleBox<class_StyleBox>` **custom_button**
 
-Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode cell.
+Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode cell when button is enabled with :ref:`TreeItem.set_custom_as_button<class_TreeItem_method_set_custom_as_button>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1960,7 +1960,7 @@ Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<cl
 
 :ref:`StyleBox<class_StyleBox>` **custom_button_hover**
 
-:ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode cell when it's hovered.
+:ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode button cell when it's hovered.
 
 .. rst-class:: classref-item-separator
 
@@ -1972,7 +1972,7 @@ Default :ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<cl
 
 :ref:`StyleBox<class_StyleBox>` **custom_button_pressed**
 
-:ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode cell when it's pressed.
+:ref:`StyleBox<class_StyleBox>` for a :ref:`TreeItem.CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` mode button cell when it's pressed.
 
 .. rst-class:: classref-item-separator
 

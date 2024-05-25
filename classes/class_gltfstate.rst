@@ -43,6 +43,8 @@ Properties
    :widths: auto
 
    +----------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------------+
+   | :ref:`float<class_float>`                                                  | :ref:`bake_fps<class_GLTFState_property_bake_fps>`                                 | ``30.0``               |
+   +----------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------------+
    | :ref:`String<class_String>`                                                | :ref:`base_path<class_GLTFState_property_base_path>`                               | ``""``                 |
    +----------------------------------------------------------------------------+------------------------------------------------------------------------------------+------------------------+
    | :ref:`Array<class_Array>`\[:ref:`PackedByteArray<class_PackedByteArray>`\] | :ref:`buffers<class_GLTFState_property_buffers>`                                   | ``[]``                 |
@@ -210,6 +212,23 @@ Embeds textures compressed losslessly into the generated scene, matching old beh
 Property Descriptions
 ---------------------
 
+.. _class_GLTFState_property_bake_fps:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **bake_fps** = ``30.0``
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_bake_fps**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_bake_fps**\ (\ )
+
+The baking fps of the animation for either import or export.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_GLTFState_property_base_path:
 
 .. rst-class:: classref-property
@@ -312,6 +331,8 @@ The file name associated with this GLTF data. If it ends with ``.gltf``, this is
 
 The binary buffer attached to a .glb file.
 
+**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedByteArray<class_PackedByteArray>` for more details.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -400,6 +421,8 @@ The original raw JSON document corresponding to this GLTFState.
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_root_nodes**\ (\ )
 
 The root nodes of the GLTF file. Typically, a GLTF file will only have one scene, and therefore one root node. However, a GLTF file may have multiple scenes and therefore multiple root nodes, which will be generated as siblings of each other and as children of the root node of the generated Godot scene.
+
+**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
 
 .. rst-class:: classref-item-separator
 
