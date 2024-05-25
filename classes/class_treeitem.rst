@@ -172,6 +172,8 @@ Methods
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`is_selected<class_TreeItem_method_is_selected>`\ (\ column\: :ref:`int<class_int>`\ )                                                                                                                                                                         |
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`is_visible_in_tree<class_TreeItem_method_is_visible_in_tree>`\ (\ ) |const|                                                                                                                                                                                   |
+   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`move_after<class_TreeItem_method_move_after>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ )                                                                                                                                                                   |
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`move_before<class_TreeItem_method_move_before>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ )                                                                                                                                                                 |
@@ -278,7 +280,7 @@ enum **TreeCellMode**:
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_STRING** = ``0``
 
-Cell contains a string.
+Cell shows a string label. When editable, the text can be edited using a :ref:`LineEdit<class_LineEdit>`, or a :ref:`TextEdit<class_TextEdit>` popup if :ref:`set_edit_multiline<class_TreeItem_method_set_edit_multiline>` is used.
 
 .. _class_TreeItem_constant_CELL_MODE_CHECK:
 
@@ -286,7 +288,7 @@ Cell contains a string.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_CHECK** = ``1``
 
-Cell contains a checkbox.
+Cell shows a checkbox, optionally with text. The checkbox can be pressed, released, or indeterminate (via :ref:`set_indeterminate<class_TreeItem_method_set_indeterminate>`). The checkbox can't be clicked unless the cell is editable.
 
 .. _class_TreeItem_constant_CELL_MODE_RANGE:
 
@@ -294,7 +296,9 @@ Cell contains a checkbox.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_RANGE** = ``2``
 
-Cell contains a range.
+Cell shows a numeric range. When editable, it can be edited using a range slider. Use :ref:`set_range<class_TreeItem_method_set_range>` to set the value and :ref:`set_range_config<class_TreeItem_method_set_range_config>` to configure the range.
+
+This cell can also be used in a text dropdown mode when you assign a text with :ref:`set_text<class_TreeItem_method_set_text>`. Separate options with a comma, e.g. ``"Option1,Option2,Option3"``.
 
 .. _class_TreeItem_constant_CELL_MODE_ICON:
 
@@ -302,7 +306,7 @@ Cell contains a range.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_ICON** = ``3``
 
-Cell contains an icon.
+Cell shows an icon. It can't be edited nor display text.
 
 .. _class_TreeItem_constant_CELL_MODE_CUSTOM:
 
@@ -310,11 +314,9 @@ Cell contains an icon.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_CUSTOM** = ``4``
 
-.. container:: contribute
+Cell shows as a clickable button. It will display an arrow similar to :ref:`OptionButton<class_OptionButton>`, but doesn't feature a dropdown (for that you can use :ref:`CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>`). Clicking the button emits the :ref:`Tree.item_edited<class_Tree_signal_item_edited>` signal. The button is flat by default, you can use :ref:`set_custom_as_button<class_TreeItem_method_set_custom_as_button>` to display it with a :ref:`StyleBox<class_StyleBox>`.
 
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+This mode also supports custom drawing using :ref:`set_custom_draw_callback<class_TreeItem_method_set_custom_draw_callback>`.
 
 .. rst-class:: classref-section-separator
 
@@ -922,9 +924,7 @@ Returns a dictionary containing the range parameters for a given column. The key
 
 :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` **get_structured_text_bidi_override**\ (\ column\: :ref:`int<class_int>`\ ) |const|
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the BiDi algorithm override set for this cell.
 
 .. rst-class:: classref-item-separator
 
@@ -936,9 +936,7 @@ Returns a dictionary containing the range parameters for a given column. The key
 
 :ref:`Array<class_Array>` **get_structured_text_bidi_override_options**\ (\ column\: :ref:`int<class_int>`\ ) |const|
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the additional BiDi options set for this cell.
 
 .. rst-class:: classref-item-separator
 
@@ -1072,9 +1070,7 @@ Returns ``true`` if the given ``column`` is checked.
 
 :ref:`bool<class_bool>` **is_custom_set_as_button**\ (\ column\: :ref:`int<class_int>`\ ) |const|
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if the cell was made into a button with :ref:`set_custom_as_button<class_TreeItem_method_set_custom_as_button>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1135,6 +1131,18 @@ Returns ``true`` if the given ``column`` is selectable.
 :ref:`bool<class_bool>` **is_selected**\ (\ column\: :ref:`int<class_int>`\ )
 
 Returns ``true`` if the given ``column`` is selected.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TreeItem_method_is_visible_in_tree:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_visible_in_tree**\ (\ ) |const|
+
+Returns ``true`` if :ref:`visible<class_TreeItem_property_visible>` is ``true`` and all its ancestors are also visible.
 
 .. rst-class:: classref-item-separator
 
@@ -1272,7 +1280,7 @@ Sets the tooltip text for the button at index ``button_index`` in the given ``co
 
 |void| **set_cell_mode**\ (\ column\: :ref:`int<class_int>`, mode\: :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>`\ )
 
-Sets the given column's cell mode to ``mode``. See :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` constants.
+Sets the given column's cell mode to ``mode``. This determines how the cell is displayed and edited. See :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` constants for details.
 
 .. rst-class:: classref-item-separator
 
@@ -1308,9 +1316,7 @@ Collapses or uncollapses this **TreeItem** and all the descendants of this item.
 
 |void| **set_custom_as_button**\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Makes a cell with :ref:`CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` display as a non-flat button with a :ref:`StyleBox<class_StyleBox>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1362,7 +1368,7 @@ The method named ``callback`` should accept two arguments: the **TreeItem** that
 
 |void| **set_custom_draw_callback**\ (\ column\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ )
 
-Sets the given column's custom draw callback. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the custom callback.
+Sets the given column's custom draw callback. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the custom callback. The cell has to be in :ref:`CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` to use this feature.
 
 The ``callback`` should accept two arguments: the **TreeItem** that is drawn and its position and size as a :ref:`Rect2<class_Rect2>`.
 
@@ -1438,7 +1444,7 @@ If ``enable`` is ``true``, the given ``column`` is expanded to the right.
 
 |void| **set_icon**\ (\ column\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )
 
-Sets the given column's icon :ref:`Texture2D<class_Texture2D>`.
+Sets the given cell's icon :ref:`Texture2D<class_Texture2D>`. The cell has to be in :ref:`CELL_MODE_ICON<class_TreeItem_constant_CELL_MODE_ICON>` mode.
 
 .. rst-class:: classref-item-separator
 
@@ -1562,9 +1568,7 @@ If ``selectable`` is ``true``, the given ``column`` is selectable.
 
 |void| **set_structured_text_bidi_override**\ (\ column\: :ref:`int<class_int>`, parser\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`\ )
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Set BiDi algorithm override for the structured text. Has effect for cells that display text.
 
 .. rst-class:: classref-item-separator
 
@@ -1576,9 +1580,7 @@ If ``selectable`` is ``true``, the given ``column`` is selectable.
 
 |void| **set_structured_text_bidi_override_options**\ (\ column\: :ref:`int<class_int>`, args\: :ref:`Array<class_Array>`\ )
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Set additional options for BiDi override. Has effect for cells that display text.
 
 .. rst-class:: classref-item-separator
 
