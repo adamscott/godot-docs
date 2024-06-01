@@ -10,7 +10,9 @@
 XRFaceTracker
 =============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Experimental:** This class may be changed or removed in future versions.
+
+**Inherits:** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 A tracked face.
 
@@ -38,9 +40,11 @@ Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`blend_shapes<class_XRFaceTracker_property_blend_shapes>` | ``PackedFloat32Array()`` |
-   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------+
+   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`blend_shapes<class_XRFaceTracker_property_blend_shapes>` | ``PackedFloat32Array()``                                           |
+   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`TrackerType<enum_XRServer_TrackerType>`       | type                                                           | ``64`` (overrides :ref:`XRTracker<class_XRTracker_property_type>`) |
+   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -69,7 +73,7 @@ Enumerations
 
 .. rst-class:: classref-enumeration
 
-enum **BlendShapeEntry**:
+enum **BlendShapeEntry**: :ref:`🔗<enum_XRFaceTracker_BlendShapeEntry>`
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_OUT_RIGHT:
 
@@ -1236,7 +1240,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`PackedFloat32Array<class_PackedFloat32Array>` **blend_shapes** = ``PackedFloat32Array()``
+:ref:`PackedFloat32Array<class_PackedFloat32Array>` **blend_shapes** = ``PackedFloat32Array()`` :ref:`🔗<class_XRFaceTracker_property_blend_shapes>`
 
 .. rst-class:: classref-property-setget
 
@@ -1244,6 +1248,8 @@ Property Descriptions
 - :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_blend_shapes**\ (\ )
 
 The array of face blend shape weights with indices corresponding to the :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` enum.
+
+**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
 
 .. rst-class:: classref-section-separator
 
@@ -1258,7 +1264,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **get_blend_shape**\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`\ ) |const|
+:ref:`float<class_float>` **get_blend_shape**\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`\ ) |const| :ref:`🔗<class_XRFaceTracker_method_get_blend_shape>`
 
 Returns the requested face blend shape weight.
 
@@ -1270,7 +1276,7 @@ Returns the requested face blend shape weight.
 
 .. rst-class:: classref-method
 
-|void| **set_blend_shape**\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`, weight\: :ref:`float<class_float>`\ )
+|void| **set_blend_shape**\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_XRFaceTracker_method_set_blend_shape>`
 
 Sets a face blend shape weight.
 

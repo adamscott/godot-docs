@@ -38,7 +38,7 @@ Tutorials
 
 - `3Blue1Brown Essence of Linear Algebra <https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab>`__
 
-- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/584>`__
+- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/2787>`__
 
 - `All 2D Demos <https://github.com/godotengine/godot-demo-projects/tree/master/2d>`__
 
@@ -103,6 +103,8 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`clamp<class_Vector2_method_clamp>`\ (\ min\: :ref:`Vector2<class_Vector2>`, max\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                 |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`clampf<class_Vector2_method_clampf>`\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                       |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`     | :ref:`cross<class_Vector2_method_cross>`\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                     |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`cubic_interpolate<class_Vector2_method_cubic_interpolate>`\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const|                                                                                                                             |
@@ -137,9 +139,17 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`limit_length<class_Vector2_method_limit_length>`\ (\ length\: :ref:`float<class_float>` = 1.0\ ) |const|                                                                                                                                                                                                                                                   |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`max<class_Vector2_method_max>`\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`max_axis_index<class_Vector2_method_max_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`maxf<class_Vector2_method_maxf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`min<class_Vector2_method_min>`\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`min_axis_index<class_Vector2_method_min_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`minf<class_Vector2_method_minf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`move_toward<class_Vector2_method_move_toward>`\ (\ to\: :ref:`Vector2<class_Vector2>`, delta\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                        |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -153,7 +163,7 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`project<class_Vector2_method_project>`\ (\ b\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                    |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`reflect<class_Vector2_method_reflect>`\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                    |
+   | :ref:`Vector2<class_Vector2>` | :ref:`reflect<class_Vector2_method_reflect>`\ (\ line\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                 |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`rotated<class_Vector2_method_rotated>`\ (\ angle\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                    |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -166,6 +176,8 @@ Methods
    | :ref:`Vector2<class_Vector2>` | :ref:`slide<class_Vector2_method_slide>`\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                        |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`snapped<class_Vector2_method_snapped>`\ (\ step\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                 |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`snappedf<class_Vector2_method_snappedf>`\ (\ step\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                   |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
@@ -227,7 +239,7 @@ Constants
 
 .. rst-class:: classref-constant
 
-**AXIS_X** = ``0``
+**AXIS_X** = ``0`` :ref:`🔗<class_Vector2_constant_AXIS_X>`
 
 Enumerated value for the X axis. Returned by :ref:`max_axis_index<class_Vector2_method_max_axis_index>` and :ref:`min_axis_index<class_Vector2_method_min_axis_index>`.
 
@@ -235,7 +247,7 @@ Enumerated value for the X axis. Returned by :ref:`max_axis_index<class_Vector2_
 
 .. rst-class:: classref-constant
 
-**AXIS_Y** = ``1``
+**AXIS_Y** = ``1`` :ref:`🔗<class_Vector2_constant_AXIS_Y>`
 
 Enumerated value for the Y axis. Returned by :ref:`max_axis_index<class_Vector2_method_max_axis_index>` and :ref:`min_axis_index<class_Vector2_method_min_axis_index>`.
 
@@ -243,7 +255,7 @@ Enumerated value for the Y axis. Returned by :ref:`max_axis_index<class_Vector2_
 
 .. rst-class:: classref-constant
 
-**ZERO** = ``Vector2(0, 0)``
+**ZERO** = ``Vector2(0, 0)`` :ref:`🔗<class_Vector2_constant_ZERO>`
 
 Zero vector, a vector with all components set to ``0``.
 
@@ -251,7 +263,7 @@ Zero vector, a vector with all components set to ``0``.
 
 .. rst-class:: classref-constant
 
-**ONE** = ``Vector2(1, 1)``
+**ONE** = ``Vector2(1, 1)`` :ref:`🔗<class_Vector2_constant_ONE>`
 
 One vector, a vector with all components set to ``1``.
 
@@ -259,7 +271,7 @@ One vector, a vector with all components set to ``1``.
 
 .. rst-class:: classref-constant
 
-**INF** = ``Vector2(inf, inf)``
+**INF** = ``Vector2(inf, inf)`` :ref:`🔗<class_Vector2_constant_INF>`
 
 Infinity vector, a vector with all components set to :ref:`@GDScript.INF<class_@GDScript_constant_INF>`.
 
@@ -267,7 +279,7 @@ Infinity vector, a vector with all components set to :ref:`@GDScript.INF<class_@
 
 .. rst-class:: classref-constant
 
-**LEFT** = ``Vector2(-1, 0)``
+**LEFT** = ``Vector2(-1, 0)`` :ref:`🔗<class_Vector2_constant_LEFT>`
 
 Left unit vector. Represents the direction of left.
 
@@ -275,7 +287,7 @@ Left unit vector. Represents the direction of left.
 
 .. rst-class:: classref-constant
 
-**RIGHT** = ``Vector2(1, 0)``
+**RIGHT** = ``Vector2(1, 0)`` :ref:`🔗<class_Vector2_constant_RIGHT>`
 
 Right unit vector. Represents the direction of right.
 
@@ -283,7 +295,7 @@ Right unit vector. Represents the direction of right.
 
 .. rst-class:: classref-constant
 
-**UP** = ``Vector2(0, -1)``
+**UP** = ``Vector2(0, -1)`` :ref:`🔗<class_Vector2_constant_UP>`
 
 Up unit vector. Y is down in 2D, so this vector points -Y.
 
@@ -291,7 +303,7 @@ Up unit vector. Y is down in 2D, so this vector points -Y.
 
 .. rst-class:: classref-constant
 
-**DOWN** = ``Vector2(0, 1)``
+**DOWN** = ``Vector2(0, 1)`` :ref:`🔗<class_Vector2_constant_DOWN>`
 
 Down unit vector. Y is down in 2D, so this vector points +Y.
 
@@ -308,7 +320,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **x** = ``0.0``
+:ref:`float<class_float>` **x** = ``0.0`` :ref:`🔗<class_Vector2_property_x>`
 
 The vector's X component. Also accessible by using the index position ``[0]``.
 
@@ -320,7 +332,7 @@ The vector's X component. Also accessible by using the index position ``[0]``.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **y** = ``0.0``
+:ref:`float<class_float>` **y** = ``0.0`` :ref:`🔗<class_Vector2_property_y>`
 
 The vector's Y component. Also accessible by using the index position ``[1]``.
 
@@ -337,7 +349,7 @@ Constructor Descriptions
 
 .. rst-class:: classref-constructor
 
-:ref:`Vector2<class_Vector2>` **Vector2**\ (\ )
+:ref:`Vector2<class_Vector2>` **Vector2**\ (\ ) :ref:`🔗<class_Vector2_constructor_Vector2>`
 
 Constructs a default-initialized **Vector2** with all components set to ``0``.
 
@@ -384,7 +396,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **abs**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **abs**\ (\ ) |const| :ref:`🔗<class_Vector2_method_abs>`
 
 Returns a new vector with all components in absolute values (i.e. positive).
 
@@ -396,7 +408,7 @@ Returns a new vector with all components in absolute values (i.e. positive).
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **angle**\ (\ ) |const|
+:ref:`float<class_float>` **angle**\ (\ ) |const| :ref:`🔗<class_Vector2_method_angle>`
 
 Returns this vector's angle with respect to the positive X axis, or ``(1, 0)`` vector, in radians.
 
@@ -414,7 +426,7 @@ Equivalent to the result of :ref:`@GlobalScope.atan2<class_@GlobalScope_method_a
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **angle_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`float<class_float>` **angle_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_angle_to>`
 
 Returns the angle to the given vector, in radians.
 
@@ -428,7 +440,7 @@ Returns the angle to the given vector, in radians.
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **angle_to_point**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`float<class_float>` **angle_to_point**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_angle_to_point>`
 
 Returns the angle between the line connecting the two points and the X axis, in radians.
 
@@ -444,7 +456,7 @@ Returns the angle between the line connecting the two points and the X axis, in 
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **aspect**\ (\ ) |const|
+:ref:`float<class_float>` **aspect**\ (\ ) |const| :ref:`🔗<class_Vector2_method_aspect>`
 
 Returns the aspect ratio of this vector, the ratio of :ref:`x<class_Vector2_property_x>` to :ref:`y<class_Vector2_property_y>`.
 
@@ -456,7 +468,7 @@ Returns the aspect ratio of this vector, the ratio of :ref:`x<class_Vector2_prop
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **bezier_derivative**\ (\ control_1\: :ref:`Vector2<class_Vector2>`, control_2\: :ref:`Vector2<class_Vector2>`, end\: :ref:`Vector2<class_Vector2>`, t\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **bezier_derivative**\ (\ control_1\: :ref:`Vector2<class_Vector2>`, control_2\: :ref:`Vector2<class_Vector2>`, end\: :ref:`Vector2<class_Vector2>`, t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_bezier_derivative>`
 
 Returns the derivative at the given ``t`` on the `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ defined by this vector and the given ``control_1``, ``control_2``, and ``end`` points.
 
@@ -468,7 +480,7 @@ Returns the derivative at the given ``t`` on the `Bézier curve <https://en.wiki
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **bezier_interpolate**\ (\ control_1\: :ref:`Vector2<class_Vector2>`, control_2\: :ref:`Vector2<class_Vector2>`, end\: :ref:`Vector2<class_Vector2>`, t\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **bezier_interpolate**\ (\ control_1\: :ref:`Vector2<class_Vector2>`, control_2\: :ref:`Vector2<class_Vector2>`, end\: :ref:`Vector2<class_Vector2>`, t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_bezier_interpolate>`
 
 Returns the point at the given ``t`` on the `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ defined by this vector and the given ``control_1``, ``control_2``, and ``end`` points.
 
@@ -480,9 +492,11 @@ Returns the point at the given ``t`` on the `Bézier curve <https://en.wikipedia
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **bounce**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **bounce**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_bounce>`
 
-Returns a new vector "bounced off" from a plane defined by the given normal.
+Returns the vector "bounced off" from a line defined by the given normal ``n`` perpendicular to the line.
+
+\ **Note:** :ref:`bounce<class_Vector2_method_bounce>` performs the operation that most engines and frameworks call ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -492,7 +506,7 @@ Returns a new vector "bounced off" from a plane defined by the given normal.
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **ceil**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **ceil**\ (\ ) |const| :ref:`🔗<class_Vector2_method_ceil>`
 
 Returns a new vector with all components rounded up (towards positive infinity).
 
@@ -504,9 +518,21 @@ Returns a new vector with all components rounded up (towards positive infinity).
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **clamp**\ (\ min\: :ref:`Vector2<class_Vector2>`, max\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **clamp**\ (\ min\: :ref:`Vector2<class_Vector2>`, max\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_clamp>`
 
 Returns a new vector with all components clamped between the components of ``min`` and ``max``, by running :ref:`@GlobalScope.clamp<class_@GlobalScope_method_clamp>` on each component.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_clampf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **clampf**\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_clampf>`
+
+Returns a new vector with all components clamped between ``min`` and ``max``, by running :ref:`@GlobalScope.clamp<class_@GlobalScope_method_clamp>` on each component.
 
 .. rst-class:: classref-item-separator
 
@@ -516,11 +542,11 @@ Returns a new vector with all components clamped between the components of ``min
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **cross**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`float<class_float>` **cross**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_cross>`
 
 Returns the 2D analog of the cross product for this vector and ``with``.
 
-This is the signed area of the parallelogram formed by the two vectors. If the second vector is clockwise from the first vector, then the cross product is the positive area. If counter-clockwise, the cross product is the negative area.
+This is the signed area of the parallelogram formed by the two vectors. If the second vector is clockwise from the first vector, then the cross product is the positive area. If counter-clockwise, the cross product is the negative area. If the two vectors are parallel this returns zero, making it useful for testing if two vectors are parallel.
 
 \ **Note:** Cross product is not defined in 2D mathematically. This method embeds the 2D vectors in the XY plane of 3D space and uses their cross product's Z component as the analog.
 
@@ -532,7 +558,7 @@ This is the signed area of the parallelogram formed by the two vectors. If the s
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **cubic_interpolate**\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **cubic_interpolate**\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_cubic_interpolate>`
 
 Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and ``post_b`` as handles, and returns the result at position ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
 
@@ -544,7 +570,7 @@ Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **cubic_interpolate_in_time**\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`, b_t\: :ref:`float<class_float>`, pre_a_t\: :ref:`float<class_float>`, post_b_t\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **cubic_interpolate_in_time**\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`, b_t\: :ref:`float<class_float>`, pre_a_t\: :ref:`float<class_float>`, post_b_t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_cubic_interpolate_in_time>`
 
 Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and ``post_b`` as handles, and returns the result at position ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
 
@@ -558,7 +584,7 @@ It can perform smoother interpolation than :ref:`cubic_interpolate<class_Vector2
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **direction_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **direction_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_direction_to>`
 
 Returns the normalized vector pointing from this vector to ``to``. This is equivalent to using ``(b - a).normalized()``.
 
@@ -570,7 +596,7 @@ Returns the normalized vector pointing from this vector to ``to``. This is equiv
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **distance_squared_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`float<class_float>` **distance_squared_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_distance_squared_to>`
 
 Returns the squared distance between this vector and ``to``.
 
@@ -584,7 +610,7 @@ This method runs faster than :ref:`distance_to<class_Vector2_method_distance_to>
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **distance_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`float<class_float>` **distance_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_distance_to>`
 
 Returns the distance between this vector and ``to``.
 
@@ -596,7 +622,7 @@ Returns the distance between this vector and ``to``.
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **dot**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`float<class_float>` **dot**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_dot>`
 
 Returns the dot product of this vector and ``with``. This can be used to compare the angle between two vectors. For example, this can be used to determine whether an enemy is facing the player.
 
@@ -614,7 +640,7 @@ When using unit (normalized) vectors, the result will always be between ``-1.0``
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **floor**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **floor**\ (\ ) |const| :ref:`🔗<class_Vector2_method_floor>`
 
 Returns a new vector with all components rounded down (towards negative infinity).
 
@@ -626,7 +652,7 @@ Returns a new vector with all components rounded down (towards negative infinity
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **from_angle**\ (\ angle\: :ref:`float<class_float>`\ ) |static|
+:ref:`Vector2<class_Vector2>` **from_angle**\ (\ angle\: :ref:`float<class_float>`\ ) |static| :ref:`🔗<class_Vector2_method_from_angle>`
 
 Creates a unit **Vector2** rotated to the given ``angle`` in radians. This is equivalent to doing ``Vector2(cos(angle), sin(angle))`` or ``Vector2.RIGHT.rotated(angle)``.
 
@@ -644,7 +670,7 @@ Creates a unit **Vector2** rotated to the given ``angle`` in radians. This is eq
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_equal_approx**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`bool<class_bool>` **is_equal_approx**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_is_equal_approx>`
 
 Returns ``true`` if this vector and ``to`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx<class_@GlobalScope_method_is_equal_approx>` on each component.
 
@@ -656,7 +682,7 @@ Returns ``true`` if this vector and ``to`` are approximately equal, by running :
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_finite**\ (\ ) |const|
+:ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Vector2_method_is_finite>`
 
 Returns ``true`` if this vector is finite, by calling :ref:`@GlobalScope.is_finite<class_@GlobalScope_method_is_finite>` on each component.
 
@@ -668,7 +694,7 @@ Returns ``true`` if this vector is finite, by calling :ref:`@GlobalScope.is_fini
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_normalized**\ (\ ) |const|
+:ref:`bool<class_bool>` **is_normalized**\ (\ ) |const| :ref:`🔗<class_Vector2_method_is_normalized>`
 
 Returns ``true`` if the vector is normalized, i.e. its length is approximately equal to 1.
 
@@ -680,7 +706,7 @@ Returns ``true`` if the vector is normalized, i.e. its length is approximately e
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_zero_approx**\ (\ ) |const|
+:ref:`bool<class_bool>` **is_zero_approx**\ (\ ) |const| :ref:`🔗<class_Vector2_method_is_zero_approx>`
 
 Returns ``true`` if this vector's values are approximately zero, by running :ref:`@GlobalScope.is_zero_approx<class_@GlobalScope_method_is_zero_approx>` on each component.
 
@@ -694,7 +720,7 @@ This method is faster than using :ref:`is_equal_approx<class_Vector2_method_is_e
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **length**\ (\ ) |const|
+:ref:`float<class_float>` **length**\ (\ ) |const| :ref:`🔗<class_Vector2_method_length>`
 
 Returns the length (magnitude) of this vector.
 
@@ -706,7 +732,7 @@ Returns the length (magnitude) of this vector.
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **length_squared**\ (\ ) |const|
+:ref:`float<class_float>` **length_squared**\ (\ ) |const| :ref:`🔗<class_Vector2_method_length_squared>`
 
 Returns the squared length (squared magnitude) of this vector.
 
@@ -720,7 +746,7 @@ This method runs faster than :ref:`length<class_Vector2_method_length>`, so pref
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **lerp**\ (\ to\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **lerp**\ (\ to\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_lerp>`
 
 Returns the result of the linear interpolation between this vector and ``to`` by amount ``weight``. ``weight`` is on the range of ``0.0`` to ``1.0``, representing the amount of interpolation.
 
@@ -732,9 +758,21 @@ Returns the result of the linear interpolation between this vector and ``to`` by
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **limit_length**\ (\ length\: :ref:`float<class_float>` = 1.0\ ) |const|
+:ref:`Vector2<class_Vector2>` **limit_length**\ (\ length\: :ref:`float<class_float>` = 1.0\ ) |const| :ref:`🔗<class_Vector2_method_limit_length>`
 
 Returns the vector with a maximum length by limiting its length to ``length``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_max:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **max**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_max>`
+
+Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2(maxf(x, with.x), maxf(y, with.y))``.
 
 .. rst-class:: classref-item-separator
 
@@ -744,9 +782,33 @@ Returns the vector with a maximum length by limiting its length to ``length``.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **max_axis_index**\ (\ ) |const|
+:ref:`int<class_int>` **max_axis_index**\ (\ ) |const| :ref:`🔗<class_Vector2_method_max_axis_index>`
 
 Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_X<class_Vector2_constant_AXIS_X>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_maxf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **maxf**\ (\ with\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_maxf>`
+
+Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2(maxf(x, with), maxf(y, with))``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_min:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **min**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_min>`
+
+Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2(minf(x, with.x), minf(y, with.y))``.
 
 .. rst-class:: classref-item-separator
 
@@ -756,9 +818,21 @@ Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **min_axis_index**\ (\ ) |const|
+:ref:`int<class_int>` **min_axis_index**\ (\ ) |const| :ref:`🔗<class_Vector2_method_min_axis_index>`
 
 Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_Y<class_Vector2_constant_AXIS_Y>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_minf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **minf**\ (\ with\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_minf>`
+
+Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2(minf(x, with), minf(y, with))``.
 
 .. rst-class:: classref-item-separator
 
@@ -768,7 +842,7 @@ Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all 
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **move_toward**\ (\ to\: :ref:`Vector2<class_Vector2>`, delta\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **move_toward**\ (\ to\: :ref:`Vector2<class_Vector2>`, delta\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_move_toward>`
 
 Returns a new vector moved toward ``to`` by the fixed ``delta`` amount. Will not go past the final value.
 
@@ -780,7 +854,7 @@ Returns a new vector moved toward ``to`` by the fixed ``delta`` amount. Will not
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **normalized**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **normalized**\ (\ ) |const| :ref:`🔗<class_Vector2_method_normalized>`
 
 Returns the result of scaling the vector to unit length. Equivalent to ``v / v.length()``. See also :ref:`is_normalized<class_Vector2_method_is_normalized>`.
 
@@ -794,7 +868,7 @@ Returns the result of scaling the vector to unit length. Equivalent to ``v / v.l
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **orthogonal**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **orthogonal**\ (\ ) |const| :ref:`🔗<class_Vector2_method_orthogonal>`
 
 Returns a perpendicular vector rotated 90 degrees counter-clockwise compared to the original, with the same length.
 
@@ -806,7 +880,7 @@ Returns a perpendicular vector rotated 90 degrees counter-clockwise compared to 
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **posmod**\ (\ mod\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **posmod**\ (\ mod\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_posmod>`
 
 Returns a vector composed of the :ref:`@GlobalScope.fposmod<class_@GlobalScope_method_fposmod>` of this vector's components and ``mod``.
 
@@ -818,7 +892,7 @@ Returns a vector composed of the :ref:`@GlobalScope.fposmod<class_@GlobalScope_m
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **posmodv**\ (\ modv\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **posmodv**\ (\ modv\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_posmodv>`
 
 Returns a vector composed of the :ref:`@GlobalScope.fposmod<class_@GlobalScope_method_fposmod>` of this vector's components and ``modv``'s components.
 
@@ -830,7 +904,7 @@ Returns a vector composed of the :ref:`@GlobalScope.fposmod<class_@GlobalScope_m
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **project**\ (\ b\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **project**\ (\ b\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_project>`
 
 Returns a new vector resulting from projecting this vector onto the given vector ``b``. The resulting new vector is parallel to ``b``. See also :ref:`slide<class_Vector2_method_slide>`.
 
@@ -844,9 +918,11 @@ Returns a new vector resulting from projecting this vector onto the given vector
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **reflect**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **reflect**\ (\ line\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_reflect>`
 
-Returns the result of reflecting the vector from a line defined by the given direction vector ``n``.
+Returns the result of reflecting the vector from a line defined by the given direction vector ``line``.
+
+\ **Note:** :ref:`reflect<class_Vector2_method_reflect>` differs from what other engines and frameworks call ``reflect()``. In other engines, ``reflect()`` takes a normal direction which is a direction perpendicular to the line. In Godot, you specify the direction of the line directly. See also :ref:`bounce<class_Vector2_method_bounce>` which does what most engines call ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -856,7 +932,7 @@ Returns the result of reflecting the vector from a line defined by the given dir
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **rotated**\ (\ angle\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **rotated**\ (\ angle\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_rotated>`
 
 Returns the result of rotating this vector by ``angle`` (in radians). See also :ref:`@GlobalScope.deg_to_rad<class_@GlobalScope_method_deg_to_rad>`.
 
@@ -868,7 +944,7 @@ Returns the result of rotating this vector by ``angle`` (in radians). See also :
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **round**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **round**\ (\ ) |const| :ref:`🔗<class_Vector2_method_round>`
 
 Returns a new vector with all components rounded to the nearest integer, with halfway cases rounded away from zero.
 
@@ -880,7 +956,7 @@ Returns a new vector with all components rounded to the nearest integer, with ha
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **sign**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **sign**\ (\ ) |const| :ref:`🔗<class_Vector2_method_sign>`
 
 Returns a new vector with each component set to ``1.0`` if it's positive, ``-1.0`` if it's negative, and ``0.0`` if it's zero. The result is identical to calling :ref:`@GlobalScope.sign<class_@GlobalScope_method_sign>` on each component.
 
@@ -892,7 +968,7 @@ Returns a new vector with each component set to ``1.0`` if it's positive, ``-1.0
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **slerp**\ (\ to\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **slerp**\ (\ to\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_slerp>`
 
 Returns the result of spherical linear interpolation between this vector and ``to``, by amount ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
 
@@ -906,7 +982,7 @@ This method also handles interpolating the lengths if the input vectors have dif
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **slide**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **slide**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_slide>`
 
 Returns a new vector resulting from sliding this vector along a line with normal ``n``. The resulting new vector is perpendicular to ``n``, and is equivalent to this vector minus its projection on ``n``. See also :ref:`project<class_Vector2_method_project>`.
 
@@ -920,9 +996,21 @@ Returns a new vector resulting from sliding this vector along a line with normal
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **snapped**\ (\ step\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **snapped**\ (\ step\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_snapped>`
 
 Returns a new vector with each component snapped to the nearest multiple of the corresponding component in ``step``. This can also be used to round the components to an arbitrary number of decimals.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_snappedf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **snappedf**\ (\ step\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_snappedf>`
+
+Returns a new vector with each component snapped to the nearest multiple of ``step``. This can also be used to round the components to an arbitrary number of decimals.
 
 .. rst-class:: classref-section-separator
 
@@ -937,7 +1025,7 @@ Operator Descriptions
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_neq_Vector2>`
 
 Returns ``true`` if the vectors are not equal.
 
@@ -953,7 +1041,7 @@ Returns ``true`` if the vectors are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ )
+:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_Vector2_operator_mul_Transform2D>`
 
 Inversely transforms (multiplies) the **Vector2** by the given :ref:`Transform2D<class_Transform2D>` transformation matrix, under the assumption that the transformation basis is orthonormal (i.e. rotation/reflection is fine, scaling/skew is not).
 
@@ -969,7 +1057,7 @@ For transforming by inverse of an affine transformation (e.g. with scaling) ``tr
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_mul_Vector2>`
 
 Multiplies each component of the **Vector2** by the components of the given **Vector2**.
 
@@ -985,7 +1073,7 @@ Multiplies each component of the **Vector2** by the components of the given **Ve
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`float<class_float>`\ )
+:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Vector2_operator_mul_float>`
 
 Multiplies each component of the **Vector2** by the given :ref:`float<class_float>`.
 
@@ -997,7 +1085,7 @@ Multiplies each component of the **Vector2** by the given :ref:`float<class_floa
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`int<class_int>`\ )
+:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector2_operator_mul_int>`
 
 Multiplies each component of the **Vector2** by the given :ref:`int<class_int>`.
 
@@ -1009,7 +1097,7 @@ Multiplies each component of the **Vector2** by the given :ref:`int<class_int>`.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator +**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`Vector2<class_Vector2>` **operator +**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_sum_Vector2>`
 
 Adds each component of the **Vector2** by the components of the given **Vector2**.
 
@@ -1025,7 +1113,7 @@ Adds each component of the **Vector2** by the components of the given **Vector2*
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator -**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`Vector2<class_Vector2>` **operator -**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_dif_Vector2>`
 
 Subtracts each component of the **Vector2** by the components of the given **Vector2**.
 
@@ -1041,7 +1129,7 @@ Subtracts each component of the **Vector2** by the components of the given **Vec
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_div_Vector2>`
 
 Divides each component of the **Vector2** by the components of the given **Vector2**.
 
@@ -1057,7 +1145,7 @@ Divides each component of the **Vector2** by the components of the given **Vecto
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`float<class_float>`\ )
+:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Vector2_operator_div_float>`
 
 Divides each component of the **Vector2** by the given :ref:`float<class_float>`.
 
@@ -1069,7 +1157,7 @@ Divides each component of the **Vector2** by the given :ref:`float<class_float>`
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`int<class_int>`\ )
+:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector2_operator_div_int>`
 
 Divides each component of the **Vector2** by the given :ref:`int<class_int>`.
 
@@ -1081,7 +1169,7 @@ Divides each component of the **Vector2** by the given :ref:`int<class_int>`.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_lt_Vector2>`
 
 Compares two **Vector2** vectors by first checking if the X value of the left vector is less than the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
 
@@ -1095,7 +1183,7 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_lte_Vector2>`
 
 Compares two **Vector2** vectors by first checking if the X value of the left vector is less than or equal to the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
 
@@ -1109,7 +1197,7 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_eq_Vector2>`
 
 Returns ``true`` if the vectors are exactly equal.
 
@@ -1125,7 +1213,7 @@ Returns ``true`` if the vectors are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_gt_Vector2>`
 
 Compares two **Vector2** vectors by first checking if the X value of the left vector is greater than the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
 
@@ -1139,7 +1227,7 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ )
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_gte_Vector2>`
 
 Compares two **Vector2** vectors by first checking if the X value of the left vector is greater than or equal to the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
 
@@ -1153,7 +1241,7 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator []**\ (\ index\: :ref:`int<class_int>`\ )
+:ref:`float<class_float>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector2_operator_idx_int>`
 
 Access vector components using their ``index``. ``v[0]`` is equivalent to ``v.x``, and ``v[1]`` is equivalent to ``v.y``.
 
@@ -1165,7 +1253,7 @@ Access vector components using their ``index``. ``v[0]`` is equivalent to ``v.x`
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator unary+**\ (\ )
+:ref:`Vector2<class_Vector2>` **operator unary+**\ (\ ) :ref:`🔗<class_Vector2_operator_unplus>`
 
 Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, but sometimes it can make your code more readable.
 
@@ -1177,7 +1265,7 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator unary-**\ (\ )
+:ref:`Vector2<class_Vector2>` **operator unary-**\ (\ ) :ref:`🔗<class_Vector2_operator_unminus>`
 
 Returns the negative value of the **Vector2**. This is the same as writing ``Vector2(-v.x, -v.y)``. This operation flips the direction of the vector while keeping the same magnitude. With floats, the number zero can be either positive or negative.
 
