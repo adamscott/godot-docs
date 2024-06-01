@@ -32,7 +32,7 @@ Tutorials
 
 - :doc:`Controlling thousands of fish with Particles <../tutorials/performance/vertex_animation/controlling_thousands_of_fish>`
 
-- `Third Person Shooter Demo <https://godotengine.org/asset-library/asset/678>`__
+- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -135,11 +135,13 @@ Signals
 
 .. rst-class:: classref-signal
 
-**finished**\ (\ )
+**finished**\ (\ ) :ref:`🔗<class_GPUParticles3D_signal_finished>`
 
-Emitted when all active particles have finished processing. When :ref:`one_shot<class_GPUParticles3D_property_one_shot>` is disabled, particles will process continuously, so this is never emitted.
+Emitted when all active particles have finished processing. To immediately emit new particles, call :ref:`restart<class_GPUParticles3D_method_restart>`.
 
-\ **Note:** Due to the particles being computed on the GPU there might be a delay before the signal gets emitted.
+Never emitted when :ref:`one_shot<class_GPUParticles3D_property_one_shot>` is disabled, as particles will be emitted and processed continuously.
+
+\ **Note:** For :ref:`one_shot<class_GPUParticles3D_property_one_shot>` emitters, due to the particles being computed on the GPU, there may be a short period after receiving the signal during which setting :ref:`emitting<class_GPUParticles3D_property_emitting>` to ``true`` will not restart the emission cycle. This delay is avoided by instead calling :ref:`restart<class_GPUParticles3D_method_restart>`.
 
 .. rst-class:: classref-section-separator
 
@@ -154,7 +156,7 @@ Enumerations
 
 .. rst-class:: classref-enumeration
 
-enum **DrawOrder**:
+enum **DrawOrder**: :ref:`🔗<enum_GPUParticles3D_DrawOrder>`
 
 .. _class_GPUParticles3D_constant_DRAW_ORDER_INDEX:
 
@@ -196,7 +198,7 @@ Particles are drawn in order of depth.
 
 .. rst-class:: classref-enumeration
 
-enum **EmitFlags**:
+enum **EmitFlags**: :ref:`🔗<enum_GPUParticles3D_EmitFlags>`
 
 .. _class_GPUParticles3D_constant_EMIT_FLAG_POSITION:
 
@@ -246,7 +248,7 @@ Particle starts with specified ``CUSTOM`` data.
 
 .. rst-class:: classref-enumeration
 
-enum **TransformAlign**:
+enum **TransformAlign**: :ref:`🔗<enum_GPUParticles3D_TransformAlign>`
 
 .. _class_GPUParticles3D_constant_TRANSFORM_ALIGN_DISABLED:
 
@@ -309,7 +311,7 @@ Constants
 
 .. rst-class:: classref-constant
 
-**MAX_DRAW_PASSES** = ``4``
+**MAX_DRAW_PASSES** = ``4`` :ref:`🔗<class_GPUParticles3D_constant_MAX_DRAW_PASSES>`
 
 Maximum number of draw passes supported.
 
@@ -326,7 +328,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **amount** = ``8``
+:ref:`int<class_int>` **amount** = ``8`` :ref:`🔗<class_GPUParticles3D_property_amount>`
 
 .. rst-class:: classref-property-setget
 
@@ -345,7 +347,7 @@ The number of particles to emit in one emission cycle. The effective emission ra
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **amount_ratio** = ``1.0``
+:ref:`float<class_float>` **amount_ratio** = ``1.0`` :ref:`🔗<class_GPUParticles3D_property_amount_ratio>`
 
 .. rst-class:: classref-property-setget
 
@@ -364,7 +366,7 @@ The ratio of particles that should actually be emitted. If set to a value lower 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **collision_base_size** = ``0.01``
+:ref:`float<class_float>` **collision_base_size** = ``0.01`` :ref:`🔗<class_GPUParticles3D_property_collision_base_size>`
 
 .. rst-class:: classref-property-setget
 
@@ -383,7 +385,7 @@ The base diameter for particle collision in meters. If particles appear to sink 
 
 .. rst-class:: classref-property
 
-:ref:`DrawOrder<enum_GPUParticles3D_DrawOrder>` **draw_order** = ``0``
+:ref:`DrawOrder<enum_GPUParticles3D_DrawOrder>` **draw_order** = ``0`` :ref:`🔗<class_GPUParticles3D_property_draw_order>`
 
 .. rst-class:: classref-property-setget
 
@@ -402,7 +404,7 @@ Particle draw order. Uses :ref:`DrawOrder<enum_GPUParticles3D_DrawOrder>` values
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **draw_pass_1**
+:ref:`Mesh<class_Mesh>` **draw_pass_1** :ref:`🔗<class_GPUParticles3D_property_draw_pass_1>`
 
 .. rst-class:: classref-property-setget
 
@@ -419,7 +421,7 @@ Particle draw order. Uses :ref:`DrawOrder<enum_GPUParticles3D_DrawOrder>` values
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **draw_pass_2**
+:ref:`Mesh<class_Mesh>` **draw_pass_2** :ref:`🔗<class_GPUParticles3D_property_draw_pass_2>`
 
 .. rst-class:: classref-property-setget
 
@@ -436,7 +438,7 @@ Particle draw order. Uses :ref:`DrawOrder<enum_GPUParticles3D_DrawOrder>` values
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **draw_pass_3**
+:ref:`Mesh<class_Mesh>` **draw_pass_3** :ref:`🔗<class_GPUParticles3D_property_draw_pass_3>`
 
 .. rst-class:: classref-property-setget
 
@@ -453,7 +455,7 @@ Particle draw order. Uses :ref:`DrawOrder<enum_GPUParticles3D_DrawOrder>` values
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **draw_pass_4**
+:ref:`Mesh<class_Mesh>` **draw_pass_4** :ref:`🔗<class_GPUParticles3D_property_draw_pass_4>`
 
 .. rst-class:: classref-property-setget
 
@@ -470,7 +472,7 @@ Particle draw order. Uses :ref:`DrawOrder<enum_GPUParticles3D_DrawOrder>` values
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **draw_passes** = ``1``
+:ref:`int<class_int>` **draw_passes** = ``1`` :ref:`🔗<class_GPUParticles3D_property_draw_passes>`
 
 .. rst-class:: classref-property-setget
 
@@ -487,7 +489,7 @@ The number of draw passes when rendering particles.
 
 .. rst-class:: classref-property
 
-:ref:`Skin<class_Skin>` **draw_skin**
+:ref:`Skin<class_Skin>` **draw_skin** :ref:`🔗<class_GPUParticles3D_property_draw_skin>`
 
 .. rst-class:: classref-property-setget
 
@@ -506,14 +508,18 @@ The number of draw passes when rendering particles.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **emitting** = ``true``
+:ref:`bool<class_bool>` **emitting** = ``true`` :ref:`🔗<class_GPUParticles3D_property_emitting>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_emitting**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_emitting**\ (\ )
 
-If ``true``, particles are being emitted. :ref:`emitting<class_GPUParticles3D_property_emitting>` can be used to start and stop particles from emitting. However, if :ref:`one_shot<class_GPUParticles3D_property_one_shot>` is ``true`` setting :ref:`emitting<class_GPUParticles3D_property_emitting>` to ``true`` will not restart the emission cycle until after all active particles finish processing. You can use the :ref:`finished<class_GPUParticles3D_signal_finished>` signal to be notified once all active particles finish processing.
+If ``true``, particles are being emitted. :ref:`emitting<class_GPUParticles3D_property_emitting>` can be used to start and stop particles from emitting. However, if :ref:`one_shot<class_GPUParticles3D_property_one_shot>` is ``true`` setting :ref:`emitting<class_GPUParticles3D_property_emitting>` to ``true`` will not restart the emission cycle unless all active particles have finished processing. Use the :ref:`finished<class_GPUParticles3D_signal_finished>` signal to be notified once all active particles finish processing.
+
+\ **Note:** For :ref:`one_shot<class_GPUParticles3D_property_one_shot>` emitters, due to the particles being computed on the GPU, there may be a short period after receiving the :ref:`finished<class_GPUParticles3D_signal_finished>` signal during which setting this to ``true`` will not restart the emission cycle.
+
+\ **Tip:** If your :ref:`one_shot<class_GPUParticles3D_property_one_shot>` emitter needs to immediately restart emitting particles once :ref:`finished<class_GPUParticles3D_signal_finished>` signal is received, consider calling :ref:`restart<class_GPUParticles3D_method_restart>` instead of setting :ref:`emitting<class_GPUParticles3D_property_emitting>`.
 
 .. rst-class:: classref-item-separator
 
@@ -523,7 +529,7 @@ If ``true``, particles are being emitted. :ref:`emitting<class_GPUParticles3D_pr
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **explosiveness** = ``0.0``
+:ref:`float<class_float>` **explosiveness** = ``0.0`` :ref:`🔗<class_GPUParticles3D_property_explosiveness>`
 
 .. rst-class:: classref-property-setget
 
@@ -540,7 +546,7 @@ Time ratio between each emission. If ``0``, particles are emitted continuously. 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **fixed_fps** = ``30``
+:ref:`int<class_int>` **fixed_fps** = ``30`` :ref:`🔗<class_GPUParticles3D_property_fixed_fps>`
 
 .. rst-class:: classref-property-setget
 
@@ -557,7 +563,7 @@ The particle system's frame rate is fixed to a value. For example, changing the 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **fract_delta** = ``true``
+:ref:`bool<class_bool>` **fract_delta** = ``true`` :ref:`🔗<class_GPUParticles3D_property_fract_delta>`
 
 .. rst-class:: classref-property-setget
 
@@ -574,7 +580,7 @@ If ``true``, results in fractional delta calculation which has a smoother partic
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **interp_to_end** = ``0.0``
+:ref:`float<class_float>` **interp_to_end** = ``0.0`` :ref:`🔗<class_GPUParticles3D_property_interp_to_end>`
 
 .. rst-class:: classref-property-setget
 
@@ -593,7 +599,7 @@ Causes all the particles in this node to interpolate towards the end of their li
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **interpolate** = ``true``
+:ref:`bool<class_bool>` **interpolate** = ``true`` :ref:`🔗<class_GPUParticles3D_property_interpolate>`
 
 .. rst-class:: classref-property-setget
 
@@ -610,7 +616,7 @@ Enables particle interpolation, which makes the particle movement smoother when 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **lifetime** = ``1.0``
+:ref:`float<class_float>` **lifetime** = ``1.0`` :ref:`🔗<class_GPUParticles3D_property_lifetime>`
 
 .. rst-class:: classref-property-setget
 
@@ -627,7 +633,7 @@ The amount of time each particle will exist (in seconds). The effective emission
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **local_coords** = ``false``
+:ref:`bool<class_bool>` **local_coords** = ``false`` :ref:`🔗<class_GPUParticles3D_property_local_coords>`
 
 .. rst-class:: classref-property-setget
 
@@ -644,7 +650,7 @@ If ``true``, particles use the parent node's coordinate space (known as local co
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **one_shot** = ``false``
+:ref:`bool<class_bool>` **one_shot** = ``false`` :ref:`🔗<class_GPUParticles3D_property_one_shot>`
 
 .. rst-class:: classref-property-setget
 
@@ -661,7 +667,7 @@ If ``true``, only the number of particles equal to :ref:`amount<class_GPUParticl
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **preprocess** = ``0.0``
+:ref:`float<class_float>` **preprocess** = ``0.0`` :ref:`🔗<class_GPUParticles3D_property_preprocess>`
 
 .. rst-class:: classref-property-setget
 
@@ -678,7 +684,7 @@ Amount of time to preprocess the particles before animation starts. Lets you sta
 
 .. rst-class:: classref-property
 
-:ref:`Material<class_Material>` **process_material**
+:ref:`Material<class_Material>` **process_material** :ref:`🔗<class_GPUParticles3D_property_process_material>`
 
 .. rst-class:: classref-property-setget
 
@@ -695,7 +701,7 @@ Amount of time to preprocess the particles before animation starts. Lets you sta
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **randomness** = ``0.0``
+:ref:`float<class_float>` **randomness** = ``0.0`` :ref:`🔗<class_GPUParticles3D_property_randomness>`
 
 .. rst-class:: classref-property-setget
 
@@ -712,7 +718,7 @@ Emission randomness ratio.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **speed_scale** = ``1.0``
+:ref:`float<class_float>` **speed_scale** = ``1.0`` :ref:`🔗<class_GPUParticles3D_property_speed_scale>`
 
 .. rst-class:: classref-property-setget
 
@@ -729,7 +735,7 @@ Speed scaling ratio. A value of ``0`` can be used to pause the particles.
 
 .. rst-class:: classref-property
 
-:ref:`NodePath<class_NodePath>` **sub_emitter** = ``NodePath("")``
+:ref:`NodePath<class_NodePath>` **sub_emitter** = ``NodePath("")`` :ref:`🔗<class_GPUParticles3D_property_sub_emitter>`
 
 .. rst-class:: classref-property-setget
 
@@ -748,7 +754,7 @@ Path to another **GPUParticles3D** node that will be used as a subemitter (see :
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **trail_enabled** = ``false``
+:ref:`bool<class_bool>` **trail_enabled** = ``false`` :ref:`🔗<class_GPUParticles3D_property_trail_enabled>`
 
 .. rst-class:: classref-property-setget
 
@@ -769,7 +775,7 @@ If ``true``, enables particle trails using a mesh skinning system. Designed to w
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **trail_lifetime** = ``0.3``
+:ref:`float<class_float>` **trail_lifetime** = ``0.3`` :ref:`🔗<class_GPUParticles3D_property_trail_lifetime>`
 
 .. rst-class:: classref-property-setget
 
@@ -786,7 +792,7 @@ The amount of time the particle's trail should represent (in seconds). Only effe
 
 .. rst-class:: classref-property
 
-:ref:`TransformAlign<enum_GPUParticles3D_TransformAlign>` **transform_align** = ``0``
+:ref:`TransformAlign<enum_GPUParticles3D_TransformAlign>` **transform_align** = ``0`` :ref:`🔗<class_GPUParticles3D_property_transform_align>`
 
 .. rst-class:: classref-property-setget
 
@@ -805,7 +811,7 @@ The amount of time the particle's trail should represent (in seconds). Only effe
 
 .. rst-class:: classref-property
 
-:ref:`AABB<class_AABB>` **visibility_aabb** = ``AABB(-4, -4, -4, 8, 8, 8)``
+:ref:`AABB<class_AABB>` **visibility_aabb** = ``AABB(-4, -4, -4, 8, 8, 8)`` :ref:`🔗<class_GPUParticles3D_property_visibility_aabb>`
 
 .. rst-class:: classref-property-setget
 
@@ -831,7 +837,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`AABB<class_AABB>` **capture_aabb**\ (\ ) |const|
+:ref:`AABB<class_AABB>` **capture_aabb**\ (\ ) |const| :ref:`🔗<class_GPUParticles3D_method_capture_aabb>`
 
 Returns the axis-aligned bounding box that contains all the particles that are active in the current frame.
 
@@ -843,7 +849,7 @@ Returns the axis-aligned bounding box that contains all the particles that are a
 
 .. rst-class:: classref-method
 
-|void| **convert_from_particles**\ (\ particles\: :ref:`Node<class_Node>`\ )
+|void| **convert_from_particles**\ (\ particles\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_GPUParticles3D_method_convert_from_particles>`
 
 Sets this node's properties to match a given :ref:`CPUParticles3D<class_CPUParticles3D>` node.
 
@@ -855,7 +861,7 @@ Sets this node's properties to match a given :ref:`CPUParticles3D<class_CPUParti
 
 .. rst-class:: classref-method
 
-|void| **emit_particle**\ (\ xform\: :ref:`Transform3D<class_Transform3D>`, velocity\: :ref:`Vector3<class_Vector3>`, color\: :ref:`Color<class_Color>`, custom\: :ref:`Color<class_Color>`, flags\: :ref:`int<class_int>`\ )
+|void| **emit_particle**\ (\ xform\: :ref:`Transform3D<class_Transform3D>`, velocity\: :ref:`Vector3<class_Vector3>`, color\: :ref:`Color<class_Color>`, custom\: :ref:`Color<class_Color>`, flags\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GPUParticles3D_method_emit_particle>`
 
 Emits a single particle. Whether ``xform``, ``velocity``, ``color`` and ``custom`` are applied depends on the value of ``flags``. See :ref:`EmitFlags<enum_GPUParticles3D_EmitFlags>`.
 
@@ -869,7 +875,7 @@ The default ParticleProcessMaterial will overwrite ``color`` and use the content
 
 .. rst-class:: classref-method
 
-:ref:`Mesh<class_Mesh>` **get_draw_pass_mesh**\ (\ pass\: :ref:`int<class_int>`\ ) |const|
+:ref:`Mesh<class_Mesh>` **get_draw_pass_mesh**\ (\ pass\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GPUParticles3D_method_get_draw_pass_mesh>`
 
 Returns the :ref:`Mesh<class_Mesh>` that is drawn at index ``pass``.
 
@@ -881,9 +887,11 @@ Returns the :ref:`Mesh<class_Mesh>` that is drawn at index ``pass``.
 
 .. rst-class:: classref-method
 
-|void| **restart**\ (\ )
+|void| **restart**\ (\ ) :ref:`🔗<class_GPUParticles3D_method_restart>`
 
-Restarts the particle emission, clearing existing particles.
+Restarts the particle emission cycle, clearing existing particles. To avoid particles vanishing from the viewport, wait for the :ref:`finished<class_GPUParticles3D_signal_finished>` signal before calling.
+
+\ **Note:** The :ref:`finished<class_GPUParticles3D_signal_finished>` signal is only emitted by :ref:`one_shot<class_GPUParticles3D_property_one_shot>` emitters.
 
 .. rst-class:: classref-item-separator
 
@@ -893,7 +901,7 @@ Restarts the particle emission, clearing existing particles.
 
 .. rst-class:: classref-method
 
-|void| **set_draw_pass_mesh**\ (\ pass\: :ref:`int<class_int>`, mesh\: :ref:`Mesh<class_Mesh>`\ )
+|void| **set_draw_pass_mesh**\ (\ pass\: :ref:`int<class_int>`, mesh\: :ref:`Mesh<class_Mesh>`\ ) :ref:`🔗<class_GPUParticles3D_method_set_draw_pass_mesh>`
 
 Sets the :ref:`Mesh<class_Mesh>` that is drawn at index ``pass``.
 

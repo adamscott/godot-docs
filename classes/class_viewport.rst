@@ -40,17 +40,17 @@ Tutorials
 
 - :doc:`Viewport and canvas transforms <../tutorials/2d/2d_transforms>`
 
-- `GUI in 3D Demo <https://godotengine.org/asset-library/asset/127>`__
+- `GUI in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2807>`__
 
-- `3D in 2D Demo <https://godotengine.org/asset-library/asset/128>`__
+- `3D in 2D Viewport Demo <https://godotengine.org/asset-library/asset/2804>`__
 
-- `2D in 3D Demo <https://godotengine.org/asset-library/asset/129>`__
+- `2D in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2803>`__
 
-- `Screen Capture Demo <https://godotengine.org/asset-library/asset/130>`__
+- `Screen Capture Demo <https://godotengine.org/asset-library/asset/2808>`__
 
-- `Dynamic Split Screen Demo <https://godotengine.org/asset-library/asset/541>`__
+- `Dynamic Split Screen Demo <https://godotengine.org/asset-library/asset/2806>`__
 
-- `3D Viewport Scaling Demo <https://godotengine.org/asset-library/asset/586>`__
+- `3D Resolution Scaling Demo <https://godotengine.org/asset-library/asset/2805>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -147,6 +147,8 @@ Properties
    +-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------+
    | :ref:`Texture2D<class_Texture2D>`                                                             | :ref:`vrs_texture<class_Viewport_property_vrs_texture>`                                               |                |
    +-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------+
+   | :ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>`                                             | :ref:`vrs_update_mode<class_Viewport_property_vrs_update_mode>`                                       | ``1``          |
+   +-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------+
    | :ref:`World2D<class_World2D>`                                                                 | :ref:`world_2d<class_Viewport_property_world_2d>`                                                     |                |
    +-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------+
    | :ref:`World3D<class_World3D>`                                                                 | :ref:`world_3d<class_Viewport_property_world_3d>`                                                     |                |
@@ -233,7 +235,7 @@ Signals
 
 .. rst-class:: classref-signal
 
-**gui_focus_changed**\ (\ node\: :ref:`Control<class_Control>`\ )
+**gui_focus_changed**\ (\ node\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_Viewport_signal_gui_focus_changed>`
 
 Emitted when a Control node grabs keyboard focus.
 
@@ -247,7 +249,7 @@ Emitted when a Control node grabs keyboard focus.
 
 .. rst-class:: classref-signal
 
-**size_changed**\ (\ )
+**size_changed**\ (\ ) :ref:`🔗<class_Viewport_signal_size_changed>`
 
 Emitted when the size of the viewport is changed, whether by resizing of window, or some other means.
 
@@ -264,7 +266,7 @@ Enumerations
 
 .. rst-class:: classref-enumeration
 
-enum **PositionalShadowAtlasQuadrantSubdiv**:
+enum **PositionalShadowAtlasQuadrantSubdiv**: :ref:`🔗<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>`
 
 .. _class_Viewport_constant_SHADOW_ATLAS_QUADRANT_SUBDIV_DISABLED:
 
@@ -338,7 +340,7 @@ Represents the size of the :ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewpo
 
 .. rst-class:: classref-enumeration
 
-enum **Scaling3DMode**:
+enum **Scaling3DMode**: :ref:`🔗<enum_Viewport_Scaling3DMode>`
 
 .. _class_Viewport_constant_SCALING_3D_MODE_BILINEAR:
 
@@ -380,7 +382,7 @@ Represents the size of the :ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` enu
 
 .. rst-class:: classref-enumeration
 
-enum **MSAA**:
+enum **MSAA**: :ref:`🔗<enum_Viewport_MSAA>`
 
 .. _class_Viewport_constant_MSAA_DISABLED:
 
@@ -430,7 +432,7 @@ Represents the size of the :ref:`MSAA<enum_Viewport_MSAA>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **ScreenSpaceAA**:
+enum **ScreenSpaceAA**: :ref:`🔗<enum_Viewport_ScreenSpaceAA>`
 
 .. _class_Viewport_constant_SCREEN_SPACE_AA_DISABLED:
 
@@ -464,7 +466,7 @@ Represents the size of the :ref:`ScreenSpaceAA<enum_Viewport_ScreenSpaceAA>` enu
 
 .. rst-class:: classref-enumeration
 
-enum **RenderInfo**:
+enum **RenderInfo**: :ref:`🔗<enum_Viewport_RenderInfo>`
 
 .. _class_Viewport_constant_RENDER_INFO_OBJECTS_IN_FRAME:
 
@@ -506,7 +508,7 @@ Represents the size of the :ref:`RenderInfo<enum_Viewport_RenderInfo>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **RenderInfoType**:
+enum **RenderInfoType**: :ref:`🔗<enum_Viewport_RenderInfoType>`
 
 .. _class_Viewport_constant_RENDER_INFO_TYPE_VISIBLE:
 
@@ -514,11 +516,7 @@ enum **RenderInfoType**:
 
 :ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_VISIBLE** = ``0``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Visible render pass (excluding shadows).
 
 .. _class_Viewport_constant_RENDER_INFO_TYPE_SHADOW:
 
@@ -526,23 +524,23 @@ enum **RenderInfoType**:
 
 :ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_SHADOW** = ``1``
 
-.. container:: contribute
+Shadow render pass. Objects will be rendered several times depending on the number of amounts of lights with shadows and the number of directional shadow splits.
 
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+.. _class_Viewport_constant_RENDER_INFO_TYPE_CANVAS:
 
+.. rst-class:: classref-enumeration-constant
 
+:ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_CANVAS** = ``2``
+
+Canvas item rendering. This includes all 2D rendering.
 
 .. _class_Viewport_constant_RENDER_INFO_TYPE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_MAX** = ``2``
+:ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_MAX** = ``3``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Represents the size of the :ref:`RenderInfoType<enum_Viewport_RenderInfoType>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -552,7 +550,7 @@ enum **RenderInfoType**:
 
 .. rst-class:: classref-enumeration
 
-enum **DebugDraw**:
+enum **DebugDraw**: :ref:`🔗<enum_Viewport_DebugDraw>`
 
 .. _class_Viewport_constant_DEBUG_DRAW_DISABLED:
 
@@ -576,11 +574,7 @@ Objects are displayed without light information.
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_LIGHTING** = ``2``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Objects are displayed without textures and only with lighting information.
 
 .. _class_Viewport_constant_DEBUG_DRAW_OVERDRAW:
 
@@ -596,7 +590,7 @@ Objects are displayed semi-transparent with additive blending so you can see whe
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_WIREFRAME** = ``4``
 
-Objects are displayed in wireframe style.
+Objects are displayed as wireframe models.
 
 .. _class_Viewport_constant_DEBUG_DRAW_NORMAL_BUFFER:
 
@@ -604,11 +598,7 @@ Objects are displayed in wireframe style.
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_NORMAL_BUFFER** = ``5``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Objects are displayed without lighting information and their textures replaced by normal mapping.
 
 .. _class_Viewport_constant_DEBUG_DRAW_VOXEL_GI_ALBEDO:
 
@@ -656,11 +646,7 @@ Draws the shadow atlas that stores shadows from :ref:`DirectionalLight3D<class_D
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_SCENE_LUMINANCE** = ``11``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws the scene luminance buffer (if available) in the upper left quadrant of the **Viewport**.
 
 .. _class_Viewport_constant_DEBUG_DRAW_SSAO:
 
@@ -700,11 +686,9 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_SDFGI** = ``16``
 
-.. container:: contribute
+Draws the cascades used to render signed distance field global illumination (SDFGI).
 
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Does nothing if the current environment's :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>` is ``false`` or SDFGI is not supported on the platform.
 
 .. _class_Viewport_constant_DEBUG_DRAW_SDFGI_PROBES:
 
@@ -712,11 +696,9 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_SDFGI_PROBES** = ``17``
 
-.. container:: contribute
+Draws the probes used for signed distance field global illumination (SDFGI).
 
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Does nothing if the current environment's :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>` is ``false`` or SDFGI is not supported on the platform.
 
 .. _class_Viewport_constant_DEBUG_DRAW_GI_BUFFER:
 
@@ -724,11 +706,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_GI_BUFFER** = ``18``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws the buffer used for global illumination (GI).
 
 .. _class_Viewport_constant_DEBUG_DRAW_DISABLE_LOD:
 
@@ -736,11 +714,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_DISABLE_LOD** = ``19``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws all of the objects at their highest polycount, without low level of detail (LOD).
 
 .. _class_Viewport_constant_DEBUG_DRAW_CLUSTER_OMNI_LIGHTS:
 
@@ -748,11 +722,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_CLUSTER_OMNI_LIGHTS** = ``20``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws the cluster used by :ref:`OmniLight3D<class_OmniLight3D>` nodes to optimize light rendering.
 
 .. _class_Viewport_constant_DEBUG_DRAW_CLUSTER_SPOT_LIGHTS:
 
@@ -760,11 +730,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_CLUSTER_SPOT_LIGHTS** = ``21``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws the cluster used by :ref:`SpotLight3D<class_SpotLight3D>` nodes to optimize light rendering.
 
 .. _class_Viewport_constant_DEBUG_DRAW_CLUSTER_DECALS:
 
@@ -772,11 +738,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_CLUSTER_DECALS** = ``22``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws the cluster used by :ref:`Decal<class_Decal>` nodes to optimize decal rendering.
 
 .. _class_Viewport_constant_DEBUG_DRAW_CLUSTER_REFLECTION_PROBES:
 
@@ -784,11 +746,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_CLUSTER_REFLECTION_PROBES** = ``23``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws the cluster used by :ref:`ReflectionProbe<class_ReflectionProbe>` nodes to optimize decal rendering.
 
 .. _class_Viewport_constant_DEBUG_DRAW_OCCLUDERS:
 
@@ -796,11 +754,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_OCCLUDERS** = ``24``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws the buffer used for occlusion culling.
 
 .. _class_Viewport_constant_DEBUG_DRAW_MOTION_VECTORS:
 
@@ -808,11 +762,7 @@ Draws the decal atlas used by :ref:`Decal<class_Decal>`\ s and light projector t
 
 :ref:`DebugDraw<enum_Viewport_DebugDraw>` **DEBUG_DRAW_MOTION_VECTORS** = ``25``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Draws vector lines over the viewport to indicate the movement of pixels between frames.
 
 .. _class_Viewport_constant_DEBUG_DRAW_INTERNAL_BUFFER:
 
@@ -830,7 +780,7 @@ Draws the internal resolution buffer of the scene before post-processing is appl
 
 .. rst-class:: classref-enumeration
 
-enum **DefaultCanvasItemTextureFilter**:
+enum **DefaultCanvasItemTextureFilter**: :ref:`🔗<enum_Viewport_DefaultCanvasItemTextureFilter>`
 
 .. _class_Viewport_constant_DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST:
 
@@ -874,7 +824,7 @@ Use this for non-pixel art textures that may be viewed at a low scale (e.g. due 
 
 :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` **DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_MAX** = ``4``
 
-Max value for :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` enum.
+Represents the size of the :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -884,7 +834,7 @@ Max value for :ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasIt
 
 .. rst-class:: classref-enumeration
 
-enum **DefaultCanvasItemTextureRepeat**:
+enum **DefaultCanvasItemTextureRepeat**: :ref:`🔗<enum_Viewport_DefaultCanvasItemTextureRepeat>`
 
 .. _class_Viewport_constant_DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_DISABLED:
 
@@ -916,7 +866,7 @@ Flip the texture when repeating so that the edge lines up instead of abruptly ch
 
 :ref:`DefaultCanvasItemTextureRepeat<enum_Viewport_DefaultCanvasItemTextureRepeat>` **DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_MAX** = ``3``
 
-Max value for :ref:`DefaultCanvasItemTextureRepeat<enum_Viewport_DefaultCanvasItemTextureRepeat>` enum.
+Represents the size of the :ref:`DefaultCanvasItemTextureRepeat<enum_Viewport_DefaultCanvasItemTextureRepeat>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -926,7 +876,7 @@ Max value for :ref:`DefaultCanvasItemTextureRepeat<enum_Viewport_DefaultCanvasIt
 
 .. rst-class:: classref-enumeration
 
-enum **SDFOversize**:
+enum **SDFOversize**: :ref:`🔗<enum_Viewport_SDFOversize>`
 
 .. _class_Viewport_constant_SDF_OVERSIZE_100_PERCENT:
 
@@ -934,11 +884,7 @@ enum **SDFOversize**:
 
 :ref:`SDFOversize<enum_Viewport_SDFOversize>` **SDF_OVERSIZE_100_PERCENT** = ``0``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+The signed distance field only covers the viewport's own rectangle.
 
 .. _class_Viewport_constant_SDF_OVERSIZE_120_PERCENT:
 
@@ -946,11 +892,7 @@ enum **SDFOversize**:
 
 :ref:`SDFOversize<enum_Viewport_SDFOversize>` **SDF_OVERSIZE_120_PERCENT** = ``1``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+The signed distance field is expanded to cover 20% of the viewport's size around the borders.
 
 .. _class_Viewport_constant_SDF_OVERSIZE_150_PERCENT:
 
@@ -958,11 +900,7 @@ enum **SDFOversize**:
 
 :ref:`SDFOversize<enum_Viewport_SDFOversize>` **SDF_OVERSIZE_150_PERCENT** = ``2``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+The signed distance field is expanded to cover 50% of the viewport's size around the borders.
 
 .. _class_Viewport_constant_SDF_OVERSIZE_200_PERCENT:
 
@@ -970,11 +908,7 @@ enum **SDFOversize**:
 
 :ref:`SDFOversize<enum_Viewport_SDFOversize>` **SDF_OVERSIZE_200_PERCENT** = ``3``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+The signed distance field is expanded to cover 100% (double) of the viewport's size around the borders.
 
 .. _class_Viewport_constant_SDF_OVERSIZE_MAX:
 
@@ -982,11 +916,7 @@ enum **SDFOversize**:
 
 :ref:`SDFOversize<enum_Viewport_SDFOversize>` **SDF_OVERSIZE_MAX** = ``4``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Represents the size of the :ref:`SDFOversize<enum_Viewport_SDFOversize>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -996,7 +926,7 @@ enum **SDFOversize**:
 
 .. rst-class:: classref-enumeration
 
-enum **SDFScale**:
+enum **SDFScale**: :ref:`🔗<enum_Viewport_SDFScale>`
 
 .. _class_Viewport_constant_SDF_SCALE_100_PERCENT:
 
@@ -1004,11 +934,7 @@ enum **SDFScale**:
 
 :ref:`SDFScale<enum_Viewport_SDFScale>` **SDF_SCALE_100_PERCENT** = ``0``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+The signed distance field is rendered at full resolution.
 
 .. _class_Viewport_constant_SDF_SCALE_50_PERCENT:
 
@@ -1016,11 +942,7 @@ enum **SDFScale**:
 
 :ref:`SDFScale<enum_Viewport_SDFScale>` **SDF_SCALE_50_PERCENT** = ``1``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+The signed distance field is rendered at half the resolution of this viewport.
 
 .. _class_Viewport_constant_SDF_SCALE_25_PERCENT:
 
@@ -1028,11 +950,7 @@ enum **SDFScale**:
 
 :ref:`SDFScale<enum_Viewport_SDFScale>` **SDF_SCALE_25_PERCENT** = ``2``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+The signed distance field is rendered at a quarter the resolution of this viewport.
 
 .. _class_Viewport_constant_SDF_SCALE_MAX:
 
@@ -1040,11 +958,7 @@ enum **SDFScale**:
 
 :ref:`SDFScale<enum_Viewport_SDFScale>` **SDF_SCALE_MAX** = ``3``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Represents the size of the :ref:`SDFScale<enum_Viewport_SDFScale>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -1054,7 +968,7 @@ enum **SDFScale**:
 
 .. rst-class:: classref-enumeration
 
-enum **VRSMode**:
+enum **VRSMode**: :ref:`🔗<enum_Viewport_VRSMode>`
 
 .. _class_Viewport_constant_VRS_DISABLED:
 
@@ -1062,7 +976,7 @@ enum **VRSMode**:
 
 :ref:`VRSMode<enum_Viewport_VRSMode>` **VRS_DISABLED** = ``0``
 
-VRS is disabled.
+Variable Rate Shading is disabled.
 
 .. _class_Viewport_constant_VRS_TEXTURE:
 
@@ -1070,7 +984,7 @@ VRS is disabled.
 
 :ref:`VRSMode<enum_Viewport_VRSMode>` **VRS_TEXTURE** = ``1``
 
-VRS uses a texture. Note, for stereoscopic use a texture atlas with a texture for each view.
+Variable Rate Shading uses a texture. Note, for stereoscopic use a texture atlas with a texture for each view.
 
 .. _class_Viewport_constant_VRS_XR:
 
@@ -1078,7 +992,7 @@ VRS uses a texture. Note, for stereoscopic use a texture atlas with a texture fo
 
 :ref:`VRSMode<enum_Viewport_VRSMode>` **VRS_XR** = ``2``
 
-VRS texture is supplied by the primary :ref:`XRInterface<class_XRInterface>`.
+Variable Rate Shading's texture is supplied by the primary :ref:`XRInterface<class_XRInterface>`.
 
 .. _class_Viewport_constant_VRS_MAX:
 
@@ -1087,6 +1001,48 @@ VRS texture is supplied by the primary :ref:`XRInterface<class_XRInterface>`.
 :ref:`VRSMode<enum_Viewport_VRSMode>` **VRS_MAX** = ``3``
 
 Represents the size of the :ref:`VRSMode<enum_Viewport_VRSMode>` enum.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_Viewport_VRSUpdateMode:
+
+.. rst-class:: classref-enumeration
+
+enum **VRSUpdateMode**: :ref:`🔗<enum_Viewport_VRSUpdateMode>`
+
+.. _class_Viewport_constant_VRS_UPDATE_DISABLED:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>` **VRS_UPDATE_DISABLED** = ``0``
+
+The input texture for variable rate shading will not be processed.
+
+.. _class_Viewport_constant_VRS_UPDATE_ONCE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>` **VRS_UPDATE_ONCE** = ``1``
+
+The input texture for variable rate shading will be processed once.
+
+.. _class_Viewport_constant_VRS_UPDATE_ALWAYS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>` **VRS_UPDATE_ALWAYS** = ``2``
+
+The input texture for variable rate shading will be processed each frame.
+
+.. _class_Viewport_constant_VRS_UPDATE_MAX:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>` **VRS_UPDATE_MAX** = ``3``
+
+Represents the size of the :ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>` enum.
 
 .. rst-class:: classref-section-separator
 
@@ -1101,7 +1057,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **audio_listener_enable_2d** = ``false``
+:ref:`bool<class_bool>` **audio_listener_enable_2d** = ``false`` :ref:`🔗<class_Viewport_property_audio_listener_enable_2d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1118,7 +1074,7 @@ If ``true``, the viewport will process 2D audio streams.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **audio_listener_enable_3d** = ``false``
+:ref:`bool<class_bool>` **audio_listener_enable_3d** = ``false`` :ref:`🔗<class_Viewport_property_audio_listener_enable_3d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1135,7 +1091,7 @@ If ``true``, the viewport will process 3D audio streams.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **canvas_cull_mask** = ``4294967295``
+:ref:`int<class_int>` **canvas_cull_mask** = ``4294967295`` :ref:`🔗<class_Viewport_property_canvas_cull_mask>`
 
 .. rst-class:: classref-property-setget
 
@@ -1152,7 +1108,7 @@ The rendering layers in which this **Viewport** renders :ref:`CanvasItem<class_C
 
 .. rst-class:: classref-property
 
-:ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` **canvas_item_default_texture_filter** = ``1``
+:ref:`DefaultCanvasItemTextureFilter<enum_Viewport_DefaultCanvasItemTextureFilter>` **canvas_item_default_texture_filter** = ``1`` :ref:`🔗<class_Viewport_property_canvas_item_default_texture_filter>`
 
 .. rst-class:: classref-property-setget
 
@@ -1169,7 +1125,7 @@ Sets the default filter mode used by :ref:`CanvasItem<class_CanvasItem>`\ s in t
 
 .. rst-class:: classref-property
 
-:ref:`DefaultCanvasItemTextureRepeat<enum_Viewport_DefaultCanvasItemTextureRepeat>` **canvas_item_default_texture_repeat** = ``0``
+:ref:`DefaultCanvasItemTextureRepeat<enum_Viewport_DefaultCanvasItemTextureRepeat>` **canvas_item_default_texture_repeat** = ``0`` :ref:`🔗<class_Viewport_property_canvas_item_default_texture_repeat>`
 
 .. rst-class:: classref-property-setget
 
@@ -1186,7 +1142,7 @@ Sets the default repeat mode used by :ref:`CanvasItem<class_CanvasItem>`\ s in t
 
 .. rst-class:: classref-property
 
-:ref:`Transform2D<class_Transform2D>` **canvas_transform**
+:ref:`Transform2D<class_Transform2D>` **canvas_transform** :ref:`🔗<class_Viewport_property_canvas_transform>`
 
 .. rst-class:: classref-property-setget
 
@@ -1203,7 +1159,7 @@ The canvas transform of the viewport, useful for changing the on-screen position
 
 .. rst-class:: classref-property
 
-:ref:`DebugDraw<enum_Viewport_DebugDraw>` **debug_draw** = ``0``
+:ref:`DebugDraw<enum_Viewport_DebugDraw>` **debug_draw** = ``0`` :ref:`🔗<class_Viewport_property_debug_draw>`
 
 .. rst-class:: classref-property-setget
 
@@ -1220,7 +1176,7 @@ The overlay mode for test rendered geometry in debug purposes.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **disable_3d** = ``false``
+:ref:`bool<class_bool>` **disable_3d** = ``false`` :ref:`🔗<class_Viewport_property_disable_3d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1237,7 +1193,7 @@ Disable 3D rendering (but keep 2D rendering).
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **fsr_sharpness** = ``0.2``
+:ref:`float<class_float>` **fsr_sharpness** = ``0.2`` :ref:`🔗<class_Viewport_property_fsr_sharpness>`
 
 .. rst-class:: classref-property-setget
 
@@ -1256,7 +1212,7 @@ To control this property on the root viewport, set the :ref:`ProjectSettings.ren
 
 .. rst-class:: classref-property
 
-:ref:`Transform2D<class_Transform2D>` **global_canvas_transform**
+:ref:`Transform2D<class_Transform2D>` **global_canvas_transform** :ref:`🔗<class_Viewport_property_global_canvas_transform>`
 
 .. rst-class:: classref-property-setget
 
@@ -1273,7 +1229,7 @@ The global canvas transform of the viewport. The canvas transform is relative to
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **gui_disable_input** = ``false``
+:ref:`bool<class_bool>` **gui_disable_input** = ``false`` :ref:`🔗<class_Viewport_property_gui_disable_input>`
 
 .. rst-class:: classref-property-setget
 
@@ -1290,7 +1246,7 @@ If ``true``, the viewport will not receive input events.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **gui_embed_subwindows** = ``false``
+:ref:`bool<class_bool>` **gui_embed_subwindows** = ``false`` :ref:`🔗<class_Viewport_property_gui_embed_subwindows>`
 
 .. rst-class:: classref-property-setget
 
@@ -1307,7 +1263,7 @@ If ``true``, sub-windows (popups and dialogs) will be embedded inside applicatio
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **gui_snap_controls_to_pixels** = ``true``
+:ref:`bool<class_bool>` **gui_snap_controls_to_pixels** = ``true`` :ref:`🔗<class_Viewport_property_gui_snap_controls_to_pixels>`
 
 .. rst-class:: classref-property-setget
 
@@ -1324,7 +1280,7 @@ If ``true``, the GUI controls on the viewport will lay pixel perfectly.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **handle_input_locally** = ``true``
+:ref:`bool<class_bool>` **handle_input_locally** = ``true`` :ref:`🔗<class_Viewport_property_handle_input_locally>`
 
 .. rst-class:: classref-property-setget
 
@@ -1345,7 +1301,7 @@ See also :ref:`set_input_as_handled<class_Viewport_method_set_input_as_handled>`
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **mesh_lod_threshold** = ``1.0``
+:ref:`float<class_float>` **mesh_lod_threshold** = ``1.0`` :ref:`🔗<class_Viewport_property_mesh_lod_threshold>`
 
 .. rst-class:: classref-property-setget
 
@@ -1366,7 +1322,7 @@ To control this property on the root viewport, set the :ref:`ProjectSettings.ren
 
 .. rst-class:: classref-property
 
-:ref:`MSAA<enum_Viewport_MSAA>` **msaa_2d** = ``0``
+:ref:`MSAA<enum_Viewport_MSAA>` **msaa_2d** = ``0`` :ref:`🔗<class_Viewport_property_msaa_2d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1383,7 +1339,7 @@ The multisample anti-aliasing mode for 2D/Canvas rendering. A higher number resu
 
 .. rst-class:: classref-property
 
-:ref:`MSAA<enum_Viewport_MSAA>` **msaa_3d** = ``0``
+:ref:`MSAA<enum_Viewport_MSAA>` **msaa_3d** = ``0`` :ref:`🔗<class_Viewport_property_msaa_3d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1400,7 +1356,7 @@ The multisample anti-aliasing mode for 3D rendering. A higher number results in 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **own_world_3d** = ``false``
+:ref:`bool<class_bool>` **own_world_3d** = ``false`` :ref:`🔗<class_Viewport_property_own_world_3d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1417,7 +1373,7 @@ If ``true``, the viewport will use a unique copy of the :ref:`World3D<class_Worl
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **physics_object_picking** = ``false``
+:ref:`bool<class_bool>` **physics_object_picking** = ``false`` :ref:`🔗<class_Viewport_property_physics_object_picking>`
 
 .. rst-class:: classref-property-setget
 
@@ -1436,7 +1392,7 @@ If ``true``, the objects rendered by viewport become subjects of mouse picking p
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **physics_object_picking_first_only** = ``false``
+:ref:`bool<class_bool>` **physics_object_picking_first_only** = ``false`` :ref:`🔗<class_Viewport_property_physics_object_picking_first_only>`
 
 .. rst-class:: classref-property-setget
 
@@ -1457,7 +1413,7 @@ This applies to 2D CanvasItem object picking only.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **physics_object_picking_sort** = ``false``
+:ref:`bool<class_bool>` **physics_object_picking_sort** = ``false`` :ref:`🔗<class_Viewport_property_physics_object_picking_sort>`
 
 .. rst-class:: classref-property-setget
 
@@ -1478,7 +1434,7 @@ If ``true``, objects receive mouse picking events sorted primarily by their :ref
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **positional_shadow_atlas_16_bits** = ``true``
+:ref:`bool<class_bool>` **positional_shadow_atlas_16_bits** = ``true`` :ref:`🔗<class_Viewport_property_positional_shadow_atlas_16_bits>`
 
 .. rst-class:: classref-property-setget
 
@@ -1495,7 +1451,7 @@ Use 16 bits for the omni/spot shadow depth map. Enabling this results in shadows
 
 .. rst-class:: classref-property
 
-:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_0** = ``2``
+:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_0** = ``2`` :ref:`🔗<class_Viewport_property_positional_shadow_atlas_quad_0>`
 
 .. rst-class:: classref-property-setget
 
@@ -1512,7 +1468,7 @@ The subdivision amount of the first quadrant on the shadow atlas.
 
 .. rst-class:: classref-property
 
-:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_1** = ``2``
+:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_1** = ``2`` :ref:`🔗<class_Viewport_property_positional_shadow_atlas_quad_1>`
 
 .. rst-class:: classref-property-setget
 
@@ -1529,7 +1485,7 @@ The subdivision amount of the second quadrant on the shadow atlas.
 
 .. rst-class:: classref-property
 
-:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_2** = ``3``
+:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_2** = ``3`` :ref:`🔗<class_Viewport_property_positional_shadow_atlas_quad_2>`
 
 .. rst-class:: classref-property-setget
 
@@ -1546,7 +1502,7 @@ The subdivision amount of the third quadrant on the shadow atlas.
 
 .. rst-class:: classref-property
 
-:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_3** = ``4``
+:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **positional_shadow_atlas_quad_3** = ``4`` :ref:`🔗<class_Viewport_property_positional_shadow_atlas_quad_3>`
 
 .. rst-class:: classref-property-setget
 
@@ -1563,7 +1519,7 @@ The subdivision amount of the fourth quadrant on the shadow atlas.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **positional_shadow_atlas_size** = ``2048``
+:ref:`int<class_int>` **positional_shadow_atlas_size** = ``2048`` :ref:`🔗<class_Viewport_property_positional_shadow_atlas_size>`
 
 .. rst-class:: classref-property-setget
 
@@ -1582,7 +1538,7 @@ The shadow atlas' resolution (used for omni and spot lights). The value is round
 
 .. rst-class:: classref-property
 
-:ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` **scaling_3d_mode** = ``0``
+:ref:`Scaling3DMode<enum_Viewport_Scaling3DMode>` **scaling_3d_mode** = ``0`` :ref:`🔗<class_Viewport_property_scaling_3d_mode>`
 
 .. rst-class:: classref-property-setget
 
@@ -1601,7 +1557,7 @@ To control this property on the root viewport, set the :ref:`ProjectSettings.ren
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **scaling_3d_scale** = ``1.0``
+:ref:`float<class_float>` **scaling_3d_scale** = ``1.0`` :ref:`🔗<class_Viewport_property_scaling_3d_scale>`
 
 .. rst-class:: classref-property-setget
 
@@ -1622,7 +1578,7 @@ To control this property on the root viewport, set the :ref:`ProjectSettings.ren
 
 .. rst-class:: classref-property
 
-:ref:`ScreenSpaceAA<enum_Viewport_ScreenSpaceAA>` **screen_space_aa** = ``0``
+:ref:`ScreenSpaceAA<enum_Viewport_ScreenSpaceAA>` **screen_space_aa** = ``0`` :ref:`🔗<class_Viewport_property_screen_space_aa>`
 
 .. rst-class:: classref-property-setget
 
@@ -1639,16 +1595,16 @@ Sets the screen-space antialiasing method used. Screen-space antialiasing works 
 
 .. rst-class:: classref-property
 
-:ref:`SDFOversize<enum_Viewport_SDFOversize>` **sdf_oversize** = ``1``
+:ref:`SDFOversize<enum_Viewport_SDFOversize>` **sdf_oversize** = ``1`` :ref:`🔗<class_Viewport_property_sdf_oversize>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_sdf_oversize**\ (\ value\: :ref:`SDFOversize<enum_Viewport_SDFOversize>`\ )
 - :ref:`SDFOversize<enum_Viewport_SDFOversize>` **get_sdf_oversize**\ (\ )
 
-.. container:: contribute
+Controls how much of the original viewport's size should be covered by the 2D signed distance field. This SDF can be sampled in :ref:`CanvasItem<class_CanvasItem>` shaders and is also used for :ref:`GPUParticles2D<class_GPUParticles2D>` collision. Higher values allow portions of occluders located outside the viewport to still be taken into account in the generated signed distance field, at the cost of performance. If you notice particles falling through :ref:`LightOccluder2D<class_LightOccluder2D>`\ s as the occluders leave the viewport, increase this setting.
 
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+The percentage is added on each axis and on both sides. For example, with the default :ref:`SDF_OVERSIZE_120_PERCENT<class_Viewport_constant_SDF_OVERSIZE_120_PERCENT>`, the signed distance field will cover 20% of the viewport's size outside the viewport on each side (top, right, bottom, left).
 
 .. rst-class:: classref-item-separator
 
@@ -1658,16 +1614,14 @@ Sets the screen-space antialiasing method used. Screen-space antialiasing works 
 
 .. rst-class:: classref-property
 
-:ref:`SDFScale<enum_Viewport_SDFScale>` **sdf_scale** = ``1``
+:ref:`SDFScale<enum_Viewport_SDFScale>` **sdf_scale** = ``1`` :ref:`🔗<class_Viewport_property_sdf_scale>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_sdf_scale**\ (\ value\: :ref:`SDFScale<enum_Viewport_SDFScale>`\ )
 - :ref:`SDFScale<enum_Viewport_SDFScale>` **get_sdf_scale**\ (\ )
 
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+The resolution scale to use for the 2D signed distance field. Higher values lead to a more precise and more stable signed distance field as the camera moves, at the cost of performance.
 
 .. rst-class:: classref-item-separator
 
@@ -1677,16 +1631,14 @@ Sets the screen-space antialiasing method used. Screen-space antialiasing works 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **snap_2d_transforms_to_pixel** = ``false``
+:ref:`bool<class_bool>` **snap_2d_transforms_to_pixel** = ``false`` :ref:`🔗<class_Viewport_property_snap_2d_transforms_to_pixel>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_snap_2d_transforms_to_pixel**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_snap_2d_transforms_to_pixel_enabled**\ (\ )
 
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If ``true``, :ref:`CanvasItem<class_CanvasItem>` nodes will internally snap to full pixels. Their position can still be sub-pixel, but the decimals will not have effect. This can lead to a crisper appearance at the cost of less smooth movement, especially when :ref:`Camera2D<class_Camera2D>` smoothing is enabled.
 
 .. rst-class:: classref-item-separator
 
@@ -1696,16 +1648,14 @@ Sets the screen-space antialiasing method used. Screen-space antialiasing works 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **snap_2d_vertices_to_pixel** = ``false``
+:ref:`bool<class_bool>` **snap_2d_vertices_to_pixel** = ``false`` :ref:`🔗<class_Viewport_property_snap_2d_vertices_to_pixel>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_snap_2d_vertices_to_pixel**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_snap_2d_vertices_to_pixel_enabled**\ (\ )
 
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If ``true``, vertices of :ref:`CanvasItem<class_CanvasItem>` nodes will snap to full pixels. Only affects the final vertex positions, not the transforms. This can lead to a crisper appearance at the cost of less smooth movement, especially when :ref:`Camera2D<class_Camera2D>` smoothing is enabled.
 
 .. rst-class:: classref-item-separator
 
@@ -1715,7 +1665,7 @@ Sets the screen-space antialiasing method used. Screen-space antialiasing works 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **texture_mipmap_bias** = ``0.0``
+:ref:`float<class_float>` **texture_mipmap_bias** = ``0.0`` :ref:`🔗<class_Viewport_property_texture_mipmap_bias>`
 
 .. rst-class:: classref-property-setget
 
@@ -1738,7 +1688,7 @@ To control this property on the root viewport, set the :ref:`ProjectSettings.ren
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **transparent_bg** = ``false``
+:ref:`bool<class_bool>` **transparent_bg** = ``false`` :ref:`🔗<class_Viewport_property_transparent_bg>`
 
 .. rst-class:: classref-property-setget
 
@@ -1755,7 +1705,7 @@ If ``true``, the viewport should render its background as transparent.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **use_debanding** = ``false``
+:ref:`bool<class_bool>` **use_debanding** = ``false`` :ref:`🔗<class_Viewport_property_use_debanding>`
 
 .. rst-class:: classref-property-setget
 
@@ -1774,14 +1724,14 @@ In some cases, debanding may introduce a slightly noticeable dithering pattern. 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **use_hdr_2d** = ``false``
+:ref:`bool<class_bool>` **use_hdr_2d** = ``false`` :ref:`🔗<class_Viewport_property_use_hdr_2d>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_use_hdr_2d**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_hdr_2d**\ (\ )
 
-If ``true``, 2D rendering will use an high dynamic range (HDR) format framebuffer matching the bit depth of the 3D framebuffer. When using the Forward+ renderer this will be a ``RGBA16`` framebuffer, while when using the Mobile renderer it will be a ``RGB10_A2`` framebuffer. Additionally, 2D rendering will take place in linear color space and will be converted to sRGB space immediately before blitting to the screen (if the Viewport is attached to the screen). Practically speaking, this means that the end result of the Viewport will not be clamped into the ``0-1`` range and can be used in 3D rendering without color space adjustments. This allows 2D rendering to take advantage of effects requiring high dynamic range (e.g. 2D glow) as well as substantially improves the appearance of effects requiring highly detailed gradients.
+If ``true``, 2D rendering will use an high dynamic range (HDR) format framebuffer matching the bit depth of the 3D framebuffer. When using the Forward+ renderer this will be an ``RGBA16`` framebuffer, while when using the Mobile renderer it will be an ``RGB10_A2`` framebuffer. Additionally, 2D rendering will take place in linear color space and will be converted to sRGB space immediately before blitting to the screen (if the Viewport is attached to the screen). Practically speaking, this means that the end result of the Viewport will not be clamped into the ``0-1`` range and can be used in 3D rendering without color space adjustments. This allows 2D rendering to take advantage of effects requiring high dynamic range (e.g. 2D glow) as well as substantially improves the appearance of effects requiring highly detailed gradients.
 
 \ **Note:** This setting will have no effect when using the GL Compatibility renderer as the GL Compatibility renderer always renders in low dynamic range for performance reasons.
 
@@ -1793,7 +1743,7 @@ If ``true``, 2D rendering will use an high dynamic range (HDR) format framebuffe
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **use_occlusion_culling** = ``false``
+:ref:`bool<class_bool>` **use_occlusion_culling** = ``false`` :ref:`🔗<class_Viewport_property_use_occlusion_culling>`
 
 .. rst-class:: classref-property-setget
 
@@ -1814,7 +1764,7 @@ If ``true``, :ref:`OccluderInstance3D<class_OccluderInstance3D>` nodes will be u
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **use_taa** = ``false``
+:ref:`bool<class_bool>` **use_taa** = ``false`` :ref:`🔗<class_Viewport_property_use_taa>`
 
 .. rst-class:: classref-property-setget
 
@@ -1833,7 +1783,7 @@ Enables Temporal Anti-Aliasing for this viewport. TAA works by jittering the cam
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **use_xr** = ``false``
+:ref:`bool<class_bool>` **use_xr** = ``false`` :ref:`🔗<class_Viewport_property_use_xr>`
 
 .. rst-class:: classref-property-setget
 
@@ -1850,7 +1800,7 @@ If ``true``, the viewport will use the primary XR interface to render XR output.
 
 .. rst-class:: classref-property
 
-:ref:`VRSMode<enum_Viewport_VRSMode>` **vrs_mode** = ``0``
+:ref:`VRSMode<enum_Viewport_VRSMode>` **vrs_mode** = ``0`` :ref:`🔗<class_Viewport_property_vrs_mode>`
 
 .. rst-class:: classref-property-setget
 
@@ -1867,7 +1817,7 @@ The Variable Rate Shading (VRS) mode that is used for this viewport. Note, if ha
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **vrs_texture**
+:ref:`Texture2D<class_Texture2D>` **vrs_texture** :ref:`🔗<class_Viewport_property_vrs_texture>`
 
 .. rst-class:: classref-property-setget
 
@@ -1878,7 +1828,7 @@ Texture to use when :ref:`vrs_mode<class_Viewport_property_vrs_mode>` is set to 
 
 The texture *must* use a lossless compression format so that colors can be matched precisely. The following VRS densities are mapped to various colors, with brighter colors representing a lower level of shading precision:
 
-::
+.. code:: text
 
     - 1×1 = rgb(0, 0, 0)     - #000000
     - 1×2 = rgb(0, 85, 0)    - #005500
@@ -1895,11 +1845,28 @@ The texture *must* use a lossless compression format so that colors can be match
 
 ----
 
+.. _class_Viewport_property_vrs_update_mode:
+
+.. rst-class:: classref-property
+
+:ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>` **vrs_update_mode** = ``1`` :ref:`🔗<class_Viewport_property_vrs_update_mode>`
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_vrs_update_mode**\ (\ value\: :ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>`\ )
+- :ref:`VRSUpdateMode<enum_Viewport_VRSUpdateMode>` **get_vrs_update_mode**\ (\ )
+
+Sets the update mode for Variable Rate Shading (VRS) for the viewport. VRS requires the input texture to be converted to the format usable by the VRS method supported by the hardware. The update mode defines how often this happens. If the GPU does not support VRS, or VRS is not enabled, this property is ignored.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Viewport_property_world_2d:
 
 .. rst-class:: classref-property
 
-:ref:`World2D<class_World2D>` **world_2d**
+:ref:`World2D<class_World2D>` **world_2d** :ref:`🔗<class_Viewport_property_world_2d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1916,7 +1883,7 @@ The custom :ref:`World2D<class_World2D>` which can be used as 2D environment sou
 
 .. rst-class:: classref-property
 
-:ref:`World3D<class_World3D>` **world_3d**
+:ref:`World3D<class_World3D>` **world_3d** :ref:`🔗<class_Viewport_property_world_3d>`
 
 .. rst-class:: classref-property-setget
 
@@ -1938,7 +1905,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`World2D<class_World2D>` **find_world_2d**\ (\ ) |const|
+:ref:`World2D<class_World2D>` **find_world_2d**\ (\ ) |const| :ref:`🔗<class_Viewport_method_find_world_2d>`
 
 Returns the first valid :ref:`World2D<class_World2D>` for this viewport, searching the :ref:`world_2d<class_Viewport_property_world_2d>` property of itself and any Viewport ancestor.
 
@@ -1950,7 +1917,7 @@ Returns the first valid :ref:`World2D<class_World2D>` for this viewport, searchi
 
 .. rst-class:: classref-method
 
-:ref:`World3D<class_World3D>` **find_world_3d**\ (\ ) |const|
+:ref:`World3D<class_World3D>` **find_world_3d**\ (\ ) |const| :ref:`🔗<class_Viewport_method_find_world_3d>`
 
 Returns the first valid :ref:`World3D<class_World3D>` for this viewport, searching the :ref:`world_3d<class_Viewport_property_world_3d>` property of itself and any Viewport ancestor.
 
@@ -1962,7 +1929,7 @@ Returns the first valid :ref:`World3D<class_World3D>` for this viewport, searchi
 
 .. rst-class:: classref-method
 
-:ref:`Camera2D<class_Camera2D>` **get_camera_2d**\ (\ ) |const|
+:ref:`Camera2D<class_Camera2D>` **get_camera_2d**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_camera_2d>`
 
 Returns the currently active 2D camera. Returns null if there are no active cameras.
 
@@ -1974,7 +1941,7 @@ Returns the currently active 2D camera. Returns null if there are no active came
 
 .. rst-class:: classref-method
 
-:ref:`Camera3D<class_Camera3D>` **get_camera_3d**\ (\ ) |const|
+:ref:`Camera3D<class_Camera3D>` **get_camera_3d**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_camera_3d>`
 
 Returns the currently active 3D camera.
 
@@ -1986,7 +1953,7 @@ Returns the currently active 3D camera.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **get_canvas_cull_mask_bit**\ (\ layer\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **get_canvas_cull_mask_bit**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Viewport_method_get_canvas_cull_mask_bit>`
 
 Returns an individual bit on the rendering layer mask.
 
@@ -1998,7 +1965,7 @@ Returns an individual bit on the rendering layer mask.
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>`\[:ref:`Window<class_Window>`\] **get_embedded_subwindows**\ (\ ) |const|
+:ref:`Array<class_Array>`\[:ref:`Window<class_Window>`\] **get_embedded_subwindows**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_embedded_subwindows>`
 
 Returns a list of the visible embedded :ref:`Window<class_Window>`\ s inside the viewport.
 
@@ -2012,7 +1979,7 @@ Returns a list of the visible embedded :ref:`Window<class_Window>`\ s inside the
 
 .. rst-class:: classref-method
 
-:ref:`Transform2D<class_Transform2D>` **get_final_transform**\ (\ ) |const|
+:ref:`Transform2D<class_Transform2D>` **get_final_transform**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_final_transform>`
 
 Returns the transform from the viewport's coordinate system to the embedder's coordinate system.
 
@@ -2024,7 +1991,7 @@ Returns the transform from the viewport's coordinate system to the embedder's co
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **get_mouse_position**\ (\ ) |const|
+:ref:`Vector2<class_Vector2>` **get_mouse_position**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_mouse_position>`
 
 Returns the mouse's position in this **Viewport** using the coordinate system of this **Viewport**.
 
@@ -2036,7 +2003,7 @@ Returns the mouse's position in this **Viewport** using the coordinate system of
 
 .. rst-class:: classref-method
 
-:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **get_positional_shadow_atlas_quadrant_subdiv**\ (\ quadrant\: :ref:`int<class_int>`\ ) |const|
+:ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>` **get_positional_shadow_atlas_quadrant_subdiv**\ (\ quadrant\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Viewport_method_get_positional_shadow_atlas_quadrant_subdiv>`
 
 Returns the positional shadow atlas quadrant subdivision of the specified quadrant.
 
@@ -2048,7 +2015,7 @@ Returns the positional shadow atlas quadrant subdivision of the specified quadra
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_render_info**\ (\ type\: :ref:`RenderInfoType<enum_Viewport_RenderInfoType>`, info\: :ref:`RenderInfo<enum_Viewport_RenderInfo>`\ )
+:ref:`int<class_int>` **get_render_info**\ (\ type\: :ref:`RenderInfoType<enum_Viewport_RenderInfoType>`, info\: :ref:`RenderInfo<enum_Viewport_RenderInfo>`\ ) :ref:`🔗<class_Viewport_method_get_render_info>`
 
 Returns rendering statistics of the given type. See :ref:`RenderInfoType<enum_Viewport_RenderInfoType>` and :ref:`RenderInfo<enum_Viewport_RenderInfo>` for options.
 
@@ -2060,7 +2027,7 @@ Returns rendering statistics of the given type. See :ref:`RenderInfoType<enum_Vi
 
 .. rst-class:: classref-method
 
-:ref:`Transform2D<class_Transform2D>` **get_screen_transform**\ (\ ) |const|
+:ref:`Transform2D<class_Transform2D>` **get_screen_transform**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_screen_transform>`
 
 Returns the transform from the Viewport's coordinates to the screen coordinates of the containing window manager window.
 
@@ -2072,7 +2039,7 @@ Returns the transform from the Viewport's coordinates to the screen coordinates 
 
 .. rst-class:: classref-method
 
-:ref:`ViewportTexture<class_ViewportTexture>` **get_texture**\ (\ ) |const|
+:ref:`ViewportTexture<class_ViewportTexture>` **get_texture**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_texture>`
 
 Returns the viewport's texture.
 
@@ -2092,7 +2059,7 @@ Returns the viewport's texture.
 
 .. rst-class:: classref-method
 
-:ref:`RID<class_RID>` **get_viewport_rid**\ (\ ) |const|
+:ref:`RID<class_RID>` **get_viewport_rid**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_viewport_rid>`
 
 Returns the viewport's RID from the :ref:`RenderingServer<class_RenderingServer>`.
 
@@ -2104,7 +2071,7 @@ Returns the viewport's RID from the :ref:`RenderingServer<class_RenderingServer>
 
 .. rst-class:: classref-method
 
-:ref:`Rect2<class_Rect2>` **get_visible_rect**\ (\ ) |const|
+:ref:`Rect2<class_Rect2>` **get_visible_rect**\ (\ ) |const| :ref:`🔗<class_Viewport_method_get_visible_rect>`
 
 Returns the visible rectangle in global screen coordinates.
 
@@ -2116,7 +2083,7 @@ Returns the visible rectangle in global screen coordinates.
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **gui_get_drag_data**\ (\ ) |const|
+:ref:`Variant<class_Variant>` **gui_get_drag_data**\ (\ ) |const| :ref:`🔗<class_Viewport_method_gui_get_drag_data>`
 
 Returns the drag data from the GUI, that was previously returned by :ref:`Control._get_drag_data<class_Control_private_method__get_drag_data>`.
 
@@ -2128,7 +2095,7 @@ Returns the drag data from the GUI, that was previously returned by :ref:`Contro
 
 .. rst-class:: classref-method
 
-:ref:`Control<class_Control>` **gui_get_focus_owner**\ (\ ) |const|
+:ref:`Control<class_Control>` **gui_get_focus_owner**\ (\ ) |const| :ref:`🔗<class_Viewport_method_gui_get_focus_owner>`
 
 Returns the :ref:`Control<class_Control>` having the focus within this viewport. If no :ref:`Control<class_Control>` has the focus, returns null.
 
@@ -2140,7 +2107,7 @@ Returns the :ref:`Control<class_Control>` having the focus within this viewport.
 
 .. rst-class:: classref-method
 
-:ref:`Control<class_Control>` **gui_get_hovered_control**\ (\ ) |const|
+:ref:`Control<class_Control>` **gui_get_hovered_control**\ (\ ) |const| :ref:`🔗<class_Viewport_method_gui_get_hovered_control>`
 
 Returns the :ref:`Control<class_Control>` that the mouse is currently hovering over in this viewport. If no :ref:`Control<class_Control>` has the cursor, returns null.
 
@@ -2154,7 +2121,7 @@ Typically the leaf :ref:`Control<class_Control>` node or deepest level of the su
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **gui_is_drag_successful**\ (\ ) |const|
+:ref:`bool<class_bool>` **gui_is_drag_successful**\ (\ ) |const| :ref:`🔗<class_Viewport_method_gui_is_drag_successful>`
 
 Returns ``true`` if the drag operation is successful.
 
@@ -2166,7 +2133,7 @@ Returns ``true`` if the drag operation is successful.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **gui_is_dragging**\ (\ ) |const|
+:ref:`bool<class_bool>` **gui_is_dragging**\ (\ ) |const| :ref:`🔗<class_Viewport_method_gui_is_dragging>`
 
 Returns ``true`` if the viewport is currently performing a drag operation.
 
@@ -2180,7 +2147,7 @@ Alternative to :ref:`Node.NOTIFICATION_DRAG_BEGIN<class_Node_constant_NOTIFICATI
 
 .. rst-class:: classref-method
 
-|void| **gui_release_focus**\ (\ )
+|void| **gui_release_focus**\ (\ ) :ref:`🔗<class_Viewport_method_gui_release_focus>`
 
 Removes the focus from the currently focused :ref:`Control<class_Control>` within this viewport. If no :ref:`Control<class_Control>` has the focus, does nothing.
 
@@ -2192,7 +2159,7 @@ Removes the focus from the currently focused :ref:`Control<class_Control>` withi
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_input_handled**\ (\ ) |const|
+:ref:`bool<class_bool>` **is_input_handled**\ (\ ) |const| :ref:`🔗<class_Viewport_method_is_input_handled>`
 
 Returns whether the current :ref:`InputEvent<class_InputEvent>` has been handled. Input events are not handled until :ref:`set_input_as_handled<class_Viewport_method_set_input_as_handled>` has been called during the lifetime of an :ref:`InputEvent<class_InputEvent>`.
 
@@ -2208,7 +2175,7 @@ If :ref:`handle_input_locally<class_Viewport_property_handle_input_locally>` is 
 
 .. rst-class:: classref-method
 
-|void| **push_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`, in_local_coords\: :ref:`bool<class_bool>` = false\ )
+|void| **push_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`, in_local_coords\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Viewport_method_push_input>`
 
 Triggers the given ``event`` in this **Viewport**. This can be used to pass an :ref:`InputEvent<class_InputEvent>` between viewports, or to locally apply inputs that were sent over the network or saved to a file.
 
@@ -2240,7 +2207,7 @@ If none of the methods handle the event and :ref:`physics_object_picking<class_V
 
 .. rst-class:: classref-method
 
-|void| **push_text_input**\ (\ text\: :ref:`String<class_String>`\ )
+|void| **push_text_input**\ (\ text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Viewport_method_push_text_input>`
 
 Helper method which calls the ``set_text()`` method on the currently focused :ref:`Control<class_Control>`, provided that it is defined (e.g. if the focused Control is :ref:`Button<class_Button>` or :ref:`LineEdit<class_LineEdit>`).
 
@@ -2252,7 +2219,7 @@ Helper method which calls the ``set_text()`` method on the currently focused :re
 
 .. rst-class:: classref-method
 
-|void| **push_unhandled_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`, in_local_coords\: :ref:`bool<class_bool>` = false\ )
+|void| **push_unhandled_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`, in_local_coords\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Viewport_method_push_unhandled_input>`
 
 **Deprecated:** Use :ref:`push_input<class_Viewport_method_push_input>` instead.
 
@@ -2282,7 +2249,7 @@ If none of the methods handle the event and :ref:`physics_object_picking<class_V
 
 .. rst-class:: classref-method
 
-|void| **set_canvas_cull_mask_bit**\ (\ layer\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )
+|void| **set_canvas_cull_mask_bit**\ (\ layer\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Viewport_method_set_canvas_cull_mask_bit>`
 
 Set/clear individual bits on the rendering layer mask. This simplifies editing this **Viewport**'s layers.
 
@@ -2294,7 +2261,7 @@ Set/clear individual bits on the rendering layer mask. This simplifies editing t
 
 .. rst-class:: classref-method
 
-|void| **set_input_as_handled**\ (\ )
+|void| **set_input_as_handled**\ (\ ) :ref:`🔗<class_Viewport_method_set_input_as_handled>`
 
 Stops the input from propagating further down the :ref:`SceneTree<class_SceneTree>`.
 
@@ -2308,7 +2275,7 @@ Stops the input from propagating further down the :ref:`SceneTree<class_SceneTre
 
 .. rst-class:: classref-method
 
-|void| **set_positional_shadow_atlas_quadrant_subdiv**\ (\ quadrant\: :ref:`int<class_int>`, subdiv\: :ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>`\ )
+|void| **set_positional_shadow_atlas_quadrant_subdiv**\ (\ quadrant\: :ref:`int<class_int>`, subdiv\: :ref:`PositionalShadowAtlasQuadrantSubdiv<enum_Viewport_PositionalShadowAtlasQuadrantSubdiv>`\ ) :ref:`🔗<class_Viewport_method_set_positional_shadow_atlas_quadrant_subdiv>`
 
 Sets the number of subdivisions to use in the specified quadrant. A higher number of subdivisions allows you to have more shadows in the scene at once, but reduces the quality of the shadows. A good practice is to have quadrants with a varying number of subdivisions and to have as few subdivisions as possible.
 
@@ -2320,7 +2287,7 @@ Sets the number of subdivisions to use in the specified quadrant. A higher numbe
 
 .. rst-class:: classref-method
 
-|void| **update_mouse_cursor_state**\ (\ )
+|void| **update_mouse_cursor_state**\ (\ ) :ref:`🔗<class_Viewport_method_update_mouse_cursor_state>`
 
 Force instantly updating the display based on the current mouse cursor position. This includes updating the mouse cursor shape and sending necessary :ref:`Control.mouse_entered<class_Control_signal_mouse_entered>`, :ref:`CollisionObject2D.mouse_entered<class_CollisionObject2D_signal_mouse_entered>`, :ref:`CollisionObject3D.mouse_entered<class_CollisionObject3D_signal_mouse_entered>` and :ref:`Window.mouse_entered<class_Window_signal_mouse_entered>` signals and their respective ``mouse_exited`` counterparts.
 
@@ -2332,7 +2299,7 @@ Force instantly updating the display based on the current mouse cursor position.
 
 .. rst-class:: classref-method
 
-|void| **warp_mouse**\ (\ position\: :ref:`Vector2<class_Vector2>`\ )
+|void| **warp_mouse**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Viewport_method_warp_mouse>`
 
 Moves the mouse pointer to the specified position in this **Viewport** using the coordinate system of this **Viewport**.
 
