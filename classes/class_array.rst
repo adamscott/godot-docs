@@ -68,6 +68,8 @@ Arrays can be concatenated using the ``+`` operator:
 
 \ **Note:** Erasing elements while iterating over arrays is **not** supported and will result in unpredictable behavior.
 
+\ **Differences between packed arrays, typed arrays, and untyped arrays:** Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. :ref:`PackedInt64Array<class_PackedInt64Array>` versus ``Array[int]``). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such as :ref:`map<class_Array_method_map>`. Typed arrays are in turn faster to iterate on and modify than untyped arrays.
+
 .. note::
 
 	There are notable differences when using this API with C#. See :ref:`doc_c_sharp_differences` for more information.
@@ -104,6 +106,8 @@ Constructors
    | :ref:`Array<class_Array>` | :ref:`Array<class_Array_constructor_Array>`\ (\ from\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )                                                                                               |
    +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>` | :ref:`Array<class_Array_constructor_Array>`\ (\ from\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ )                                                                                               |
+   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>` | :ref:`Array<class_Array_constructor_Array>`\ (\ from\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )                                                                                               |
    +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
@@ -247,7 +251,7 @@ Constructor Descriptions
 
 .. rst-class:: classref-constructor
 
-:ref:`Array<class_Array>` **Array**\ (\ )
+:ref:`Array<class_Array>` **Array**\ (\ ) :ref:`🔗<class_Array_constructor_Array>`
 
 Constructs an empty **Array**.
 
@@ -259,7 +263,37 @@ Constructs an empty **Array**.
 
 :ref:`Array<class_Array>` **Array**\ (\ base\: :ref:`Array<class_Array>`, type\: :ref:`int<class_int>`, class_name\: :ref:`StringName<class_StringName>`, script\: :ref:`Variant<class_Variant>`\ )
 
-Creates a typed array from the ``base`` array.
+Creates a typed array from the ``base`` array. All arguments are required.
+
+- ``type`` is the built-in type as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant, for example :ref:`@GlobalScope.TYPE_INT<class_@GlobalScope_constant_TYPE_INT>`.
+
+- ``class_name`` is the **native** class name, for example :ref:`Node<class_Node>`. If ``type`` is not :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`, must be an empty string.
+
+- ``script`` is the associated script. Must be a :ref:`Script<class_Script>` instance or ``null``.
+
+Examples:
+
+::
+
+    class_name MyNode
+    extends Node
+    
+    class MyClass:
+        pass
+    
+    func _ready():
+        var a = Array([], TYPE_INT, &"", null) # Array[int]
+        var b = Array([], TYPE_OBJECT, &"Node", null) # Array[Node]
+        var c = Array([], TYPE_OBJECT, &"Node", MyNode) # Array[MyNode]
+        var d = Array([], TYPE_OBJECT, &"RefCounted", MyClass) # Array[MyClass]
+
+\ **Note:** This constructor can be useful if you want to create a typed array on the fly, but you are not required to use it. In GDScript you can use a temporary variable with the static type you need and then pass it:
+
+::
+
+    func _ready():
+        var a: Array[int] = []
+        some_func(a)
 
 .. rst-class:: classref-item-separator
 
@@ -361,6 +395,16 @@ Constructs an array from a :ref:`PackedVector2Array<class_PackedVector2Array>`.
 
 Constructs an array from a :ref:`PackedVector3Array<class_PackedVector3Array>`.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. rst-class:: classref-constructor
+
+:ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )
+
+Constructs an array from a :ref:`PackedVector4Array<class_PackedVector4Array>`.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -374,7 +418,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **all**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const|
+:ref:`bool<class_bool>` **all**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_all>`
 
 Calls the provided :ref:`Callable<class_Callable>` on each element in the array and returns ``true`` if the :ref:`Callable<class_Callable>` returns ``true`` for *all* elements in the array. If the :ref:`Callable<class_Callable>` returns ``false`` for one array element or more, this method returns ``false``.
 
@@ -407,7 +451,7 @@ See also :ref:`any<class_Array_method_any>`, :ref:`filter<class_Array_method_fil
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **any**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const|
+:ref:`bool<class_bool>` **any**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_any>`
 
 Calls the provided :ref:`Callable<class_Callable>` on each element in the array and returns ``true`` if the :ref:`Callable<class_Callable>` returns ``true`` for *one or more* elements in the array. If the :ref:`Callable<class_Callable>` returns ``false`` for all elements in the array, this method returns ``false``.
 
@@ -440,7 +484,7 @@ See also :ref:`all<class_Array_method_all>`, :ref:`filter<class_Array_method_fil
 
 .. rst-class:: classref-method
 
-|void| **append**\ (\ value\: :ref:`Variant<class_Variant>`\ )
+|void| **append**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_append>`
 
 Appends an element at the end of the array (alias of :ref:`push_back<class_Array_method_push_back>`).
 
@@ -452,7 +496,7 @@ Appends an element at the end of the array (alias of :ref:`push_back<class_Array
 
 .. rst-class:: classref-method
 
-|void| **append_array**\ (\ array\: :ref:`Array<class_Array>`\ )
+|void| **append_array**\ (\ array\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_method_append_array>`
 
 Appends another array at the end of this array.
 
@@ -471,7 +515,7 @@ Appends another array at the end of this array.
 
 .. rst-class:: classref-method
 
-|void| **assign**\ (\ array\: :ref:`Array<class_Array>`\ )
+|void| **assign**\ (\ array\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_method_assign>`
 
 Assigns elements of another ``array`` into the array. Resizes the array to match ``array``. Performs type conversions if the array is typed.
 
@@ -483,7 +527,7 @@ Assigns elements of another ``array`` into the array. Resizes the array to match
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **back**\ (\ ) |const|
+:ref:`Variant<class_Variant>` **back**\ (\ ) |const| :ref:`🔗<class_Array_method_back>`
 
 Returns the last element of the array. Prints an error and returns ``null`` if the array is empty.
 
@@ -497,9 +541,15 @@ Returns the last element of the array. Prints an error and returns ``null`` if t
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **bsearch**\ (\ value\: :ref:`Variant<class_Variant>`, before\: :ref:`bool<class_bool>` = true\ ) |const|
+:ref:`int<class_int>` **bsearch**\ (\ value\: :ref:`Variant<class_Variant>`, before\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_Array_method_bsearch>`
 
 Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a ``before`` specifier can be passed. If ``false``, the returned index comes after all existing entries of the value in the array.
+
+::
+
+    var array = ["a", "b", "c", "c", "d", "e"]
+    print(array.bsearch("c", true))  # Prints 2, at the first matching element.
+    print(array.bsearch("c", false)) # Prints 4, after the last matching element, pointing to "d".
 
 \ **Note:** Calling :ref:`bsearch<class_Array_method_bsearch>` on an unsorted array results in unexpected behavior.
 
@@ -511,9 +561,11 @@ Finds the index of an existing value (or the insertion index that maintains sort
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **bsearch_custom**\ (\ value\: :ref:`Variant<class_Variant>`, func\: :ref:`Callable<class_Callable>`, before\: :ref:`bool<class_bool>` = true\ ) |const|
+:ref:`int<class_int>` **bsearch_custom**\ (\ value\: :ref:`Variant<class_Variant>`, func\: :ref:`Callable<class_Callable>`, before\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_Array_method_bsearch_custom>`
 
 Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search and a custom comparison method. Optionally, a ``before`` specifier can be passed. If ``false``, the returned index comes after all existing entries of the value in the array. The custom method receives two arguments (an element from the array and the value searched for) and must return ``true`` if the first argument is less than the second, and return ``false`` otherwise.
+
+\ **Note:** The custom method must accept the two arguments in any order, you cannot rely on that the first argument will always be from the array.
 
 \ **Note:** Calling :ref:`bsearch_custom<class_Array_method_bsearch_custom>` on an unsorted array results in unexpected behavior.
 
@@ -525,7 +577,7 @@ Finds the index of an existing value (or the insertion index that maintains sort
 
 .. rst-class:: classref-method
 
-|void| **clear**\ (\ )
+|void| **clear**\ (\ ) :ref:`🔗<class_Array_method_clear>`
 
 Clears the array. This is equivalent to using :ref:`resize<class_Array_method_resize>` with a size of ``0``.
 
@@ -537,7 +589,7 @@ Clears the array. This is equivalent to using :ref:`resize<class_Array_method_re
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **count**\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const|
+:ref:`int<class_int>` **count**\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const| :ref:`🔗<class_Array_method_count>`
 
 Returns the number of times an element is in the array.
 
@@ -549,7 +601,7 @@ Returns the number of times an element is in the array.
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>` **duplicate**\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const|
+:ref:`Array<class_Array>` **duplicate**\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Array_method_duplicate>`
 
 Returns a copy of the array.
 
@@ -563,7 +615,7 @@ If ``deep`` is ``true``, a deep copy is performed: all nested arrays and diction
 
 .. rst-class:: classref-method
 
-|void| **erase**\ (\ value\: :ref:`Variant<class_Variant>`\ )
+|void| **erase**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_erase>`
 
 Removes the first occurrence of a value from the array. If the value does not exist in the array, nothing happens. To remove an element by index, use :ref:`remove_at<class_Array_method_remove_at>` instead.
 
@@ -581,7 +633,7 @@ Removes the first occurrence of a value from the array. If the value does not ex
 
 .. rst-class:: classref-method
 
-|void| **fill**\ (\ value\: :ref:`Variant<class_Variant>`\ )
+|void| **fill**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_fill>`
 
 Assigns the given value to all elements in the array. This can typically be used together with :ref:`resize<class_Array_method_resize>` to create an array with a given size and initialized elements:
 
@@ -612,7 +664,7 @@ Assigns the given value to all elements in the array. This can typically be used
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>` **filter**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const|
+:ref:`Array<class_Array>` **filter**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_filter>`
 
 Calls the provided :ref:`Callable<class_Callable>` on each element in the array and returns a new array with the elements for which the method returned ``true``.
 
@@ -637,7 +689,7 @@ See also :ref:`any<class_Array_method_any>`, :ref:`all<class_Array_method_all>`,
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **find**\ (\ what\: :ref:`Variant<class_Variant>`, from\: :ref:`int<class_int>` = 0\ ) |const|
+:ref:`int<class_int>` **find**\ (\ what\: :ref:`Variant<class_Variant>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_Array_method_find>`
 
 Searches the array for a value and returns its index or ``-1`` if not found. Optionally, the initial search index can be passed.
 
@@ -649,7 +701,7 @@ Searches the array for a value and returns its index or ``-1`` if not found. Opt
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **front**\ (\ ) |const|
+:ref:`Variant<class_Variant>` **front**\ (\ ) |const| :ref:`🔗<class_Array_method_front>`
 
 Returns the first element of the array. Prints an error and returns ``null`` if the array is empty.
 
@@ -663,9 +715,9 @@ Returns the first element of the array. Prints an error and returns ``null`` if 
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_typed_builtin**\ (\ ) |const|
+:ref:`int<class_int>` **get_typed_builtin**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_builtin>`
 
-Returns the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant for a typed array. If the **Array** is not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`.
+Returns the built-in type of the typed array as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the array is not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`.
 
 .. rst-class:: classref-item-separator
 
@@ -675,9 +727,9 @@ Returns the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant for a t
 
 .. rst-class:: classref-method
 
-:ref:`StringName<class_StringName>` **get_typed_class_name**\ (\ ) |const|
+:ref:`StringName<class_StringName>` **get_typed_class_name**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_class_name>`
 
-Returns a class name of a typed **Array** of type :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`.
+Returns the **native** class name of the typed array if the built-in type is :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, this method returns an empty string.
 
 .. rst-class:: classref-item-separator
 
@@ -687,9 +739,9 @@ Returns a class name of a typed **Array** of type :ref:`@GlobalScope.TYPE_OBJECT
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **get_typed_script**\ (\ ) |const|
+:ref:`Variant<class_Variant>` **get_typed_script**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_script>`
 
-Returns the script associated with a typed array tied to a class name.
+Returns the script associated with the typed array. This method returns a :ref:`Script<class_Script>` instance or ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -699,7 +751,7 @@ Returns the script associated with a typed array tied to a class name.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **has**\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const|
+:ref:`bool<class_bool>` **has**\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const| :ref:`🔗<class_Array_method_has>`
 
 Returns ``true`` if the array contains the given value.
 
@@ -754,7 +806,7 @@ Returns ``true`` if the array contains the given value.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **hash**\ (\ ) |const|
+:ref:`int<class_int>` **hash**\ (\ ) |const| :ref:`🔗<class_Array_method_hash>`
 
 Returns a hashed 32-bit integer value representing the array and its contents.
 
@@ -768,7 +820,7 @@ Returns a hashed 32-bit integer value representing the array and its contents.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **insert**\ (\ position\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ )
+:ref:`int<class_int>` **insert**\ (\ position\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_insert>`
 
 Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (``pos == size()``). Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the other :ref:`Error<enum_@GlobalScope_Error>` values if the operation failed.
 
@@ -784,7 +836,7 @@ Inserts a new element at a given position in the array. The position must be val
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_empty**\ (\ ) |const|
+:ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_Array_method_is_empty>`
 
 Returns ``true`` if the array is empty.
 
@@ -796,7 +848,7 @@ Returns ``true`` if the array is empty.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_read_only**\ (\ ) |const|
+:ref:`bool<class_bool>` **is_read_only**\ (\ ) |const| :ref:`🔗<class_Array_method_is_read_only>`
 
 Returns ``true`` if the array is read-only. See :ref:`make_read_only<class_Array_method_make_read_only>`. Arrays are automatically read-only if declared with ``const`` keyword.
 
@@ -808,7 +860,7 @@ Returns ``true`` if the array is read-only. See :ref:`make_read_only<class_Array
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_same_typed**\ (\ array\: :ref:`Array<class_Array>`\ ) |const|
+:ref:`bool<class_bool>` **is_same_typed**\ (\ array\: :ref:`Array<class_Array>`\ ) |const| :ref:`🔗<class_Array_method_is_same_typed>`
 
 Returns ``true`` if the array is typed the same as ``array``.
 
@@ -820,7 +872,7 @@ Returns ``true`` if the array is typed the same as ``array``.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_typed**\ (\ ) |const|
+:ref:`bool<class_bool>` **is_typed**\ (\ ) |const| :ref:`🔗<class_Array_method_is_typed>`
 
 Returns ``true`` if the array is typed. Typed arrays can only store elements of their associated type and provide type safety for the ``[]`` operator. Methods of typed array still return :ref:`Variant<class_Variant>`.
 
@@ -832,7 +884,7 @@ Returns ``true`` if the array is typed. Typed arrays can only store elements of 
 
 .. rst-class:: classref-method
 
-|void| **make_read_only**\ (\ )
+|void| **make_read_only**\ (\ ) :ref:`🔗<class_Array_method_make_read_only>`
 
 Makes the array read-only, i.e. disabled modifying of the array's elements. Does not apply to nested content, e.g. content of nested arrays.
 
@@ -844,7 +896,7 @@ Makes the array read-only, i.e. disabled modifying of the array's elements. Does
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>` **map**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const|
+:ref:`Array<class_Array>` **map**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_map>`
 
 Calls the provided :ref:`Callable<class_Callable>` for each element in the array and returns a new array filled with values returned by the method.
 
@@ -869,7 +921,7 @@ See also :ref:`filter<class_Array_method_filter>`, :ref:`reduce<class_Array_meth
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **max**\ (\ ) |const|
+:ref:`Variant<class_Variant>` **max**\ (\ ) |const| :ref:`🔗<class_Array_method_max>`
 
 Returns the maximum value contained in the array if all elements are of comparable types. If the elements can't be compared, ``null`` is returned.
 
@@ -893,7 +945,7 @@ To find the maximum value using a custom comparator, you can use :ref:`reduce<cl
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **min**\ (\ ) |const|
+:ref:`Variant<class_Variant>` **min**\ (\ ) |const| :ref:`🔗<class_Array_method_min>`
 
 Returns the minimum value contained in the array if all elements are of comparable types. If the elements can't be compared, ``null`` is returned.
 
@@ -907,7 +959,7 @@ See also :ref:`max<class_Array_method_max>` for an example of using a custom com
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **pick_random**\ (\ ) |const|
+:ref:`Variant<class_Variant>` **pick_random**\ (\ ) |const| :ref:`🔗<class_Array_method_pick_random>`
 
 Returns a random value from the target array. Prints an error and returns ``null`` if the array is empty.
 
@@ -934,7 +986,7 @@ Returns a random value from the target array. Prints an error and returns ``null
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **pop_at**\ (\ position\: :ref:`int<class_int>`\ )
+:ref:`Variant<class_Variant>` **pop_at**\ (\ position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_method_pop_at>`
 
 Removes and returns the element of the array at index ``position``. If negative, ``position`` is considered relative to the end of the array. Leaves the array unchanged and returns ``null`` if the array is empty or if it's accessed out of bounds. An error message is printed when the array is accessed out of bounds, but not when the array is empty.
 
@@ -948,7 +1000,7 @@ Removes and returns the element of the array at index ``position``. If negative,
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **pop_back**\ (\ )
+:ref:`Variant<class_Variant>` **pop_back**\ (\ ) :ref:`🔗<class_Array_method_pop_back>`
 
 Removes and returns the last element of the array. Returns ``null`` if the array is empty, without printing an error message. See also :ref:`pop_front<class_Array_method_pop_front>`.
 
@@ -960,7 +1012,7 @@ Removes and returns the last element of the array. Returns ``null`` if the array
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **pop_front**\ (\ )
+:ref:`Variant<class_Variant>` **pop_front**\ (\ ) :ref:`🔗<class_Array_method_pop_front>`
 
 Removes and returns the first element of the array. Returns ``null`` if the array is empty, without printing an error message. See also :ref:`pop_back<class_Array_method_pop_back>`.
 
@@ -974,7 +1026,7 @@ Removes and returns the first element of the array. Returns ``null`` if the arra
 
 .. rst-class:: classref-method
 
-|void| **push_back**\ (\ value\: :ref:`Variant<class_Variant>`\ )
+|void| **push_back**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_push_back>`
 
 Appends an element at the end of the array. See also :ref:`push_front<class_Array_method_push_front>`.
 
@@ -986,7 +1038,7 @@ Appends an element at the end of the array. See also :ref:`push_front<class_Arra
 
 .. rst-class:: classref-method
 
-|void| **push_front**\ (\ value\: :ref:`Variant<class_Variant>`\ )
+|void| **push_front**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_push_front>`
 
 Adds an element at the beginning of the array. See also :ref:`push_back<class_Array_method_push_back>`.
 
@@ -1000,7 +1052,7 @@ Adds an element at the beginning of the array. See also :ref:`push_back<class_Ar
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **reduce**\ (\ method\: :ref:`Callable<class_Callable>`, accum\: :ref:`Variant<class_Variant>` = null\ ) |const|
+:ref:`Variant<class_Variant>` **reduce**\ (\ method\: :ref:`Callable<class_Callable>`, accum\: :ref:`Variant<class_Variant>` = null\ ) |const| :ref:`🔗<class_Array_method_reduce>`
 
 Calls the provided :ref:`Callable<class_Callable>` for each element in array and accumulates the result in ``accum``.
 
@@ -1025,7 +1077,7 @@ See also :ref:`map<class_Array_method_map>`, :ref:`filter<class_Array_method_fil
 
 .. rst-class:: classref-method
 
-|void| **remove_at**\ (\ position\: :ref:`int<class_int>`\ )
+|void| **remove_at**\ (\ position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_method_remove_at>`
 
 Removes an element from the array by index. If the index does not exist in the array, nothing happens. To remove an element by searching for its value, use :ref:`erase<class_Array_method_erase>` instead.
 
@@ -1043,7 +1095,7 @@ Removes an element from the array by index. If the index does not exist in the a
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **resize**\ (\ size\: :ref:`int<class_int>`\ )
+:ref:`int<class_int>` **resize**\ (\ size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_method_resize>`
 
 Resizes the array to contain a different number of elements. If the array size is smaller, elements are cleared, if bigger, new elements are ``null``. Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the other :ref:`Error<enum_@GlobalScope_Error>` values if the operation failed.
 
@@ -1059,7 +1111,7 @@ Calling :ref:`resize<class_Array_method_resize>` once and assigning the new valu
 
 .. rst-class:: classref-method
 
-|void| **reverse**\ (\ )
+|void| **reverse**\ (\ ) :ref:`🔗<class_Array_method_reverse>`
 
 Reverses the order of the elements in the array.
 
@@ -1071,7 +1123,7 @@ Reverses the order of the elements in the array.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **rfind**\ (\ what\: :ref:`Variant<class_Variant>`, from\: :ref:`int<class_int>` = -1\ ) |const|
+:ref:`int<class_int>` **rfind**\ (\ what\: :ref:`Variant<class_Variant>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_Array_method_rfind>`
 
 Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.
 
@@ -1083,7 +1135,7 @@ Searches the array in reverse order. Optionally, a start search index can be pas
 
 .. rst-class:: classref-method
 
-|void| **shuffle**\ (\ )
+|void| **shuffle**\ (\ ) :ref:`🔗<class_Array_method_shuffle>`
 
 Shuffles the array such that the items will have a random order. This method uses the global random number generator common to methods such as :ref:`@GlobalScope.randi<class_@GlobalScope_method_randi>`. Call :ref:`@GlobalScope.randomize<class_@GlobalScope_method_randomize>` to ensure that a new seed will be used each time if you want non-reproducible shuffling.
 
@@ -1095,7 +1147,7 @@ Shuffles the array such that the items will have a random order. This method use
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **size**\ (\ ) |const|
+:ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_Array_method_size>`
 
 Returns the number of elements in the array.
 
@@ -1107,7 +1159,7 @@ Returns the number of elements in the array.
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>` **slice**\ (\ begin\: :ref:`int<class_int>`, end\: :ref:`int<class_int>` = 2147483647, step\: :ref:`int<class_int>` = 1, deep\: :ref:`bool<class_bool>` = false\ ) |const|
+:ref:`Array<class_Array>` **slice**\ (\ begin\: :ref:`int<class_int>`, end\: :ref:`int<class_int>` = 2147483647, step\: :ref:`int<class_int>` = 1, deep\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Array_method_slice>`
 
 Returns the slice of the **Array**, from ``begin`` (inclusive) to ``end`` (exclusive), as a new **Array**.
 
@@ -1129,7 +1181,7 @@ If ``deep`` is true, each element will be copied by value rather than by referen
 
 .. rst-class:: classref-method
 
-|void| **sort**\ (\ )
+|void| **sort**\ (\ ) :ref:`🔗<class_Array_method_sort>`
 
 Sorts the array.
 
@@ -1170,7 +1222,7 @@ To perform natural order sorting, you can use :ref:`sort_custom<class_Array_meth
 
 .. rst-class:: classref-method
 
-|void| **sort_custom**\ (\ func\: :ref:`Callable<class_Callable>`\ )
+|void| **sort_custom**\ (\ func\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_Array_method_sort_custom>`
 
 Sorts the array using a custom method. The custom method receives two arguments (a pair of elements from the array) and must return either ``true`` or ``false``. For two elements ``a`` and ``b``, if the given method returns ``true``, element ``b`` will be after element ``a`` in the array.
 
@@ -1216,7 +1268,7 @@ Operator Descriptions
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Array<class_Array>`\ )
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_neq_Array>`
 
 Compares the left operand **Array** against the ``right`` **Array**. Returns ``true`` if the sizes or contents of the arrays are *not* equal, ``false`` otherwise.
 
@@ -1228,7 +1280,7 @@ Compares the left operand **Array** against the ``right`` **Array**. Returns ``t
 
 .. rst-class:: classref-operator
 
-:ref:`Array<class_Array>` **operator +**\ (\ right\: :ref:`Array<class_Array>`\ )
+:ref:`Array<class_Array>` **operator +**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_sum_Array>`
 
 Concatenates two **Array**\ s together, with the ``right`` **Array** being added to the end of the **Array** specified in the left operand. For example, ``[1, 2] + [3, 4]`` results in ``[1, 2, 3, 4]``.
 
@@ -1240,7 +1292,7 @@ Concatenates two **Array**\ s together, with the ``right`` **Array** being added
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Array<class_Array>`\ )
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_lt_Array>`
 
 Performs a comparison for each index between the left operand **Array** and the ``right`` **Array**, considering the highest common index of both arrays for this comparison: Returns ``true`` on the first occurrence of an element that is less, or ``false`` if the element is greater. Note that depending on the type of data stored, this function may be recursive. If all elements are equal, it compares the length of both arrays and returns ``false`` if the left operand **Array** has fewer elements, otherwise it returns ``true``.
 
@@ -1252,7 +1304,7 @@ Performs a comparison for each index between the left operand **Array** and the 
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Array<class_Array>`\ )
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_lte_Array>`
 
 Performs a comparison for each index between the left operand **Array** and the ``right`` **Array**, considering the highest common index of both arrays for this comparison: Returns ``true`` on the first occurrence of an element that is less, or ``false`` if the element is greater. Note that depending on the type of data stored, this function may be recursive. If all elements are equal, it compares the length of both arrays and returns ``true`` if the left operand **Array** has the same number of elements or fewer, otherwise it returns ``false``.
 
@@ -1264,7 +1316,7 @@ Performs a comparison for each index between the left operand **Array** and the 
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Array<class_Array>`\ )
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_eq_Array>`
 
 Compares the left operand **Array** against the ``right`` **Array**. Returns ``true`` if the sizes and contents of the arrays are equal, ``false`` otherwise.
 
@@ -1276,7 +1328,7 @@ Compares the left operand **Array** against the ``right`` **Array**. Returns ``t
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Array<class_Array>`\ )
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_gt_Array>`
 
 Performs a comparison for each index between the left operand **Array** and the ``right`` **Array**, considering the highest common index of both arrays for this comparison: Returns ``true`` on the first occurrence of an element that is greater, or ``false`` if the element is less. Note that depending on the type of data stored, this function may be recursive. If all elements are equal, it compares the length of both arrays and returns ``true`` if the ``right`` **Array** has more elements, otherwise it returns ``false``.
 
@@ -1288,7 +1340,7 @@ Performs a comparison for each index between the left operand **Array** and the 
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Array<class_Array>`\ )
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_gte_Array>`
 
 Performs a comparison for each index between the left operand **Array** and the ``right`` **Array**, considering the highest common index of both arrays for this comparison: Returns ``true`` on the first occurrence of an element that is greater, or ``false`` if the element is less. Note that depending on the type of data stored, this function may be recursive. If all elements are equal, it compares the length of both arrays and returns ``true`` if the ``right`` **Array** has more or the same number of elements, otherwise it returns ``false``.
 
@@ -1300,7 +1352,7 @@ Performs a comparison for each index between the left operand **Array** and the 
 
 .. rst-class:: classref-operator
 
-:ref:`Variant<class_Variant>` **operator []**\ (\ index\: :ref:`int<class_int>`\ )
+:ref:`Variant<class_Variant>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_operator_idx_int>`
 
 Returns a reference to the element of type :ref:`Variant<class_Variant>` at the specified location. Arrays start at index 0. ``index`` can be a zero or positive value to start from the beginning, or a negative value to start from the end. Out-of-bounds array access causes a run-time error, which will result in an error being printed and the project execution pausing if run from the editor.
 
