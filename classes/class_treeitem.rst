@@ -172,6 +172,8 @@ Methods
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`is_selected<class_TreeItem_method_is_selected>`\ (\ column\: :ref:`int<class_int>`\ )                                                                                                                                                                         |
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`is_visible_in_tree<class_TreeItem_method_is_visible_in_tree>`\ (\ ) |const|                                                                                                                                                                                   |
+   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`move_after<class_TreeItem_method_move_after>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ )                                                                                                                                                                   |
    +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`move_before<class_TreeItem_method_move_before>`\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ )                                                                                                                                                                 |
@@ -270,7 +272,7 @@ Enumerations
 
 .. rst-class:: classref-enumeration
 
-enum **TreeCellMode**:
+enum **TreeCellMode**: :ref:`🔗<enum_TreeItem_TreeCellMode>`
 
 .. _class_TreeItem_constant_CELL_MODE_STRING:
 
@@ -278,7 +280,7 @@ enum **TreeCellMode**:
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_STRING** = ``0``
 
-Cell contains a string.
+Cell shows a string label. When editable, the text can be edited using a :ref:`LineEdit<class_LineEdit>`, or a :ref:`TextEdit<class_TextEdit>` popup if :ref:`set_edit_multiline<class_TreeItem_method_set_edit_multiline>` is used.
 
 .. _class_TreeItem_constant_CELL_MODE_CHECK:
 
@@ -286,7 +288,7 @@ Cell contains a string.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_CHECK** = ``1``
 
-Cell contains a checkbox.
+Cell shows a checkbox, optionally with text. The checkbox can be pressed, released, or indeterminate (via :ref:`set_indeterminate<class_TreeItem_method_set_indeterminate>`). The checkbox can't be clicked unless the cell is editable.
 
 .. _class_TreeItem_constant_CELL_MODE_RANGE:
 
@@ -294,7 +296,9 @@ Cell contains a checkbox.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_RANGE** = ``2``
 
-Cell contains a range.
+Cell shows a numeric range. When editable, it can be edited using a range slider. Use :ref:`set_range<class_TreeItem_method_set_range>` to set the value and :ref:`set_range_config<class_TreeItem_method_set_range_config>` to configure the range.
+
+This cell can also be used in a text dropdown mode when you assign a text with :ref:`set_text<class_TreeItem_method_set_text>`. Separate options with a comma, e.g. ``"Option1,Option2,Option3"``.
 
 .. _class_TreeItem_constant_CELL_MODE_ICON:
 
@@ -302,7 +306,7 @@ Cell contains a range.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_ICON** = ``3``
 
-Cell contains an icon.
+Cell shows an icon. It can't be edited nor display text.
 
 .. _class_TreeItem_constant_CELL_MODE_CUSTOM:
 
@@ -310,11 +314,9 @@ Cell contains an icon.
 
 :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **CELL_MODE_CUSTOM** = ``4``
 
-.. container:: contribute
+Cell shows as a clickable button. It will display an arrow similar to :ref:`OptionButton<class_OptionButton>`, but doesn't feature a dropdown (for that you can use :ref:`CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>`). Clicking the button emits the :ref:`Tree.item_edited<class_Tree_signal_item_edited>` signal. The button is flat by default, you can use :ref:`set_custom_as_button<class_TreeItem_method_set_custom_as_button>` to display it with a :ref:`StyleBox<class_StyleBox>`.
 
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+This mode also supports custom drawing using :ref:`set_custom_draw_callback<class_TreeItem_method_set_custom_draw_callback>`.
 
 .. rst-class:: classref-section-separator
 
@@ -329,7 +331,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **collapsed**
+:ref:`bool<class_bool>` **collapsed** :ref:`🔗<class_TreeItem_property_collapsed>`
 
 .. rst-class:: classref-property-setget
 
@@ -346,7 +348,7 @@ If ``true``, the TreeItem is collapsed.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **custom_minimum_height**
+:ref:`int<class_int>` **custom_minimum_height** :ref:`🔗<class_TreeItem_property_custom_minimum_height>`
 
 .. rst-class:: classref-property-setget
 
@@ -363,7 +365,7 @@ The custom minimum height.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **disable_folding**
+:ref:`bool<class_bool>` **disable_folding** :ref:`🔗<class_TreeItem_property_disable_folding>`
 
 .. rst-class:: classref-property-setget
 
@@ -380,7 +382,7 @@ If ``true``, folding is disabled for this TreeItem.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **visible**
+:ref:`bool<class_bool>` **visible** :ref:`🔗<class_TreeItem_property_visible>`
 
 .. rst-class:: classref-property-setget
 
@@ -404,7 +406,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-|void| **add_button**\ (\ column\: :ref:`int<class_int>`, button\: :ref:`Texture2D<class_Texture2D>`, id\: :ref:`int<class_int>` = -1, disabled\: :ref:`bool<class_bool>` = false, tooltip_text\: :ref:`String<class_String>` = ""\ )
+|void| **add_button**\ (\ column\: :ref:`int<class_int>`, button\: :ref:`Texture2D<class_Texture2D>`, id\: :ref:`int<class_int>` = -1, disabled\: :ref:`bool<class_bool>` = false, tooltip_text\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_TreeItem_method_add_button>`
 
 Adds a button with :ref:`Texture2D<class_Texture2D>` ``button`` at column ``column``. The ``id`` is used to identify the button in the according :ref:`Tree.button_clicked<class_Tree_signal_button_clicked>` signal and can be different from the buttons index. If not specified, the next available index is used, which may be retrieved by calling :ref:`get_button_count<class_TreeItem_method_get_button_count>` immediately before this method. Optionally, the button can be ``disabled`` and have a ``tooltip_text``.
 
@@ -416,7 +418,7 @@ Adds a button with :ref:`Texture2D<class_Texture2D>` ``button`` at column ``colu
 
 .. rst-class:: classref-method
 
-|void| **add_child**\ (\ child\: :ref:`TreeItem<class_TreeItem>`\ )
+|void| **add_child**\ (\ child\: :ref:`TreeItem<class_TreeItem>`\ ) :ref:`🔗<class_TreeItem_method_add_child>`
 
 Adds a previously unparented **TreeItem** as a direct child of this one. The ``child`` item must not be a part of any :ref:`Tree<class_Tree>` or parented to any **TreeItem**. See also :ref:`remove_child<class_TreeItem_method_remove_child>`.
 
@@ -428,7 +430,7 @@ Adds a previously unparented **TreeItem** as a direct child of this one. The ``c
 
 .. rst-class:: classref-method
 
-|void| **call_recursive**\ (\ method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|
+|void| **call_recursive**\ (\ method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_TreeItem_method_call_recursive>`
 
 Calls the ``method`` on the actual TreeItem and its children recursively. Pass parameters as a comma separated list.
 
@@ -440,7 +442,7 @@ Calls the ``method`` on the actual TreeItem and its children recursively. Pass p
 
 .. rst-class:: classref-method
 
-|void| **clear_custom_bg_color**\ (\ column\: :ref:`int<class_int>`\ )
+|void| **clear_custom_bg_color**\ (\ column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_clear_custom_bg_color>`
 
 Resets the background color for the given column to default.
 
@@ -452,7 +454,7 @@ Resets the background color for the given column to default.
 
 .. rst-class:: classref-method
 
-|void| **clear_custom_color**\ (\ column\: :ref:`int<class_int>`\ )
+|void| **clear_custom_color**\ (\ column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_clear_custom_color>`
 
 Resets the color for the given column to default.
 
@@ -464,7 +466,7 @@ Resets the color for the given column to default.
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **create_child**\ (\ index\: :ref:`int<class_int>` = -1\ )
+:ref:`TreeItem<class_TreeItem>` **create_child**\ (\ index\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_TreeItem_method_create_child>`
 
 Creates an item and adds it as a child.
 
@@ -478,7 +480,7 @@ The new item will be inserted as position ``index`` (the default value ``-1`` me
 
 .. rst-class:: classref-method
 
-|void| **deselect**\ (\ column\: :ref:`int<class_int>`\ )
+|void| **deselect**\ (\ column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_deselect>`
 
 Deselects the given column.
 
@@ -490,7 +492,7 @@ Deselects the given column.
 
 .. rst-class:: classref-method
 
-|void| **erase_button**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ )
+|void| **erase_button**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_erase_button>`
 
 Removes the button at index ``button_index`` in column ``column``.
 
@@ -502,7 +504,7 @@ Removes the button at index ``button_index`` in column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`AutowrapMode<enum_TextServer_AutowrapMode>` **get_autowrap_mode**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`AutowrapMode<enum_TextServer_AutowrapMode>` **get_autowrap_mode**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_autowrap_mode>`
 
 Returns the text autowrap mode in the given ``column``. By default it is :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`.
 
@@ -514,7 +516,7 @@ Returns the text autowrap mode in the given ``column``. By default it is :ref:`T
 
 .. rst-class:: classref-method
 
-:ref:`Texture2D<class_Texture2D>` **get_button**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const|
+:ref:`Texture2D<class_Texture2D>` **get_button**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_button>`
 
 Returns the :ref:`Texture2D<class_Texture2D>` of the button at index ``button_index`` in column ``column``.
 
@@ -526,7 +528,7 @@ Returns the :ref:`Texture2D<class_Texture2D>` of the button at index ``button_in
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_button_by_id**\ (\ column\: :ref:`int<class_int>`, id\: :ref:`int<class_int>`\ ) |const|
+:ref:`int<class_int>` **get_button_by_id**\ (\ column\: :ref:`int<class_int>`, id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_button_by_id>`
 
 Returns the button index if there is a button with ID ``id`` in column ``column``, otherwise returns -1.
 
@@ -538,7 +540,7 @@ Returns the button index if there is a button with ID ``id`` in column ``column`
 
 .. rst-class:: classref-method
 
-:ref:`Color<class_Color>` **get_button_color**\ (\ column\: :ref:`int<class_int>`, id\: :ref:`int<class_int>`\ ) |const|
+:ref:`Color<class_Color>` **get_button_color**\ (\ column\: :ref:`int<class_int>`, id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_button_color>`
 
 Returns the color of the button with ID ``id`` in column ``column``. If the specified button does not exist, returns :ref:`Color.BLACK<class_Color_constant_BLACK>`.
 
@@ -550,7 +552,7 @@ Returns the color of the button with ID ``id`` in column ``column``. If the spec
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_button_count**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`int<class_int>` **get_button_count**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_button_count>`
 
 Returns the number of buttons in column ``column``.
 
@@ -562,7 +564,7 @@ Returns the number of buttons in column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_button_id**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const|
+:ref:`int<class_int>` **get_button_id**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_button_id>`
 
 Returns the ID for the button at index ``button_index`` in column ``column``.
 
@@ -574,7 +576,7 @@ Returns the ID for the button at index ``button_index`` in column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`String<class_String>` **get_button_tooltip_text**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const|
+:ref:`String<class_String>` **get_button_tooltip_text**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_button_tooltip_text>`
 
 Returns the tooltip text for the button at index ``button_index`` in column ``column``.
 
@@ -586,7 +588,7 @@ Returns the tooltip text for the button at index ``button_index`` in column ``co
 
 .. rst-class:: classref-method
 
-:ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **get_cell_mode**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` **get_cell_mode**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_cell_mode>`
 
 Returns the column's cell mode.
 
@@ -598,7 +600,7 @@ Returns the column's cell mode.
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_child**\ (\ index\: :ref:`int<class_int>`\ )
+:ref:`TreeItem<class_TreeItem>` **get_child**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_get_child>`
 
 Returns a child item by its ``index`` (see :ref:`get_child_count<class_TreeItem_method_get_child_count>`). This method is often used for iterating all children of an item.
 
@@ -612,7 +614,7 @@ Negative indices access the children from the last one.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_child_count**\ (\ )
+:ref:`int<class_int>` **get_child_count**\ (\ ) :ref:`🔗<class_TreeItem_method_get_child_count>`
 
 Returns the number of child items.
 
@@ -624,7 +626,7 @@ Returns the number of child items.
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>`\[:ref:`TreeItem<class_TreeItem>`\] **get_children**\ (\ )
+:ref:`Array<class_Array>`\[:ref:`TreeItem<class_TreeItem>`\] **get_children**\ (\ ) :ref:`🔗<class_TreeItem_method_get_children>`
 
 Returns an array of references to the item's children.
 
@@ -636,7 +638,7 @@ Returns an array of references to the item's children.
 
 .. rst-class:: classref-method
 
-:ref:`Color<class_Color>` **get_custom_bg_color**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Color<class_Color>` **get_custom_bg_color**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_custom_bg_color>`
 
 Returns the custom background color of column ``column``.
 
@@ -648,7 +650,7 @@ Returns the custom background color of column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`Color<class_Color>` **get_custom_color**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Color<class_Color>` **get_custom_color**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_custom_color>`
 
 Returns the custom color of column ``column``.
 
@@ -660,7 +662,7 @@ Returns the custom color of column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`Callable<class_Callable>` **get_custom_draw_callback**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Callable<class_Callable>` **get_custom_draw_callback**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_custom_draw_callback>`
 
 Returns the custom callback of column ``column``.
 
@@ -672,7 +674,7 @@ Returns the custom callback of column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`Font<class_Font>` **get_custom_font**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Font<class_Font>` **get_custom_font**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_custom_font>`
 
 Returns custom font used to draw text in the column ``column``.
 
@@ -684,7 +686,7 @@ Returns custom font used to draw text in the column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_custom_font_size**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`int<class_int>` **get_custom_font_size**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_custom_font_size>`
 
 Returns custom font size used to draw text in the column ``column``.
 
@@ -696,7 +698,7 @@ Returns custom font size used to draw text in the column ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **get_expand_right**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **get_expand_right**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_expand_right>`
 
 Returns ``true`` if ``expand_right`` is set.
 
@@ -708,7 +710,7 @@ Returns ``true`` if ``expand_right`` is set.
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_first_child**\ (\ ) |const|
+:ref:`TreeItem<class_TreeItem>` **get_first_child**\ (\ ) |const| :ref:`🔗<class_TreeItem_method_get_first_child>`
 
 Returns the TreeItem's first child.
 
@@ -720,7 +722,7 @@ Returns the TreeItem's first child.
 
 .. rst-class:: classref-method
 
-:ref:`Texture2D<class_Texture2D>` **get_icon**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Texture2D<class_Texture2D>` **get_icon**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_icon>`
 
 Returns the given column's icon :ref:`Texture2D<class_Texture2D>`. Error if no icon is set.
 
@@ -732,7 +734,7 @@ Returns the given column's icon :ref:`Texture2D<class_Texture2D>`. Error if no i
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_icon_max_width**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`int<class_int>` **get_icon_max_width**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_icon_max_width>`
 
 Returns the maximum allowed width of the icon in the given ``column``.
 
@@ -744,7 +746,7 @@ Returns the maximum allowed width of the icon in the given ``column``.
 
 .. rst-class:: classref-method
 
-:ref:`Color<class_Color>` **get_icon_modulate**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Color<class_Color>` **get_icon_modulate**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_icon_modulate>`
 
 Returns the :ref:`Color<class_Color>` modulating the column's icon.
 
@@ -756,7 +758,7 @@ Returns the :ref:`Color<class_Color>` modulating the column's icon.
 
 .. rst-class:: classref-method
 
-:ref:`Rect2<class_Rect2>` **get_icon_region**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Rect2<class_Rect2>` **get_icon_region**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_icon_region>`
 
 Returns the icon :ref:`Texture2D<class_Texture2D>` region as :ref:`Rect2<class_Rect2>`.
 
@@ -768,7 +770,7 @@ Returns the icon :ref:`Texture2D<class_Texture2D>` region as :ref:`Rect2<class_R
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **get_index**\ (\ )
+:ref:`int<class_int>` **get_index**\ (\ ) :ref:`🔗<class_TreeItem_method_get_index>`
 
 Returns the node's order in the tree. For example, if called on the first child item the position is ``0``.
 
@@ -780,7 +782,7 @@ Returns the node's order in the tree. For example, if called on the first child 
 
 .. rst-class:: classref-method
 
-:ref:`String<class_String>` **get_language**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`String<class_String>` **get_language**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_language>`
 
 Returns item's text language code.
 
@@ -792,7 +794,7 @@ Returns item's text language code.
 
 .. rst-class:: classref-method
 
-:ref:`Variant<class_Variant>` **get_metadata**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Variant<class_Variant>` **get_metadata**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_metadata>`
 
 Returns the metadata value that was set for the given column using :ref:`set_metadata<class_TreeItem_method_set_metadata>`.
 
@@ -804,7 +806,7 @@ Returns the metadata value that was set for the given column using :ref:`set_met
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_next**\ (\ ) |const|
+:ref:`TreeItem<class_TreeItem>` **get_next**\ (\ ) |const| :ref:`🔗<class_TreeItem_method_get_next>`
 
 Returns the next sibling TreeItem in the tree or a null object if there is none.
 
@@ -816,7 +818,7 @@ Returns the next sibling TreeItem in the tree or a null object if there is none.
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_next_in_tree**\ (\ wrap\: :ref:`bool<class_bool>` = false\ )
+:ref:`TreeItem<class_TreeItem>` **get_next_in_tree**\ (\ wrap\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_TreeItem_method_get_next_in_tree>`
 
 Returns the next TreeItem in the tree (in the context of a depth-first search) or a ``null`` object if there is none.
 
@@ -830,7 +832,7 @@ If ``wrap`` is enabled, the method will wrap around to the first element in the 
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_next_visible**\ (\ wrap\: :ref:`bool<class_bool>` = false\ )
+:ref:`TreeItem<class_TreeItem>` **get_next_visible**\ (\ wrap\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_TreeItem_method_get_next_visible>`
 
 Returns the next visible TreeItem in the tree (in the context of a depth-first search) or a ``null`` object if there is none.
 
@@ -844,7 +846,7 @@ If ``wrap`` is enabled, the method will wrap around to the first visible element
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_parent**\ (\ ) |const|
+:ref:`TreeItem<class_TreeItem>` **get_parent**\ (\ ) |const| :ref:`🔗<class_TreeItem_method_get_parent>`
 
 Returns the parent TreeItem or a null object if there is none.
 
@@ -856,7 +858,7 @@ Returns the parent TreeItem or a null object if there is none.
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_prev**\ (\ )
+:ref:`TreeItem<class_TreeItem>` **get_prev**\ (\ ) :ref:`🔗<class_TreeItem_method_get_prev>`
 
 Returns the previous sibling TreeItem in the tree or a null object if there is none.
 
@@ -868,7 +870,7 @@ Returns the previous sibling TreeItem in the tree or a null object if there is n
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_prev_in_tree**\ (\ wrap\: :ref:`bool<class_bool>` = false\ )
+:ref:`TreeItem<class_TreeItem>` **get_prev_in_tree**\ (\ wrap\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_TreeItem_method_get_prev_in_tree>`
 
 Returns the previous TreeItem in the tree (in the context of a depth-first search) or a ``null`` object if there is none.
 
@@ -882,7 +884,7 @@ If ``wrap`` is enabled, the method will wrap around to the last element in the t
 
 .. rst-class:: classref-method
 
-:ref:`TreeItem<class_TreeItem>` **get_prev_visible**\ (\ wrap\: :ref:`bool<class_bool>` = false\ )
+:ref:`TreeItem<class_TreeItem>` **get_prev_visible**\ (\ wrap\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_TreeItem_method_get_prev_visible>`
 
 Returns the previous visible sibling TreeItem in the tree (in the context of a depth-first search) or a ``null`` object if there is none.
 
@@ -896,7 +898,7 @@ If ``wrap`` is enabled, the method will wrap around to the last visible element 
 
 .. rst-class:: classref-method
 
-:ref:`float<class_float>` **get_range**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`float<class_float>` **get_range**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_range>`
 
 Returns the value of a :ref:`CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>` column.
 
@@ -908,7 +910,7 @@ Returns the value of a :ref:`CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_R
 
 .. rst-class:: classref-method
 
-:ref:`Dictionary<class_Dictionary>` **get_range_config**\ (\ column\: :ref:`int<class_int>`\ )
+:ref:`Dictionary<class_Dictionary>` **get_range_config**\ (\ column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_get_range_config>`
 
 Returns a dictionary containing the range parameters for a given column. The keys are "min", "max", "step", and "expr".
 
@@ -920,11 +922,9 @@ Returns a dictionary containing the range parameters for a given column. The key
 
 .. rst-class:: classref-method
 
-:ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` **get_structured_text_bidi_override**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` **get_structured_text_bidi_override**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_structured_text_bidi_override>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the BiDi algorithm override set for this cell.
 
 .. rst-class:: classref-item-separator
 
@@ -934,11 +934,9 @@ Returns a dictionary containing the range parameters for a given column. The key
 
 .. rst-class:: classref-method
 
-:ref:`Array<class_Array>` **get_structured_text_bidi_override_options**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`Array<class_Array>` **get_structured_text_bidi_override_options**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_structured_text_bidi_override_options>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the additional BiDi options set for this cell.
 
 .. rst-class:: classref-item-separator
 
@@ -948,7 +946,7 @@ Returns a dictionary containing the range parameters for a given column. The key
 
 .. rst-class:: classref-method
 
-:ref:`String<class_String>` **get_suffix**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`String<class_String>` **get_suffix**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_suffix>`
 
 Gets the suffix string shown after the column value.
 
@@ -960,7 +958,7 @@ Gets the suffix string shown after the column value.
 
 .. rst-class:: classref-method
 
-:ref:`String<class_String>` **get_text**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`String<class_String>` **get_text**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_text>`
 
 Returns the given column's text.
 
@@ -972,7 +970,7 @@ Returns the given column's text.
 
 .. rst-class:: classref-method
 
-:ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_text_alignment**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_text_alignment**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_text_alignment>`
 
 Returns the given column's text alignment.
 
@@ -984,7 +982,7 @@ Returns the given column's text alignment.
 
 .. rst-class:: classref-method
 
-:ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_text_direction>`
 
 Returns item's text base writing direction.
 
@@ -996,7 +994,7 @@ Returns item's text base writing direction.
 
 .. rst-class:: classref-method
 
-:ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_text_overrun_behavior>`
 
 Returns the clipping behavior when the text exceeds the item's bounding rectangle in the given ``column``. By default it is :ref:`TextServer.OVERRUN_TRIM_ELLIPSIS<class_TextServer_constant_OVERRUN_TRIM_ELLIPSIS>`.
 
@@ -1008,7 +1006,7 @@ Returns the clipping behavior when the text exceeds the item's bounding rectangl
 
 .. rst-class:: classref-method
 
-:ref:`String<class_String>` **get_tooltip_text**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`String<class_String>` **get_tooltip_text**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_get_tooltip_text>`
 
 Returns the given column's tooltip text.
 
@@ -1020,7 +1018,7 @@ Returns the given column's tooltip text.
 
 .. rst-class:: classref-method
 
-:ref:`Tree<class_Tree>` **get_tree**\ (\ ) |const|
+:ref:`Tree<class_Tree>` **get_tree**\ (\ ) |const| :ref:`🔗<class_TreeItem_method_get_tree>`
 
 Returns the :ref:`Tree<class_Tree>` that owns this TreeItem.
 
@@ -1032,7 +1030,7 @@ Returns the :ref:`Tree<class_Tree>` that owns this TreeItem.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_any_collapsed**\ (\ only_visible\: :ref:`bool<class_bool>` = false\ )
+:ref:`bool<class_bool>` **is_any_collapsed**\ (\ only_visible\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_TreeItem_method_is_any_collapsed>`
 
 Returns ``true`` if this **TreeItem**, or any of its descendants, is collapsed.
 
@@ -1046,7 +1044,7 @@ If ``only_visible`` is ``true`` it ignores non-visible **TreeItem**\ s.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_button_disabled**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **is_button_disabled**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_is_button_disabled>`
 
 Returns ``true`` if the button at index ``button_index`` for the given ``column`` is disabled.
 
@@ -1058,7 +1056,7 @@ Returns ``true`` if the button at index ``button_index`` for the given ``column`
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_checked**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **is_checked**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_is_checked>`
 
 Returns ``true`` if the given ``column`` is checked.
 
@@ -1070,11 +1068,9 @@ Returns ``true`` if the given ``column`` is checked.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_custom_set_as_button**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **is_custom_set_as_button**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_is_custom_set_as_button>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if the cell was made into a button with :ref:`set_custom_as_button<class_TreeItem_method_set_custom_as_button>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1084,7 +1080,7 @@ Returns ``true`` if the given ``column`` is checked.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_edit_multiline**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **is_edit_multiline**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_is_edit_multiline>`
 
 Returns ``true`` if the given ``column`` is multiline editable.
 
@@ -1096,7 +1092,7 @@ Returns ``true`` if the given ``column`` is multiline editable.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_editable**\ (\ column\: :ref:`int<class_int>`\ )
+:ref:`bool<class_bool>` **is_editable**\ (\ column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_is_editable>`
 
 Returns ``true`` if the given ``column`` is editable.
 
@@ -1108,7 +1104,7 @@ Returns ``true`` if the given ``column`` is editable.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_indeterminate**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **is_indeterminate**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_is_indeterminate>`
 
 Returns ``true`` if the given ``column`` is indeterminate.
 
@@ -1120,7 +1116,7 @@ Returns ``true`` if the given ``column`` is indeterminate.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_selectable**\ (\ column\: :ref:`int<class_int>`\ ) |const|
+:ref:`bool<class_bool>` **is_selectable**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TreeItem_method_is_selectable>`
 
 Returns ``true`` if the given ``column`` is selectable.
 
@@ -1132,9 +1128,21 @@ Returns ``true`` if the given ``column`` is selectable.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **is_selected**\ (\ column\: :ref:`int<class_int>`\ )
+:ref:`bool<class_bool>` **is_selected**\ (\ column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_is_selected>`
 
 Returns ``true`` if the given ``column`` is selected.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TreeItem_method_is_visible_in_tree:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_visible_in_tree**\ (\ ) |const| :ref:`🔗<class_TreeItem_method_is_visible_in_tree>`
+
+Returns ``true`` if :ref:`visible<class_TreeItem_property_visible>` is ``true`` and all its ancestors are also visible.
 
 .. rst-class:: classref-item-separator
 
@@ -1144,7 +1152,7 @@ Returns ``true`` if the given ``column`` is selected.
 
 .. rst-class:: classref-method
 
-|void| **move_after**\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ )
+|void| **move_after**\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ ) :ref:`🔗<class_TreeItem_method_move_after>`
 
 Moves this TreeItem right after the given ``item``.
 
@@ -1158,7 +1166,7 @@ Moves this TreeItem right after the given ``item``.
 
 .. rst-class:: classref-method
 
-|void| **move_before**\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ )
+|void| **move_before**\ (\ item\: :ref:`TreeItem<class_TreeItem>`\ ) :ref:`🔗<class_TreeItem_method_move_before>`
 
 Moves this TreeItem right before the given ``item``.
 
@@ -1172,7 +1180,7 @@ Moves this TreeItem right before the given ``item``.
 
 .. rst-class:: classref-method
 
-|void| **propagate_check**\ (\ column\: :ref:`int<class_int>`, emit_signal\: :ref:`bool<class_bool>` = true\ )
+|void| **propagate_check**\ (\ column\: :ref:`int<class_int>`, emit_signal\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_TreeItem_method_propagate_check>`
 
 Propagates this item's checked status to its children and parents for the given ``column``. It is possible to process the items affected by this method call by connecting to :ref:`Tree.check_propagated_to_item<class_Tree_signal_check_propagated_to_item>`. The order that the items affected will be processed is as follows: the item invoking this method, children of that item, and finally parents of that item. If ``emit_signal`` is ``false``, then :ref:`Tree.check_propagated_to_item<class_Tree_signal_check_propagated_to_item>` will not be emitted.
 
@@ -1184,7 +1192,7 @@ Propagates this item's checked status to its children and parents for the given 
 
 .. rst-class:: classref-method
 
-|void| **remove_child**\ (\ child\: :ref:`TreeItem<class_TreeItem>`\ )
+|void| **remove_child**\ (\ child\: :ref:`TreeItem<class_TreeItem>`\ ) :ref:`🔗<class_TreeItem_method_remove_child>`
 
 Removes the given child **TreeItem** and all its children from the :ref:`Tree<class_Tree>`. Note that it doesn't free the item from memory, so it can be reused later (see :ref:`add_child<class_TreeItem_method_add_child>`). To completely remove a **TreeItem** use :ref:`Object.free<class_Object_method_free>`.
 
@@ -1198,7 +1206,7 @@ Removes the given child **TreeItem** and all its children from the :ref:`Tree<cl
 
 .. rst-class:: classref-method
 
-|void| **select**\ (\ column\: :ref:`int<class_int>`\ )
+|void| **select**\ (\ column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_select>`
 
 Selects the given ``column``.
 
@@ -1210,7 +1218,7 @@ Selects the given ``column``.
 
 .. rst-class:: classref-method
 
-|void| **set_autowrap_mode**\ (\ column\: :ref:`int<class_int>`, autowrap_mode\: :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`\ )
+|void| **set_autowrap_mode**\ (\ column\: :ref:`int<class_int>`, autowrap_mode\: :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`\ ) :ref:`🔗<class_TreeItem_method_set_autowrap_mode>`
 
 Sets the autowrap mode in the given ``column``. If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`, the text gets wrapped inside the cell's bounding rectangle.
 
@@ -1222,7 +1230,7 @@ Sets the autowrap mode in the given ``column``. If set to something other than :
 
 .. rst-class:: classref-method
 
-|void| **set_button**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, button\: :ref:`Texture2D<class_Texture2D>`\ )
+|void| **set_button**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, button\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_TreeItem_method_set_button>`
 
 Sets the given column's button :ref:`Texture2D<class_Texture2D>` at index ``button_index`` to ``button``.
 
@@ -1234,7 +1242,7 @@ Sets the given column's button :ref:`Texture2D<class_Texture2D>` at index ``butt
 
 .. rst-class:: classref-method
 
-|void| **set_button_color**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ )
+|void| **set_button_color**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_TreeItem_method_set_button_color>`
 
 Sets the given column's button color at index ``button_index`` to ``color``.
 
@@ -1246,7 +1254,7 @@ Sets the given column's button color at index ``button_index`` to ``color``.
 
 .. rst-class:: classref-method
 
-|void| **set_button_disabled**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ )
+|void| **set_button_disabled**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_button_disabled>`
 
 If ``true``, disables the button at index ``button_index`` in the given ``column``.
 
@@ -1258,7 +1266,7 @@ If ``true``, disables the button at index ``button_index`` in the given ``column
 
 .. rst-class:: classref-method
 
-|void| **set_button_tooltip_text**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ )
+|void| **set_button_tooltip_text**\ (\ column\: :ref:`int<class_int>`, button_index\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TreeItem_method_set_button_tooltip_text>`
 
 Sets the tooltip text for the button at index ``button_index`` in the given ``column``.
 
@@ -1270,9 +1278,9 @@ Sets the tooltip text for the button at index ``button_index`` in the given ``co
 
 .. rst-class:: classref-method
 
-|void| **set_cell_mode**\ (\ column\: :ref:`int<class_int>`, mode\: :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>`\ )
+|void| **set_cell_mode**\ (\ column\: :ref:`int<class_int>`, mode\: :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>`\ ) :ref:`🔗<class_TreeItem_method_set_cell_mode>`
 
-Sets the given column's cell mode to ``mode``. See :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` constants.
+Sets the given column's cell mode to ``mode``. This determines how the cell is displayed and edited. See :ref:`TreeCellMode<enum_TreeItem_TreeCellMode>` constants for details.
 
 .. rst-class:: classref-item-separator
 
@@ -1282,7 +1290,7 @@ Sets the given column's cell mode to ``mode``. See :ref:`TreeCellMode<enum_TreeI
 
 .. rst-class:: classref-method
 
-|void| **set_checked**\ (\ column\: :ref:`int<class_int>`, checked\: :ref:`bool<class_bool>`\ )
+|void| **set_checked**\ (\ column\: :ref:`int<class_int>`, checked\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_checked>`
 
 If ``checked`` is ``true``, the given ``column`` is checked. Clears column's indeterminate status.
 
@@ -1294,7 +1302,7 @@ If ``checked`` is ``true``, the given ``column`` is checked. Clears column's ind
 
 .. rst-class:: classref-method
 
-|void| **set_collapsed_recursive**\ (\ enable\: :ref:`bool<class_bool>`\ )
+|void| **set_collapsed_recursive**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_collapsed_recursive>`
 
 Collapses or uncollapses this **TreeItem** and all the descendants of this item.
 
@@ -1306,11 +1314,9 @@ Collapses or uncollapses this **TreeItem** and all the descendants of this item.
 
 .. rst-class:: classref-method
 
-|void| **set_custom_as_button**\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )
+|void| **set_custom_as_button**\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_custom_as_button>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Makes a cell with :ref:`CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` display as a non-flat button with a :ref:`StyleBox<class_StyleBox>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1320,7 +1326,7 @@ Collapses or uncollapses this **TreeItem** and all the descendants of this item.
 
 .. rst-class:: classref-method
 
-|void| **set_custom_bg_color**\ (\ column\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`, just_outline\: :ref:`bool<class_bool>` = false\ )
+|void| **set_custom_bg_color**\ (\ column\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`, just_outline\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_TreeItem_method_set_custom_bg_color>`
 
 Sets the given column's custom background color and whether to just use it as an outline.
 
@@ -1332,7 +1338,7 @@ Sets the given column's custom background color and whether to just use it as an
 
 .. rst-class:: classref-method
 
-|void| **set_custom_color**\ (\ column\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ )
+|void| **set_custom_color**\ (\ column\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_TreeItem_method_set_custom_color>`
 
 Sets the given column's custom color.
 
@@ -1344,7 +1350,7 @@ Sets the given column's custom color.
 
 .. rst-class:: classref-method
 
-|void| **set_custom_draw**\ (\ column\: :ref:`int<class_int>`, object\: :ref:`Object<class_Object>`, callback\: :ref:`StringName<class_StringName>`\ )
+|void| **set_custom_draw**\ (\ column\: :ref:`int<class_int>`, object\: :ref:`Object<class_Object>`, callback\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_TreeItem_method_set_custom_draw>`
 
 **Deprecated:** Use :ref:`set_custom_draw_callback<class_TreeItem_method_set_custom_draw_callback>` instead.
 
@@ -1360,9 +1366,9 @@ The method named ``callback`` should accept two arguments: the **TreeItem** that
 
 .. rst-class:: classref-method
 
-|void| **set_custom_draw_callback**\ (\ column\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ )
+|void| **set_custom_draw_callback**\ (\ column\: :ref:`int<class_int>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_TreeItem_method_set_custom_draw_callback>`
 
-Sets the given column's custom draw callback. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the custom callback.
+Sets the given column's custom draw callback. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the custom callback. The cell has to be in :ref:`CELL_MODE_CUSTOM<class_TreeItem_constant_CELL_MODE_CUSTOM>` to use this feature.
 
 The ``callback`` should accept two arguments: the **TreeItem** that is drawn and its position and size as a :ref:`Rect2<class_Rect2>`.
 
@@ -1374,7 +1380,7 @@ The ``callback`` should accept two arguments: the **TreeItem** that is drawn and
 
 .. rst-class:: classref-method
 
-|void| **set_custom_font**\ (\ column\: :ref:`int<class_int>`, font\: :ref:`Font<class_Font>`\ )
+|void| **set_custom_font**\ (\ column\: :ref:`int<class_int>`, font\: :ref:`Font<class_Font>`\ ) :ref:`🔗<class_TreeItem_method_set_custom_font>`
 
 Sets custom font used to draw text in the given ``column``.
 
@@ -1386,7 +1392,7 @@ Sets custom font used to draw text in the given ``column``.
 
 .. rst-class:: classref-method
 
-|void| **set_custom_font_size**\ (\ column\: :ref:`int<class_int>`, font_size\: :ref:`int<class_int>`\ )
+|void| **set_custom_font_size**\ (\ column\: :ref:`int<class_int>`, font_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_set_custom_font_size>`
 
 Sets custom font size used to draw text in the given ``column``.
 
@@ -1398,7 +1404,7 @@ Sets custom font size used to draw text in the given ``column``.
 
 .. rst-class:: classref-method
 
-|void| **set_edit_multiline**\ (\ column\: :ref:`int<class_int>`, multiline\: :ref:`bool<class_bool>`\ )
+|void| **set_edit_multiline**\ (\ column\: :ref:`int<class_int>`, multiline\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_edit_multiline>`
 
 If ``multiline`` is ``true``, the given ``column`` is multiline editable.
 
@@ -1412,7 +1418,7 @@ If ``multiline`` is ``true``, the given ``column`` is multiline editable.
 
 .. rst-class:: classref-method
 
-|void| **set_editable**\ (\ column\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )
+|void| **set_editable**\ (\ column\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_editable>`
 
 If ``enabled`` is ``true``, the given ``column`` is editable.
 
@@ -1424,7 +1430,7 @@ If ``enabled`` is ``true``, the given ``column`` is editable.
 
 .. rst-class:: classref-method
 
-|void| **set_expand_right**\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )
+|void| **set_expand_right**\ (\ column\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_expand_right>`
 
 If ``enable`` is ``true``, the given ``column`` is expanded to the right.
 
@@ -1436,9 +1442,9 @@ If ``enable`` is ``true``, the given ``column`` is expanded to the right.
 
 .. rst-class:: classref-method
 
-|void| **set_icon**\ (\ column\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )
+|void| **set_icon**\ (\ column\: :ref:`int<class_int>`, texture\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_TreeItem_method_set_icon>`
 
-Sets the given column's icon :ref:`Texture2D<class_Texture2D>`.
+Sets the given cell's icon :ref:`Texture2D<class_Texture2D>`. The cell has to be in :ref:`CELL_MODE_ICON<class_TreeItem_constant_CELL_MODE_ICON>` mode.
 
 .. rst-class:: classref-item-separator
 
@@ -1448,7 +1454,7 @@ Sets the given column's icon :ref:`Texture2D<class_Texture2D>`.
 
 .. rst-class:: classref-method
 
-|void| **set_icon_max_width**\ (\ column\: :ref:`int<class_int>`, width\: :ref:`int<class_int>`\ )
+|void| **set_icon_max_width**\ (\ column\: :ref:`int<class_int>`, width\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TreeItem_method_set_icon_max_width>`
 
 Sets the maximum allowed width of the icon in the given ``column``. This limit is applied on top of the default size of the icon and on top of :ref:`Tree.icon_max_width<class_Tree_theme_constant_icon_max_width>`. The height is adjusted according to the icon's ratio.
 
@@ -1460,7 +1466,7 @@ Sets the maximum allowed width of the icon in the given ``column``. This limit i
 
 .. rst-class:: classref-method
 
-|void| **set_icon_modulate**\ (\ column\: :ref:`int<class_int>`, modulate\: :ref:`Color<class_Color>`\ )
+|void| **set_icon_modulate**\ (\ column\: :ref:`int<class_int>`, modulate\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_TreeItem_method_set_icon_modulate>`
 
 Modulates the given column's icon with ``modulate``.
 
@@ -1472,7 +1478,7 @@ Modulates the given column's icon with ``modulate``.
 
 .. rst-class:: classref-method
 
-|void| **set_icon_region**\ (\ column\: :ref:`int<class_int>`, region\: :ref:`Rect2<class_Rect2>`\ )
+|void| **set_icon_region**\ (\ column\: :ref:`int<class_int>`, region\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_TreeItem_method_set_icon_region>`
 
 Sets the given column's icon's texture region.
 
@@ -1484,7 +1490,7 @@ Sets the given column's icon's texture region.
 
 .. rst-class:: classref-method
 
-|void| **set_indeterminate**\ (\ column\: :ref:`int<class_int>`, indeterminate\: :ref:`bool<class_bool>`\ )
+|void| **set_indeterminate**\ (\ column\: :ref:`int<class_int>`, indeterminate\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_indeterminate>`
 
 If ``indeterminate`` is ``true``, the given ``column`` is marked indeterminate.
 
@@ -1498,7 +1504,7 @@ If ``indeterminate`` is ``true``, the given ``column`` is marked indeterminate.
 
 .. rst-class:: classref-method
 
-|void| **set_language**\ (\ column\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ )
+|void| **set_language**\ (\ column\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TreeItem_method_set_language>`
 
 Sets language code of item's text used for line-breaking and text shaping algorithms, if left empty current locale is used instead.
 
@@ -1510,7 +1516,7 @@ Sets language code of item's text used for line-breaking and text shaping algori
 
 .. rst-class:: classref-method
 
-|void| **set_metadata**\ (\ column\: :ref:`int<class_int>`, meta\: :ref:`Variant<class_Variant>`\ )
+|void| **set_metadata**\ (\ column\: :ref:`int<class_int>`, meta\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_TreeItem_method_set_metadata>`
 
 Sets the metadata value for the given column, which can be retrieved later using :ref:`get_metadata<class_TreeItem_method_get_metadata>`. This can be used, for example, to store a reference to the original data.
 
@@ -1522,7 +1528,7 @@ Sets the metadata value for the given column, which can be retrieved later using
 
 .. rst-class:: classref-method
 
-|void| **set_range**\ (\ column\: :ref:`int<class_int>`, value\: :ref:`float<class_float>`\ )
+|void| **set_range**\ (\ column\: :ref:`int<class_int>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_TreeItem_method_set_range>`
 
 Sets the value of a :ref:`CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>` column.
 
@@ -1534,7 +1540,7 @@ Sets the value of a :ref:`CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANG
 
 .. rst-class:: classref-method
 
-|void| **set_range_config**\ (\ column\: :ref:`int<class_int>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`, step\: :ref:`float<class_float>`, expr\: :ref:`bool<class_bool>` = false\ )
+|void| **set_range_config**\ (\ column\: :ref:`int<class_int>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`, step\: :ref:`float<class_float>`, expr\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_TreeItem_method_set_range_config>`
 
 Sets the range of accepted values for a column. The column must be in the :ref:`CELL_MODE_RANGE<class_TreeItem_constant_CELL_MODE_RANGE>` mode.
 
@@ -1548,7 +1554,7 @@ If ``expr`` is ``true``, the edit mode slider will use an exponential scale as w
 
 .. rst-class:: classref-method
 
-|void| **set_selectable**\ (\ column\: :ref:`int<class_int>`, selectable\: :ref:`bool<class_bool>`\ )
+|void| **set_selectable**\ (\ column\: :ref:`int<class_int>`, selectable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TreeItem_method_set_selectable>`
 
 If ``selectable`` is ``true``, the given ``column`` is selectable.
 
@@ -1560,11 +1566,9 @@ If ``selectable`` is ``true``, the given ``column`` is selectable.
 
 .. rst-class:: classref-method
 
-|void| **set_structured_text_bidi_override**\ (\ column\: :ref:`int<class_int>`, parser\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`\ )
+|void| **set_structured_text_bidi_override**\ (\ column\: :ref:`int<class_int>`, parser\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`\ ) :ref:`🔗<class_TreeItem_method_set_structured_text_bidi_override>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Set BiDi algorithm override for the structured text. Has effect for cells that display text.
 
 .. rst-class:: classref-item-separator
 
@@ -1574,11 +1578,9 @@ If ``selectable`` is ``true``, the given ``column`` is selectable.
 
 .. rst-class:: classref-method
 
-|void| **set_structured_text_bidi_override_options**\ (\ column\: :ref:`int<class_int>`, args\: :ref:`Array<class_Array>`\ )
+|void| **set_structured_text_bidi_override_options**\ (\ column\: :ref:`int<class_int>`, args\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_TreeItem_method_set_structured_text_bidi_override_options>`
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Set additional options for BiDi override. Has effect for cells that display text.
 
 .. rst-class:: classref-item-separator
 
@@ -1588,7 +1590,7 @@ If ``selectable`` is ``true``, the given ``column`` is selectable.
 
 .. rst-class:: classref-method
 
-|void| **set_suffix**\ (\ column\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ )
+|void| **set_suffix**\ (\ column\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TreeItem_method_set_suffix>`
 
 Sets a string to be shown after a column's value (for example, a unit abbreviation).
 
@@ -1600,7 +1602,7 @@ Sets a string to be shown after a column's value (for example, a unit abbreviati
 
 .. rst-class:: classref-method
 
-|void| **set_text**\ (\ column\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ )
+|void| **set_text**\ (\ column\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TreeItem_method_set_text>`
 
 Sets the given column's text value.
 
@@ -1612,7 +1614,7 @@ Sets the given column's text value.
 
 .. rst-class:: classref-method
 
-|void| **set_text_alignment**\ (\ column\: :ref:`int<class_int>`, text_alignment\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )
+|void| **set_text_alignment**\ (\ column\: :ref:`int<class_int>`, text_alignment\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ ) :ref:`🔗<class_TreeItem_method_set_text_alignment>`
 
 Sets the given column's text alignment. See :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` for possible values.
 
@@ -1624,7 +1626,7 @@ Sets the given column's text alignment. See :ref:`HorizontalAlignment<enum_@Glob
 
 .. rst-class:: classref-method
 
-|void| **set_text_direction**\ (\ column\: :ref:`int<class_int>`, direction\: :ref:`TextDirection<enum_Control_TextDirection>`\ )
+|void| **set_text_direction**\ (\ column\: :ref:`int<class_int>`, direction\: :ref:`TextDirection<enum_Control_TextDirection>`\ ) :ref:`🔗<class_TreeItem_method_set_text_direction>`
 
 Sets item's text base writing direction.
 
@@ -1636,7 +1638,7 @@ Sets item's text base writing direction.
 
 .. rst-class:: classref-method
 
-|void| **set_text_overrun_behavior**\ (\ column\: :ref:`int<class_int>`, overrun_behavior\: :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`\ )
+|void| **set_text_overrun_behavior**\ (\ column\: :ref:`int<class_int>`, overrun_behavior\: :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`\ ) :ref:`🔗<class_TreeItem_method_set_text_overrun_behavior>`
 
 Sets the clipping behavior when the text exceeds the item's bounding rectangle in the given ``column``.
 
@@ -1648,7 +1650,7 @@ Sets the clipping behavior when the text exceeds the item's bounding rectangle i
 
 .. rst-class:: classref-method
 
-|void| **set_tooltip_text**\ (\ column\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ )
+|void| **set_tooltip_text**\ (\ column\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TreeItem_method_set_tooltip_text>`
 
 Sets the given column's tooltip text.
 
@@ -1660,7 +1662,7 @@ Sets the given column's tooltip text.
 
 .. rst-class:: classref-method
 
-|void| **uncollapse_tree**\ (\ )
+|void| **uncollapse_tree**\ (\ ) :ref:`🔗<class_TreeItem_method_uncollapse_tree>`
 
 Uncollapses all **TreeItem**\ s necessary to reveal this **TreeItem**, i.e. all ancestor **TreeItem**\ s.
 
