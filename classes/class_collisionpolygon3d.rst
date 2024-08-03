@@ -54,7 +54,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **depth** = ``1.0``
+:ref:`float<class_float>` **depth** = ``1.0`` :ref:`🔗<class_CollisionPolygon3D_property_depth>`
 
 .. rst-class:: classref-property-setget
 
@@ -71,7 +71,7 @@ Length that the resulting collision extends in either direction perpendicular to
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **disabled** = ``false``
+:ref:`bool<class_bool>` **disabled** = ``false`` :ref:`🔗<class_CollisionPolygon3D_property_disabled>`
 
 .. rst-class:: classref-property-setget
 
@@ -88,7 +88,7 @@ If ``true``, no collision will be produced.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **margin** = ``0.04``
+:ref:`float<class_float>` **margin** = ``0.04`` :ref:`🔗<class_CollisionPolygon3D_property_margin>`
 
 .. rst-class:: classref-property-setget
 
@@ -105,7 +105,7 @@ The collision margin for the generated :ref:`Shape3D<class_Shape3D>`. See :ref:`
 
 .. rst-class:: classref-property
 
-:ref:`PackedVector2Array<class_PackedVector2Array>` **polygon** = ``PackedVector2Array()``
+:ref:`PackedVector2Array<class_PackedVector2Array>` **polygon** = ``PackedVector2Array()`` :ref:`🔗<class_CollisionPolygon3D_property_polygon>`
 
 .. rst-class:: classref-property-setget
 
@@ -114,7 +114,7 @@ The collision margin for the generated :ref:`Shape3D<class_Shape3D>`. See :ref:`
 
 Array of vertices which define the 2D polygon in the local XY plane.
 
-\ **Note:** The returned value is a copy of the original. Methods which mutate the size or properties of the return value will not impact the original polygon. To change properties of the polygon, assign it to a temporary variable and make changes before reassigning the class property.
+**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

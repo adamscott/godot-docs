@@ -10,6 +10,8 @@
 XRFaceModifier3D
 ================
 
+**Experimental:** This class may be changed or removed in future versions.
+
 **Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
 A node for driving standard face meshes from :ref:`XRFaceTracker<class_XRFaceTracker>` weights.
@@ -40,11 +42,11 @@ Properties
 .. table::
    :widths: auto
 
-   +-------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`StringName<class_StringName>` | :ref:`face_tracker<class_XRFaceModifier3D_property_face_tracker>` | ``&"/user/head"`` |
-   +-------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`NodePath<class_NodePath>`     | :ref:`target<class_XRFaceModifier3D_property_target>`             | ``NodePath("")``  |
-   +-------------------------------------+-------------------------------------------------------------------+-------------------+
+   +-------------------------------------+-------------------------------------------------------------------+---------------------------+
+   | :ref:`StringName<class_StringName>` | :ref:`face_tracker<class_XRFaceModifier3D_property_face_tracker>` | ``&"/user/face_tracker"`` |
+   +-------------------------------------+-------------------------------------------------------------------+---------------------------+
+   | :ref:`NodePath<class_NodePath>`     | :ref:`target<class_XRFaceModifier3D_property_target>`             | ``NodePath("")``          |
+   +-------------------------------------+-------------------------------------------------------------------+---------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -59,7 +61,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`StringName<class_StringName>` **face_tracker** = ``&"/user/head"``
+:ref:`StringName<class_StringName>` **face_tracker** = ``&"/user/face_tracker"`` :ref:`🔗<class_XRFaceModifier3D_property_face_tracker>`
 
 .. rst-class:: classref-property-setget
 
@@ -76,7 +78,7 @@ The :ref:`XRFaceTracker<class_XRFaceTracker>` path.
 
 .. rst-class:: classref-property
 
-:ref:`NodePath<class_NodePath>` **target** = ``NodePath("")``
+:ref:`NodePath<class_NodePath>` **target** = ``NodePath("")`` :ref:`🔗<class_XRFaceModifier3D_property_target>`
 
 .. rst-class:: classref-property-setget
 
