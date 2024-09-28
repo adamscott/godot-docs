@@ -705,6 +705,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_undo<class_ProjectSettings_property_input/ui_undo>`                                                                                                                                         |                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_unicode_start<class_ProjectSettings_property_input/ui_unicode_start>`                                                                                                                       |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_up<class_ProjectSettings_property_input/ui_up>`                                                                                                                                             |                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`input_devices/buffering/agile_event_flushing<class_ProjectSettings_property_input_devices/buffering/agile_event_flushing>`                                                                           | ``false``                                                                                        |
@@ -1283,6 +1285,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`                                                                                     | ``60``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/2d/batching/item_buffer_size<class_ProjectSettings_property_rendering/2d/batching/item_buffer_size>`                                                                                       | ``16384``                                                                                        |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/2d/sdf/oversize<class_ProjectSettings_property_rendering/2d/sdf/oversize>`                                                                                                                 | ``1``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/2d/sdf/scale<class_ProjectSettings_property_rendering/2d/sdf/scale>`                                                                                                                       | ``1``                                                                                            |
@@ -1537,6 +1541,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/rendering_device/fallback_to_d3d12<class_ProjectSettings_property_rendering/rendering_device/fallback_to_d3d12>`                                                                           | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/rendering_device/fallback_to_opengl3<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>`                                                                       | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/rendering_device/fallback_to_vulkan<class_ProjectSettings_property_rendering/rendering_device/fallback_to_vulkan>`                                                                         | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/rendering_device/pipeline_cache/enable<class_ProjectSettings_property_rendering/rendering_device/pipeline_cache/enable>`                                                                   | ``true``                                                                                         |
@@ -1594,6 +1600,8 @@ Properties
    | :ref:`int<class_int>`                             | :ref:`rendering/textures/light_projectors/filter<class_ProjectSettings_property_rendering/textures/light_projectors/filter>`                                                                               | ``3``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/textures/lossless_compression/force_png<class_ProjectSettings_property_rendering/textures/lossless_compression/force_png>`                                                                 | ``false``                                                                                        |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/textures/vram_compression/cache_gpu_compressor<class_ProjectSettings_property_rendering/textures/vram_compression/cache_gpu_compressor>`                                                   | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/textures/vram_compression/compress_with_gpu<class_ProjectSettings_property_rendering/textures/vram_compression/compress_with_gpu>`                                                         | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -2024,7 +2032,7 @@ It may take several seconds at a stable frame rate before the smoothing is initi
 
 If ``true``, disables printing to standard error. If ``true``, this also hides error and warning messages printed by :ref:`@GlobalScope.push_error<class_@GlobalScope_method_push_error>` and :ref:`@GlobalScope.push_warning<class_@GlobalScope_method_push_warning>`. See also :ref:`application/run/disable_stdout<class_ProjectSettings_property_application/run/disable_stdout>`.
 
-Changes to this setting will only be applied upon restarting the application.
+Changes to this setting will only be applied upon restarting the application. To control this at runtime, use :ref:`Engine.print_error_messages<class_Engine_property_print_error_messages>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2038,7 +2046,7 @@ Changes to this setting will only be applied upon restarting the application.
 
 If ``true``, disables printing to standard output. This is equivalent to starting the editor or project with the ``--quiet`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`. See also :ref:`application/run/disable_stderr<class_ProjectSettings_property_application/run/disable_stderr>`.
 
-Changes to this setting will only be applied upon restarting the application.
+Changes to this setting will only be applied upon restarting the application. To control this at runtime, use :ref:`Engine.print_to_stdout<class_Engine_property_print_to_stdout>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6036,6 +6044,20 @@ Default :ref:`InputEventAction<class_InputEventAction>` to undo the most recent 
 
 ----
 
+.. _class_ProjectSettings_property_input/ui_unicode_start:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_unicode_start** :ref:`🔗<class_ProjectSettings_property_input/ui_unicode_start>`
+
+Default :ref:`InputEventAction<class_InputEventAction>` to start Unicode character hexadecimal code input in a text field.
+
+\ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_input/ui_up:
 
 .. rst-class:: classref-property
@@ -9234,6 +9256,8 @@ Sets which physics engine to use for 2D physics.
 
 "DEFAULT" and "GodotPhysics2D" are the same, as there is currently no alternative 2D physics server implemented.
 
+"Dummy" is a 2D physics server that does nothing and returns only dummy values, effectively disabling all 2D physics functionality.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -9470,6 +9494,8 @@ Sets which physics engine to use for 3D physics.
 
 "DEFAULT" and "GodotPhysics3D" are the same, as there is currently no alternative 3D physics server implemented.
 
+"Dummy" is a 3D physics server that does nothing and returns only dummy values, effectively disabling all 3D physics functionality.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -9655,6 +9681,18 @@ The number of fixed iterations per second. This controls how often physics simul
 \ **Note:** This property is only read when the project starts. To change the physics FPS at runtime, set :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` instead.
 
 \ **Note:** Only :ref:`physics/common/max_physics_steps_per_frame<class_ProjectSettings_property_physics/common/max_physics_steps_per_frame>` physics ticks may be simulated per rendered frame at most. If more physics ticks have to be simulated per rendered frame to keep up with rendering, the project will appear to slow down (even if ``delta`` is used consistently in physics calculations). Therefore, it is recommended to also increase :ref:`physics/common/max_physics_steps_per_frame<class_ProjectSettings_property_physics/common/max_physics_steps_per_frame>` if increasing :ref:`physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>` significantly above its default value.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/2d/batching/item_buffer_size:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/2d/batching/item_buffer_size** = ``16384`` :ref:`🔗<class_ProjectSettings_property_rendering/2d/batching/item_buffer_size>`
+
+Maximum number of canvas item commands that can be batched into a single draw call.
 
 .. rst-class:: classref-item-separator
 
@@ -11322,6 +11360,20 @@ If ``true``, the forward renderer will fall back to Direct3D 12 if Vulkan is not
 
 ----
 
+.. _class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/rendering_device/fallback_to_opengl3** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/rendering_device/fallback_to_opengl3>`
+
+If ``true``, the forward renderer will fall back to OpenGL 3 if both Direct3D 12, Metal and Vulkan are not supported.
+
+\ **Note:** This setting is implemented only on Windows, Android, macOS, iOS, and Linux/X11.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_rendering/rendering_device/fallback_to_vulkan:
 
 .. rst-class:: classref-property
@@ -11726,17 +11778,29 @@ If ``true``, the texture importer will import lossless textures using the PNG fo
 
 ----
 
+.. _class_ProjectSettings_property_rendering/textures/vram_compression/cache_gpu_compressor:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/textures/vram_compression/cache_gpu_compressor** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/textures/vram_compression/cache_gpu_compressor>`
+
+If ``true``, the GPU texture compressor will cache the local RenderingDevice and its resources (shaders and pipelines), allowing for faster subsequent imports at a memory cost.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_rendering/textures/vram_compression/compress_with_gpu:
 
 .. rst-class:: classref-property
 
 :ref:`bool<class_bool>` **rendering/textures/vram_compression/compress_with_gpu** = ``true`` :ref:`🔗<class_ProjectSettings_property_rendering/textures/vram_compression/compress_with_gpu>`
 
-If ``true``, the texture importer will utilize the GPU for compressing textures, which makes large textures import significantly faster.
+If ``true``, the texture importer will utilize the GPU for compressing textures, improving the import time of large images.
 
 \ **Note:** This setting requires either Vulkan or D3D12 available as a rendering backend.
 
-\ **Note:** Currently this only affects BC6H compression, which is used on Desktop and Console for HDR images.
+\ **Note:** Currently this only affects BC1 and BC6H compression, which are used on Desktop and Console for fully opaque and HDR images respectively.
 
 .. rst-class:: classref-item-separator
 
@@ -11804,7 +11868,11 @@ The default compression factor for lossless WebP. Decompression speed is mostly 
 
 :ref:`bool<class_bool>` **rendering/viewport/hdr_2d** = ``false`` :ref:`🔗<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
 
-If ``true``, enables :ref:`Viewport.use_hdr_2d<class_Viewport_property_use_hdr_2d>` on the root viewport. This allows 2D rendering to take advantage of effects requiring high dynamic range (e.g. 2D glow).
+If ``true``, enables :ref:`Viewport.use_hdr_2d<class_Viewport_property_use_hdr_2d>` on the root viewport. 2D rendering will use an high dynamic range (HDR) format framebuffer matching the bit depth of the 3D framebuffer. When using the Forward+ renderer this will be an ``RGBA16`` framebuffer, while when using the Mobile renderer it will be an ``RGB10_A2`` framebuffer. Additionally, 2D rendering will take place in linear color space and will be converted to sRGB space immediately before blitting to the screen. Practically speaking, this means that the end result of the Viewport will not be clamped into the ``0-1`` range and can be used in 3D rendering without color space adjustments. This allows 2D rendering to take advantage of effects requiring high dynamic range (e.g. 2D glow) as well as substantially improves the appearance of effects requiring highly detailed gradients.
+
+\ **Note:** This setting will have no effect when using the GL Compatibility renderer as the GL Compatibility renderer always renders in low dynamic range for performance reasons.
+
+\ **Note:** This property is only read when the project starts. To toggle HDR 2D at runtime, set :ref:`Viewport.use_hdr_2d<class_Viewport_property_use_hdr_2d>` on the root :ref:`Viewport<class_Viewport>`.
 
 .. rst-class:: classref-item-separator
 
