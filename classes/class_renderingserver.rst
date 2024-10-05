@@ -141,6 +141,8 @@ Methods
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`canvas_item_add_triangle_array<class_RenderingServer_method_canvas_item_add_triangle_array>`\ (\ item\: :ref:`RID<class_RID>`, indices\: :ref:`PackedInt32Array<class_PackedInt32Array>`, points\: :ref:`PackedVector2Array<class_PackedVector2Array>`, colors\: :ref:`PackedColorArray<class_PackedColorArray>`, uvs\: :ref:`PackedVector2Array<class_PackedVector2Array>` = PackedVector2Array(), bones\: :ref:`PackedInt32Array<class_PackedInt32Array>` = PackedInt32Array(), weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>` = PackedFloat32Array(), texture\: :ref:`RID<class_RID>` = RID(), count\: :ref:`int<class_int>` = -1\ )                                            |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`canvas_item_attach_skeleton<class_RenderingServer_method_canvas_item_attach_skeleton>`\ (\ item\: :ref:`RID<class_RID>`, skeleton\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`canvas_item_clear<class_RenderingServer_method_canvas_item_clear>`\ (\ item\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                                            | :ref:`canvas_item_create<class_RenderingServer_method_canvas_item_create>`\ (\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -897,6 +899,8 @@ Methods
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                           | :ref:`texture_3d_update<class_RenderingServer_method_texture_3d_update>`\ (\ texture\: :ref:`RID<class_RID>`, data\: :ref:`Array<class_Array>`\[:ref:`Image<class_Image>`\]\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`                                                            | :ref:`texture_create_from_native_handle<class_RenderingServer_method_texture_create_from_native_handle>`\ (\ type\: :ref:`TextureType<enum_RenderingServer_TextureType>`, format\: :ref:`Format<enum_Image_Format>`, native_handle\: :ref:`int<class_int>`, width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`, depth\: :ref:`int<class_int>`, layers\: :ref:`int<class_int>` = 1, layered_type\: :ref:`TextureLayeredType<enum_RenderingServer_TextureLayeredType>` = 0\ )                                                                                                                                                                                                                  |
+   +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Format<enum_Image_Format>`                                                 | :ref:`texture_get_format<class_RenderingServer_method_texture_get_format>`\ (\ texture\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                                            | :ref:`texture_get_native_handle<class_RenderingServer_method_texture_get_native_handle>`\ (\ texture\: :ref:`RID<class_RID>`, srgb\: :ref:`bool<class_bool>` = false\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -1101,6 +1105,40 @@ Emitted at the beginning of the frame, before the RenderingServer updates all th
 
 Enumerations
 ------------
+
+.. _enum_RenderingServer_TextureType:
+
+.. rst-class:: classref-enumeration
+
+enum **TextureType**: :ref:`🔗<enum_RenderingServer_TextureType>`
+
+.. _class_RenderingServer_constant_TEXTURE_TYPE_2D:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`TextureType<enum_RenderingServer_TextureType>` **TEXTURE_TYPE_2D** = ``0``
+
+2D texture.
+
+.. _class_RenderingServer_constant_TEXTURE_TYPE_LAYERED:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`TextureType<enum_RenderingServer_TextureType>` **TEXTURE_TYPE_LAYERED** = ``1``
+
+Layered texture.
+
+.. _class_RenderingServer_constant_TEXTURE_TYPE_3D:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`TextureType<enum_RenderingServer_TextureType>` **TEXTURE_TYPE_3D** = ``2``
+
+3D texture.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _enum_RenderingServer_TextureLayeredType:
 
@@ -3862,7 +3900,7 @@ The callback is called before our transparent rendering pass, but after our sky 
 
 :ref:`CompositorEffectCallbackType<enum_RenderingServer_CompositorEffectCallbackType>` **COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT** = ``4``
 
-The callback is called after our transparent rendering pass, but before any build in post effects and output to our render target.
+The callback is called after our transparent rendering pass, but before any built-in post-processing effects and output to our render target.
 
 .. _class_RenderingServer_constant_COMPOSITOR_EFFECT_CALLBACK_TYPE_ANY:
 
@@ -4118,7 +4156,7 @@ Output color as they came in. This can cause bright lighting to look blown out, 
 
 :ref:`EnvironmentToneMapper<enum_RenderingServer_EnvironmentToneMapper>` **ENV_TONE_MAPPER_REINHARD** = ``1``
 
-Use the Reinhard tonemapper. Performs a variation on rendered pixels' colors by this formula: ``color = color / (1 + color)``. This avoids clipping bright highlights, but the resulting image can look a bit dull.
+Use the Reinhard tonemapper. Performs a variation on rendered pixels' colors by this formula: ``color = color * (1 + color / (white * white)) / (1 + color)``. This avoids clipping bright highlights, but the resulting image can look a bit dull. When :ref:`Environment.tonemap_white<class_Environment_property_tonemap_white>` is left at the default value of ``1.0`` this is identical to :ref:`ENV_TONE_MAPPER_LINEAR<class_RenderingServer_constant_ENV_TONE_MAPPER_LINEAR>` while also being slightly less performant.
 
 .. _class_RenderingServer_constant_ENV_TONE_MAPPER_FILMIC:
 
@@ -5544,11 +5582,19 @@ Color global shader parameter (``global uniform vec4 ...``). Equivalent to :ref:
 
 Cubemap sampler global shader parameter (``global uniform samplerCube ...``). Exposed as a :ref:`Cubemap<class_Cubemap>` in the editor UI.
 
+.. _class_RenderingServer_constant_GLOBAL_VAR_TYPE_SAMPLEREXT:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`GlobalShaderParameterType<enum_RenderingServer_GlobalShaderParameterType>` **GLOBAL_VAR_TYPE_SAMPLEREXT** = ``28``
+
+External sampler global shader parameter (``global uniform samplerExternalOES ...``). Exposed as a :ref:`ExternalTexture<class_ExternalTexture>` in the editor UI.
+
 .. _class_RenderingServer_constant_GLOBAL_VAR_TYPE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`GlobalShaderParameterType<enum_RenderingServer_GlobalShaderParameterType>` **GLOBAL_VAR_TYPE_MAX** = ``28``
+:ref:`GlobalShaderParameterType<enum_RenderingServer_GlobalShaderParameterType>` **GLOBAL_VAR_TYPE_MAX** = ``29``
 
 Represents the size of the :ref:`GlobalShaderParameterType<enum_RenderingServer_GlobalShaderParameterType>` enum.
 
@@ -5609,6 +5655,104 @@ Buffer memory used (in bytes). This includes vertex data, uniform buffers, and m
 :ref:`RenderingInfo<enum_RenderingServer_RenderingInfo>` **RENDERING_INFO_VIDEO_MEM_USED** = ``5``
 
 Video memory used (in bytes). When using the Forward+ or mobile rendering backends, this is always greater than the sum of :ref:`RENDERING_INFO_TEXTURE_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_TEXTURE_MEM_USED>` and :ref:`RENDERING_INFO_BUFFER_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_BUFFER_MEM_USED>`, since there is miscellaneous data not accounted for by those two metrics. When using the GL Compatibility backend, this is equal to the sum of :ref:`RENDERING_INFO_TEXTURE_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_TEXTURE_MEM_USED>` and :ref:`RENDERING_INFO_BUFFER_MEM_USED<class_RenderingServer_constant_RENDERING_INFO_BUFFER_MEM_USED>`.
+
+.. _class_RenderingServer_constant_RENDERING_INFO_PIPELINE_COMPILATIONS_CANVAS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RenderingInfo<enum_RenderingServer_RenderingInfo>` **RENDERING_INFO_PIPELINE_COMPILATIONS_CANVAS** = ``6``
+
+Number of pipeline compilations that were triggered by the 2D canvas renderer.
+
+.. _class_RenderingServer_constant_RENDERING_INFO_PIPELINE_COMPILATIONS_MESH:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RenderingInfo<enum_RenderingServer_RenderingInfo>` **RENDERING_INFO_PIPELINE_COMPILATIONS_MESH** = ``7``
+
+Number of pipeline compilations that were triggered by loading meshes. These compilations will show up as longer loading times the first time a user runs the game and the pipeline is required.
+
+.. _class_RenderingServer_constant_RENDERING_INFO_PIPELINE_COMPILATIONS_SURFACE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RenderingInfo<enum_RenderingServer_RenderingInfo>` **RENDERING_INFO_PIPELINE_COMPILATIONS_SURFACE** = ``8``
+
+Number of pipeline compilations that were triggered by building the surface cache before rendering the scene. These compilations will show up as a stutter when loading an scene the first time a user runs the game and the pipeline is required.
+
+.. _class_RenderingServer_constant_RENDERING_INFO_PIPELINE_COMPILATIONS_DRAW:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RenderingInfo<enum_RenderingServer_RenderingInfo>` **RENDERING_INFO_PIPELINE_COMPILATIONS_DRAW** = ``9``
+
+Number of pipeline compilations that were triggered while drawing the scene. These compilations will show up as stutters during gameplay the first time a user runs the game and the pipeline is required.
+
+.. _class_RenderingServer_constant_RENDERING_INFO_PIPELINE_COMPILATIONS_SPECIALIZATION:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`RenderingInfo<enum_RenderingServer_RenderingInfo>` **RENDERING_INFO_PIPELINE_COMPILATIONS_SPECIALIZATION** = ``10``
+
+Number of pipeline compilations that were triggered to optimize the current scene. These compilations are done in the background and should not cause any stutters whatsoever.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_RenderingServer_PipelineSource:
+
+.. rst-class:: classref-enumeration
+
+enum **PipelineSource**: :ref:`🔗<enum_RenderingServer_PipelineSource>`
+
+.. _class_RenderingServer_constant_PIPELINE_SOURCE_CANVAS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PipelineSource<enum_RenderingServer_PipelineSource>` **PIPELINE_SOURCE_CANVAS** = ``0``
+
+Pipeline compilation that was triggered by the 2D canvas renderer.
+
+.. _class_RenderingServer_constant_PIPELINE_SOURCE_MESH:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PipelineSource<enum_RenderingServer_PipelineSource>` **PIPELINE_SOURCE_MESH** = ``1``
+
+Pipeline compilation that was triggered by loading a mesh.
+
+.. _class_RenderingServer_constant_PIPELINE_SOURCE_SURFACE:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PipelineSource<enum_RenderingServer_PipelineSource>` **PIPELINE_SOURCE_SURFACE** = ``2``
+
+Pipeline compilation that was triggered by building the surface cache before rendering the scene.
+
+.. _class_RenderingServer_constant_PIPELINE_SOURCE_DRAW:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PipelineSource<enum_RenderingServer_PipelineSource>` **PIPELINE_SOURCE_DRAW** = ``3``
+
+Pipeline compilation that was triggered while drawing the scene.
+
+.. _class_RenderingServer_constant_PIPELINE_SOURCE_SPECIALIZATION:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PipelineSource<enum_RenderingServer_PipelineSource>` **PIPELINE_SOURCE_SPECIALIZATION** = ``4``
+
+Pipeline compilation that was triggered to optimize the current scene.
+
+.. _class_RenderingServer_constant_PIPELINE_SOURCE_MAX:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`PipelineSource<enum_RenderingServer_PipelineSource>` **PIPELINE_SOURCE_MAX** = ``5``
+
+Represents the size of the :ref:`PipelineSource<enum_RenderingServer_PipelineSource>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -6224,6 +6368,8 @@ Draws particles on the :ref:`CanvasItem<class_CanvasItem>` pointed to by the ``i
 
 Draws a 2D polygon on the :ref:`CanvasItem<class_CanvasItem>` pointed to by the ``item`` :ref:`RID<class_RID>`. If you need more flexibility (such as being able to use bones), use :ref:`canvas_item_add_triangle_array<class_RenderingServer_method_canvas_item_add_triangle_array>` instead. See also :ref:`CanvasItem.draw_polygon<class_CanvasItem_method_draw_polygon>`.
 
+\ **Note:** If you frequently redraw the same polygon with a large number of vertices, consider pre-calculating the triangulation with :ref:`Geometry2D.triangulate_polygon<class_Geometry2D_method_triangulate_polygon>` and using :ref:`CanvasItem.draw_mesh<class_CanvasItem_method_draw_mesh>`, :ref:`CanvasItem.draw_multimesh<class_CanvasItem_method_draw_multimesh>`, or :ref:`canvas_item_add_triangle_array<class_RenderingServer_method_canvas_item_add_triangle_array>`.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -6309,6 +6455,18 @@ Draws the specified region of a 2D textured rectangle on the :ref:`CanvasItem<cl
 Draws a triangle array on the :ref:`CanvasItem<class_CanvasItem>` pointed to by the ``item`` :ref:`RID<class_RID>`. This is internally used by :ref:`Line2D<class_Line2D>` and :ref:`StyleBoxFlat<class_StyleBoxFlat>` for rendering. :ref:`canvas_item_add_triangle_array<class_RenderingServer_method_canvas_item_add_triangle_array>` is highly flexible, but more complex to use than :ref:`canvas_item_add_polygon<class_RenderingServer_method_canvas_item_add_polygon>`.
 
 \ **Note:** ``count`` is unused and can be left unspecified.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_RenderingServer_method_canvas_item_attach_skeleton:
+
+.. rst-class:: classref-method
+
+|void| **canvas_item_attach_skeleton**\ (\ item\: :ref:`RID<class_RID>`, skeleton\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RenderingServer_method_canvas_item_attach_skeleton>`
+
+Attaches a skeleton to the :ref:`CanvasItem<class_CanvasItem>`. Removes the previous skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -7060,7 +7218,7 @@ Sets the Z range of objects that will be affected by this light. Equivalent to :
 
 Transforms both the current and previous stored transform for a canvas light.
 
-This allows transforming a light without creating a "glitch" in the interpolation, which is is particularly useful for large worlds utilizing a shifting origin.
+This allows transforming a light without creating a "glitch" in the interpolation, which is particularly useful for large worlds utilizing a shifting origin.
 
 .. rst-class:: classref-item-separator
 
@@ -9691,6 +9849,12 @@ The per-instance data size and expected data order is:
       - Position + Custom data: 16 floats (12 floats for Transform3D, 4 floats of custom data)
       - Position + Vertex color + Custom data: 20 floats (12 floats for Transform3D, 4 floats for Color, 4 floats of custom data)
 
+Instance transforms are in row-major order. Specifically:
+
+- For :ref:`Transform2D<class_Transform2D>` the float-order is: ``(x.x, y.x, padding_float, origin.x, x.y, y.y, padding_float, origin.y)``.
+
+- For :ref:`Transform3D<class_Transform3D>` the float-order is: ``(basis.x.x, basis.y.x, basis.z.x, origin.x, basis.x.y, basis.y.y, basis.z.y, origin.y, basis.x.z, basis.y.z, basis.z.z, origin.z)``.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -11099,7 +11263,7 @@ Creates a placeholder for a 2-dimensional layered texture and adds it to the Ren
 
 :ref:`RID<class_RID>` **texture_2d_placeholder_create**\ (\ ) :ref:`🔗<class_RenderingServer_method_texture_2d_placeholder_create>`
 
-Creates a placeholder for a 2-dimensional layered texture and adds it to the RenderingServer. It can be accessed with the RID that is returned. This RID will be used in all ``texture_2d_layered_*`` RenderingServer functions, although it does nothing when used. See also :ref:`texture_2d_layered_placeholder_create<class_RenderingServer_method_texture_2d_layered_placeholder_create>`\ 
+Creates a placeholder for a 2-dimensional layered texture and adds it to the RenderingServer. It can be accessed with the RID that is returned. This RID will be used in all ``texture_2d_layered_*`` RenderingServer functions, although it does nothing when used. See also :ref:`texture_2d_layered_placeholder_create<class_RenderingServer_method_texture_2d_layered_placeholder_create>`.
 
 Once finished with your RID, you will want to free the RID using the RenderingServer's :ref:`free_rid<class_RenderingServer_method_free_rid>` method.
 
@@ -11172,6 +11336,20 @@ Once finished with your RID, you will want to free the RID using the RenderingSe
 Updates the texture specified by the ``texture`` :ref:`RID<class_RID>`'s data with the data in ``data``. All the texture's layers must be replaced at once.
 
 \ **Note:** The ``texture`` must have the same width, height, depth and format as the current texture data. Otherwise, an error will be printed and the original texture won't be modified. If you need to use different width, height, depth or format, use :ref:`texture_replace<class_RenderingServer_method_texture_replace>` instead.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_RenderingServer_method_texture_create_from_native_handle:
+
+.. rst-class:: classref-method
+
+:ref:`RID<class_RID>` **texture_create_from_native_handle**\ (\ type\: :ref:`TextureType<enum_RenderingServer_TextureType>`, format\: :ref:`Format<enum_Image_Format>`, native_handle\: :ref:`int<class_int>`, width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`, depth\: :ref:`int<class_int>`, layers\: :ref:`int<class_int>` = 1, layered_type\: :ref:`TextureLayeredType<enum_RenderingServer_TextureLayeredType>` = 0\ ) :ref:`🔗<class_RenderingServer_method_texture_create_from_native_handle>`
+
+Creates a texture based on a native handle that was created outside of Godot's renderer.
+
+\ **Note:** If using the rendering device renderer, using :ref:`RenderingDevice.texture_create_from_extension<class_RenderingDevice_method_texture_create_from_extension>` rather than this method is recommended. It will give you much more control over the texture's format and usage.
 
 .. rst-class:: classref-item-separator
 
@@ -11412,7 +11590,7 @@ Returns the CPU time taken to render the last frame in milliseconds. This *only*
 
 :ref:`float<class_float>` **viewport_get_measured_render_time_gpu**\ (\ viewport\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_RenderingServer_method_viewport_get_measured_render_time_gpu>`
 
-Returns the GPU time taken to render the last frame in milliseconds. To get a complete readout of GPU time spent to render the scene, sum the render times of all viewports that are drawn every frame. Unlike :ref:`Engine.get_frames_per_second<class_Engine_method_get_frames_per_second>`, this method accurately reflects GPU utilization even if framerate is capped via V-Sync or :ref:`Engine.max_fps<class_Engine_property_max_fps>`. See also :ref:`viewport_get_measured_render_time_gpu<class_RenderingServer_method_viewport_get_measured_render_time_gpu>`.
+Returns the GPU time taken to render the last frame in milliseconds. To get a complete readout of GPU time spent to render the scene, sum the render times of all viewports that are drawn every frame. Unlike :ref:`Engine.get_frames_per_second<class_Engine_method_get_frames_per_second>`, this method accurately reflects GPU utilization even if framerate is capped via V-Sync or :ref:`Engine.max_fps<class_Engine_property_max_fps>`. See also :ref:`viewport_get_measured_render_time_cpu<class_RenderingServer_method_viewport_get_measured_render_time_cpu>`.
 
 \ **Note:** Requires measurements to be enabled on the specified ``viewport`` using :ref:`viewport_set_measure_render_time<class_RenderingServer_method_viewport_set_measure_render_time>`. Otherwise, this method returns ``0.0``.
 
